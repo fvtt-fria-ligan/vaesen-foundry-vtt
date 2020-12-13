@@ -1,0 +1,30 @@
+.vaesen.item .attack .icon {
+    border: 1px dashed #826657;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.vaesen.item .attack .name {
+    flex-basis: 51%;
+}
+
+.vaesen.item .attack .attribute {
+    flex-basis: 33%;
+}
+
+.vaesen.item .attack .damage {
+    flex-basis: 50%;
+}
+
+.vaesen.item .attack .range {
+    flex-basis: 50%;
+}
+
+.vaesen.item .attack .description {
+    flex-basis: 100%;
+}
+
+.vaesen.item .attack .description textarea {
+    height: 187px;
+    resize: none;
+}

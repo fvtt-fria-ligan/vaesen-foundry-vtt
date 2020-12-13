@@ -1,0 +1,41 @@
+.vaesen .player .gears .scrollable {
+    overflow-y: auto;
+    height: 501px;
+    max-height: 501px;
+}
+
+.vaesen .player .gears .gear.item:hover {
+    text-shadow: 0 0 10px darkolivegreen;
+}
+
+.vaesen .player .gears .gear.item:nth-child(even) {
+    background-color: #d6c9c2;
+}
+
+.vaesen .player .gears .gear.item:nth-child(odd) {
+    background-color: #ebe4e0;
+}
+
+.vaesen .player .gears .gear .icon {
+    flex-basis: 9%;
+}
+
+.vaesen .player .gears .gear img.icon {
+    border: 0;
+}
+
+.vaesen .player .gears .gear .name {
+    flex-basis: 31%;
+}
+
+.vaesen .player .gears .gear .bonus {
+    flex-basis: 15%;
+}
+
+.vaesen .player .gears .gear .effect {
+    flex-basis: 40%;
+}
+
+.vaesen .player .gears .gear .button {
+    flex-basis: 5%;
+}

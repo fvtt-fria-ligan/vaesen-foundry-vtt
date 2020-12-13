@@ -1,0 +1,21 @@
+.vaesen.item .armor .icon {
+    border: 1px dashed #826657;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.vaesen.item .armor .name {
+    flex-basis: 60%;
+}
+
+.vaesen.item .armor .protection {
+    flex-basis: 25%;
+}
+
+.vaesen.item .armor .agility {
+    flex-basis: 50%;
+}
+
+.vaesen.item .armor .availability {
+    flex-basis: 50%;
+}

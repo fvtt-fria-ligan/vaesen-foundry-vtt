@@ -1,0 +1,29 @@
+.vaesen.item .weapon .icon {
+    border: 1px dashed #826657;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.vaesen.item .weapon .name {
+    flex-basis: 51%;
+}
+
+.vaesen.item .weapon .skill {
+    flex-basis: 33%;
+}
+
+.vaesen.item .weapon .damage {
+    flex-basis: 25%;
+}
+
+.vaesen.item .weapon .range {
+    flex-basis: 25%;
+}
+
+.vaesen.item .weapon .bonus {
+    flex-basis: 25%;
+}
+
+.vaesen.item .weapon .availability {
+    flex-basis: 25%;
+}

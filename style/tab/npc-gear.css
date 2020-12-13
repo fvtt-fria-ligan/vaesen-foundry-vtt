@@ -1,0 +1,41 @@
+.vaesen .npc .gears .scrollable {
+    overflow-y: auto;
+    height: 487px;
+    max-height: 487px;
+}
+
+.vaesen .npc .gears .gear.item:hover {
+    text-shadow: 0 0 10px darkolivegreen;
+}
+
+.vaesen .npc .gears .gear.item:nth-child(even) {
+    background-color: #d6c9c2;
+}
+
+.vaesen .npc .gears .gear.item:nth-child(odd) {
+    background-color: #ebe4e0;
+}
+
+.vaesen .npc .gears .gear .icon {
+    flex-basis: 9%;
+}
+
+.vaesen .npc .gears .gear img.icon {
+    border: 0;
+}
+
+.vaesen .npc .gears .gear .name {
+    flex-basis: 31%;
+}
+
+.vaesen .npc .gears .gear .bonus {
+    flex-basis: 15%;
+}
+
+.vaesen .npc .gears .gear .effect {
+    flex-basis: 40%;
+}
+
+.vaesen .npc .gears .gear .button {
+    flex-basis: 5%;
+}

@@ -1,0 +1,13 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <div class="talent flex row wrap">
+        <img class="icon" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="50" width="50"/>
+        <div class="name flex row wrap">
+            <b>{{localize "TALENT.NAME"}}</b>
+            <input name="name" type="text" value="{{item.name}}"/>
+        </div>
+        <div class="description flex row wrap">
+            <b>{{localize "TALENT.DESCRIPTION"}}</b>
+            <textarea name="data.description">{{data.description}}</textarea>
+        </div>
+    </div>
+</form>

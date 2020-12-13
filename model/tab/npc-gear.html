@@ -1,0 +1,30 @@
+<div class="flex column full">
+    <div class="flex column heavy-border wrapper">
+        <b class="title">{{localize "HEADER.GEAR"}}</b>
+        <div class="gears flex column margin grow">
+            <div class="gear flex row center light-border">
+                <b class="icon">{{localize "GEAR.ICON"}}</b>
+                <b class="name">{{localize "GEAR.NAME"}}</b>
+                <b class="bonus">{{localize "GEAR.BONUS"}}</b>
+                <b class="effect">{{localize "GEAR.EFFECT"}}</b>
+                <a class="button item-create" title="Add Gear" data-type="gear"><i class="fas fa-plus"></i></a>
+            </div>
+            <div class="scrollable">
+                {{#each actor.items as |item|}}
+                    {{#if item.isGear}}
+                        <div class="gear item flex row center align-center" data-item-id="{{item._id}}">
+                            <img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/>
+                            <div class="name">{{item.name}}</div>
+                            <div class="bonus">{{item.data.bonus}}</div>
+                            <div class="effect">{{item.data.effect}}</div>
+                            <div class="button">
+                                <a class="item-control item-edit" title="Edit Gear"><i class="fas fa-edit"></i></a>
+                                <a class="item-control item-delete" title="Delete Gear"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </div>
+                    {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+.vaesen .npc {
+    height: 100%;
+    width: 100%;
+}
+
+.vaesen .npc .header .profile-img {
+    border: 1px dashed #826657;
+    border-radius: 10px;
+}
+
+.vaesen .npc .header .name {
+    flex-basis: 100%;
+}
+
+.vaesen .npc .header .physical {
+    flex-basis: 50%;
+}
+
+.vaesen .npc .header .physical input {
+    flex-basis: 25%;
+}
+
+.vaesen .npc .header .mental {
+    flex-basis: 50%;
+}
+
+.vaesen .npc .header .mental input {
+    flex-basis: 25%;
+}

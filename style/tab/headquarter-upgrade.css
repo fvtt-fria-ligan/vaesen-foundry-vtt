@@ -1,0 +1,41 @@
+.vaesen .headquarter .upgrades .scrollable {
+    overflow-y: auto;
+    height: 487px;
+    max-height: 487px;
+}
+
+.vaesen .headquarter .upgrades .upgrade.item:hover {
+    text-shadow: 0 0 10px darkolivegreen;
+}
+
+.vaesen .headquarter .upgrades .upgrade.item:nth-child(even) {
+    background-color: #d6c9c2;
+}
+
+.vaesen .headquarter .upgrades .upgrade.item:nth-child(odd) {
+    background-color: #ebe4e0;
+}
+
+.vaesen .headquarter .upgrades .upgrade .icon {
+    flex-basis: 9%;
+}
+
+.vaesen .headquarter .upgrades .upgrade img.icon {
+    border: 0;
+}
+
+.vaesen .headquarter .upgrades .upgrade .name {
+    flex-basis: 20%;
+}
+
+.vaesen .headquarter .upgrades .upgrade .function {
+    flex-basis: 35%;
+}
+
+.vaesen .headquarter .upgrades .upgrade .asset {
+    flex-basis: 35%;
+}
+
+.vaesen .headquarter .upgrades .upgrade .button {
+    flex-basis: 5%;
+}

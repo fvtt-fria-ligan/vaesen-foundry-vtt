@@ -1,0 +1,272 @@
+{
+  "Actor": {
+    "types": [
+      "player",
+      "npc",
+      "vaesen",
+      "headquarter"
+    ],
+    "templates": {
+      "attributes": {
+        "attribute": {
+          "physique": {
+            "label": "ATTRIBUTE.PHYSIQUE",
+            "value": 0
+          },
+          "precision": {
+            "label": "ATTRIBUTE.PRECISION",
+            "value": 0
+          },
+          "logic": {
+            "label": "ATTRIBUTE.LOGIC",
+            "value": 0
+          },
+          "empathy": {
+            "label": "ATTRIBUTE.EMPATHY",
+            "value": 0
+          }
+        }
+      },
+      "skills": {
+        "skill": {
+          "agility": {
+            "label": "SKILL.AGILITY",
+            "value": 0,
+            "attribute": "physique"
+          },
+          "closeCombat": {
+            "label": "SKILL.CLOSE_COMBAT",
+            "value": 0,
+            "attribute": "physique"
+          },
+          "force": {
+            "label": "SKILL.FORCE",
+            "value": 0,
+            "attribute": "physique"
+          },
+          "medicine": {
+            "label": "SKILL.MEDICINE",
+            "value": 0,
+            "attribute": "precision"
+          },
+          "rangedCombat": {
+            "label": "SKILL.RANGED_COMBAT",
+            "value": 0,
+            "attribute": "precision"
+          },
+          "stealth": {
+            "label": "SKILL.STEALTH",
+            "value": 0,
+            "attribute": "precision"
+          },
+          "investigation": {
+            "label": "SKILL.INVESTIGATION",
+            "value": 0,
+            "attribute": "logic"
+          },
+          "learning": {
+            "label": "SKILL.LEARNING",
+            "value": 0,
+            "attribute": "logic"
+          },
+          "vigilance": {
+            "label": "SKILL.VIGILANCE",
+            "value": 0,
+            "attribute": "logic"
+          },
+          "inspiration": {
+            "label": "SKILL.INSPIRATION",
+            "value": 0,
+            "attribute": "empathy"
+          },
+          "manipulation": {
+            "label": "SKILL.MANIPULATION",
+            "value": 0,
+            "attribute": "empathy"
+          },
+          "observation": {
+            "label": "SKILL.OBSERVATION",
+            "value": 0,
+            "attribute": "empathy"
+          }
+        }
+      },
+      "conditions": {
+        "condition": {
+          "physical": {
+            "isBroken": false,
+            "states": {
+              "exhausted": {
+                "label": "CONDITION.EXHAUSTED",
+                "isChecked": false
+              },
+              "battered": {
+                "label": "CONDITION.BATTERED",
+                "isChecked": false
+              },
+              "wounded": {
+                "label": "CONDITION.WOUNDED",
+                "isChecked": false
+              }
+            }
+          },
+          "mental": {
+            "isBroken": false,
+            "states": {
+              "angry": {
+                "label": "CONDITION.ANGRY",
+                "isChecked": false
+              },
+              "frightened": {
+                "label": "CONDITION.FRIGHTENED",
+                "isChecked": false
+              },
+              "hopeless": {
+                "label": "CONDITION.HOPELESS",
+                "isChecked": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "player": {
+      "templates": [
+        "attributes",
+        "skills",
+        "conditions"
+      ],
+      "bio": {
+        "age": "",
+        "archetype": "",
+        "motivation": "",
+        "trauma": "",
+        "darkSecret": ""
+      },
+      "advantage": "",
+      "memento": "",
+      "experience": 0,
+      "resources": 0,
+      "capital": 0,
+      "note": ""
+    },
+    "npc": {
+      "templates": [
+        "attributes",
+        "skills"
+      ],
+      "condition": {
+        "physical": {
+          "value": 0,
+          "max": 0
+        },
+        "mental": {
+          "value": 0,
+          "max": 0
+        }
+      },
+      "information": "",
+      "note": ""
+    },
+    "vaesen": {
+      "attribute": {
+        "might": {
+          "label": "ATTRIBUTE.MIGHT",
+          "value": 0
+        },
+        "bodyControl": {
+          "label": "ATTRIBUTE.BODY_CONTROL",
+          "value": 0
+        },
+        "magic": {
+          "label": "ATTRIBUTE.MAGIC",
+          "value": 0
+        },
+        "manipulation": {
+          "label": "ATTRIBUTE.MANIPULATION",
+          "value": 0
+        }
+      },
+      "fear": {
+        "initial": 0,
+        "subsequent": 0
+      },
+      "ritual": {
+        "known": "",
+        "secret": ""
+      },
+      "note": ""
+    },
+    "headquarter": {
+      "building": "",
+      "location": "",
+      "points": 0,
+      "note": ""
+    }
+  },
+  "Item": {
+    "types": [
+      "criticalInjury",
+      "weapon",
+      "armor",
+      "talent",
+      "gear",
+      "magic",
+      "condition",
+      "attack",
+      "upgrade"
+    ],
+    "criticalInjury": {
+      "type": "",
+      "fatal": "",
+      "timeLimit": "",
+      "effect": "",
+      "permanent": "No"
+    },
+    "weapon": {
+      "damage": 0,
+      "range": "",
+      "bonus": 0,
+      "availability": 0,
+      "skill": ""
+    },
+    "armor": {
+      "protection": 0,
+      "agility": 0,
+      "availability": 0
+    },
+    "talent": {
+      "description": ""
+    },
+    "gear": {
+      "bonus": 0,
+      "availability": 0,
+      "effect": "",
+      "description": "",
+      "risk": ""
+    },
+    "magic": {
+      "description": "",
+      "category": ""
+    },
+    "condition": {
+      "description": "",
+      "bonus": 0,
+      "active": false
+    },
+    "attack": {
+      "description": "",
+      "damage": 0,
+      "range": "",
+      "attribute": ""
+    },
+    "upgrade": {
+      "category": "",
+      "prerequisite": "",
+      "cost": 0,
+      "function": "",
+      "asset": "",
+      "description": ""
+    }
+  }
+}

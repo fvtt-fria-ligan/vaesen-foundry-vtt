@@ -1,0 +1,61 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <div class="player flex column">
+        <div class="header flex column heavy-border">
+            <div class="flex row margin align-center">
+                <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+                <div class="flex row align-end space-around grow wrap" style="margin-left: 5px">
+                    <div class="name">
+                        <b>{{localize "BIO.NAME"}}</b>
+                        <input name="name" type="text" value="{{actor.name}}"/>
+                    </div>
+                    <div class="resources">
+                        <b>{{localize "RESOURCES"}}</b>
+                        <input name="data.resources" type="text" value="{{data.resources}}" data-dtype="Number"/>
+                    </div>
+                    <div class="capital">
+                        <b>{{localize "CAPITAL"}}</b>
+                        <input name="data.capital" type="text" value="{{data.capital}}" data-dtype="Number"/>
+                    </div>
+                    <div class="archetype">
+                        <b>{{localize "BIO.ARCHETYPE"}}</b>
+                        <input name="data.bio.archetype" type="text" value="{{data.bio.archetype}}"/>
+                    </div>
+                    <div class="age">
+                        <b>{{localize "BIO.AGE"}}</b>
+                        <input name="data.bio.age" type="text" value="{{data.bio.age}}"/>
+                    </div>
+                    <div class="experience">
+                        <b>{{localize "EXPERIENCE"}}</b>
+                        <input name="data.experience" type="text" value="{{data.experience}}" data-dtype="Number"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sheet-tabs tabs flex row heavy-border" data-group="primary">
+            <b class="item" data-tab="main">{{localize "TAB.MAIN"}}</b>
+            <b class="item" data-tab="combat">{{localize "TAB.COMBAT"}}</b>
+            <b class="item" data-tab="talent">{{localize "TAB.TALENT"}}</b>
+            <b class="item" data-tab="gear">{{localize "TAB.GEAR"}}</b>
+            <b class="item" data-tab="note">{{localize "TAB.NOTE"}}</b>
+        </div>
+
+        <div class="sheet-body flex row">
+            <div class="tab" data-group="primary" data-tab="main">
+                {{> systems/vaesen/model/tab/player-main.html}}
+            </div>
+            <div class="tab" data-group="primary" data-tab="combat">
+                {{> systems/vaesen/model/tab/player-combat.html}}
+            </div>
+            <div class="tab" data-group="primary" data-tab="talent">
+                {{> systems/vaesen/model/tab/player-talent.html}}
+            </div>
+            <div class="tab" data-group="primary" data-tab="gear">
+                {{> systems/vaesen/model/tab/player-gear.html}}
+            </div>
+            <div class="tab note" data-group="primary" data-tab="note">
+                {{> systems/vaesen/model/tab/player-note.html}}
+            </div>
+        </div>
+    </div>
+</form>

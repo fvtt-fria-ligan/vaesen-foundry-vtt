@@ -1,0 +1,129 @@
+.vaesen .monster .armors .scrollable {
+    overflow-y: auto;
+    height: 50px;
+    max-height: 50px;
+}
+
+.vaesen .monster .armors .armor.item:hover {
+    text-shadow: 0 0 10px darkolivegreen;
+}
+
+.vaesen .monster .armors .armor.item:nth-child(even) {
+    background-color: #d6c9c2;
+}
+
+.vaesen .monster .armors .armor.item:nth-child(odd) {
+    background-color: #ebe4e0;
+}
+
+.vaesen .monster .armors .armor .icon {
+    flex-basis: 9%;
+}
+
+.vaesen .monster .armors .armor img.icon {
+    border: 0;
+}
+
+.vaesen .monster .armors .armor .name {
+    flex-basis: 46%;
+}
+
+.vaesen .monster .armors .armor .protection {
+    flex-basis: 20%;
+}
+
+.vaesen .monster .armors .armor .agility {
+    flex-basis: 20%;
+}
+
+.vaesen .monster .armors .armor .button {
+    flex-basis: 5%;
+}
+
+.vaesen .monster .attacks .scrollable {
+    overflow-y: auto;
+    height: 100px;
+    max-height: 100px;
+}
+
+.vaesen .monster .attacks .attack.item:hover {
+    text-shadow: 0 0 10px darkolivegreen;
+}
+
+.vaesen .monster .attacks .attack.item:nth-child(even) {
+    background-color: #d6c9c2;
+}
+
+.vaesen .monster .attacks .attack.item:nth-child(odd) {
+    background-color: #ebe4e0;
+}
+
+.vaesen .monster .attacks .attack .icon {
+    flex-basis: 9%;
+}
+
+.vaesen .monster .attacks .attack img.icon {
+    border: 0;
+}
+
+.vaesen .monster .attacks .attack .name {
+    flex-basis: 26%;
+}
+
+.vaesen .monster .attacks .attack .damage {
+    flex-basis: 10%;
+}
+
+.vaesen .monster .attacks .attack .range {
+    flex-basis: 10%;
+}
+
+.vaesen .monster .attacks .attack .description {
+    flex-basis: 40%;
+}
+
+.vaesen .monster .attacks .attack .button {
+    flex-basis: 5%;
+}
+
+.vaesen .monster .magics .scrollable {
+    overflow-y: auto;
+    height: 207px;
+    max-height: 207px;
+}
+
+.vaesen .monster .magics .magic.item:hover {
+    text-shadow: 0 0 10px darkolivegreen;
+}
+
+.vaesen .monster .magics .magic.item:nth-child(even) {
+    background-color: #d6c9c2;
+}
+
+.vaesen .monster .magics .magic.item:nth-child(odd) {
+    background-color: #ebe4e0;
+}
+
+.vaesen .monster .magics .magic .icon {
+    flex-basis: 9%;
+}
+
+.vaesen .monster .magics .magic img.icon {
+    border: 0;
+}
+
+.vaesen .monster .magics .magic .name {
+    flex-basis: 20%;
+}
+
+.vaesen .monster .magics .magic .category {
+    flex-basis: 20%;
+}
+
+.vaesen .monster .magics .magic .description {
+    flex-basis: 46%;
+}
+
+.vaesen .monster .magics .magic .button {
+    flex-basis: 5%;
+}

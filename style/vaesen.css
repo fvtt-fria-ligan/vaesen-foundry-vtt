@@ -1,0 +1,29 @@
+.vaesen .monster {
+    height: 100%;
+    width: 100%;
+}
+
+.vaesen .monster .header .profile-img {
+    border: 1px dashed #826657;
+    border-radius: 10px;
+}
+
+.vaesen .monster .header .name {
+    flex-basis: 100%;
+}
+
+.vaesen .monster .header .initial {
+    flex-basis: 50%;
+}
+
+.vaesen .monster .header .initial input {
+    text-align: center;
+}
+
+.vaesen .monster .header .subsequent {
+    flex-basis: 50%
+}
+
+.vaesen .monster .header .subsequent input {
+    text-align: center;
+}

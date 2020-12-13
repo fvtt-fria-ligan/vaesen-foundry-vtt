@@ -1,0 +1,105 @@
+<div class="flex column full">
+    <div class="flex column heavy-border wrapper">
+        <b class="title">{{localize "HEADER.ATTRIBUTES"}}</b>
+        <div class="attributes flex row">
+            {{#each data.attribute as |attribute key|}}
+                <div class="attribute flex column center" data-key="{{key}}">
+                    <b>{{localize attribute.label}}</b>
+                    <div class="flex row align-center">
+                        <input name="data.attribute.{{key}}.value" type="text" value="{{attribute.value}}" data-dtype="Number"/>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <div class="flex column heavy-border wrapper">
+        <b class="title">{{localize "HEADER.SKILLS"}}</b>
+        <div class="flex row wrap">
+            <div class="skills physique flex column">
+                <b class="header">{{localize "ATTRIBUTE.PHYSIQUE"}}</b>
+                {{#each data.skill as |skill key|}}
+                    {{#if skill.hasPhysique}}
+                        <div class="skill flex row align-center" data-key="{{key}}">
+                            <b>{{localize skill.label}}</b>
+                            <input name="data.skill.{{key}}.value" type="text" value="{{skill.value}}" data-dtype="Number"/>
+                        </div>
+                    {{/if}}
+                {{/each}}
+            </div>
+            <div class="skills logic flex column">
+                <b class="header">{{localize "ATTRIBUTE.LOGIC"}}</b>
+                {{#each data.skill as |skill key|}}
+                    {{#if skill.hasLogic}}
+                        <div class="skill flex row align-center" data-key="{{key}}">
+                            <b>{{localize skill.label}}</b>
+                            <input name="data.skill.{{key}}.value" type="text" value="{{skill.value}}" data-dtype="Number"/>
+                        </div>
+                    {{/if}}
+                {{/each}}
+            </div>
+            <div class="skills precision flex column">
+                <b class="header">{{localize "ATTRIBUTE.PRECISION"}}</b>
+                {{#each data.skill as |skill key|}}
+                {{#if skill.hasPrecision}}
+                <div class="skill flex row align-center" data-key="{{key}}">
+                    <b>{{localize skill.label}}</b>
+                    <input name="data.skill.{{key}}.value" type="text" value="{{skill.value}}" data-dtype="Number"/>
+                </div>
+                {{/if}}
+                {{/each}}
+            </div>
+            <div class="skills empathy flex column">
+                <b class="header">{{localize "ATTRIBUTE.EMPATHY"}}</b>
+                {{#each data.skill as |skill key|}}
+                    {{#if skill.hasEmpathy}}
+                        <div class="skill flex row align-center" data-key="{{key}}">
+                            <b>{{localize skill.label}}</b>
+                            <input name="data.skill.{{key}}.value" type="text" value="{{skill.value}}" data-dtype="Number"/>
+                        </div>
+                    {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <div class="flex column heavy-border wrapper">
+        <b class="title">{{localize "HEADER.CONDITIONS"}}</b>
+        <div class="flex row grow margin">
+            <div class="conditions physical flex column">
+                <b class="header">{{localize "CONDITION.PHYSICAL"}}</b>
+                <div class="flex row grow center align-center wrap">
+                    {{#each data.condition.physical.states as |condition key|}}
+                        {{#if condition.isChecked}}
+                            <b class="condition active" data-key="{{key}}">{{localize condition.label}}</b>
+                        {{else}}
+                            <div class="condition" data-key="{{key}}">{{localize condition.label}}</div>
+                        {{/if}}
+                    {{/each}}
+                    {{#if data.condition.physical.isBroken}}
+                        <b class="condition active" data-key="physical">{{localize "CONDITION.BROKEN"}}</b>
+                    {{else}}
+                        <div class="condition" data-key="physical">{{localize "CONDITION.BROKEN"}}</div>
+                    {{/if}}
+                </div>
+            </div>
+            <div class="conditions mental flex column">
+                <b class="header">{{localize "CONDITION.MENTAL"}}</b>
+                <div class="flex row grow center align-center wrap">
+                    {{#each data.condition.mental.states as |condition key|}}
+                        {{#if condition.isChecked}}
+                            <b class="condition active" data-key="{{key}}">{{localize condition.label}}</b>
+                        {{else}}
+                            <div class="condition" data-key="{{key}}">{{localize condition.label}}</div>
+                        {{/if}}
+                    {{/each}}
+                    {{#if data.condition.mental.isBroken}}
+                        <b class="condition active" data-key="mental">{{localize "CONDITION.BROKEN"}}</b>
+                    {{else}}
+                        <div class="condition" data-key="mental">{{localize "CONDITION.BROKEN"}}</div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

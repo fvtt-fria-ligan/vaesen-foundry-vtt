@@ -1,0 +1,85 @@
+.vaesen .npc .attributes .attribute {
+    padding: 5px;
+    flex-basis: 25%;
+    border-right: 1px dashed #826657;
+    border-left: 1px dashed #826657;
+}
+
+.vaesen .npc .attributes .attribute:first-child {
+    border-left: 0;
+}
+
+.vaesen .npc .attributes .attribute:last-child {
+    border-right: 0;
+}
+
+.vaesen .npc .attributes .attribute b:hover {
+    text-shadow: 0 0 10px darkolivegreen;
+}
+
+.vaesen .npc .attributes .attribute input {
+    margin: 5px;
+}
+
+.vaesen .npc .skills {
+    flex-basis: 50%;
+    padding: 5px;
+}
+
+.vaesen .npc .skills.physique {
+    border-right: 1px dashed #826657;
+    border-bottom: 1px dashed #826657;
+}
+
+.vaesen .npc .skills.precision {
+    border-right: 1px dashed #826657;
+    border-top: 1px dashed #826657;
+}
+
+.vaesen .npc .skills.logic {
+    border-left: 1px dashed #826657;
+    border-bottom: 1px dashed #826657;
+}
+
+.vaesen .npc .skills.empathy {
+    border-left: 1px dashed #826657;
+    border-top: 1px dashed #826657;
+}
+
+.vaesen .npc .skills .header {
+    text-align: center;
+}
+
+.vaesen .npc .skills .skill {
+    margin: 5px;
+    justify-content: space-evenly;
+}
+
+.vaesen .npc .skills .skill b {
+    flex-basis: 50%;
+}
+
+.vaesen .npc .skills .skill b:hover {
+    text-shadow: 0 0 10px darkolivegreen;
+}
+
+.vaesen .npc .skills .skill input {
+    text-align: center;
+    flex-basis: 25%;
+}
+
+.vaesen .npc .information .editor {
+    padding: 0;
+}
+
+.vaesen .npc .information .editor-content {
+    padding: 0 5px;
+}
+
+.vaesen .npc .information .editor,
+.vaesen .npc .information .editor-content {
+    width: 100%;
+    height: 100%;
+    max-height: 123px;
+    background-color: #d6c9c2;
+}

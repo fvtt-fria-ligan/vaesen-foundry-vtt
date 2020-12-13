@@ -1,0 +1,104 @@
+.vaesen .player .attributes .attribute {
+    padding: 5px;
+    flex-basis: 25%;
+    border-right: 1px dashed #826657;
+    border-left: 1px dashed #826657;
+}
+
+.vaesen .player .attributes .attribute:first-child {
+    border-left: 0;
+}
+
+.vaesen .player .attributes .attribute:last-child {
+    border-right: 0;
+}
+
+.vaesen .player .attributes .attribute b:hover {
+    text-shadow: 0 0 10px darkolivegreen;
+}
+
+.vaesen .player .attributes .attribute input {
+    margin: 5px;
+}
+
+.vaesen .player .skills {
+    flex-basis: 50%;
+    padding: 5px;
+}
+
+.vaesen .player .skills.physique {
+    border-right: 1px dashed #826657;
+    border-bottom: 1px dashed #826657;
+}
+
+.vaesen .player .skills.precision {
+    border-right: 1px dashed #826657;
+    border-top: 1px dashed #826657;
+}
+
+.vaesen .player .skills.logic {
+    border-left: 1px dashed #826657;
+    border-bottom: 1px dashed #826657;
+}
+
+.vaesen .player .skills.empathy {
+    border-left: 1px dashed #826657;
+    border-top: 1px dashed #826657;
+}
+
+.vaesen .player .skills .header {
+    text-align: center;
+}
+
+.vaesen .player .skills .skill {
+    margin: 5px;
+    justify-content: space-evenly;
+}
+
+.vaesen .player .skills .skill b {
+    flex-basis: 50%;
+}
+
+.vaesen .player .skills .skill b:hover {
+    text-shadow: 0 0 10px darkolivegreen;
+}
+
+.vaesen .player .skills .skill input {
+    text-align: center;
+    flex-basis: 25%;
+}
+
+.vaesen .player .conditions {
+    flex-basis: 50%;
+}
+
+.vaesen .player .conditions.physical {
+    border-right: 1px dashed #826657;
+}
+
+.vaesen .player .conditions.mental {
+    border-left: 1px dashed #826657;
+}
+
+.vaesen .player .conditions .header {
+    text-align: center;
+}
+
+.vaesen .player .conditions b.condition,
+.vaesen .player .conditions div.condition {
+    flex-basis: 100%;
+    border: 1px solid #826657;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 5px;
+    background-color: #d6c9c2;
+}
+
+.vaesen .player .conditions .condition.active {
+    border: 1px solid red;
+}
+
+.vaesen .player .conditions b.condition:hover,
+.vaesen .player .conditions div.condition:hover {
+    text-shadow: 0 0 10px darkolivegreen;
+}

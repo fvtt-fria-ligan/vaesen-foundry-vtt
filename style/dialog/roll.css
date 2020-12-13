@@ -1,0 +1,18 @@
+.dialog .dialog-buttons button {
+    border: 1px solid #826657;
+    background-color: #d6c9c2;
+}
+
+.roll-dialog {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.roll-dialog input {
+    background-color: #d6c9c2;
+    border-color: #826657;
+    flex-basis: 75%;
+    margin-bottom: 5px;
+}

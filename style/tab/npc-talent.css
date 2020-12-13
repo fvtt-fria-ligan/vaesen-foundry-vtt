@@ -1,0 +1,37 @@
+.vaesen .npc .talents .scrollable {
+    overflow-y: auto;
+    height: 487px;
+    max-height: 487px;
+}
+
+.vaesen .npc .talents .talent.item:hover {
+    text-shadow: 0 0 10px darkolivegreen;
+}
+
+.vaesen .npc .talents .talent.item:nth-child(even) {
+    background-color: #d6c9c2;
+}
+
+.vaesen .npc .talents .talent.item:nth-child(odd) {
+    background-color: #ebe4e0;
+}
+
+.vaesen .npc .talents .talent .icon {
+    flex-basis: 9%;
+}
+
+.vaesen .npc .talents .talent img.icon {
+    border: 0;
+}
+
+.vaesen .npc .talents .talent .name {
+    flex-basis: 21%;
+}
+
+.vaesen .npc .talents .talent .description {
+    flex-basis: 65%;
+}
+
+.vaesen .npc .talents .talent .button {
+    flex-basis: 5%;
+}

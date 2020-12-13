@@ -1,0 +1,29 @@
+.vaesen .headquarter {
+    height: 100%;
+    width: 100%;
+}
+
+.vaesen .headquarter .header .profile-img {
+    border: 1px dashed #826657;
+    border-radius: 10px;
+}
+
+.vaesen .headquarter .header .name {
+    flex-basis: 73%;
+}
+
+.vaesen .headquarter .header .point {
+    flex-basis: 27%;
+}
+
+.vaesen .headquarter .header .point input {
+    text-align: center;
+}
+
+.vaesen .headquarter .header .building {
+    flex-basis: 50%
+}
+
+.vaesen .headquarter .header .location {
+    flex-basis: 50%
+}

@@ -1,0 +1,137 @@
+.vaesen .npc .critical-injuries .scrollable {
+    overflow-y: auto;
+    height: 150px;
+    max-height: 150px;
+}
+
+.vaesen .npc .critical-injuries .critical-injury.item:hover {
+    text-shadow: 0 0 10px darkolivegreen;
+}
+
+.vaesen .npc .critical-injuries .critical-injury.item:nth-child(even) {
+    background-color: #d6c9c2;
+}
+
+.vaesen .npc .critical-injuries .critical-injury.item:nth-child(odd) {
+    background-color: #ebe4e0;
+}
+
+.vaesen .npc .critical-injuries .critical-injury .icon {
+    flex-basis: 9%;
+}
+
+.vaesen .npc .critical-injuries .critical-injury img.icon {
+    border: 0;
+}
+
+.vaesen .npc .critical-injuries .critical-injury .name {
+    flex-basis: 20%;
+}
+
+.vaesen .npc .critical-injuries .critical-injury .fatal {
+    flex-basis: 10%;
+}
+
+.vaesen .npc .critical-injuries .critical-injury .time-limit {
+    flex-basis: 15%;
+}
+
+.vaesen .npc .critical-injuries .critical-injury .effect {
+    flex-basis: 36%;
+}
+
+.vaesen .npc .critical-injuries .critical-injury .permanent {
+    flex-basis: 5%;
+}
+
+.vaesen .npc .critical-injuries .critical-injury .button {
+    flex-basis: 5%;
+}
+
+.vaesen .npc .weapons .scrollable {
+    overflow-y: auto;
+    height: 157px;
+    max-height: 157px;
+}
+
+.vaesen .npc .weapons .weapon.item:hover {
+    text-shadow: 0 0 10px darkolivegreen;
+}
+
+.vaesen .npc .weapons .weapon.item:nth-child(even) {
+    background-color: #d6c9c2;
+}
+
+.vaesen .npc .weapons .weapon.item:nth-child(odd) {
+    background-color: #ebe4e0;
+}
+
+.vaesen .npc .weapons .weapon .icon {
+    flex-basis: 9%;
+}
+
+.vaesen .npc .weapons .weapon img.icon {
+    border: 0;
+}
+
+.vaesen .npc .weapons .weapon .name {
+    flex-basis: 26%;
+}
+
+.vaesen .npc .weapons .weapon .damage {
+    flex-basis: 20%;
+}
+
+.vaesen .npc .weapons .weapon .range {
+    flex-basis: 20%;
+}
+
+.vaesen .npc .weapons .weapon .bonus {
+    flex-basis: 20%;
+}
+
+.vaesen .npc .weapons .weapon .button {
+    flex-basis: 5%;
+}
+
+.vaesen .npc .armors .scrollable {
+    overflow-y: auto;
+    height: 50px;
+    max-height: 50px;
+}
+
+.vaesen .npc .armors .armor.item:hover {
+    text-shadow: 0 0 10px darkolivegreen;
+}
+
+.vaesen .npc .armors .armor.item:nth-child(even) {
+    background-color: #d6c9c2;
+}
+
+.vaesen .npc .armors .armor.item:nth-child(odd) {
+    background-color: #ebe4e0;
+}
+
+.vaesen .npc .armors .armor .icon {
+    flex-basis: 9%;
+}
+
+.vaesen .npc .armors .armor img.icon {
+    border: 0;
+}
+
+.vaesen .npc .armors .armor .name {
+    flex-basis: 46%;
+}
+
+.vaesen .npc .armors .armor .protection {
+    flex-basis: 20%;
+}
+
+.vaesen .npc .armors .armor .agility {
+    flex-basis: 20%;
+}
+
+.vaesen .npc .armors .armor .button {
+    flex-basis: 5%;
+}

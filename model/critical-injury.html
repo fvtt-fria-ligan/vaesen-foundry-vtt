@@ -1,0 +1,39 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <div class="critical-injury flex row wrap">
+        <img class="icon" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="50" width="50"/>
+        <div class="name flex row wrap">
+            <b>{{localize "CRITICAL_INJURY.NAME"}}</b>
+            <input name="name" type="text" value="{{item.name}}"/>
+        </div>
+        <div class="type flex row wrap center">
+            <b>{{localize "CRITICAL_INJURY.TYPE"}}</b>
+            <select name="data.type">
+                {{#select data.type}}
+                    <option value="physical">{{localize "CONDITION.PHYSICAL"}}</option>
+                    <option value="mental">{{localize "CONDITION.MENTAL"}}</option>
+                {{/select}}
+            </select>
+        </div>
+        <div class="permanent flex row wrap center">
+            <b>{{localize "CRITICAL_INJURY.PERMANENT"}}</b>
+            <select style="flex-basis: 100%" name="data.permanent">
+                {{#select data.permanent}}
+                    <option value="No">{{localize "NO"}}</option>
+                    <option value="Yes">{{localize "YES"}}</option>
+                {{/select}}
+            </select>
+        </div>
+        <div class="fatal flex row wrap center">
+            <b>{{localize "CRITICAL_INJURY.FATAL"}}</b>
+            <input name="data.fatal" type="text" value="{{data.fatal}}"/>
+        </div>
+        <div class="time-limit flex row wrap center">
+            <b>{{localize "CRITICAL_INJURY.TIME_LIMIT"}}</b>
+            <input name="data.timeLimit" type="text" value="{{data.timeLimit}}"/>
+        </div>
+        <div class="effect flex row wrap">
+            <b>{{localize "CRITICAL_INJURY.EFFECT"}}</b>
+            <input name="data.effect" type="text" value="{{data.effect}}"/>
+        </div>
+    </div>
+</form>

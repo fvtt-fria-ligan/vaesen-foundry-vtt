@@ -1,0 +1,24 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <div class="magic flex row wrap">
+        <img class="icon" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="50" width="50"/>
+        <div class="name flex row wrap">
+            <b>{{localize "MAGIC.NAME"}}</b>
+            <input name="name" type="text" value="{{item.name}}"/>
+        </div>
+        <div class="category flex row wrap center">
+            <b>{{localize "MAGIC.CATEGORY"}}</b>
+            <select name="data.category">
+                {{#select data.category}}
+                    <option value="power">{{localize "MAGIC.POWER"}}</option>
+                    <option value="enchantment">{{localize "MAGIC.ENCHANTMENT"}}</option>
+                    <option value="curse">{{localize "MAGIC.CURSE"}}</option>
+                    <option value="trollcraft">{{localize "MAGIC.TROLLCRAFT"}}</option>
+                {{/select}}
+            </select>
+        </div>
+        <div class="description flex row wrap">
+            <b>{{localize "MAGIC.DESCRIPTION"}}</b>
+            <textarea name="data.description">{{data.description}}</textarea>
+        </div>
+    </div>
+</form>
