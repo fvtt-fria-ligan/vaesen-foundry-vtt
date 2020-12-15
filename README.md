@@ -22,3 +22,7 @@ Nothing. You are more than welcome to fork this project !
 
 ## Licence
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
+
+## Release Notes
+v1.9.1 
+- Incremental release version number only.
