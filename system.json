@@ -2,7 +2,7 @@
   "name": "vaesen-rpg",
   "title": "Vaesen",
   "description": "Nordic horror role-playing",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "minimumCoreVersion": "0.7.5",
   "compatibleCoreVersion": "0.7.6",
   "templateVersion": 2,
