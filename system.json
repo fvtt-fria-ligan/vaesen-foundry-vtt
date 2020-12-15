@@ -59,6 +59,6 @@
   "url": "https://github.com/romelwell/vaesen-foundry-vtt",
   "socket": true,
   "manifest": "https://raw.githubusercontent.com/romelwell/vaesen-foundry-vtt/master/system.json",
-  "download": "https://github.com/romelwell/vaesen-foundry-vtt/raw/master/archive/v1.9.zip",
+  "download": "https://github.com/romelwell/vaesen-foundry-vtt/raw/master/archive/v1.9.1.zip",
   "license": "LICENSE.txt"
 }
