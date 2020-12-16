@@ -3,7 +3,7 @@ export class WeaponCharacterSheet extends ItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ["vaesen", "sheet", "item"],
-            template: "systems/vaesen/model/weapon.html",
+            template: "systems/vaesen-rpg/model/weapon.html",
             width: 400,
             height: 137,
             resizable: false

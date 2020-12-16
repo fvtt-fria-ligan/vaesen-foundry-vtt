@@ -3,7 +3,7 @@ export class CriticalInjuryCharacterSheet extends ItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ["vaesen", "sheet", "item"],
-            template: "systems/vaesen/model/critical-injury.html",
+            template: "systems/vaesen-rpg/model/critical-injury.html",
             width: 400,
             height: 178,
             resizable: false

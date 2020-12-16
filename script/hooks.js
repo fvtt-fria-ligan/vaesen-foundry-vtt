@@ -21,55 +21,55 @@ Hooks.once("init", () => {
     CONFIG.roll = prepareRollDialog;
     CONFIG.push = push;
     Actors.unregisterSheet("core", ActorSheet);
-    Actors.registerSheet("vaesen", PlayerCharacterSheet, { types: ["player"], makeDefault: true });
-    Actors.registerSheet("vaesen", NpcCharacterSheet, { types: ["npc"], makeDefault: true });
-    Actors.registerSheet("vaesen", VaesenCharacterSheet, { types: ["vaesen"], makeDefault: true });
-    Actors.registerSheet("vaesen", HeadquarterCharacterSheet, { types: ["headquarter"], makeDefault: true });
+    Actors.registerSheet("vaesen-rpg", PlayerCharacterSheet, { types: ["player"], makeDefault: true });
+    Actors.registerSheet("vaesen-rpg", NpcCharacterSheet, { types: ["npc"], makeDefault: true });
+    Actors.registerSheet("vaesen-rpg", VaesenCharacterSheet, { types: ["vaesen"], makeDefault: true });
+    Actors.registerSheet("vaesen-rpg", HeadquarterCharacterSheet, { types: ["headquarter"], makeDefault: true });
     Items.unregisterSheet("core", ItemSheet);
-    Items.registerSheet("vaesen", CriticalInjuryCharacterSheet, {types: ["criticalInjury"], makeDefault: true});
-    Items.registerSheet("vaesen", WeaponCharacterSheet, {types: ["weapon"], makeDefault: true});
-    Items.registerSheet("vaesen", ArmorCharacterSheet, {types: ["armor"], makeDefault: true});
-    Items.registerSheet("vaesen", TalentCharacterSheet, {types: ["talent"], makeDefault: true});
-    Items.registerSheet("vaesen", GearCharacterSheet, {types: ["gear"], makeDefault: true});
-    Items.registerSheet("vaesen", MagicCharacterSheet, {types: ["magic"], makeDefault: true});
-    Items.registerSheet("vaesen", ConditionCharacterSheet, {types: ["condition"], makeDefault: true});
-    Items.registerSheet("vaesen", AttackCharacterSheet, {types: ["attack"], makeDefault: true});
-    Items.registerSheet("vaesen", UpgradeCharacterSheet, {types: ["upgrade"], makeDefault: true});
+    Items.registerSheet("vaesen-rpg", CriticalInjuryCharacterSheet, {types: ["criticalInjury"], makeDefault: true});
+    Items.registerSheet("vaesen-rpg", WeaponCharacterSheet, {types: ["weapon"], makeDefault: true});
+    Items.registerSheet("vaesen-rpg", ArmorCharacterSheet, {types: ["armor"], makeDefault: true});
+    Items.registerSheet("vaesen-rpg", TalentCharacterSheet, {types: ["talent"], makeDefault: true});
+    Items.registerSheet("vaesen-rpg", GearCharacterSheet, {types: ["gear"], makeDefault: true});
+    Items.registerSheet("vaesen-rpg", MagicCharacterSheet, {types: ["magic"], makeDefault: true});
+    Items.registerSheet("vaesen-rpg", ConditionCharacterSheet, {types: ["condition"], makeDefault: true});
+    Items.registerSheet("vaesen-rpg", AttackCharacterSheet, {types: ["attack"], makeDefault: true});
+    Items.registerSheet("vaesen-rpg", UpgradeCharacterSheet, {types: ["upgrade"], makeDefault: true});
     preloadHandlebarsTemplates();
 });
 
 function preloadHandlebarsTemplates() {
     const templatePaths = [
-        "systems/vaesen/model/player.html",
-        "systems/vaesen/model/tab/player-main.html",
-        "systems/vaesen/model/tab/player-combat.html",
-        "systems/vaesen/model/tab/player-talent.html",
-        "systems/vaesen/model/tab/player-gear.html",
-        "systems/vaesen/model/tab/player-note.html",
-        "systems/vaesen/model/npc.html",
-        "systems/vaesen/model/tab/npc-main.html",
-        "systems/vaesen/model/tab/npc-combat.html",
-        "systems/vaesen/model/tab/npc-talent.html",
-        "systems/vaesen/model/tab/npc-gear.html",
-        "systems/vaesen/model/tab/npc-note.html",
-        "systems/vaesen/model/vaesen.html",
-        "systems/vaesen/model/tab/vaesen-main.html",
-        "systems/vaesen/model/tab/vaesen-combat.html",
-        "systems/vaesen/model/tab/vaesen-gear.html",
-        "systems/vaesen/model/tab/vaesen-note.html",
-        "systems/vaesen/model/headquarter.html",
-        "systems/vaesen/model/tab/headquarter-history.html",
-        "systems/vaesen/model/tab/headquarter-facilities.html",
-        "systems/vaesen/model/tab/headquarter-contact.html",
-        "systems/vaesen/model/tab/headquarter-personnel.html",
-        "systems/vaesen/model/critical-injury.html",
-        "systems/vaesen/model/weapon.html",
-        "systems/vaesen/model/armor.html",
-        "systems/vaesen/model/talent.html",
-        "systems/vaesen/model/gear.html",
-        "systems/vaesen/model/magic.html",
-        "systems/vaesen/model/condition.html",
-        "systems/vaesen/model/attack.html"
+        "systems/vaesen-rpg/model/player.html",
+        "systems/vaesen-rpg/model/tab/player-main.html",
+        "systems/vaesen-rpg/model/tab/player-combat.html",
+        "systems/vaesen-rpg/model/tab/player-talent.html",
+        "systems/vaesen-rpg/model/tab/player-gear.html",
+        "systems/vaesen-rpg/model/tab/player-note.html",
+        "systems/vaesen-rpg/model/npc.html",
+        "systems/vaesen-rpg/model/tab/npc-main.html",
+        "systems/vaesen-rpg/model/tab/npc-combat.html",
+        "systems/vaesen-rpg/model/tab/npc-talent.html",
+        "systems/vaesen-rpg/model/tab/npc-gear.html",
+        "systems/vaesen-rpg/model/tab/npc-note.html",
+        "systems/vaesen-rpg/model/vaesen.html",
+        "systems/vaesen-rpg/model/tab/vaesen-main.html",
+        "systems/vaesen-rpg/model/tab/vaesen-combat.html",
+        "systems/vaesen-rpg/model/tab/vaesen-gear.html",
+        "systems/vaesen-rpg/model/tab/vaesen-note.html",
+        "systems/vaesen-rpg/model/headquarter.html",
+        "systems/vaesen-rpg/model/tab/headquarter-history.html",
+        "systems/vaesen-rpg/model/tab/headquarter-facilities.html",
+        "systems/vaesen-rpg/model/tab/headquarter-contact.html",
+        "systems/vaesen-rpg/model/tab/headquarter-personnel.html",
+        "systems/vaesen-rpg/model/critical-injury.html",
+        "systems/vaesen-rpg/model/weapon.html",
+        "systems/vaesen-rpg/model/armor.html",
+        "systems/vaesen-rpg/model/talent.html",
+        "systems/vaesen-rpg/model/gear.html",
+        "systems/vaesen-rpg/model/magic.html",
+        "systems/vaesen-rpg/model/condition.html",
+        "systems/vaesen-rpg/model/attack.html"
     ];
     return loadTemplates(templatePaths);
 }

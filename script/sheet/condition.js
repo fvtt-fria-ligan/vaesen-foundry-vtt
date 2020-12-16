@@ -3,7 +3,7 @@ export class ConditionCharacterSheet extends ItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ["vaesen", "sheet", "item"],
-            template: "systems/vaesen/model/condition.html",
+            template: "systems/vaesen-rpg/model/condition.html",
             width: 400,
             height: 300,
             resizable: false

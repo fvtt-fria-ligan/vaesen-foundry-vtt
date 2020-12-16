@@ -106,7 +106,7 @@ function rollDice(sheet, numberOfDice) {
 function printDices(sheet) {
     let message = "";
     sheet.dices.forEach(dice => {
-        message = message + "<img width='25px' height='25px' style='border:none;margin-right:2px;margin-top:2px' src='systems/vaesen/asset/dice-" + dice + ".png'/>"
+        message = message + "<img width='25px' height='25px' style='border:none;margin-right:2px;margin-top:2px' src='systems/vaesen-rpg/asset/dice-" + dice + ".png'/>"
     });
     return message;
 }

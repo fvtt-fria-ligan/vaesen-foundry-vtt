@@ -3,7 +3,7 @@ export class MagicCharacterSheet extends ItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ["vaesen", "sheet", "item"],
-            template: "systems/vaesen/model/magic.html",
+            template: "systems/vaesen-rpg/model/magic.html",
             width: 400,
             height: 300,
             resizable: false
