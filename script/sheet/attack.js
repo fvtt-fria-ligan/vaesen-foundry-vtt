@@ -3,7 +3,7 @@ export class AttackCharacterSheet extends ItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ["vaesen", "sheet", "item"],
-            template: "systems/vaesen-rpg/model/attack.html",
+            template: "systems/vaesen/model/attack.html",
             width: 400,
             height: 341,
             resizable: false

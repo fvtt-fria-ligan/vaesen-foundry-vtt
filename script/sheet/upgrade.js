@@ -3,7 +3,7 @@ export class UpgradeCharacterSheet extends ItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ["vaesen", "sheet", "item"],
-            template: "systems/vaesen-rpg/model/upgrade.html",
+            template: "systems/vaesen/model/upgrade.html",
             width: 400,
             height: 530,
             resizable: false

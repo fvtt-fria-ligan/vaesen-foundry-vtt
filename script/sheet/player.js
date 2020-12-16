@@ -9,7 +9,7 @@ export class PlayerCharacterSheet extends ActorSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ["vaesen", "sheet", "actor"],
-            template: "systems/vaesen-rpg/model/player.html",
+            template: "systems/vaesen/model/player.html",
             width: 600,
             height: 762,
             resizable: false,

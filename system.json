@@ -1,12 +1,12 @@
 {
-  "name": "vaesen-rpg",
+  "name": "vaesen",
   "title": "Vaesen",
   "description": "Nordic horror role-playing",
-  "version": "1.9.1",
+  "version": "1.9.3",
   "minimumCoreVersion": "0.7.5",
   "compatibleCoreVersion": "0.7.8",
   "templateVersion": 2,
-  "author": "romelwell",
+  "author": "perfectro, romelwell",
   "scripts": [],
   "esmodules": [
     "script/hooks.js"
@@ -59,6 +59,6 @@
   "url": "https://github.com/romelwell/vaesen-foundry-vtt",
   "socket": true,
   "manifest": "https://raw.githubusercontent.com/romelwell/vaesen-foundry-vtt/master/system.json",
-  "download": "https://github.com/romelwell/vaesen-foundry-vtt/raw/master/archive/v1.9.2.zip",
+  "download": "https://github.com/romelwell/vaesen-foundry-vtt/raw/master/archive/v1.9.3.zip",
   "license": "LICENSE.txt"
 }

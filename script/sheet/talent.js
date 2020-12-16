@@ -3,7 +3,7 @@ export class TalentCharacterSheet extends ItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ["vaesen", "sheet", "item"],
-            template: "systems/vaesen-rpg/model/talent.html",
+            template: "systems/vaesen/model/talent.html",
             width: 400,
             height: 300,
             resizable: false

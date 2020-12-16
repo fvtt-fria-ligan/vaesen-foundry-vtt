@@ -9,7 +9,7 @@ export class NpcCharacterSheet extends ActorSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ["vaesen", "sheet", "actor"],
-            template: "systems/vaesen-rpg/model/npc.html",
+            template: "systems/vaesen/model/npc.html",
             width: 600,
             height: 748,
             resizable: false,

@@ -26,3 +26,5 @@ Nothing. You are more than welcome to fork this project !
 ## Release Notes
 v1.9.1 
 - Incremental release version number only.
+v1.9.3
+- Rollback of package name to 'vaesen'.
