@@ -58,7 +58,7 @@
   "secondaryTokenAttribute": null,
   "url": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt",
   "socket": true,
-  "manifest": "https://raw.githubusercontent.com/fvtt-fria-ligan/vaesen-foundry-vtt/master/system.json",
-  "download": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/raw/master/archive/v1.9.3.zip",
+  "manifest": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/releases/latest/download/system.json",
+  "download": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/releases/latest/download/system.zip",  
   "license": "LICENSE.txt"
 }
