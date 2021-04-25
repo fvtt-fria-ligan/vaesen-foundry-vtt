@@ -38,6 +38,31 @@ Hooks.once("init", () => {
     preloadHandlebarsTemplates();
 });
 
+Hooks.once('diceSoNiceReady', (dice3d) => {
+  dice3d.addSystem({ id: "vaesen", name: "Vaesen" }, true);
+  dice3d.addDicePreset({
+    type: "d6",
+    labels: [
+      "systems/vaesen/asset/dsn/dsn-d6-1.png",
+      "systems/vaesen/asset/dsn/dsn-d6-2.png",
+      "systems/vaesen/asset/dsn/dsn-d6-3.png",
+      "systems/vaesen/asset/dsn/dsn-d6-4.png",
+      "systems/vaesen/asset/dsn/dsn-d6-5.png",
+      "systems/vaesen/asset/dsn/dsn-d6-6.png",
+    ],
+    system: "vaesen"
+  });
+  dice3d.addColorset({
+    name: 'vaesen',
+    description: 'Vaesen',
+    category: 'Colors',
+    foreground: "#2D1A00",
+    background: "#F5F4F1",
+    outline: 'black',
+    texture: 'wood'
+  }, "force");
+});
+
 function preloadHandlebarsTemplates() {
     const templatePaths = [
         "systems/vaesen/model/player.html",
