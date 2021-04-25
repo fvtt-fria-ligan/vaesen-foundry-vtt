@@ -43,14 +43,35 @@ function roll(sheet, testName, attribute, skill, bonus, damage) {
     sheet.lastDamage = damage;
     let numberOfDice = attribute + skill + bonus;
     rollDice(sheet, numberOfDice);
-    sendRollToChat(sheet, false);
+    showDice(sheet, false);
 }
 
 export function push(sheet) {
     let numberOfDiceToPush = sheet.dices.filter(dice => dice !== 6).length;
     sheet.dices = sheet.dices.filter(dice => dice === 6);
     rollDice(sheet, numberOfDiceToPush);
-    sendRollToChat(sheet, true);
+    showDice(sheet, true);
+}
+
+function showDice(sheet, isPushed) {
+    if (game.dice3d) {
+        // DiceSoNice module is installed
+        const dice = sheet.dices.map(r => {
+            return {
+                result: r,
+                resultLabel: r,
+                type: "d6",
+                vectors: [],
+                options: {}
+            };
+        });
+        const data = { throws:[{ dice }] };
+        // send the roll to chat once the DSN roll is finished
+        game.dice3d.show(data).then(displayed => { sendRollToChat(sheet, isPushed); });
+    } else {
+        // DiceSoNice not installed, so just send the roll to chat
+        sendRollToChat(sheet, isPushed);
+    }
 }
 
 function sendRollToChat(sheet, isPushed) {
