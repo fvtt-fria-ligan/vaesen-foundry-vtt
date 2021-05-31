@@ -24,6 +24,8 @@ Nothing. You are more than welcome to fork this project !
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Release Notes
+v2.0.0
+- Compatibility with Foundry 0.8.6.
 v1.9.4
 - Transfer GitHub repo to Org fvtt-fria-ligan
 v1.9.3
