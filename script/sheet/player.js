@@ -19,7 +19,7 @@ export class PlayerCharacterSheet extends ActorSheet {
 
     _getHeaderButtons() {
         let buttons = super._getHeaderButtons();
-        if (this.actor.owner) {
+        if (this.actor.isOwner) {
             buttons = [
                 {
                     label: "Roll",
