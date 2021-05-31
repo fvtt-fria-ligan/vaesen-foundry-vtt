@@ -26,10 +26,13 @@ Nothing. You are more than welcome to fork this project !
 ## Release Notes
 v2.0.0
 - Compatibility with Foundry 0.8.6.
+
 v1.9.4
 - Transfer GitHub repo to Org fvtt-fria-ligan
+
 v1.9.3
 - Rollback of package name to 'vaesen'.
+
 v1.9.1 
 - Incremental release version number only.
 
