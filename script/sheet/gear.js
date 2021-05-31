@@ -25,7 +25,7 @@ export class GearCharacterSheet extends ItemSheet {
 
     getData() {
         const superData = super.getData();
-        return superData.data;
+        return superData;
     }
 
     activateListeners(html) {

@@ -8,7 +8,7 @@
         <div class="type flex row wrap center">
             <b>{{localize "CRITICAL_INJURY.TYPE"}}</b>
             <select name="data.type">
-                {{#select data.type}}
+                {{#select data.data.type}}
                     <option value="physical">{{localize "CONDITION.PHYSICAL"}}</option>
                     <option value="mental">{{localize "CONDITION.MENTAL"}}</option>
                 {{/select}}
@@ -17,7 +17,7 @@
         <div class="permanent flex row wrap center">
             <b>{{localize "CRITICAL_INJURY.PERMANENT"}}</b>
             <select style="flex-basis: 100%" name="data.permanent">
-                {{#select data.permanent}}
+                {{#select data.data.permanent}}
                     <option value="No">{{localize "NO"}}</option>
                     <option value="Yes">{{localize "YES"}}</option>
                 {{/select}}
@@ -25,15 +25,15 @@
         </div>
         <div class="fatal flex row wrap center">
             <b>{{localize "CRITICAL_INJURY.FATAL"}}</b>
-            <input name="data.fatal" type="text" value="{{data.fatal}}"/>
+            <input name="data.fatal" type="text" value="{{data.data.fatal}}"/>
         </div>
         <div class="time-limit flex row wrap center">
             <b>{{localize "CRITICAL_INJURY.TIME_LIMIT"}}</b>
-            <input name="data.timeLimit" type="text" value="{{data.timeLimit}}"/>
+            <input name="data.timeLimit" type="text" value="{{data.data.timeLimit}}"/>
         </div>
         <div class="effect flex row wrap">
             <b>{{localize "CRITICAL_INJURY.EFFECT"}}</b>
-            <input name="data.effect" type="text" value="{{data.effect}}"/>
+            <input name="data.effect" type="text" value="{{data.data.effect}}"/>
         </div>
     </div>
 </form>

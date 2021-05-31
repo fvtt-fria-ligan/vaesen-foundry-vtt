@@ -8,7 +8,7 @@
         <div class="skill flex row wrap center">
             <b>{{localize "WEAPON.SKILL"}}</b>
             <select name="data.skill">
-                {{#select data.skill}}
+                {{#select data.data.skill}}
                     <option value="force">{{localize "SKILL.FORCE"}}</option>
                     <option value="closeCombat">{{localize "SKILL.CLOSE_COMBAT"}}</option>
                     <option value="rangedCombat">{{localize "SKILL.RANGED_COMBAT"}}</option>
@@ -17,19 +17,19 @@
         </div>
         <div class="damage flex row wrap center">
             <b>{{localize "WEAPON.DAMAGE"}}</b>
-            <input name="data.damage" type="text" value="{{data.damage}}"/>
+            <input name="data.damage" type="text" value="{{data.data.damage}}"/>
         </div>
         <div class="range flex row wrap center">
             <b>{{localize "WEAPON.RANGE"}}</b>
-            <input name="data.range" type="text" value="{{data.range}}"/>
+            <input name="data.range" type="text" value="{{data.data.range}}"/>
         </div>
         <div class="bonus flex row wrap center">
             <b>{{localize "WEAPON.BONUS"}}</b>
-            <input name="data.bonus" type="text" value="{{data.bonus}}"/>
+            <input name="data.bonus" type="text" value="{{data.data.bonus}}"/>
         </div>
         <div class="availability flex row wrap center">
             <b>{{localize "WEAPON.AVAILABILITY"}}</b>
-            <input name="data.availability" type="text" value="{{data.availability}}"/>
+            <input name="data.availability" type="text" value="{{data.data.availability}}"/>
         </div>
     </div>
 </form>

@@ -99,18 +99,18 @@ export class VaesenCharacterSheet extends ActorSheet {
         let header = event.currentTarget;
         let data = duplicate(header.dataset);
         data["name"] = `New ${data.type.capitalize()}`;
-        this.actor.createEmbeddedEntity("OwnedItem", data);
+        this.actor.createEmbeddedDocuments("Item", [data]);
     }
 
     onItemUpdate(event) {
         const div = $(event.currentTarget).parents(".item");
-        const item = this.actor.getOwnedItem(div.data("itemId"));
+        const item = this.actor.items.get(div.data("itemId"));
         item.sheet.render(true);
     }
 
     onItemDelete(event) {
         const div = $(event.currentTarget).parents(".item");
-        this.actor.deleteOwnedItem(div.data("itemId"));
+        this.actor.deleteEmbeddedDocuments("Item", [div.data("itemId")]);
         div.slideUp(200, () => this.render(false));
     }
 
@@ -120,14 +120,14 @@ export class VaesenCharacterSheet extends ActorSheet {
 
     onArmorRoll(event) {
         const div = $(event.currentTarget).parents(".armor");
-        const item = this.actor.getOwnedItem(div.data("itemId"));
+        const item = this.actor.items.get(div.data("itemId"));
         const testName = item.name;
         prepareRollDialog(this, testName, 0, 0, item.data.data.protection, 0)
     }
 
     onWeaponRoll(event) {
         const div = $(event.currentTarget).parents(".attack");
-        const item = this.actor.getOwnedItem(div.data("itemId"));
+        const item = this.actor.items.get(div.data("itemId"));
         const testName = item.name;
         let bonus = this.computeBonusFromConditions();
         let attribute = this.actor.data.data.attribute[item.data.data.attribute].value;
@@ -136,12 +136,12 @@ export class VaesenCharacterSheet extends ActorSheet {
 
     async onConditionRoll(event) {
         const div = $(event.currentTarget).parents(".condition");
-        const selectedCondition = this.actor.getOwnedItem(div.data("itemId"));
+        const selectedCondition = this.actor.items.get(div.data("itemId"));
         for (let item of Object.values(this.actor.data.items)) {
             if (item.type === 'condition' && item._id === selectedCondition._id) {
-                await this.actor.updateOwnedItem({_id: item._id, "data.active": !item.data.active});
+                await this.actor.updateEmbeddedDocuments("Item", [{_id: item._id, "data.active": !item.data.active}]);
             } else if (item.type === 'condition') {
-                await this.actor.updateOwnedItem({_id: item._id, "data.active": false});
+                await this.actor.updateEmbeddedDocuments("Item", [{_id: item._id, "data.active": false}]);
             }
         }
         this._render();

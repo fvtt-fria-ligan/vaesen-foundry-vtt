@@ -2,7 +2,7 @@
     <div class="flex column heavy-border wrapper">
         <b class="title">{{localize "HEADER.ATTRIBUTES"}}</b>
         <div class="attributes flex row">
-            {{#each data.attribute as |attribute key|}}
+            {{#each data.data.attribute as |attribute key|}}
                 <div class="attribute flex column center" data-key="{{key}}">
                     <b>{{localize attribute.label}}</b>
                     <div class="flex row align-center">
@@ -24,7 +24,7 @@
                 <a class="button item-create" title="Add Condition" data-type="condition"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
-                {{#each actor.items as |item|}}
+                {{#each data.items as |item|}}
                     {{#if item.isCondition}}
                         {{#if item.data.active}}
                             <div class="condition active item flex row center align-center" data-item-id="{{item._id}}">

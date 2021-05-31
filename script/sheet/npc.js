@@ -19,7 +19,7 @@ export class NpcCharacterSheet extends ActorSheet {
 
     _getHeaderButtons() {
         let buttons = super._getHeaderButtons();
-        if (this.actor.owner) {
+        if (this.actor.isOwner) {
             buttons = [
                 {
                     label: "Roll",
@@ -122,18 +122,18 @@ export class NpcCharacterSheet extends ActorSheet {
         let header = event.currentTarget;
         let data = duplicate(header.dataset);
         data["name"] = `New ${data.type.capitalize()}`;
-        this.actor.createEmbeddedEntity("OwnedItem", data);
+        this.actor.createEmbeddedDocuments("Item", [data]);
     }
 
     onItemUpdate(event) {
         const div = $(event.currentTarget).parents(".item");
-        const item = this.actor.getOwnedItem(div.data("itemId"));
+        const item = this.actor.items.get(div.data("itemId"));
         item.sheet.render(true);
     }
 
     onItemDelete(event) {
         const div = $(event.currentTarget).parents(".item");
-        this.actor.deleteOwnedItem(div.data("itemId"));
+        this.actor.deleteEmbeddedDocuments("Item", [div.data("itemId")]);
         div.slideUp(200, () => this.render(false));
     }
 
@@ -143,14 +143,14 @@ export class NpcCharacterSheet extends ActorSheet {
 
     onArmorRoll(event) {
         const div = $(event.currentTarget).parents(".armor");
-        const item = this.actor.getOwnedItem(div.data("itemId"));
+        const item = this.actor.items.get(div.data("itemId"));
         const testName = item.name;
         prepareRollDialog(this, testName, 0, 0, item.data.data.protection, 0)
     }
 
     onWeaponRoll(event) {
         const div = $(event.currentTarget).parents(".weapon");
-        const item = this.actor.getOwnedItem(div.data("itemId"));
+        const item = this.actor.items.get(div.data("itemId"));
         const testName = item.name;
         let attribute = 0;
         let skill = 0;

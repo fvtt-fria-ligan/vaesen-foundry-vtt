@@ -8,7 +8,7 @@
         <div class="attribute flex row wrap center">
             <b>{{localize "ATTACK.ATTRIBUTE"}}</b>
             <select name="data.attribute">
-                {{#select data.attribute}}
+                {{#select data.data.attribute}}
                     <option value="might">{{localize "ATTRIBUTE.MIGHT_ROLL"}}</option>
                     <option value="bodyControl">{{localize "ATTRIBUTE.BODY_CONTROL_ROLL"}}</option>
                     <option value="magic">{{localize "ATTRIBUTE.MAGIC_ROLL"}}</option>
@@ -18,15 +18,15 @@
         </div>
         <div class="damage flex row wrap center">
             <b>{{localize "ATTACK.DAMAGE"}}</b>
-            <input name="data.damage" type="text" value="{{data.damage}}"/>
+            <input name="data.data.damage" type="text" value="{{data.damage}}"/>
         </div>
         <div class="range flex row wrap center">
             <b>{{localize "ATTACK.RANGE"}}</b>
-            <input name="data.range" type="text" value="{{data.range}}"/>
+            <input name="data.data.range" type="text" value="{{data.range}}"/>
         </div>
         <div class="description flex row wrap">
             <b>{{localize "ATTACK.DESCRIPTION"}}</b>
-            <textarea name="data.description">{{data.description}}</textarea>
+            <textarea name="data.data.description">{{data.description}}</textarea>
         </div>
     </div>
 </form>

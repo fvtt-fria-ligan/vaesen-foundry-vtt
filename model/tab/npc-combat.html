@@ -10,7 +10,7 @@
                 <a class="button item-create" title="Add Armor" data-type="armor"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
-                {{#each actor.items as |item|}}
+                {{#each data.items as |item|}}
                     {{#if item.isArmor}}
                         <div class="armor item flex row center align-center" data-item-id="{{item._id}}">
                             <img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/>
@@ -39,7 +39,7 @@
                 <a class="button item-create" title="Add Weapon" data-type="weapon"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
-                {{#each actor.items as |item|}}
+                {{#each data.items as |item|}}
                     {{#if item.isWeapon}}
                         <div class="weapon item flex row center align-center" data-item-id="{{item._id}}">
                             <img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/>
@@ -70,7 +70,7 @@
                 <a class="button item-create" title="Add Critical Injury" data-type="criticalInjury"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
-                {{#each actor.items as |item|}}
+                {{#each data.items as |item|}}
                     {{#if item.isCriticalInjury}}
                         <div class="critical-injury item flex row center align-center" data-item-id="{{item._id}}">
                             <img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/>

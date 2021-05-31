@@ -10,7 +10,7 @@
                 <a class="button item-create" title="Add Gear" data-type="gear"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
-                {{#each actor.items as |item|}}
+                {{#each data.items as |item|}}
                     {{#if item.isGear}}
                         <div class="gear item flex row center align-center" data-item-id="{{item._id}}">
                             <img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/>

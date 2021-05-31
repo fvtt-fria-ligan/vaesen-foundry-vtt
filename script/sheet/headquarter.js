@@ -44,18 +44,18 @@ export class HeadquarterCharacterSheet extends ActorSheet {
         let data = duplicate(header.dataset);
         data["name"] = `New ${data.type.capitalize()}`;
         data['data.category'] = data['category'];
-        this.actor.createEmbeddedEntity("OwnedItem", data);
+        this.actor.createEmbeddedDocuments("Item", [data]);
     }
 
     onItemUpdate(event) {
         const div = $(event.currentTarget).parents(".item");
-        const item = this.actor.getOwnedItem(div.data("itemId"));
+        const item = this.actor.items.get(div.data("itemId"));
         item.sheet.render(true);
     }
 
     onItemDelete(event) {
         const div = $(event.currentTarget).parents(".item");
-        this.actor.deleteOwnedItem(div.data("itemId"));
+        this.actor.deleteEmbeddedDocuments("Item", [div.data("itemId")]);
         div.slideUp(200, () => this.render(false));
     }
 

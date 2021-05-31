@@ -10,7 +10,7 @@
                 <a class="button item-create" title="Add Armor" data-type="armor"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
-                {{#each actor.items as |item|}}
+                {{#each data.items as |item|}}
                     {{#if item.isArmor}}
                         <div class="armor item flex row center align-center" data-item-id="{{item._id}}">
                         <img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/>
@@ -40,7 +40,7 @@
                 <a class="button item-create" title="Add Attack" data-type="attack"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
-                {{#each actor.items as |item|}}
+                {{#each data.items as |item|}}
                     {{#if item.isAttack}}
                         <div class="attack item flex row center align-center" data-item-id="{{item._id}}">
                             <img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/>
@@ -70,7 +70,7 @@
                 <a class="button item-create" title="Add Magic" data-type="magic"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
-                {{#each actor.items as |item|}}
+                {{#each data.items as |item|}}
                     {{#if item.isMagic}}
                         <div class="magic item flex row center align-center" data-item-id="{{item._id}}">
                             <img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/>

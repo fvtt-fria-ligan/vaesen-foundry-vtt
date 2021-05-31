@@ -2,7 +2,7 @@
     <div class="flex column heavy-border wrapper">
         <b class="title">{{localize "HEADER.ATTRIBUTES"}}</b>
         <div class="attributes flex row">
-            {{#each data.attribute as |attribute key|}}
+            {{#each data.data.attribute as |attribute key|}}
                 <div class="attribute flex column center" data-key="{{key}}">
                     <b>{{localize attribute.label}}</b>
                     <div class="flex row align-center">
@@ -18,7 +18,7 @@
         <div class="flex row wrap">
             <div class="skills physique flex column">
                 <b class="header">{{localize "ATTRIBUTE.PHYSIQUE"}}</b>
-                {{#each data.skill as |skill key|}}
+                {{#each data.data.skill as |skill key|}}
                     {{#if skill.hasPhysique}}
                         <div class="skill flex row align-center" data-key="{{key}}">
                             <b>{{localize skill.label}}</b>
@@ -29,7 +29,7 @@
             </div>
             <div class="skills logic flex column">
                 <b class="header">{{localize "ATTRIBUTE.LOGIC"}}</b>
-                {{#each data.skill as |skill key|}}
+                {{#each data.data.skill as |skill key|}}
                     {{#if skill.hasLogic}}
                         <div class="skill flex row align-center" data-key="{{key}}">
                             <b>{{localize skill.label}}</b>
@@ -40,7 +40,7 @@
             </div>
             <div class="skills precision flex column">
                 <b class="header">{{localize "ATTRIBUTE.PRECISION"}}</b>
-                {{#each data.skill as |skill key|}}
+                {{#each data.data.skill as |skill key|}}
                 {{#if skill.hasPrecision}}
                 <div class="skill flex row align-center" data-key="{{key}}">
                     <b>{{localize skill.label}}</b>
@@ -51,7 +51,7 @@
             </div>
             <div class="skills empathy flex column">
                 <b class="header">{{localize "ATTRIBUTE.EMPATHY"}}</b>
-                {{#each data.skill as |skill key|}}
+                {{#each data.data.skill as |skill key|}}
                     {{#if skill.hasEmpathy}}
                         <div class="skill flex row align-center" data-key="{{key}}">
                             <b>{{localize skill.label}}</b>
@@ -65,6 +65,6 @@
 
     <div class="information flex column heavy-border wrapper grow">
         <b class="title">{{localize "HEADER.INFORMATION"}}</b>
-        {{editor content=data.information target="data.information" button=true owner=owner editable=editable}}
+        {{editor content=data.information target="data.information" button=true owner=owner editable=true}}
     </div>
 </div>
