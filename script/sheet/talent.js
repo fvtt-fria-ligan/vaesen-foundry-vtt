@@ -24,8 +24,8 @@ export class TalentCharacterSheet extends ItemSheet {
     }
 
     getData() {
-        const data = super.getData();
-        return data;
+        const superData = super.getData();
+        return superData;
     }
 
     activateListeners(html) {

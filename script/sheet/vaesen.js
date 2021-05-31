@@ -33,9 +33,9 @@ export class VaesenCharacterSheet extends ActorSheet {
     }
 
     getData() {
-        const data = super.getData();
-        this.computeItems(data);
-        return data;
+        const superData = super.getData();
+        this.computeItems(superData.data);
+        return superData;
     }
 
     activateListeners(html) {
