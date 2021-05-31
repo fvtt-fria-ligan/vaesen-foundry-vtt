@@ -95,7 +95,7 @@ function sendRollToChat(sheet, isPushed) {
     let damageMessage = "<b> Damage:</b> " + sheet.lastDamage + "</br>";
     let diceMessage = printDices(sheet) + "</br>";
     let chatData = {
-        user: game.user._id,
+        user: game.user.id,
         rollMode: game.settings.get("core", "rollMode"),
         content: resultMessage + successMessage + damageMessage + diceMessage
     };

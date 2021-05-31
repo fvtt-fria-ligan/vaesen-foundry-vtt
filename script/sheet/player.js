@@ -19,7 +19,7 @@ export class PlayerCharacterSheet extends ActorSheet {
 
     _getHeaderButtons() {
         let buttons = super._getHeaderButtons();
-        if (this.actor.owner) {
+        if (this.actor.isOwner) {
             buttons = [
                 {
                     label: "Roll",
@@ -39,10 +39,10 @@ export class PlayerCharacterSheet extends ActorSheet {
     }
 
     getData() {
-        const data = super.getData();
-        this.computeSkills(data);
-        this.computeItems(data);
-        return data;
+        const superData = super.getData();
+        this.computeSkills(superData.data);
+        this.computeItems(superData.data);
+        return superData;
     }
 
     activateListeners(html) {
