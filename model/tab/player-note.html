@@ -4,15 +4,15 @@
         <div class="flex row grow wrap margin">
             <div class="motivation">
                 <b>{{localize "BIO.MOTIVATION"}}</b>
-                <input name="data.bio.motivation" type="text" value="{{data.bio.motivation}}"/>
+                <input name="data.bio.motivation" type="text" value="{{data.data.bio.motivation}}"/>
             </div>
             <div class="trauma">
                 <b>{{localize "BIO.TRAUMA"}}</b>
-                <input name="data.bio.trauma" type="text" value="{{data.bio.trauma}}"/>
+                <input name="data.bio.trauma" type="text" value="{{data.data.bio.trauma}}"/>
             </div>
             <div class="dark-secret">
                 <b>{{localize "BIO.DARK_SECRET"}}</b>
-                <input name="data.bio.darkSecret" type="text" value="{{data.bio.darkSecret}}"/>
+                <input name="data.bio.darkSecret" type="text" value="{{data.data.data.bio.darkSecret}}"/>
             </div>
             <div class="advantage">
                 <b>{{localize "ADVANTAGE"}}</b>
@@ -20,12 +20,12 @@
             </div>
             <div class="memento">
                 <b>{{localize "MEMENTO"}}</b>
-                <input name="data.memento" type="text" value="{{data.memento}}"/>
+                <input name="data.memento" type="text" value="{{data.data.memento}}"/>
             </div>
         </div>
     </div>
     <div class="flex column heavy-border wrapper grow">
         <b class="title">{{localize "HEADER.NOTES"}}</b>
-        {{editor content=data.note target="data.note" button=true owner=owner editable=true}}
+        {{editor content=data.data.note target="data.note" button=true owner=owner editable=true}}
     </div>
 </div>
