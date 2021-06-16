@@ -16,7 +16,7 @@ import { prepareRollDialog, push } from "./util/roll.js";
 
 Hooks.once("init", () => {
     CONFIG.Combat.initiative = { formula: "1d10", decimals: 0 };
-    CONFIG.Actor.entityClass = VaesenActor;
+    CONFIG.Actor.documentClass = VaesenActor;
     CONFIG.anonymousSheet = {};
     CONFIG.roll = prepareRollDialog;
     CONFIG.push = push;
