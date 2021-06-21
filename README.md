@@ -25,6 +25,9 @@ Nothing. You are more than welcome to fork this project !
 
 ## Release Notes
 
+v2.0.6
+- Fix more fields: attack damage, range, and description; magic category; npc information; vaesen known, secret, and notes.
+
 v2.0.5
 - Fix HQ history notes field.
 
