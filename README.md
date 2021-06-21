@@ -24,6 +24,23 @@ Nothing. You are more than welcome to fork this project !
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Release Notes
+
+v2.0.5
+- Fix HQ history notes field.
+
+v2.0.4
+- Fix more note field typos/errors.
+
+v2.0.3
+- Mark system as compatible with Foundry 0.8.7.
+- Fix PC and NPC notes field saving.
+
+v2.0.2
+- Version bump to match Foundry admin.
+
+v2.0.1
+- More fixes for Foundry 0.8.6.
+
 v2.0.0
 - Compatibility with Foundry 0.8.6.
 
