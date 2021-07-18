@@ -14,7 +14,29 @@ It provides support for **character sheets only**, game content should be drawn 
 ![Character 1](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/blob/master/asset/headquarter.png?raw=true)    
 
 ## To be done in the nearest future
-Nothing. You are more than welcome to fork this project !
+
+* Character Sheet:
+    * Add Recover roll to conditions 
+    * Add Favorites for main tab to ease access to common roll items
+    * Reformat tabs for tighter layout 
+    * Add "to chat" icon on most items direct from sheet
+    * Add Relationships Item box to Notes tab  
+    * Clearer inidcation of condition status
+
+* Item Sheets etc.
+    * clean-up layout
+    * Add relationship Item Type
+
+* Vaesen, NPC and HQ sheets
+    * UX improvements
+
+* Dialogs and Chat
+    * Set speaker in chat cards to character
+    * Add token image to chat cards
+    * line up ux and design to match overall look and feel
+
+* Minor bug fixes
+
 
 ## Related Website
 - https://foundryvtt.com/
