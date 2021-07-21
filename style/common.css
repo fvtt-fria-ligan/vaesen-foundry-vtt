@@ -1,5 +1,7 @@
 .vaesen .heavy-border {
     border: 2px solid black;
+    margin: 4px;
+	padding: 3px;
 }
 
 .vaesen .light-border {
@@ -40,7 +42,7 @@
 }
 
 .vaesen .wrapper:last-child {
-    margin-bottom: 0;
+    margin-bottom: 0px;
 }
 
 .vaesen .grow {
@@ -63,10 +65,21 @@
     padding: 5px;
     text-align: center;
     background-color: #ad9385;
+    margin: 3px;
 }
 
-.vaesen .tabs .item.active {
-    text-shadow: 0 0 10px white;
+.vaesen .tabs .item.active{
+	text-shadow: none;
+	border-bottom: 1px solid #412017;
+	color: #412017;
+	
+}
+
+.vaesen .tabs .item{
+	text-shadow: none;
+	border-bottom: 1px solid #af9c8d;
+	color: #af9c8d;
+	
 }
 
 .vaesen .tab {
@@ -80,9 +93,10 @@
 
 .vaesen .sheet-tabs {
     padding: 5px;
-    background-color: #826657;
+    background-color: transparent;
+	margin-bottom: 0px;
     margin-top: 5px;
-    margin-bottom: 5px;
+   
 }
 
 .vaesen .sheet-tabs b:hover {
@@ -92,6 +106,11 @@
 .vaesen input {
     background-color: #d6c9c2;
     border-color: #826657;
+}
+
+.vaesen .attribute input{
+    text-align: center;
+    margin-left: 5px;
 }
 
 .vaesen textarea {
@@ -109,3 +128,35 @@
     border: 1px solid #826657;
     background-color: #d6c9c2;
 }
+
+
+.vaesen .second{
+	width: 470px;
+	align-content: center;
+}
+
+.vaesen .logo img{
+	border: none;
+	width: 40%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.vaesen .logo {
+	flex-basis: 90%;
+	
+}
+
+.vaesen .bio{
+	flex-basis: 80%;
+	margin-bottom: 2px;
+}
+
+.motivation, .trauma, .dark-secret, .advantage, .memento{
+	width: 100%;
+}
+.vaesen .res{
+	flex-basis: 20%;
+	margin-bottom: 2px;
+}
+

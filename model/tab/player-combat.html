@@ -13,11 +13,17 @@
                 {{#each data.items as |item|}}
                     {{#if item.isArmor}}
                         <div class="armor item flex row center align-center" data-item-id="{{item._id}}">
-                            <img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/>
+                            <img class="icon" src="{{item.img}}" title="{{item.name}}"/>
                             <div class="name">{{item.name}}</div>
                             <div class="protection">{{item.data.protection}}</div>
                             <div class="agility">{{item.data.agility}}</div>
                             <div class="button">
+								{{#unless item.data.isFav}}
+								<a class="item-control fav-togle" title="Togle Favorite"><i class="far fa-star" data-field="isFav" data-isFav="true"></i></a>
+								{{/unless}}
+								{{#if item.data.isFav}}
+								<a class="item-control fav-togle" title="Togle Favorite"><i class="fas fa-star"></i></a>
+								{{/if}}
                                 <a class="item-control item-edit" title="Edit Armor"><i class="fas fa-edit"></i></a>
                                 <a class="item-control item-delete" title="Delete Armor"><i class="fas fa-trash"></i></a>
                             </div>
@@ -42,12 +48,18 @@
                 {{#each data.items as |item|}}
                     {{#if item.isWeapon}}
                         <div class="weapon item flex row center align-center" data-item-id="{{item._id}}">
-                            <img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/>
+                            <img class="icon" src="{{item.img}}" title="{{item.name}}"/>
                             <div class="name">{{item.name}}</div>
                             <div class="damage">{{item.data.damage}}</div>
                             <div class="range">{{item.data.range}}</div>
                             <div class="bonus">{{item.data.bonus}}</div>
                             <div class="button">
+								{{#unless item.data.isFav}}
+								<a class="item-control fav-togle" title="Togle Favorite"><i class="far fa-star" data-field="isFav" data-isFav="true"></i></a>
+								{{/unless}}
+								{{#if item.data.isFav}}
+								<a class="item-control fav-togle" title="Togle Favorite"><i class="fas fa-star"></i></a>
+								{{/if}}
                                 <a class="item-control item-edit" title="Edit Weapon"><i class="fas fa-edit"></i></a>
                                 <a class="item-control item-delete" title="Delete Weapon"><i class="fas fa-trash"></i></a>
                             </div>

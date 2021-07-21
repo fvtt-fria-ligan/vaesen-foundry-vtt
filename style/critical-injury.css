@@ -1,8 +1,4 @@
-.vaesen.item .critical-injury .icon {
-    border: 1px dashed #826657;
-    border-radius: 10px;
-    margin-right: 5px;
-}
+
 
 .vaesen.item .critical-injury .name {
     flex-basis: 40%;
@@ -27,4 +23,14 @@
 
 .vaesen.item .critical-injury .effect {
     flex-basis: 100%;
+}
+
+.vaesen .player .critical-injuries .scrollable {
+	height: fit-content;
+}
+
+.vaesen .player .critical-injuries .critical-injury img.icon {
+    border: 0;
+	width: 25px;
+	height: 25px;
 }

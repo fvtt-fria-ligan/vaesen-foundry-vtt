@@ -10,8 +10,8 @@ export class PlayerCharacterSheet extends ActorSheet {
         return mergeObject(super.defaultOptions, {
             classes: ["vaesen", "sheet", "actor"],
             template: "systems/vaesen/model/player.html",
-            width: 600,
-            height: 762,
+            width: 750,
+            height: 900,
             resizable: false,
             tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main"}]
         });
@@ -50,6 +50,7 @@ export class PlayerCharacterSheet extends ActorSheet {
         html.find('.item-create').click(ev => { this.onItemCreate(ev); });
         html.find('.item-edit').click(ev => { this.onItemUpdate(ev); });
         html.find('.item-delete').click(ev => { this.onItemDelete(ev); });
+        html.find('.fav-togle').click(ev => {this.onFavTogle(ev);});
         html.find("input").focusin(ev => this.onFocusIn(ev));
 
         html.find('.resources b').click(ev => {
@@ -181,6 +182,24 @@ export class PlayerCharacterSheet extends ActorSheet {
     onFocusIn(event) {
         $(event.currentTarget).select();
     }
+
+    onFavTogle(event) {
+			
+		const div = $(event.currentTarget).parents(".item");
+        const item = this.actor.items.get(div.data("itemId"));
+			
+		let fav = item.data.data.isFav;
+		if(fav){
+			item.data.data.isFav = false;
+			item.update({ "data.isFav" : false});
+		} else {
+			item.data.data.isFav = true;
+			item.update({ "data.isFav" : true});
+		}
+			 
+		item.update();
+			
+	}
 
     onArmorRoll(event) {
         const div = $(event.currentTarget).parents(".armor");

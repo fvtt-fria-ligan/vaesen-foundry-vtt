@@ -68,6 +68,7 @@ function preloadHandlebarsTemplates() {
         "systems/vaesen/model/player.html",
         "systems/vaesen/model/tab/player-main.html",
         "systems/vaesen/model/tab/player-combat.html",
+        "systems/vaesen/model/tab/player-favorites.html",
         "systems/vaesen/model/tab/player-talent.html",
         "systems/vaesen/model/tab/player-gear.html",
         "systems/vaesen/model/tab/player-note.html",

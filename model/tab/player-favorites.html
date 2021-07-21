@@ -1,0 +1,61 @@
+<div class="flex column favorites">
+	<b class="title"> {{localize "HEADER.FAVORITES"}}</b>
+	<div class="scrollable">
+		<b>{{localize "HEADER.ARMORS"}}</b> 
+		<div class=" favorite armor flex row center light-border">
+			<b class="icon">{{localize "ARMOR.ICON"}}</b>
+			<b class="name">{{localize "ARMOR.NAME"}}</b>
+			<b class="protection">{{localize "ARMOR.PROTECTION"}}</b>
+			
+			<b class="button"> &nbsp;&nbsp; </b>
+		</div>
+		<div class="scrollable">		
+            {{#each data.items as |item|}}
+                {{#if item.isArmor}}
+					{{#if item.data.isFav}}
+                        <div class="favorite item armor flex row center align-center" data-item-id="{{item._id}}">
+                            <img class="icon" src="{{item.img}}" title="{{item.name}}"/>
+                            <div class="name">{{item.name}}</div>
+                            <div class="protection">{{item.data.protection}}</div>
+                            
+                            <div class="button">
+								<a class="item-control fav-togle" title="Togle Favorite"><i class="fas fa-star"></i></a>
+		                        <a class="item-control item-edit" title="Edit Armor"><i class="fas fa-edit"></i></a>
+                            </div>
+                        </div>
+						{{/if}}
+                    {{/if}}
+                {{/each}}
+        </div>
+		<b>{{localize "HEADER.WEAPONS"}}</b> 
+		<div class="favorite weapon flex row center light-border">
+                <b class="icon">{{localize "WEAPON.ICON"}}</b>
+                <b class="name">{{localize "WEAPON.NAME"}}</b>
+                <b class="damage">{{localize "WEAPON.DAMAGE"}}</b>
+                <b class="range">{{localize "WEAPON.RANGE"}}</b>
+                
+                <b class="button"> &nbsp;&nbsp;&nbsp;&nbsp; </b>
+            </div>
+		<div class="scrollable">
+                {{#each data.items as |item|}}
+                    {{#if item.isWeapon}}
+						{{#if item.data.isFav}}
+                        <div class="favorite weapon item flex row center align-center" data-item-id="{{item._id}}">
+                            <img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/>
+                            <div class="name">{{item.name}}</div>
+                            <div class="damage">{{item.data.damage}}</div>
+                            <div class="range">{{item.data.range}}</div>
+                            
+                            <div class="button">
+								<a class="item-control fav-togle" title="Togle Favorite"><i class="fas fa-star"></i></a>
+								<a class="item-control item-edit" title="Edit Weapon"><i class="fas fa-edit"></i></a>
+                            </div>
+                        </div>
+						{{/if}}
+                    {{/if}}
+                {{/each}}
+            </div>
+	</div>
+	
+		
+</div>

@@ -8,7 +8,7 @@ It provides support for **character sheets only**, game content should be drawn 
 3. Create a Game World using the Vaesen system.
 
 ## Preview
-![Character 1](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/blob/master/asset/player.png?raw=true)  
+![Character 1](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/blob/master/asset/player_update.png?raw=true)  
 ![Character 1](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/blob/master/asset/npc.png?raw=true)  
 ![Character 1](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/blob/master/asset/vaesen.png?raw=true)  
 ![Character 1](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/blob/master/asset/headquarter.png?raw=true)    
@@ -17,8 +17,6 @@ It provides support for **character sheets only**, game content should be drawn 
 
 * Character Sheet:
     * Add Recover roll to conditions 
-    * Add Favorites for main tab to ease access to common roll items
-    * Reformat tabs for tighter layout 
     * Add "to chat" icon on most items direct from sheet
     * Add Relationships Item box to Notes tab  
     * Clearer inidcation of condition status
@@ -46,6 +44,20 @@ It provides support for **character sheets only**, game content should be drawn 
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Release Notes
+
+v2.0.8
+- Character Sheet redesign 
+    - Added Favorites
+    - consolidated attributes and skills
+    - moved motivation, trauma etc. to sheet top
+    - tighter layout overall
+
+
+v2.0.7 
+ - Localization Spainish
+ - Localization Swedish
+ - DSN update
+ - 0.8.8 combatibility pass
 
 v2.0.6
 - Fix more fields: attack damage, range, and description; magic category; npc information; vaesen known, secret, and notes.

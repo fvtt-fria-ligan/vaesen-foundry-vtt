@@ -1,8 +1,3 @@
-.vaesen.item .talent .icon {
-    border: 1px dashed #826657;
-    border-radius: 10px;
-    margin-right: 5px;
-}
 
 .vaesen.item .talent .name {
     flex-basis: 85%;
@@ -15,4 +10,14 @@
 .vaesen.item .talent .description textarea {
     height: 187px;
     resize: none;
+}
+
+.vaesen .player .talents .scrollable {
+	height: fit-content;
+}
+
+.vaesen .player .talents .talent img.icon{
+	border: 0;
+	width: 25px;
+	height: 25px;
 }

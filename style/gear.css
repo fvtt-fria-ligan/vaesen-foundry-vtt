@@ -1,8 +1,13 @@
-.vaesen.item .gear .icon {
-    border: 1px dashed #826657;
-    border-radius: 10px;
-    margin-right: 5px;
+.vaesen .player .gears .scrollable {
+	height: fit-content;
 }
+
+.vaesen .player .gears .gear img.icon{
+	border: 0;
+	width: 25px;
+	height: 25px;
+}
+
 
 .vaesen.item .gear .name {
     flex-basis: 85%;

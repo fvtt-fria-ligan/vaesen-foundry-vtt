@@ -1,38 +1,81 @@
 <form class="{{cssClass}}" autocomplete="off">
     <div class="player flex column">
-        <div class="header flex column heavy-border">
-            <div class="flex row margin align-center">
-                <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
-                <div class="flex row align-end space-around grow wrap" style="margin-left: 5px">
-                    <div class="name">
-                        <b>{{localize "BIO.NAME"}}</b>
-                        <input name="name" type="text" value="{{actor.name}}"/>
-                    </div>
-                    <div class="resources">
-                        <b>{{localize "RESOURCES"}}</b>
-                        <input name="data.resources" type="text" value="{{data.data.resources}}" data-dtype="Number"/>
-                    </div>
-                    <div class="capital">
-                        <b>{{localize "CAPITAL"}}</b>
-                        <input name="data.capital" type="text" value="{{data.data.capital}}" data-dtype="Number"/>
-                    </div>
-                    <div class="archetype">
-                        <b>{{localize "BIO.ARCHETYPE"}}</b>
-                        <input name="data.bio.archetype" type="text" value="{{data.data.bio.archetype}}"/>
-                    </div>
-                    <div class="age">
-                        <b>{{localize "BIO.AGE"}}</b>
-                        <input name="data.bio.age" type="text" value="{{data.data.bio.age}}"/>
-                    </div>
-                    <div class="experience">
-                        <b>{{localize "EXPERIENCE"}}</b>
-                        <input name="data.experience" type="text" value="{{data.data.experience}}" data-dtype="Number"/>
-                    </div>
-                </div>
-            </div>
+        <div class="header flex row margin align-center">
+				<div class="flex column heavy-border portrait">
+					<div class="name">
+							<input name="name" type="text" value="{{actor.name}}"/>
+					</div>
+					<div class="img-frame">
+						<img class="profile-frame" src="systems/vaesen/asset/token_border.png" />
+						<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+					</div>
+					<div class="archetype">  
+							<input name="data.bio.archetype" type="text" value="{{data.data.bio.archetype}}"/>
+							<b>{{localize "BIO.ARCHETYPE"}}</b>
+					</div>
+				</div>
+				<div class="flex column second">
+					<div class="logo flex row">
+						<img src="systems/vaesen/asset/sheet_header.png">
+					</div>
+					<div class="flex row">
+						<div class="flex column res heavy-border" style="margin-left: 5px">
+							
+							<div class="resources">
+								<input name="data.resources" type="text" value="{{data.data.resources}}" data-dtype="Number"/>
+								<b>{{localize "RESOURCES"}}</b>
+							</div>
+							<div class="capital">
+								<input name="data.capital" type="text" value="{{data.data.capital}}" data-dtype="Number"/>
+								<b>{{localize "CAPITAL"}}</b>
+							</div>
+							
+							<div class="age">
+								<input name="data.bio.age" type="text" value="{{data.data.bio.age}}"/>
+								<b>{{localize "BIO.AGE"}}</b>
+							</div>
+							<div class="experience">
+								<input name="data.experience" type="text" value="{{data.data.experience}}" data-dtype="Number"/>
+								<b>{{localize "EXPERIENCE"}}</b>
+							</div>
+						</div>
+				
+						<div class="flex column bio heavy-border">
+							
+							<div class="flex row grow wrap margin">
+								<div class="motivation">
+									
+									<input name="data.bio.motivation" type="text" value="{{data.data.bio.motivation}}"/>
+									<b>{{localize "BIO.MOTIVATION"}}</b>
+								</div>
+								<div class="trauma">
+									
+									<input name="data.bio.trauma" type="text" value="{{data.data.bio.trauma}}"/>
+									<b>{{localize "BIO.TRAUMA"}}</b>
+								</div>
+								<div class="dark-secret">
+									
+									<input name="data.bio.darkSecret" type="text" value="{{data.data.bio.darkSecret}}"/>
+									<b>{{localize "BIO.DARK_SECRET"}}</b>
+								</div>
+								<div class="advantage">
+									
+									<input name="data.advantage" type="text" value="{{data.data.advantage}}"/>
+									<b>{{localize "ADVANTAGE"}}</b>
+								</div>
+								<div class="memento">
+									
+									<input name="data.memento" type="text" value="{{data.data.memento}}"/>
+									<b>{{localize "MEMENTO"}}</b>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+				</div>
         </div>
 
-        <div class="sheet-tabs tabs flex row heavy-border" data-group="primary">
+        <div class="sheet-tabs tabs flex row" data-group="primary">
             <b class="item" data-tab="main">{{localize "TAB.MAIN"}}</b>
             <b class="item" data-tab="combat">{{localize "TAB.COMBAT"}}</b>
             <b class="item" data-tab="talent">{{localize "TAB.TALENT"}}</b>

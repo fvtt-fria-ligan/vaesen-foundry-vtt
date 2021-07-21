@@ -1,9 +1,3 @@
-.vaesen.item .armor .icon {
-    border: 1px dashed #826657;
-    border-radius: 10px;
-    margin-right: 5px;
-}
-
 .vaesen.item .armor .name {
     flex-basis: 60%;
 }
@@ -18,4 +12,19 @@
 
 .vaesen.item .armor .availability {
     flex-basis: 50%;
+}
+
+.vaesen .armors .armor{
+	background: none;
+	margin: 0px;
+	padding: 0px;
+}
+.vaesen .player .armors .scrollable {
+	height: fit-content;
+}
+
+.vaesen .player .armors .armor img.icon {
+    border: 0;
+	width: 25px;
+	height: 25px;
 }

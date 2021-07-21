@@ -216,6 +216,11 @@
       "attack",
       "upgrade"
     ],
+	"templates": {
+		"itemFav" :{
+		  "isFav": false
+		}
+	},
     "criticalInjury": {
       "type": "",
       "fatal": "",
@@ -224,6 +229,7 @@
       "permanent": "No"
     },
     "weapon": {
+	  "templates": ["itemFav"],
       "damage": 0,
       "range": "",
       "bonus": 0,
@@ -231,6 +237,7 @@
       "skill": ""
     },
     "armor": {
+	  "templates": ["itemFav"],
       "protection": 0,
       "agility": 0,
       "availability": 0
