@@ -160,3 +160,8 @@
 	margin-bottom: 2px;
 }
 
+.chat-message .message-header .flavor-text, .chat-message .message-header .whisper-to {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1em;
+    
+}

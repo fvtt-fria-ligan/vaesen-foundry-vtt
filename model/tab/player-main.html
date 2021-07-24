@@ -83,8 +83,8 @@
     <div class="flex column heavy-border">
         <b class="title">{{localize "HEADER.CONDITIONS"}}</b>
         <div class="flex row grow margin">
-            <div class="conditions physical flex column">
-                <b class="header">{{localize "CONDITION.PHYSICAL"}}</b>
+            <div class="conditions physical flex column" data-key="physical">
+                <b class="header">{{localize "CONDITION.PHYSICAL"}} <a class="roll-recovery" title="Roll Recovery"><i class="fas fa-dice-d6"></i></a> </b>
                 <div class="flex row grow center align-center wrap">
                     {{#each data.data.condition.physical.states as |condition key|}}
                         {{#if condition.isChecked}}
@@ -100,8 +100,8 @@
                     {{/if}}
                 </div>
             </div>
-            <div class="conditions mental flex column">
-                <b class="header">{{localize "CONDITION.MENTAL"}}</b>
+            <div class="conditions mental flex column" data-key="mental">
+                <b class="header">{{localize "CONDITION.MENTAL"}} <a class="roll-recovery" title="Roll Recovery"><i class="fas fa-dice-d6"></i></a> </b>
                 <div class="flex row grow center align-center wrap">
                     {{#each data.data.condition.mental.states as |condition key|}}
                         {{#if condition.isChecked}}

@@ -1,4 +1,4 @@
-import { prepareRollDialog, push } from "../util/roll.js";
+import { prepareRollDialog, push, roll } from "../util/roll.js";
 
 export class PlayerCharacterSheet extends ActorSheet {
 
@@ -52,6 +52,7 @@ export class PlayerCharacterSheet extends ActorSheet {
         html.find('.item-edit').click(ev => { this.onItemUpdate(ev); });
         html.find('.item-delete').click(ev => { this.onItemDelete(ev); });
         html.find('.fav-togle').click(ev => {this.onFavTogle(ev);});
+        html.find('.roll-recovery').click(ev => {this.onRecovery(ev);});
         html.find("input").focusin(ev => this.onFocusIn(ev));
 
         html.find('.resources b').click(ev => {
@@ -205,6 +206,29 @@ export class PlayerCharacterSheet extends ActorSheet {
 		item.update();
 			
 	}
+    onRecovery(event) {
+        event.preventDefault();
+        let actor = this.actor;
+        let data = actor.data.data;
+        let physique = data.attribute.physique.value;
+        let precision = data.attribute.precision.value;
+        let logic = data.attribute.logic.value;
+        let empathy = data.attribute.empathy.value;
+        const element = $(event.currentTarget).parents(".conditions");
+        const type = element[0].dataset.key;
+
+        if(type==="physical"){
+            
+            let pool = physique+precision;
+            roll(this, "Physical Recovery", 0, 0, pool, 0);
+        } else {
+            
+            let pool = logic+empathy;
+            roll(this, "Mental Recovery", 0, 0, pool, 0);
+        }
+
+        
+    }
 
     onArmorRoll(event) {
         const div = $(event.currentTarget).parents(".armor");

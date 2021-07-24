@@ -37,7 +37,7 @@ export function prepareRollDialog(sheet, testName, attributeDefault, skillDefaul
     d.render(true);
 }
 
-function roll(sheet, testName, attribute, skill, bonus, damage) {
+export function roll(sheet, testName, attribute, skill, bonus, damage) {
     sheet.dices = [];
     sheet.lastTestName = testName;
     sheet.lastDamage = damage;
@@ -80,15 +80,15 @@ function sendRollToChat(sheet, isPushed) {
     let resultMessage;
     if (isPushed) {
         if (numberOfSuccess > 0) {
-            resultMessage = "<b style='color:green'>" + sheet.lastTestName + "</b> (PUSHED)</br>";
+            resultMessage = "<b style='color:green; text-align: center;'>" + sheet.lastTestName + "</b> (PUSHED)</br>";
         } else {
-            resultMessage = "<b style='color:red'>" + sheet.lastTestName + "</b> (PUSHED)</br>";
+            resultMessage = "<b style='color:red; text-align: center;'>" + sheet.lastTestName + "</b> (PUSHED)</br>";
         }
     } else {
         if (numberOfSuccess > 0) {
-            resultMessage = "<b style='color:green'>" + sheet.lastTestName + "</b></br>";
+            resultMessage = "<b style='color:green; text-align: center;'>" + sheet.lastTestName + "</b></br>";
         } else {
-            resultMessage = "<b style='color:red'>" + sheet.lastTestName + "</b></br>";
+            resultMessage = "<b style='color:red; text-align: center;'>" + sheet.lastTestName + "</b></br>";
         }
     }
     let successMessage = "<b> Success:</b> " + numberOfSuccess + "</br>";
