@@ -13,6 +13,7 @@ import { ConditionCharacterSheet } from "./sheet/condition.js";
 import { AttackCharacterSheet } from "./sheet/attack.js";
 import { UpgradeCharacterSheet } from "./sheet/upgrade.js";
 import { prepareRollDialog, push } from "./util/roll.js";
+import { registerSystemSettings } from "./util/settings.js";
 
 Hooks.once("init", () => {
     CONFIG.Combat.initiative = { formula: "1d10", decimals: 0 };
@@ -36,6 +37,8 @@ Hooks.once("init", () => {
     Items.registerSheet("vaesen", AttackCharacterSheet, {types: ["attack"], makeDefault: true});
     Items.registerSheet("vaesen", UpgradeCharacterSheet, {types: ["upgrade"], makeDefault: true});
     preloadHandlebarsTemplates();
+    // Register System Settings
+    registerSystemSettings();
 });
 
 Hooks.once('diceSoNiceReady', (dice3d) => {

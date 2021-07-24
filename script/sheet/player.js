@@ -40,6 +40,7 @@ export class PlayerCharacterSheet extends ActorSheet {
 
     getData() {
         const superData = super.getData();
+        this.setSwag(superData.data);
         this.computeSkills(superData.data);
         this.computeItems(superData.data);
         return superData;
@@ -158,6 +159,10 @@ export class PlayerCharacterSheet extends ActorSheet {
             item.isGear = item.type === 'gear';
         }
     }
+	
+	setSwag(data) {
+		data.swag = game.settings.get("vaesen", "swag") ? true : false;
+	}
 
     onItemCreate(event) {
         event.preventDefault();

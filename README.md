@@ -44,6 +44,9 @@ It provides support for **character sheets only**, game content should be drawn 
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Release Notes
+v2.0.9
+- (bugfix) header image and token ring missing
+- Added toggle to system settings to show or hide Vaesen Logo on character sheet 
 
 v2.0.8
 - Character Sheet redesign 

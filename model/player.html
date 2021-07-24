@@ -16,7 +16,12 @@
 				</div>
 				<div class="flex column second">
 					<div class="logo flex row">
+						{{#if data.swag}}
 						<img src="systems/vaesen/asset/sheet_header.png">
+						{{/if}}
+						{{#unless data.swag}}
+						<img src="systems/vaesen/asset/sheet_header_b.png">
+						{{/unless}}
 					</div>
 					<div class="flex row">
 						<div class="flex column res heavy-border" style="margin-left: 5px">

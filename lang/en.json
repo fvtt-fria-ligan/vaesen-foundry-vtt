@@ -158,5 +158,7 @@
   "WEAPON.RANGE": "Range",
   "WEAPON.BONUS": "Bonus",
   "WEAPON.AVAILABILITY": "Availability",
-  "WEAPON.SKILL": "Skill"
+  "WEAPON.SKILL": "Skill",
+
+  "SETTINGS.SWAG": "Use official Vaesen Logo as Header Image on Character Sheets"
 }
