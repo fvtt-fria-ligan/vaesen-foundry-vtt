@@ -17,7 +17,8 @@ It provides support for **character sheets only**, game content should be drawn 
 
 * Character Sheet:
     * Add "to chat" icon on most items direct from sheet
-    * Add Relationships Item box to Notes tab  
+    * Add Relationships Item box to Notes tab
+    * Update tool tips for localization  
 
 * Item Sheets etc.
     * clean-up layout
@@ -42,8 +43,10 @@ It provides support for **character sheets only**, game content should be drawn 
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Release Notes
+
 v2.1.2
 - (bugfix) inverted z-order of avatar image and border frame
+
 
 V2.1.1
 - Added Recovery Roll to conditon section of sheet
