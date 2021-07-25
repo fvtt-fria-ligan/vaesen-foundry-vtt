@@ -16,10 +16,8 @@ It provides support for **character sheets only**, game content should be drawn 
 ## To be done in the nearest future
 
 * Character Sheet:
-    * Add Recover roll to conditions 
     * Add "to chat" icon on most items direct from sheet
     * Add Relationships Item box to Notes tab  
-    * Clearer inidcation of condition status
 
 * Item Sheets etc.
     * clean-up layout
@@ -44,6 +42,10 @@ It provides support for **character sheets only**, game content should be drawn 
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Release Notes
+V2.1.0
+- Added Recovery Roll to conditon section of sheet
+- Improved visibilty of condition selection
+
 v2.0.9
 - (bugfix) header image and token ring missing
 - Added toggle to system settings to show or hide Vaesen Logo on character sheet 
