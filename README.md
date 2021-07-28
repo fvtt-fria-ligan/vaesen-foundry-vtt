@@ -18,7 +18,7 @@ It provides support for **character sheets only**, game content should be drawn 
 * Character Sheet:
     * Add "to chat" icon on most items direct from sheet
     * Add Relationships Item box to Notes tab
-    * Update tool tips for localization  
+     
 
 * Item Sheets etc.
     * clean-up layout
@@ -34,6 +34,8 @@ It provides support for **character sheets only**, game content should be drawn 
 
 * Minor bug fixes
 
+* Localize Dialog and tooltip texts
+
 
 ## Related Website
 - https://foundryvtt.com/
@@ -43,10 +45,14 @@ It provides support for **character sheets only**, game content should be drawn 
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Release Notes
+v2.1.3
+- (bugfix) Agility modifier for Armor was not calculating in the roll dialog.  Now highest negative modifier for armor will apply to agility tests.
+- (Change) Updated look and feel of Headquarters sheet.  Now all upgrades are on first page and "history" is relegated to a tab.
+    - Upgrade presentation drastically contracted to make a more readable sheet
+    - Upgrade information now 'slides' out under item when clicked.
 
 v2.1.2
 - (bugfix) inverted z-order of avatar image and border frame
-
 
 V2.1.1
 - Added Recovery Roll to conditon section of sheet

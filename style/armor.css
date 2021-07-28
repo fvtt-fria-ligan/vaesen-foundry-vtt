@@ -1,17 +1,17 @@
 .vaesen.item .armor .name {
-    flex-basis: 60%;
+    flex-basis: 80%;
 }
 
 .vaesen.item .armor .protection {
-    flex-basis: 25%;
+    flex-basis: 30%;
 }
 
 .vaesen.item .armor .agility {
-    flex-basis: 50%;
+    flex-basis: 30%;
 }
 
 .vaesen.item .armor .availability {
-    flex-basis: 50%;
+    flex-basis: 30%;
 }
 
 .vaesen .armors .armor{

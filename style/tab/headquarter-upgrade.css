@@ -25,7 +25,7 @@
 }
 
 .vaesen .headquarter .upgrades .upgrade .name {
-    flex-basis: 20%;
+    flex-basis: 95px;
 }
 
 .vaesen .headquarter .upgrades .upgrade .function {
@@ -36,6 +36,3 @@
     flex-basis: 35%;
 }
 
-.vaesen .headquarter .upgrades .upgrade .button {
-    flex-basis: 5%;
-}

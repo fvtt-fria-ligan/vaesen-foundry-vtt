@@ -1,5 +1,5 @@
 .vaesen .heavy-border {
-    border: 2px solid black;
+    border: 2px solid #412017;
     margin: 4px;
 	padding: 3px;
 }
@@ -31,6 +31,8 @@
 
 .vaesen .center {
     text-align: center;
+ 
+    
 }
 
 .vaesen .margin {
@@ -53,12 +55,16 @@
     align-items: center;
 }
 
-.forbidden-lands .align-end {
+.vaesen .align-end {
     align-items: flex-end;
 }
 
-.forbidden-lands .space-around {
+.vaesen .space-around {
     justify-content: space-around;
+}
+
+.vaesen .space-between {
+    justify-content: space-between;
 }
 
 .vaesen .title {
@@ -103,8 +109,12 @@
     text-shadow: 0 0 10px darkolivegreen;
 }
 
+.vaesen .hqtr-data{
+    min-width: 645px;
+
+}
 .vaesen input {
-    background-color: #d6c9c2;
+    background-color: #e7e7e7;
     border-color: #826657;
 }
 
@@ -114,19 +124,20 @@
 }
 
 .vaesen textarea {
-    background-color: #d6c9c2;
+    background-color: #e7e7e7;
     border-color: #826657;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .vaesen select {
-    background-color: #d6c9c2;
+    background-color: #e7e7e7;
     border-color: #826657;
 }
 
 .dialog .dialog-buttons button,
 .dialog .dialog-buttons button.default {
     border: 1px solid #826657;
-    background-color: #d6c9c2;
+    background-color: #e7e7e7;
 }
 
 
@@ -163,5 +174,13 @@
 .chat-message .message-header .flavor-text, .chat-message .message-header .whisper-to {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1em;
-    
+
+}
+
+.flex-end{
+    align-items: flex-end;
+}
+
+.flex-start{
+    align-items: flex-start;
 }

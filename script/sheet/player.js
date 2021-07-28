@@ -239,7 +239,7 @@ export class PlayerCharacterSheet extends ActorSheet {
 
     onWeaponRoll(event) {
         const div = $(event.currentTarget).parents(".weapon");
-        const item = this.actor.items.get(div.data("itemId"));
+        const item = this.actor.data.items.get(div.data("itemId"));
         const testName = item.name;
         let attribute = 0;
         let skill = 0;
@@ -281,9 +281,10 @@ export class PlayerCharacterSheet extends ActorSheet {
     computeBonusFromArmor(skillName) {
         let bonus = 0;
         if (skillName === "agility") {
-            for (let item of Object.values(this.actor.data.items)) {
-                if (item.type === "armor" && bonus >= item.data.agility) {
-                    bonus =  item.data.agility;
+            
+            for (let item of Object.values(this.actor.data.items.contents)) {
+                if (item.type === "armor" && bonus >= item.data.data.agility) {
+                    bonus =  item.data.data.agility;
                 }
             }
         }

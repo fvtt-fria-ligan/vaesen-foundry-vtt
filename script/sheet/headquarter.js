@@ -4,10 +4,10 @@ export class HeadquarterCharacterSheet extends ActorSheet {
         return mergeObject(super.defaultOptions, {
             classes: ["vaesen", "sheet", "actor"],
             template: "systems/vaesen/model/headquarter.html",
-            width: 600,
-            height: 748,
+            width: 900,
+            height: 750,
             resizable: false,
-            tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main"}]
+            tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "upgrades"}]
         });
     }
 
@@ -25,9 +25,9 @@ export class HeadquarterCharacterSheet extends ActorSheet {
         html.find("input").focusin(ev => this.onFocusIn(ev));
 
         html.find('.upgrade .icon').click(ev => { this.onItemUpdate(ev); });
-        html.find('.upgrade .name').click(ev => { this.onItemUpdate(ev); });
-        html.find('.upgrade .function').click(ev => { this.onItemUpdate(ev); });
-        html.find('.upgrade .asset').click(ev => { this.onItemUpdate(ev); });
+        html.find('.upgrade .name').click(ev => { this.onItemSummary(ev); });
+        html.find('.upgrade .function').click(ev => { this.onItemSummary(ev); });
+        html.find('.upgrade .asset').click(ev => { this.onItemSummary(ev); });
     }
 
     computeItems(data) {
@@ -62,4 +62,30 @@ export class HeadquarterCharacterSheet extends ActorSheet {
     onFocusIn(event) {
         $(event.currentTarget).select();
     }
+
+    onItemSummary(event){
+        event.preventDefault();
+        let div=$(event.currentTarget).parents(".item");
+        const item = this.actor.items.get(div.data("itemId"));
+        console.log(item.data.data.description);
+        let chatData = "<p class='item-desc'><b>" + game.i18n.localize("UPGRADE.DESCRIPTION") + 
+            ": </b>" + item.data.data.description + "</br><b>" 
+            + game.i18n.localize("UPGRADE.FUNCTION") + ": </b>" + item.data.data.function +
+            " </br><b>" + game.i18n.localize("UPGRADE.ASSET") + ": </b>" + item.data.data.asset +
+             "</br></p>";
+        console.log(chatData);
+        if(item.data.data.description.value === null){
+            return;
+        } else if (div.hasClass("expanded")){
+            let summary = div.children(".item-summary");
+            summary.slideUp(200, () => summary.remove());
+        } else {
+            let sum = $(`<div class="item-summary">${chatData}</div>`);            
+            div.append(sum.hide());
+            sum.slideDown(200);
+        }
+        div.toggleClass("expanded");
+    }
+
+    
 }

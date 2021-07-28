@@ -1,48 +1,54 @@
 <form class="{{cssClass}}" autocomplete="off">
-    <div class="headquarter flex column">
-        <div class="header flex column heavy-border">
-            <div class="flex row margin align-center">
-                <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
-                <div class="flex row grow wrap" style="margin-left: 5px">
+    <div class="headquarter flex row">
+        <div class="header flex row">
+            <div class="flex column margin align-center">
+                <div class="flex column heavy-border portrait">
                     <div class="name">
-                        <b>{{localize "BIO.NAME"}}</b>
+                        
                         <input name="name" type="text" value="{{actor.name}}"/>
+                    </div>
+                    <div class="img-frame">
+                        <img class="profile-frame" src="systems/vaesen/asset/token_border.png" />
+                        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+                    </div>  
+                    <div class="building">
+                        
+                        <input name="data.bio.building" type="text" value="{{data.data.bio.building}}"/>
+                        <b>{{localize "BIO.BUILDING"}}</b>
+                    </div>
+                    
+                </div> 
+                <div class="flex column second">
+                    <div class="heavy-border flex column">
+                    <div class="location">
+                        <b>{{localize "BIO.LOCATION"}}</b>
+                        <input name="data.bio.location" type="text" value="{{data.data.bio.location}}"/>
                     </div>
                     <div class="point">
                         <b>{{localize "BIO.POINTS"}}</b>
                         <input name="data.bio.point" type="text" value="{{data.data.bio.point}}" data-dtype="Number"/>
                     </div>
-                    <div class="building">
-                        <b>{{localize "BIO.BUILDING"}}</b>
-                        <input name="data.bio.building" type="text" value="{{data.data.bio.building}}"/>
                     </div>
-                    <div class="location">
-                        <b>{{localize "BIO.LOCATION"}}</b>
-                        <input name="data.bio.location" type="text" value="{{data.data.bio.location}}"/>
-                    </div>
+                </div> 
+            </div>
+        </div>
+        
+        <div class="flex column">
+            <div class="sheet-tabs tabs flex row" data-group="primary">
+                <b class="item" data-tab="upgrades">{{localize "TAB.UPGRADES"}}</b>
+                <b class="item" data-tab="history">{{localize "TAB.NOTES"}}</b>
+                
+            </div>
+
+            <div class="sheet-body flex row">
+                <div class="tab upgrades" data-group="primary" data-tab="upgrades">
+                    {{> systems/vaesen/model/tab/headquarter-upgrades.html}}
                 </div>
-            </div>
-        </div>
-
-        <div class="sheet-tabs tabs flex row heavy-border" data-group="primary">
-            <b class="item" data-tab="history">{{localize "TAB.HISTORY"}}</b>
-            <b class="item" data-tab="facility">{{localize "TAB.FACILITY"}}</b>
-            <b class="item" data-tab="contact">{{localize "TAB.CONTACT"}}</b>
-            <b class="item" data-tab="personnel">{{localize "TAB.PERSONNEL"}}</b>
-        </div>
-
-        <div class="sheet-body flex row">
-            <div class="tab history" data-group="primary" data-tab="history">
-                {{> systems/vaesen/model/tab/headquarter-history.html}}
-            </div>
-            <div class="tab" data-group="primary" data-tab="facility">
-                {{> systems/vaesen/model/tab/headquarter-facilities.html}}
-            </div>
-            <div class="tab" data-group="primary" data-tab="contact">
-                {{> systems/vaesen/model/tab/headquarter-contact.html}}
-            </div>
-            <div class="tab" data-group="primary" data-tab="personnel">
-                {{> systems/vaesen/model/tab/headquarter-personnel.html}}
+                <div class="tab history" data-group="primary" data-tab="history">
+                    {{> systems/vaesen/model/tab/headquarter-history.html}}
+                </div>
+                
+                
             </div>
         </div>
     </div>

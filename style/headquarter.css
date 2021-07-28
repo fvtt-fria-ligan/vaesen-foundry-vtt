@@ -3,13 +3,49 @@
     width: 100%;
 }
 
-.vaesen .headquarter .header .profile-img {
-    border: 1px dashed #826657;
-    border-radius: 10px;
+.vaesen .headquarter .header .img-frame{
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 175px;
+	min-height: 175px;
+	
+}
+
+.vaesen .headquarter .header .profile-frame{
+	position: absolute;
+	z-index: 1;
+	border: none;
+}
+.vaesen .headquarter .header .profile-img{
+	position: absolute;
+	border: 1px transparent;
+	margin-top: 5px;
+	border-radius: 50%;
+	z-index: 2;
+	padding: 15px;
+    height: 175px;
+    width: 175px;
+	
+}
+.vaesen .headquarter .second{
+	width: 210px;
+	
+}
+
+.vaesen .headquarter .upgrades .upgrade .name{
+    flex-basis: 95px;
+}
+
+.vaesen .headquarter .facilities,
+.vaesen .headquarter .personnel,
+.vaesen .headquarter .contacts
+ {
+    flex-basis: 30%;
 }
 
 .vaesen .headquarter .header .name {
-    flex-basis: 73%;
+    flex-basis: 50%;
 }
 
 .vaesen .headquarter .header .point {

@@ -37,6 +37,13 @@ export class UpgradeCharacterSheet extends ItemSheet {
         $(event.currentTarget).select();
     }
 
+    getChatData(){
+        data = this.item.data;
+        let description = "<b>" + game.i18n.localize("UPGRADE.DESCRIPTION") + 
+            ": </b>" + data.data.description + "</br>" +
+            "<b>" + game.i18n.localize("UPGRADE.FUNCTION") + ": </b>" + data.data.function + "</br>";
+        return description;
+    }
     sendToChat(data) {
         let message = "<b>" + data.name.toUpperCase() + "</b></br>" +
             "<b>" + game.i18n.localize("TALENT.DESCRIPTION") + ": </b>" + data.data.description + "</br>";

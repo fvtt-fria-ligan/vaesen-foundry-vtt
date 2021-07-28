@@ -102,6 +102,7 @@ function preloadHandlebarsTemplates() {
         "systems/vaesen/model/tab/headquarter-facilities.html",
         "systems/vaesen/model/tab/headquarter-contact.html",
         "systems/vaesen/model/tab/headquarter-personnel.html",
+        "systems/vaesen/model/tab/headquarter-upgrades.html",
         "systems/vaesen/model/critical-injury.html",
         "systems/vaesen/model/weapon.html",
         "systems/vaesen/model/armor.html",
