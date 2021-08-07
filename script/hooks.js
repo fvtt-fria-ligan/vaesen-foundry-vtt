@@ -14,8 +14,16 @@ import { AttackCharacterSheet } from "./sheet/attack.js";
 import { UpgradeCharacterSheet } from "./sheet/upgrade.js";
 import { prepareRollDialog, push } from "./util/roll.js";
 import { registerSystemSettings } from "./util/settings.js";
+import {vaesen} from "./config.js"
+import {conditions} from "./util/conditions.js";
+
+Hooks.once("ready", function(){
+    conditions.onReady();
+});
+
 
 Hooks.once("init", () => {
+    CONFIG.vaesen = vaesen;
     CONFIG.Combat.initiative = { formula: "1d10", decimals: 0 };
     CONFIG.Actor.documentClass = VaesenActor;
     CONFIG.anonymousSheet = {};
@@ -39,6 +47,18 @@ Hooks.once("init", () => {
     preloadHandlebarsTemplates();
     // Register System Settings
     registerSystemSettings();
+    Token.prototype._drawEffect = async function(src, i, bg, w, tint) {
+			const multiplier = 3;
+			const divisor = 3 * this.data.height;
+			w = (w / 2) * multiplier;
+			let tex = await loadTexture(src);
+			let icon = this.effects.addChild(new PIXI.Sprite(tex));
+			icon.width = icon.height = w;
+			icon.y = Math.floor(i / divisor) * w;
+			icon.x = (i % divisor) * w;
+			if ( tint ) icon.tint = tint;
+			this.effects.addChild(icon);
+		};
 });
 
 Hooks.once('diceSoNiceReady', (dice3d) => {
@@ -114,3 +134,5 @@ function preloadHandlebarsTemplates() {
     ];
     return loadTemplates(templatePaths);
 }
+
+

@@ -10,9 +10,20 @@
     align-items: center;
 }
 
-.roll-dialog input {
-    background-color: #d6c9c2;
+.roll-fields {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+}
+
+
+
+.roll-fields input {
+    background-color: #e7e7e7;
     border-color: #826657;
-    flex-basis: 75%;
+    flex-basis: 35px;
     margin-bottom: 5px;
 }

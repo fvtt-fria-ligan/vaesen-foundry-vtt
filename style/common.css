@@ -1,3 +1,14 @@
+#token-hud .status-effects .effect-control { 
+	height: 40px;
+	width: 40px;
+}
+
+#token-hud .status-effects { 
+	top: 37%; 
+	width: 160px; 
+	grid-template-columns: 40px 40px 40px 40px;
+}
+
 .vaesen .heavy-border {
     border: 2px solid #412017;
     margin: 4px;
@@ -132,6 +143,10 @@
 .vaesen select {
     background-color: #e7e7e7;
     border-color: #826657;
+}
+
+.dialog{
+    width: fit-content;
 }
 
 .dialog .dialog-buttons button,

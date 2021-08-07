@@ -1,4 +1,5 @@
 import { prepareRollDialog, push, roll } from "../util/roll.js";
+import {conditions} from "../util/conditions.js";
 
 export class PlayerCharacterSheet extends ActorSheet {
 
@@ -43,9 +44,67 @@ export class PlayerCharacterSheet extends ActorSheet {
         this.setSwag(superData.data);
         this.computeSkills(superData.data);
         this.computeItems(superData.data);
+        //console.log("these are the effects we have: ")
+        //console.log(this.actor.effects);
+        //this.affirmConditions(this.actor);
         return superData;
     }
 
+
+    async affirmConditions(actor){
+       
+       
+        let currentConditions = [];
+        actor.effects.forEach(function(value, key) {
+            currentConditions.push(value.data.flags.core?.statusId);
+          });
+
+         console.log(currentConditions); 
+         // set state of sheet checks for set conditions
+         if (currentConditions.indexOf('physical') === -1){
+            actor.update({"data.condition.physical.isBroken": false});
+         } else {
+            actor.update({"data.condition.physical.isBroken": true});
+         }
+         if (currentConditions.indexOf('exhausted') === -1){
+            actor.update({"data.condition.physical.states.exhausted.isChecked": false});
+         } else {
+            actor.update({"data.condition.physical.states.exhausted.isChecked": true});
+         }
+         if (currentConditions.indexOf('battered') === -1){
+            actor.update({"data.condition.physical.states.battered.isChecked": false});
+         } else {
+            actor.update({"data.condition.physical.states.battered.isChecked": true});
+         }
+         if (currentConditions.indexOf('wounded') === -1){
+            actor.update({"data.condition.physical.states.wounded.isChecked": false});
+         } else {
+            actor.update({"data.condition.physical.states.wounded.isChecked": true});
+         }
+         if (currentConditions.indexOf('angry') === -1){
+            actor.update({"data.condition.mental.states.angry.isChecked": false});
+         } else {
+            actor.update({"data.condition.mental.states.angry.isChecked": true});
+         }
+         if (currentConditions.indexOf('frightened') === -1){
+            actor.update({"data.condition.mental.states.frightened.isChecked": false});
+         } else {
+            actor.update({"data.condition.mental.states.frightened.isChecked": true});
+         }
+         if (currentConditions.indexOf('hopeless') === -1){
+            actor.update({"data.condition.mental.states.hopeless.isChecked": false});
+         } else {
+            actor.update({"data.condition.mental.states.hopeless.isChecked": true});
+         }
+         if (currentConditions.indexOf('mental') === -1){
+            actor.update({"data.condition.mental.isBroken": false});
+         } else {
+            actor.update({"data.condition.mental.isBroken": true});
+         }
+    }
+
+   
+   
     activateListeners(html) {
         super.activateListeners(html);
         html.find('.item-create').click(ev => { this.onItemCreate(ev); });
@@ -58,9 +117,14 @@ export class PlayerCharacterSheet extends ActorSheet {
         html.find('.resources b').click(ev => {
             prepareRollDialog(this, "Resources", 0, 0, this.actor.data.data.resources, 0)
         });
-
+        //html.find(".physical .condition").click(conditions.eventsProcessing.onToggleEffect.bind(this));
         html.find('.physical .condition').click(ev => {
+            ev.preventDefault();
             const conditionName = $(ev.currentTarget).data("key");
+            //let actor = this.actor;
+            //await actor.toggleStatusEffectByID(conditionName);
+             
+            //console.log(conditionName);
             let conditionValue;
             if (conditionName === "physical") {
                 conditionValue = this.actor.data.data.condition.physical.isBroken;
@@ -77,6 +141,8 @@ export class PlayerCharacterSheet extends ActorSheet {
             }
             this._render();
         });
+
+        //html.find(".mental .condition").click(conditions.eventsProcessing.onToggleEffect.bind(this));
         html.find('.mental .condition').click(ev => {
             const conditionName = $(ev.currentTarget).data("key");
             let conditionValue;
@@ -85,7 +151,7 @@ export class PlayerCharacterSheet extends ActorSheet {
                 this.actor.update({"data.condition.mental.isBroken": !conditionValue});
             } else {
                 conditionValue = this.actor.data.data.condition.mental.states[conditionName].isChecked;
-                if (conditionName === "angry") {
+                if (conditionName === "angry") {   
                     this.actor.update({"data.condition.mental.states.angry.isChecked": !conditionValue});
                 } else if (conditionName === "frightened") {
                     this.actor.update({"data.condition.mental.states.frightened.isChecked": !conditionValue});
@@ -102,8 +168,10 @@ export class PlayerCharacterSheet extends ActorSheet {
             const attribute = this.actor.data.data.attribute[attributeName];
             const testName = game.i18n.localize(attribute.label + "_ROLL");
             let bonus = this.computeBonusFromConditions(attributeName);
-            prepareRollDialog(this, testName, attribute.value, 0, bonus, 0)
+            prepareRollDialog(this, testName, attribute.value, 0, bonus, 0, testName, '')
         });
+
+        
         html.find('.skill b').click(ev => {
             const div = $(ev.currentTarget).parents(".skill");
             const skillName = div.data("key");
@@ -112,7 +180,8 @@ export class PlayerCharacterSheet extends ActorSheet {
             let bonusConditions = this.computeBonusFromConditions(skill.attribute);
             let bonusArmor = this.computeBonusFromArmor(skillName);
             const testName = game.i18n.localize(skill.label);
-            prepareRollDialog(this, testName, attribute.value, skill.value, bonusConditions + bonusArmor, 0)
+            prepareRollDialog(this, testName, attribute.value, skill.value,  bonusConditions + bonusArmor, 0, skill.attribute, testName )
+            //prepareRollDialog(this, testName, attribute.value, skill.value, bonusConditions + bonusArmor, 0)
         });
 
         html.find('.armor .icon').click(ev => { this.onArmorRoll(ev); });
@@ -220,11 +289,11 @@ export class PlayerCharacterSheet extends ActorSheet {
         if(type==="physical"){
             
             let pool = physique+precision;
-            roll(this, "Physical Recovery", 0, 0, pool, 0);
+            prepareRollDialog(this, "Physical Recovery", pool, 0, 0, 0, "Physique + Precision");
         } else {
             
             let pool = logic+empathy;
-            roll(this, "Mental Recovery", 0, 0, pool, 0);
+            prepareRollDialog(this, "Mental Recovery", pool, 0, 0, 0, "Logic + Empathy");
         }
 
         

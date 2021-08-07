@@ -1,11 +1,21 @@
-export function prepareRollDialog(sheet, testName, attributeDefault, skillDefault, bonusDefault, damageDefault) {
-    let attributeHtml = buildInputHtmlDialog("Attribute", attributeDefault);
-    let skillHtml = buildInputHtmlDialog("Skill", skillDefault);
-    let bonusHtml = buildInputHtmlDialog("Bonus", bonusDefault);
-    let damageHtml = buildInputHtmlDialog("Damage", damageDefault);
+export function prepareRollDialog(sheet, testName,  attributeDefault, skillDefault, bonusDefault, damageDefault, attName = "Attribute", skName = "Skill"){
+    let attributeHtml = buildHtmlDialog(attName, attributeDefault, "attribute");
+    let skillHtml = buildHtmlDialog(skName, skillDefault, "skill");
+    let bonusHtml = buildInputHtmlDialog("Bonus Dice", bonusDefault, "bonus");
+    let damageHtml = buildInputHtmlDialog("Damage", damageDefault, "damage");
+   
+
     let d = new Dialog({
         title: "Test : " + testName,
-        content: buildDivHtmlDialog(attributeHtml + skillHtml + bonusHtml + damageHtml),
+        content: buildDivHtmlDialog(`
+            <div class="roll-fields">
+            <h2 class="title"> Test: ` + testName + `
+            </h2>
+            <div class="flex column grow align-center heavy-border" style="width:200px;">
+           `+ attributeHtml + skillHtml + ` 
+        <div align-center style="flex-basis:33%;"> <strong>Base Dice Pool: </strong> `+ (attributeDefault+skillDefault) + `</div>
+        
+        </div><div class="flex column grow align-center light-border" style="width:200px; margin:auto; padding:5px; margin-bottom: 3px;">` + bonusHtml + damageHtml + `</div></div>`),
         buttons: {
             roll: {
                 icon: '<i class="fas fa-check"></i>',
@@ -33,9 +43,13 @@ export function prepareRollDialog(sheet, testName, attributeDefault, skillDefaul
         },
         default: "roll",
         close: () => {}
-    });
+    },
+    { width: "230" }
+    );
     d.render(true);
+
 }
+
 
 export function roll(sheet, testName, attribute, skill, bonus, damage) {
     sheet.dices = [];
@@ -78,6 +92,7 @@ function sendRollToChat(sheet, isPushed) {
     sheet.dices.sort(function(a, b){return b - a});
     let numberOfSuccess = countSuccess(sheet);
     let resultMessage;
+    let damageMessage;
     if (isPushed) {
         if (numberOfSuccess > 0) {
             resultMessage = "<b style='color:green; text-align: center;'>" + sheet.lastTestName + "</b> (PUSHED)</br>";
@@ -92,13 +107,25 @@ function sendRollToChat(sheet, isPushed) {
         }
     }
     let successMessage = "<b> Success:</b> " + numberOfSuccess + "</br>";
-    let damageMessage = "<b> Damage:</b> " + sheet.lastDamage + "</br>";
     let diceMessage = printDices(sheet) + "</br>";
-    let chatData = {
+    let chatData;
+    if(sheet.lastDamage > 0){
+    damageMessage = "<b> Damage:</b> " + sheet.lastDamage + "</br>";
+    chatData = {
         user: game.user.id,
         rollMode: game.settings.get("core", "rollMode"),
         content: resultMessage + successMessage + damageMessage + diceMessage
     };
+    } else {
+        chatData = {
+            user: game.user.id,
+            rollMode: game.settings.get("core", "rollMode"),
+            content: resultMessage + successMessage  + diceMessage
+        };
+    }
+    
+    
+   
     if (["gmroll", "blindroll"].includes(chatData.rollMode)) {
         chatData.whisper = ChatMessage.getWhisperRecipients("GM");
     } else if (chatData.rollMode === "selfroll") {
@@ -136,10 +163,24 @@ function countSuccess(sheet) {
     return sheet.dices.filter(dice => dice === 6).length;
 }
 
-function buildInputHtmlDialog(diceName, diceValue) {
-    return "<b style='flex-basis: 25%'>" + diceName + "</b><input id='" + diceName.toLowerCase() + "' style='text-align: center' type='text' value='" + diceValue + "'/>";
+function buildInputHtmlDialog(diceName, diceValue, type) {
+    return `
+    <div class="flex row" style="flex-basis: 35%; justify-content: space-between;">
+    <p style="text-transform: capitalize; white-space:nowrap;">` + diceName + 
+    `: </p>
+    <input id="` + type + `" style="text-align: center" type="text" value="` + diceValue + `"/></div>`;
+    
+}
+
+function buildHtmlDialog(diceName, diceValue, type) {
+    return `
+    <div class="flex row" style="flex-basis: 35%; justify-content: space-between;">
+    <p style="text-transform: capitalize; white-space:nowrap;">` + diceName + 
+    `: </p>
+    <input id="` + type + `" style="text-align: center" type="text" value="` + diceValue + `" readonly/></div>`;
+    
 }
 
 function buildDivHtmlDialog(divContent) {
-    return "<div class='roll-dialog '>" + divContent + "</div>";
+    return "<div class='vaesen roll-dialog '>" + divContent + "</div>";
 }

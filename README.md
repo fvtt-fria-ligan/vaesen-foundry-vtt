@@ -24,7 +24,7 @@ It provides support for **character sheets only**, game content should be drawn 
     * clean-up layout
     * Add relationship Item Type
 
-* Vaesen, NPC and HQ sheets
+* Vaesen and NPC sheets
     * UX improvements
 
 * Dialogs and Chat
@@ -36,6 +36,8 @@ It provides support for **character sheets only**, game content should be drawn 
 
 * Localize Dialog and tooltip texts
 
+* Link conditions on sheet and status icons on the character sheet (adding a status from the token toggels it on the sheet and visa versa)
+
 
 ## Related Website
 - https://foundryvtt.com/
@@ -45,6 +47,13 @@ It provides support for **character sheets only**, game content should be drawn 
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Release Notes
+v2.1.4
+- Added roll dialog to the Recovery Rolls to allow for bonus dice from headquarters etc.
+- Removed Damage from results in chat on things which have no damage.
+- Added custom condition icons in foundry status icon menu (https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/blob/master/asset/status_icons.png?raw=true) 
+- Tightned styled and clarified the roll dialog (https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/blob/master/asset/roll_dialog.png?raw=true) 
+
+
 v2.1.3
 - (bugfix) Agility modifier for Armor was not calculating in the roll dialog.  Now highest negative modifier for armor will apply to agility tests.
 - (Change) Updated look and feel of Headquarters sheet.  Now all upgrades are on first page and "history" is relegated to a tab.
