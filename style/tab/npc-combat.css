@@ -1,6 +1,6 @@
 .vaesen .npc .critical-injuries .scrollable {
     overflow-y: auto;
-    height: 150px;
+    height: fit-content;
     max-height: 150px;
 }
 
@@ -50,7 +50,7 @@
 
 .vaesen .npc .weapons .scrollable {
     overflow-y: auto;
-    height: 157px;
+    height: fit-content;
     max-height: 157px;
 }
 
@@ -96,7 +96,7 @@
 
 .vaesen .npc .armors .scrollable {
     overflow-y: auto;
-    height: 50px;
+    height: fit-content;
     max-height: 50px;
 }
 

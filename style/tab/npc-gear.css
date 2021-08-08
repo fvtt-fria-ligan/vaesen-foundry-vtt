@@ -1,6 +1,6 @@
 .vaesen .npc .gears .scrollable {
     overflow-y: auto;
-    height: 487px;
+    height: fit-content;
     max-height: 487px;
 }
 

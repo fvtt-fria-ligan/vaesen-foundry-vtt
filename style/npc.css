@@ -3,17 +3,30 @@
     width: 100%;
 }
 
+.vaesen .npc .right{
+    flex-basis: 35%;
+}
+
+.vaesen .npc .armors .heading,
+.vaesen .npc .weapons .heading,
+.vaesen .npc .gears .heading{
+    font-size: .8em;
+}
+.vaesen .npc .left{
+    flex-basis: 65%;
+}
 .vaesen .npc .header .profile-img {
-    border: 1px dashed #826657;
+    border: none;
     border-radius: 10px;
+    align-self: center;
 }
 
 .vaesen .npc .header .name {
-    flex-basis: 100%;
+    margin-bottom: 5px;
 }
 
 .vaesen .npc .header .physical {
-    flex-basis: 50%;
+    margin-bottom: 5px;
 }
 
 .vaesen .npc .header .physical input {
@@ -21,7 +34,7 @@
 }
 
 .vaesen .npc .header .mental {
-    flex-basis: 50%;
+    margin-bottom: 5px;
 }
 
 .vaesen .npc .header .mental input {

@@ -19,12 +19,11 @@ It provides support for **character sheets only**, game content should be drawn 
     * Add "to chat" icon on most items direct from sheet
     * Add Relationships Item box to Notes tab
      
-
 * Item Sheets etc.
     * clean-up layout
     * Add relationship Item Type
 
-* Vaesen and NPC sheets
+* Vaesen sheet
     * UX improvements
 
 * Dialogs and Chat
@@ -47,6 +46,9 @@ It provides support for **character sheets only**, game content should be drawn 
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Release Notes
+v2.1.5
+- Updated Layout of the NPC sheet - all relavant information is now on the main tab other tabs removed except the note tab which remains unchanged
+
 v2.1.4
 - Added roll dialog to the Recovery Rolls to allow for bonus dice from headquarters etc.
 - Removed Damage from results in chat on things which have no damage.
