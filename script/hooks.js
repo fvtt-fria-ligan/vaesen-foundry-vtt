@@ -48,8 +48,8 @@ Hooks.once("init", () => {
     // Register System Settings
     registerSystemSettings();
     
-    // add cutstom effect icons
-    if(game.data.version == '0.8.8'){
+    // render cutstom effect icons
+    if(game.data.version == '0.8.8' || game.data.version == '0.8.7' || game.data.version == '0.8.6'){
     Token.prototype._drawEffect = async function(src, i, bg, w, tint) {
 			const multiplier = 3;
 			const divisor = 3 * this.data.height;
