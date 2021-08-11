@@ -46,6 +46,10 @@ It provides support for **character sheets only**, game content should be drawn 
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Release Notes
+
+v2.1.6
+- tabs layout variance from v9 to v0.8.8 fixed
+
 v2.1.5
 - Updated Layout of the NPC sheet - all relavant information is now on the main tab other tabs removed except the note tab which remains unchanged
 
