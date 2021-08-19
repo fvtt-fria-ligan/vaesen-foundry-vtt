@@ -102,6 +102,7 @@
   "HEADER.FACILITIES": "INSTALACIONES",
   "HEADER.CONTACT": "CONTACTOS",
   "HEADER.PERSONNEL": "PERSONAL",
+   "HEADER.FAVORITES": "FAVORITOS",
 
   "MAGIC.ICON": "Icono",
   "MAGIC.NAME": "Magia",
@@ -130,10 +131,12 @@
   "TAB.TALENT": "TALENTO",
   "TAB.GEAR": "EQUIPO",
   "TAB.NOTE": "NOTA",
+  "TAB.NOTES": "NOTAS",
   "TAB.HISTORY": "HISTORIA",
   "TAB.FACILITY": "ESTABLECIMIENTO",
   "TAB.CONTACT": "CONTACTO",
   "TAB.PERSONNEL": "PERSONAL",
+  "TAB.UPGRADES" : "MEJORAS",
 
   "TALENT.ICON": "Icono",
   "TALENT.NAME": "Talento",
@@ -158,4 +161,6 @@
   "WEAPON.BONUS": "Bonificador",
   "WEAPON.AVAILABILITY": "Disponibilidad",
   "WEAPON.SKILL": "Habilidad"
+  
+    "SETTINGS.SWAG": "Usar el logo oficial de Vaese como cabecera en la ficha de personaje"
 }
