@@ -51,7 +51,7 @@
 .vaesen .npc .weapons .scrollable {
     overflow-y: auto;
     height: fit-content;
-    max-height: 157px;
+    
 }
 
 .vaesen .npc .weapons .weapon.item:hover {
@@ -66,16 +66,12 @@
     background-color: #ebe4e0;
 }
 
-.vaesen .npc .weapons .weapon .icon {
-    flex-basis: 9%;
-}
 
-.vaesen .npc .weapons .weapon img.icon {
-    border: 0;
-}
+
+
 
 .vaesen .npc .weapons .weapon .name {
-    flex-basis: 26%;
+    flex-basis: 55%;
 }
 
 .vaesen .npc .weapons .weapon .damage {
@@ -87,17 +83,15 @@
 }
 
 .vaesen .npc .weapons .weapon .bonus {
-    flex-basis: 20%;
+    flex-basis: 15%;
 }
 
-.vaesen .npc .weapons .weapon .button {
-    flex-basis: 5%;
-}
+
 
 .vaesen .npc .armors .scrollable {
     overflow-y: auto;
     height: fit-content;
-    max-height: 50px;
+    
 }
 
 .vaesen .npc .armors .armor.item:hover {
@@ -112,16 +106,22 @@
     background-color: #ebe4e0;
 }
 
-.vaesen .npc .armors .armor .icon {
-    flex-basis: 9%;
+.vaesen .npc .armors .armor .icon,
+.vaesen .npc .gears .gear .icon,
+.vaesen .npc .weapons .weapon .icon  {
+    flex-basis: 10%;
 }
 
+.vaesen .npc .weapons .weapon img.icon,
 .vaesen .npc .armors .armor img.icon {
     border: 0;
+    cursor: pointer;
 }
 
-.vaesen .npc .armors .armor .name {
-    flex-basis: 46%;
+
+.vaesen .npc .armors .armor .name,
+.vaesen .npc .gears .gear .name {
+    flex-basis: 70%;
 }
 
 .vaesen .npc .armors .armor .protection {
@@ -132,6 +132,8 @@
     flex-basis: 20%;
 }
 
-.vaesen .npc .armors .armor .button {
-    flex-basis: 5%;
+.vaesen .npc .armors .armor .button,
+.vaesen .npc .gears .gear .button,
+.vaesen .npc .weapons .weapon .button  {
+    flex-basis: 20%;
 }

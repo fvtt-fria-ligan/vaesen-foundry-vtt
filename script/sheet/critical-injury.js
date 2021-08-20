@@ -44,7 +44,7 @@ export class CriticalInjuryCharacterSheet extends ItemSheet {
             "<b>" + game.i18n.localize("CRITICAL_INJURY.TIME_LIMIT") + ": </b>" + data.data.timeLimit + "</br>" +
             "<b>" + game.i18n.localize("CRITICAL_INJURY.EFFECT") + ": </b>" + data.data.effect + "</br>";
         let chatData = {
-            user: game.user._id,
+            user: game.user.id,
             content: message
         };
         ChatMessage.create(chatData, {});

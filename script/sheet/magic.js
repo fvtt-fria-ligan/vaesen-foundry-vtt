@@ -42,7 +42,7 @@ export class MagicCharacterSheet extends ItemSheet {
             "<b>" + game.i18n.localize("MAGIC.CATEGORY") + ": </b>" + data.data.category + "</br>" +
             "<b>" + game.i18n.localize("MAGIC.DESCRIPTION") + ": </b>" + data.data.description + "</br>";
         let chatData = {
-            user: game.user._id,
+            user: game.user.id,
             content: message
         };
         ChatMessage.create(chatData, {});

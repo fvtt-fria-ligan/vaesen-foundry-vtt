@@ -48,7 +48,7 @@ export class UpgradeCharacterSheet extends ItemSheet {
         let message = "<b>" + data.name.toUpperCase() + "</b></br>" +
             "<b>" + game.i18n.localize("TALENT.DESCRIPTION") + ": </b>" + data.data.description + "</br>";
         let chatData = {
-            user: game.user._id,
+            user: game.user.id,
             content: message
         };
         ChatMessage.create(chatData, {});

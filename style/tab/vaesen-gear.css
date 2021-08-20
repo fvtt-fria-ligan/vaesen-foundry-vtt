@@ -1,7 +1,6 @@
 .vaesen .monster .gears .scrollable {
     overflow-y: auto;
-    height: 487px;
-    max-height: 487px;
+    height: fit-content;
 }
 
 .vaesen .monster .gears .gear.item:hover {
@@ -17,7 +16,7 @@
 }
 
 .vaesen .monster .gears .gear .icon {
-    flex-basis: 9%;
+    flex-basis: 5%;
 }
 
 .vaesen .monster .gears .gear img.icon {
@@ -25,7 +24,7 @@
 }
 
 .vaesen .monster .gears .gear .name {
-    flex-basis: 31%;
+    flex-basis: 75%;
 }
 
 .vaesen .monster .gears .gear .bonus {
@@ -37,5 +36,5 @@
 }
 
 .vaesen .monster .gears .gear .button {
-    flex-basis: 5%;
+    flex-basis: 20%;
 }

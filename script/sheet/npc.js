@@ -72,12 +72,12 @@ export class NpcCharacterSheet extends ActorSheet {
         });
 
         html.find('.armor .icon').click(ev => { this.onArmorRoll(ev); });
-        html.find('.armor .name').click(ev => { this.onArmorRoll(ev); });
+        html.find('.armor .name').click(ev => { this.onItemSummary(ev, "armor"); });
         html.find('.armor .protection').click(ev => { this.onArmorRoll(ev); });
         html.find('.armor .agility').click(ev => { this.onArmorRoll(ev); });
 
         html.find('.weapon .icon').click(ev => { this.onWeaponRoll(ev); });
-        html.find('.weapon .name').click(ev => { this.onWeaponRoll(ev); });
+        html.find('.weapon .name').click(ev => { this.onItemSummary(ev, "weapon"); });
         html.find('.weapon .damage').click(ev => { this.onWeaponRoll(ev); });
         html.find('.weapon .range').click(ev => { this.onWeaponRoll(ev); });
         html.find('.weapon .bonus').click(ev => { this.onWeaponRoll(ev); });
@@ -93,9 +93,47 @@ export class NpcCharacterSheet extends ActorSheet {
         html.find('.talent .description').click(ev => { this.onItemUpdate(ev); });
 
         html.find('.gear .icon').click(ev => { this.onItemUpdate(ev); });
-        html.find('.gear .name').click(ev => { this.onItemUpdate(ev); });
+        html.find('.gear .name').click(ev => { this.onItemSummary(ev, "gear"); });
         html.find('.gear .bonus').click(ev => { this.onItemUpdate(ev); });
         html.find('.gear .effect').click(ev => { this.onItemUpdate(ev); });
+    }
+
+    /****** Toggle the roll-down of expanded item information.  */
+    onItemSummary(event, type){
+        let div=$(event.currentTarget).parents(".item"),
+        item = this.actor.items.get(div.data("itemId"));
+        let chatData = '';
+        switch (type){
+            case "armor":
+                chatData =  "<p class='item-desc'><b>" + game.i18n.localize("ARMOR.PROTECTION") + 
+                            ":</b> " + item.data.data.protection +" | <b>" + game.i18n.localize("ARMOR.AGILITY") + 
+                            ":</b> " + item.data.data.agility +"</br></p>";
+                break;
+           case "weapon":
+                chatData =  "<p class='item-desc'><b>" + game.i18n.localize("WEAPON.DAMAGE") + 
+                ":</b> " + item.data.data.damage +" | <b>" + game.i18n.localize("WEAPON.RANGE") + 
+                ":</b> " + item.data.data.range +"</br></p>";
+                break;
+            case "gear":
+                chatData =  "<p class='item-desc'><b>" + game.i18n.localize("GEAR.BONUS") + 
+                ":</b> " + item.data.data.bonus +"</br><b>" + game.i18n.localize("GEAR.EFFECT") + 
+                ":</b> " + item.data.data.effect +"</br><b>" + game.i18n.localize("GEAR.DESCRIPTION") + 
+                ":</b> " + item.data.data.description +"</br></p>";
+        }
+
+        
+
+        if(chatData === null){
+            return;
+        } else if (div.hasClass("expanded")){
+            let sum = div.children(".item-summary");
+            sum.slideUp(200, () => sum.remove());
+        } else {
+            let sum = $(`<div class="item-summary">${chatData}</div>`);
+            div.append(sum.hide());
+            sum.slideDown(200);
+        }
+        div.toggleClass("expanded");
     }
 
     computeSkills(data) {

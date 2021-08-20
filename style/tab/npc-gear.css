@@ -1,7 +1,7 @@
 .vaesen .npc .gears .scrollable {
     overflow-y: auto;
     height: fit-content;
-    max-height: 487px;
+    
 }
 
 .vaesen .npc .gears .gear.item:hover {
@@ -16,17 +16,14 @@
     background-color: #ebe4e0;
 }
 
-.vaesen .npc .gears .gear .icon {
-    flex-basis: 9%;
-}
+
 
 .vaesen .npc .gears .gear img.icon {
     border: 0;
+    cursor: pointer;
 }
 
-.vaesen .npc .gears .gear .name {
-    flex-basis: 31%;
-}
+
 
 .vaesen .npc .gears .gear .bonus {
     flex-basis: 15%;
@@ -36,6 +33,3 @@
     flex-basis: 40%;
 }
 
-.vaesen .npc .gears .gear .button {
-    flex-basis: 5%;
-}

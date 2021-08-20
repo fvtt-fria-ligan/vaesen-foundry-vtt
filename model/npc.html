@@ -34,21 +34,20 @@
                 <div class="armor heading flex row center light-border">
                     <b class="icon">{{localize "ARMOR.ICON"}}</b>
                     <b class="name">{{localize "ARMOR.NAME"}}</b>
-                    <b class="protection">{{localize "ARMOR.PROTECTION"}}</b>
-                    <b class="agility">{{localize "ARMOR.AGILITY"}}</b>
                     <a class="button item-create" title="Add Armor" data-type="armor"><i class="fas fa-plus"></i></a>
                 </div>
                 <div class="scrollable">
                     {{#each data.items as |item|}}
                         {{#if item.isArmor}}
-                            <div class="armor item flex row center align-center" data-item-id="{{item._id}}">
-                                <img class="icon" src="{{item.img}}" title="{{item.name}}" height="25" width="25"/>
+                            
+                            <div class="armor item flex column center align-center" data-item-id="{{item._id}}">
+                                <div class="flex row space-between grow full">
+                                <img class="icon" src="{{item.img}}" title="{{item.name}}" height="20" width="20"/>
                                 <div class="name">{{item.name}}</div>
-                                <div class="protection">{{item.data.protection}}</div>
-                                <div class="agility">{{item.data.agility}}</div>
                                 <div class="button">
                                     <a class="item-control item-edit" title="Edit Armor"><i class="fas fa-edit"></i></a>
                                     <a class="item-control item-delete" title="Delete Armor"><i class="fas fa-trash"></i></a>
+                                </div>
                                 </div>
                             </div>
                         {{/if}}
@@ -62,23 +61,21 @@
                 <div class="weapon heading flex row center light-border">
                     <b class="icon">{{localize "WEAPON.ICON"}}</b>
                     <b class="name">{{localize "WEAPON.NAME"}}</b>
-                    <b class="damage">{{localize "WEAPON.DAMAGE"}}</b>
-                    <b class="range">{{localize "WEAPON.RANGE"}}</b>
                     <b class="bonus">{{localize "WEAPON.BONUS"}}</b>
                     <a class="button item-create" title="Add Weapon" data-type="weapon"><i class="fas fa-plus"></i></a>
                 </div>
                 <div class="scrollable">
                     {{#each data.items as |item|}}
                         {{#if item.isWeapon}}
-                            <div class="weapon item flex row center align-center" data-item-id="{{item._id}}">
-                                <img class="icon" src="{{item.img}}" title="{{item.name}}" height="25" width="25"/>
+                            <div class="weapon item flex column center align-center" data-item-id="{{item._id}}">
+                                <div class="flex row space-between grow full">
+                                <img class="icon" src="{{item.img}}" title="{{item.name}}" height="20" width="20"/>
                                 <div class="name">{{item.name}}</div>
-                                <div class="damage">{{item.data.damage}}</div>
-                                <div class="range">{{item.data.range}}</div>
                                 <div class="bonus">{{item.data.bonus}}</div>
                                 <div class="button">
                                     <a class="item-control item-edit" title="Edit Weapon"><i class="fas fa-edit"></i></a>
                                     <a class="item-control item-delete" title="Delete Weapon"><i class="fas fa-trash"></i></a>
+                                </div>
                                 </div>
                             </div>
                         {{/if}}
@@ -92,21 +89,20 @@
                 <div class="gear heading flex row center light-border">
                     <b class="icon">{{localize "GEAR.ICON"}}</b>
                     <b class="name">{{localize "GEAR.NAME"}}</b>
-                    <b class="bonus">{{localize "GEAR.BONUS"}}</b>
-                    <b class="effect">{{localize "GEAR.EFFECT"}}</b>
+                    
                     <a class="button item-create" title="Add Gear" data-type="gear"><i class="fas fa-plus"></i></a>
                 </div>
                 <div class="scrollable">
                     {{#each data.items as |item|}}
                         {{#if item.isGear}}
-                            <div class="gear item flex row center align-center" data-item-id="{{item._id}}">
-                                <img class="icon" src="{{item.img}}" title="{{item.name}}" height="25" width="25"/>
+                            <div class="gear item flex column center align-center" data-item-id="{{item._id}}">
+                                <div class="flex row space-between grow full">
+                                <img class="icon" src="{{item.img}}" title="{{item.name}}" height="20" width="20"/>
                                 <div class="name">{{item.name}}</div>
-                                <div class="bonus">{{item.data.bonus}}</div>
-                                <div class="effect">{{item.data.effect}}</div>
                                 <div class="button">
                                     <a class="item-control item-edit" title="Edit Gear"><i class="fas fa-edit"></i></a>
                                     <a class="item-control item-delete" title="Delete Gear"><i class="fas fa-trash"></i></a>
+                                </div>
                                 </div>
                             </div>
                         {{/if}}
@@ -118,9 +114,6 @@
         <div class=" flex column left">
         <div class="sheet-tabs tabs flex row" data-group="primary">
             <b class="item" data-tab="main">{{localize "TAB.MAIN"}}</b>
-            
-            
-            
             <b class="item" data-tab="note">{{localize "TAB.NOTE"}}</b>
         </div>
 

@@ -1,20 +1,15 @@
 .vaesen .monster .attributes .attribute {
-    padding: 5px;
+    font-size: .92em;   
     flex-basis: 25%;
-    border-right: 1px dashed #826657;
-    border-left: 1px dashed #826657;
+    border-bottom: none;
+    
 }
 
-.vaesen .monster .attributes .attribute:first-child {
-    border-left: 0;
-}
 
-.vaesen .monster .attributes .attribute:last-child {
-    border-right: 0;
-}
 
 .vaesen .monster .attributes .attribute b:hover {
     text-shadow: 0 0 10px darkolivegreen;
+    cursor: pointer;
 }
 
 .vaesen .monster .attributes .attribute input {
@@ -23,8 +18,7 @@
 
 .vaesen .monster .conditions .scrollable {
     overflow-y: auto;
-    height: 388px;
-    max-height: 388px;
+    height: fit-content;
 }
 
 .vaesen .monster .conditions .condition.item.active {
@@ -33,6 +27,7 @@
 
 .vaesen .monster .conditions .condition.item:hover {
     text-shadow: 0 0 10px darkolivegreen;
+    cursor: pointer;
 }
 
 .vaesen .monster .conditions .condition.item:nth-child(even) {
@@ -44,7 +39,7 @@
 }
 
 .vaesen .monster .conditions .condition .icon {
-    flex-basis: 9%;
+    flex-basis: 5%;
 }
 
 .vaesen .monster .conditions .condition img.icon {
@@ -52,7 +47,7 @@
 }
 
 .vaesen .monster .conditions .condition .name {
-    flex-basis: 26%;
+    flex-basis: 75%;
 }
 
 .vaesen .monster .conditions .condition .bonus {
@@ -64,7 +59,7 @@
 }
 
 .vaesen .monster .conditions .condition .button {
-    flex-basis: 5%;
+    flex-basis: 20%;
 }
 
 .vaesen .monster .information .editor {

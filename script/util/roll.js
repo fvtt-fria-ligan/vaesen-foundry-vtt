@@ -81,7 +81,7 @@ function showDice(sheet, isPushed) {
         });
         const data = { throws:[{ dice }] };
         // send the roll to chat once the DSN roll is finished
-        game.dice3d.show(data).then(displayed => { sendRollToChat(sheet, isPushed); });
+        game.dice3d.show(data, game.user, true).then(displayed => { sendRollToChat(sheet, isPushed); });
     } else {
         // DiceSoNice not installed, so just send the roll to chat
         sendRollToChat(sheet, isPushed);

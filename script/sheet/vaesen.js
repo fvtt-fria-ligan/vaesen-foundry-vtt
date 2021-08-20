@@ -10,7 +10,7 @@ export class VaesenCharacterSheet extends ActorSheet {
         return mergeObject(super.defaultOptions, {
             classes: ["vaesen", "sheet", "actor"],
             template: "systems/vaesen/model/vaesen.html",
-            width: 600,
+            width: 700,
             height: 748,
             resizable: false,
             tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main"}]
@@ -53,33 +53,41 @@ export class VaesenCharacterSheet extends ActorSheet {
             let bonus = this.computeBonusFromConditions();
             prepareRollDialog(this, testName, attribute.value, 0, bonus, 0)
         });
-
+        /****** 
+         * 
+         * really not sure what this is all about
+         * notning in RAW that would ahve a roll on a conditon for a vaesen...
         html.find('.condition .icon').click(ev => { this.onConditionRoll(ev); });
         html.find('.condition .name').click(ev => { this.onConditionRoll(ev); });
         html.find('.condition .bonus').click(ev => { this.onConditionRoll(ev); });
         html.find('.condition .description').click(ev => { this.onConditionRoll(ev); });
+        ******/
 
         html.find('.armor .icon').click(ev => { this.onArmorRoll(ev); });
-        html.find('.armor .name').click(ev => { this.onArmorRoll(ev); });
+        html.find('.armor .name').click(ev => { this.onItemSummary(ev, "armor"); });
         html.find('.armor .protection').click(ev => { this.onArmorRoll(ev); });
         html.find('.armor .agility').click(ev => { this.onArmorRoll(ev); });
 
         html.find('.attack .icon').click(ev => { this.onWeaponRoll(ev); });
-        html.find('.attack .name').click(ev => { this.onWeaponRoll(ev); });
+        html.find('.attack .name').click(ev => { this.onItemSummary(ev, "attack"); });
         html.find('.attack .damage').click(ev => { this.onWeaponRoll(ev); });
         html.find('.attack .range').click(ev => { this.onWeaponRoll(ev); });
         html.find('.attack .description').click(ev => { this.onWeaponRoll(ev); });
 
         html.find('.magic .icon').click(ev => { this.onItemUpdate(ev); });
-        html.find('.magic .name').click(ev => { this.onItemUpdate(ev); });
+        html.find('.magic .name').click(ev => { this.onItemSummary(ev, "magic"); });
         html.find('.magic .fatal').click(ev => { this.onItemUpdate(ev); });
         html.find('.magic .time-limit').click(ev => { this.onItemUpdate(ev); });
         html.find('.magic .effect').click(ev => { this.onItemUpdate(ev); });
 
         html.find('.gear .icon').click(ev => { this.onItemUpdate(ev); });
-        html.find('.gear .name').click(ev => { this.onItemUpdate(ev); });
+        html.find('.gear .name').click(ev => { this.onItemSummary(ev, "gear"); });
         html.find('.gear .bonus').click(ev => { this.onItemUpdate(ev); });
         html.find('.gear .effect').click(ev => { this.onItemUpdate(ev); });
+
+        html.find('.condition .selected').change(ev => {this.onToggleActive(ev);});
+        html.find('.condition .name').click(ev => {this.onItemSummary(ev, "condition");})
+        html.find('.condition .bonus').click(ev => {this.onItemSummary(ev, "condition");})
     }
 
     computeItems(data) {
@@ -92,6 +100,70 @@ export class VaesenCharacterSheet extends ActorSheet {
             item.isAttack = item.type === 'attack';
             item.isGear = item.type === 'gear';
         }
+    }
+
+    async onToggleActive(event){
+        
+        let element = event.currentTarget;
+        let itemID = element.closest(".item").dataset.itemId;
+        let item = this.actor.items.get(itemID);
+        if(item.data.data.active){
+            await this.actor.updateEmbeddedDocuments("Item", [{_id: itemID, "data.active": false}]);
+        } else {
+            await this.actor.updateEmbeddedDocuments("Item", [{_id: itemID, "data.active": true}]);
+        }
+        
+    }
+
+    /****** Toggle the roll-down of expanded item information.  */
+    onItemSummary(event, type){
+        let div=$(event.currentTarget).parents(".item"),
+        item = this.actor.items.get(div.data("itemId")),
+        chatData = '';
+
+        switch (type){
+            
+            case "condition":
+                let itemDesc = item.data.data.description;
+                chatData =  "<p class='item-desc'><b>" + game.i18n.localize("CONDITION.DESCRIPTION") + 
+                            ":</b> " + itemDesc + "</br></p>" ;
+                break;
+           case "attack":
+                chatData =  "<p class='item-desc'><b>" + game.i18n.localize("WEAPON.DAMAGE") + 
+                ":</b> " + item.data.data.damage +" | <b>" + game.i18n.localize("WEAPON.RANGE") + 
+                ":</b> " + item.data.data.range +"</br></p>";
+                break;
+            case "gear":
+                chatData =  "<p class='item-desc'><b>" + game.i18n.localize("GEAR.BONUS") + 
+                ":</b> " + item.data.data.bonus +"</br><b>" + game.i18n.localize("GEAR.EFFECT") + 
+                ":</b> " + item.data.data.effect +"</br><b>" + game.i18n.localize("GEAR.DESCRIPTION") + 
+                ":</b> " + item.data.data.description +"</br></p>";
+                break;
+            case "magic":
+                chatData =  "<p class='item-desc'><b>" + game.i18n.localize("MAGIC.CATEGORY") + 
+                ":</b> " + item.data.data.category +" | <b>" +  game.i18n.localize("MAGIC.DESCRIPTION") + 
+                ":</b> " + item.data.data.description +"</br></p>";
+                break;
+            case "armor":
+                chatData =  "<p class='item-desc'><b>" + game.i18n.localize("ARMOR.PROTECTION") + 
+                            ":</b> " + item.data.data.protection +" | <b>" + game.i18n.localize("ARMOR.AGILITY") + 
+                            ":</b> " + item.data.data.agility +"</br></p>";
+                break;
+        }
+
+        
+
+        if(chatData === null){
+            return;
+        } else if (div.hasClass("expanded")){
+            let sum = div.children(".item-summary");
+            sum.slideUp(200, () => sum.remove());
+        } else {
+            let sum = $(`<div class="item-summary">${chatData}</div>`);
+            div.append(sum.hide());
+            sum.slideDown(200);
+        }
+        div.toggleClass("expanded");
     }
 
     onItemCreate(event) {
@@ -147,12 +219,15 @@ export class VaesenCharacterSheet extends ActorSheet {
         this._render();
     }
 
+    /****** determing current dice pool modifier from the last active condition */
     computeBonusFromConditions() {
-        for (let item of Object.values(this.actor.data.items)) {
-            if (item.type === 'condition' && item.data.active) {
-                return parseInt(item.data.bonus, 10);
+        let items = Array.from(this.actor.data.items);
+        let lastBonus = 0;
+        for(let i = 0; i<items.length; i++){
+            if(items[i].data.type === 'condition' && items[i].data.data.active){
+                lastBonus = items[i].data.data.bonus;
             }
         }
-        return 0;
+        return lastBonus;
     }
 }

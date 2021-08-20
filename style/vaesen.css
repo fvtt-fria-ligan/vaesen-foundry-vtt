@@ -3,13 +3,27 @@
     width: 100%;
 }
 
+.vaesen .monster .right{
+    flex-basis: 35%;
+    width: 35%;
+    
+
+}
+
+.vaesen .monster .left{
+    flex-basis: 80%;
+    
+
+}
+
 .vaesen .monster .header .profile-img {
-    border: 1px dashed #826657;
-    border-radius: 10px;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .vaesen .monster .header .name {
-    flex-basis: 100%;
+    width: 100%;
 }
 
 .vaesen .monster .header .initial {

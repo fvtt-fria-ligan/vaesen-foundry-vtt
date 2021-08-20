@@ -37,6 +37,7 @@ It provides support for **character sheets only**, game content should be drawn 
 
 * Link conditions on sheet and status icons on the character sheet (adding a status from the token toggels it on the sheet and visa versa)
 
+* CSS optimization - convert current CSS structure to SASS or LESS based pre-processor for future ease of adjustment
 
 ## Related Website
 - https://foundryvtt.com/
@@ -46,6 +47,13 @@ It provides support for **character sheets only**, game content should be drawn 
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Release Notes
+
+v2.1.7
+- Vaesen Sheet redesigned (this completes this round of sheet rework!)
+- additional data moved to roll-down on click format to make ledgibilty on sheets better
+    - NPC Armor, Weapons and Gear 
+    - Vaesen Conditions, Attacks, Magic, Armor, Gear 
+- Column size on PC sheet adjusted to give favorites more breathing room
 
 v2.1.6
 - tabs layout variance from v9 to v0.8.8 fixed

@@ -45,7 +45,7 @@ export class GearCharacterSheet extends ItemSheet {
             "<b>" + game.i18n.localize("GEAR.DESCRIPTION") + ": </b>" + data.data.description + "</br>" +
             "<b>" + game.i18n.localize("GEAR.RISK") + ": </b>" + data.data.risk + "</br>";
         let chatData = {
-            user: game.user._id,
+            user: game.user.id,
             content: message
         };
         ChatMessage.create(chatData, {});

@@ -45,7 +45,7 @@ export class WeaponCharacterSheet extends ItemSheet {
             "<b>" + game.i18n.localize("WEAPON.AVAILABILITY") + ": </b>" + data.data.availability + "</br>" +
             "<b>" + game.i18n.localize("WEAPON.SKILL") + ": </b>" + data.data.skill + "</br>";
         let chatData = {
-            user: game.user._id,
+            user: game.user.id,
             content: message
         };
         ChatMessage.create(chatData, {});

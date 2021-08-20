@@ -9,6 +9,16 @@
 	grid-template-columns: 40px 40px 40px 40px;
 }
 
+.vaesen .fit-height{
+    height: fit-content;
+}
+
+.vaesen .item-desc{
+    text-align: justify;
+    font-size: .8em;
+
+}
+
 .vaesen .heavy-border {
     border: 2px solid #412017;
     margin: 4px;
@@ -104,6 +114,13 @@
 	
 }
 
+.vaesen .left-block{
+    width: 60%;
+}
+.vaesen .right-block{
+    width: 40%;
+}
+
 .vaesen .tab {
     width: 100%;
 }
@@ -162,7 +179,7 @@
 
 
 .vaesen .second{
-	width: 470px;
+    flex-grow: 1;
 	align-content: center;
 }
 
@@ -203,4 +220,9 @@
 
 .flex-start{
     align-items: flex-start;
+}
+
+
+.vaesen p{
+    margin: 0px;
 }

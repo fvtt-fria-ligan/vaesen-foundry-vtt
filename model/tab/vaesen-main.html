@@ -1,54 +1,36 @@
 <div class="flex column full">
     <div class="flex column heavy-border wrapper">
-        <b class="title">{{localize "HEADER.ATTRIBUTES"}}</b>
-        <div class="attributes flex row">
-            {{#each data.data.attribute as |attribute key|}}
-                <div class="attribute flex column center" data-key="{{key}}">
-                    <b>{{localize attribute.label}}</b>
-                    <div class="flex row align-center">
-                        <input name="data.attribute.{{key}}.value" type="text" value="{{attribute.value}}" data-dtype="Number"/>
-                    </div>
-                </div>
-            {{/each}}
-        </div>
-    </div>
-
-    <div class="flex column heavy-border wrapper">
         <b class="title">{{localize "HEADER.CONDITIONS"}}</b>
         <div class="conditions flex column margin grow">
             <div class="condition flex row center light-border">
-                <b class="icon">{{localize "CONDITION.ICON"}}</b>
+                
                 <b class="name">{{localize "CONDITION.NAME"}}</b>
                 <b class="bonus">{{localize "CONDITION.BONUS"}}</b>
-                <b class="description">{{localize "CONDITION.DESCRIPTION"}}</b>
+                
                 <a class="button item-create" title="Add Condition" data-type="condition"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
                 {{#each data.items as |item|}}
                     {{#if item.isCondition}}
-                        {{#if item.data.active}}
-                            <div class="condition active item flex row center align-center" data-item-id="{{item._id}}">
-                                <img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/>
-                                <div class="name">{{item.name}}</div>
-                                <div class="bonus">{{item.data.bonus}}</div>
-                                <div class="description">{{item.data.description}}</div>
-                                <div class="button">
-                                    <a class="item-control item-edit" title="Edit Armor"><i class="fas fa-edit"></i></a>
-                                    <a class="item-control item-delete" title="Delete Armor"><i class="fas fa-trash"></i></a>
-                                </div>
+                        
+                        <div class="condition item flex column center " data-item-id="{{item._id}}">
+                            <div class="flex row center  space-between grow">
+                            <div class="selected"><input type="checkbox" name="conditon" id="{{item._id}}"
+                                {{#if item.data.active}}
+                                    checked 
+                                {{/if}}
+                                /></div>
+                            <div class="name">{{item.name}}</div>
+                            <div class="bonus">{{item.data.bonus}}</div>
+                            
+                            <div class="button">
+                                <a class="item-control item-edit" title="Edit Armor"><i class="fas fa-edit"></i></a>
+                                <a class="item-control item-delete" title="Delete Armor"><i class="fas fa-trash"></i></a>
                             </div>
-                        {{else}}
-                            <div class="condition item flex row center align-center" data-item-id="{{item._id}}">
-                                <img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/>
-                                <div class="name">{{item.name}}</div>
-                                <div class="bonus">{{item.data.bonus}}</div>
-                                <div class="description">{{item.data.description}}</div>
-                                <div class="button">
-                                    <a class="item-control item-edit" title="Edit Armor"><i class="fas fa-edit"></i></a>
-                                    <a class="item-control item-delete" title="Delete Armor"><i class="fas fa-trash"></i></a>
-                                </div>
                             </div>
-                        {{/if}}
+                        </div>
+                        
+                        
                     {{/if}}
                 {{/each}}
             </div>

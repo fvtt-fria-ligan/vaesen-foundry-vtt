@@ -1,7 +1,6 @@
 .vaesen .monster .armors .scrollable {
     overflow-y: auto;
-    height: 50px;
-    max-height: 50px;
+    height: fit-content;
 }
 
 .vaesen .monster .armors .armor.item:hover {
@@ -22,10 +21,11 @@
 
 .vaesen .monster .armors .armor img.icon {
     border: 0;
+    cursor: pointer;
 }
 
 .vaesen .monster .armors .armor .name {
-    flex-basis: 46%;
+    flex-basis: 75%;
 }
 
 .vaesen .monster .armors .armor .protection {
@@ -36,14 +36,11 @@
     flex-basis: 20%;
 }
 
-.vaesen .monster .armors .armor .button {
-    flex-basis: 5%;
-}
+
 
 .vaesen .monster .attacks .scrollable {
     overflow-y: auto;
-    height: 100px;
-    max-height: 100px;
+    height: fit-content;
 }
 
 .vaesen .monster .attacks .attack.item:hover {
@@ -64,10 +61,11 @@
 
 .vaesen .monster .attacks .attack img.icon {
     border: 0;
+    cursor: pointer;
 }
 
 .vaesen .monster .attacks .attack .name {
-    flex-basis: 26%;
+    flex-basis: 75%;
 }
 
 .vaesen .monster .attacks .attack .damage {
@@ -82,14 +80,12 @@
     flex-basis: 40%;
 }
 
-.vaesen .monster .attacks .attack .button {
-    flex-basis: 5%;
-}
+
 
 .vaesen .monster .magics .scrollable {
     overflow-y: auto;
-    height: 207px;
-    max-height: 207px;
+    height: fit-content;
+   
 }
 
 .vaesen .monster .magics .magic.item:hover {
@@ -105,7 +101,7 @@
 }
 
 .vaesen .monster .magics .magic .icon {
-    flex-basis: 9%;
+    flex-basis: 10%;
 }
 
 .vaesen .monster .magics .magic img.icon {
@@ -113,7 +109,7 @@
 }
 
 .vaesen .monster .magics .magic .name {
-    flex-basis: 20%;
+    flex-basis: 75%;
 }
 
 .vaesen .monster .magics .magic .category {
@@ -124,6 +120,8 @@
     flex-basis: 46%;
 }
 
-.vaesen .monster .magics .magic .button {
-    flex-basis: 5%;
+.vaesen .monster .magics .magic .button,
+.vaesen .monster .attacks .attack .button,
+.vaesen .monster .armors .armor .button {
+    flex-basis: 20%;
 }

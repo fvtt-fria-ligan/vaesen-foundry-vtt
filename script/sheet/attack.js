@@ -43,7 +43,7 @@ export class AttackCharacterSheet extends ItemSheet {
             "<b>" + game.i18n.localize("ATTACK.RANGE") + ": </b>" + data.data.range + "</br>" +
             "<b>" + game.i18n.localize("ATTACK.DESCRIPTION") + ": </b>" + data.data.bonus + "</br>";
         let chatData = {
-            user: game.user._id,
+            user: game.user.id,
             content: message
         };
         ChatMessage.create(chatData, {});

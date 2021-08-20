@@ -42,7 +42,7 @@ export class ConditionCharacterSheet extends ItemSheet {
             "<b>" + game.i18n.localize("CONDITION.BONUS") + ": </b>" + data.data.bonus + "</br>" +
             "<b>" + game.i18n.localize("CONDITION.DESCRIPTION") + ": </b>" + data.data.description + "</br>";
         let chatData = {
-            user: game.user._id,
+            user: game.user.id,
             content: message
         };
         ChatMessage.create(chatData, {});
