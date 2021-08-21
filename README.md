@@ -23,15 +23,10 @@ It provides support for **character sheets only**, game content should be drawn 
     * clean-up layout
     * Add relationship Item Type
 
-* Vaesen sheet
-    * UX improvements
-
 * Dialogs and Chat
     * Set speaker in chat cards to character
     * Add token image to chat cards
     * line up ux and design to match overall look and feel
-
-* Minor bug fixes
 
 * Localize Dialog and tooltip texts
 
