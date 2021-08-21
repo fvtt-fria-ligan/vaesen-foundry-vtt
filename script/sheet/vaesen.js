@@ -10,7 +10,7 @@ export class VaesenCharacterSheet extends ActorSheet {
         return mergeObject(super.defaultOptions, {
             classes: ["vaesen", "sheet", "actor"],
             template: "systems/vaesen/model/vaesen.html",
-            width: 700,
+            width: 750,
             height: 748,
             resizable: false,
             tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main"}]
@@ -53,15 +53,6 @@ export class VaesenCharacterSheet extends ActorSheet {
             let bonus = this.computeBonusFromConditions();
             prepareRollDialog(this, testName, attribute.value, 0, bonus, 0)
         });
-        /****** 
-         * 
-         * really not sure what this is all about
-         * notning in RAW that would ahve a roll on a conditon for a vaesen...
-        html.find('.condition .icon').click(ev => { this.onConditionRoll(ev); });
-        html.find('.condition .name').click(ev => { this.onConditionRoll(ev); });
-        html.find('.condition .bonus').click(ev => { this.onConditionRoll(ev); });
-        html.find('.condition .description').click(ev => { this.onConditionRoll(ev); });
-        ******/
 
         html.find('.armor .icon').click(ev => { this.onArmorRoll(ev); });
         html.find('.armor .name').click(ev => { this.onItemSummary(ev, "armor"); });
@@ -141,7 +132,7 @@ export class VaesenCharacterSheet extends ActorSheet {
                 break;
             case "magic":
                 chatData =  "<p class='item-desc'><b>" + game.i18n.localize("MAGIC.CATEGORY") + 
-                ":</b> " + item.data.data.category +" | <b>" +  game.i18n.localize("MAGIC.DESCRIPTION") + 
+                ":</b> " + item.data.data.category +" </br><b>" +  game.i18n.localize("MAGIC.DESCRIPTION") + 
                 ":</b> " + item.data.data.description +"</br></p>";
                 break;
             case "armor":
@@ -204,19 +195,6 @@ export class VaesenCharacterSheet extends ActorSheet {
         let bonus = this.computeBonusFromConditions();
         let attribute = this.actor.data.data.attribute[item.data.data.attribute].value;
         prepareRollDialog(this, testName, attribute, 0, bonus, item.data.data.damage)
-    }
-
-    async onConditionRoll(event) {
-        const div = $(event.currentTarget).parents(".condition");
-        const selectedCondition = this.actor.items.get(div.data("itemId"));
-        for (let item of Object.values(this.actor.data.items)) {
-            if (item.type === 'condition' && item._id === selectedCondition._id) {
-                await this.actor.updateEmbeddedDocuments("Item", [{_id: item._id, "data.active": !item.data.active}]);
-            } else if (item.type === 'condition') {
-                await this.actor.updateEmbeddedDocuments("Item", [{_id: item._id, "data.active": false}]);
-            }
-        }
-        this._render();
     }
 
     /****** determing current dice pool modifier from the last active condition */
