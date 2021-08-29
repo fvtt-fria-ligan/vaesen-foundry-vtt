@@ -4,10 +4,11 @@ It provides support for **character sheets only**, game content should be drawn 
 
 ## Install
 1. Go to the setup page and choose **Game Systems**.
-2. Click the **Install System** button, and paste in this [manifest link](https://raw.githubusercontent.com/fvtt-fria-ligan/vaesen-foundry-vtt/master/system.json)
+2. Click the **Install System** button, and search for Vaesen, click the Install button.
 3. Create a Game World using the Vaesen system.
 
 ## Preview
+![Character 1](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/blob/master/asset/screen_shot.png?raw=true)  
 ![Character 1](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/blob/master/asset/player_update.png?raw=true)  
 ![Character 1](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/blob/master/asset/npc.png?raw=true)  
 ![Character 1](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/blob/master/asset/vaesen.png?raw=true)  
@@ -23,12 +24,8 @@ It provides support for **character sheets only**, game content should be drawn 
     * clean-up layout
     * Add relationship Item Type
 
-* Dialogs and Chat
-    * Set speaker in chat cards to character
-    * Add token image to chat cards
+* Dialogs
     * line up ux and design to match overall look and feel
-
-* Localize Dialog and tooltip texts
 
 * Link conditions on sheet and status icons on the character sheet (adding a status from the token toggels it on the sheet and visa versa)
 
@@ -42,6 +39,20 @@ It provides support for **character sheets only**, game content should be drawn 
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Release Notes
+v2.2.0 
+- Dice Rolling moved to [Year Zero Universal Roller](https://github.com/Stefouch/foundry-year-zero-roller)
+    - this fixes [issue 11](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/11)
+- Dialog and Tooltip text strings hunted down and fully prepared for localization. updated translations will have to rely on contributors but at least all the bits and bobs can be translated now!
+- Beautification Pass 
+    - Chat Cards updated for YZUR and styled to make pertinent information more apparent
+    - Clear style indication for roll modes
+    - individual dice results hidden in roll-up 
+    - push button in chat when applicable
+    - CSS for entire system updated for more pleasing aesthetic.
+    - Fonts updated 
+
+v2.1.8
+- Spanish Language update
 
 v2.1.7
 - Vaesen Sheet redesigned (this completes this round of sheet rework!)

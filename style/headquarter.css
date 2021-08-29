@@ -29,7 +29,7 @@
 	
 }
 .vaesen .headquarter .second{
-	width: 210px;
+	width: 100%;
 	
 }
 
@@ -41,7 +41,7 @@
 .vaesen .headquarter .personnel,
 .vaesen .headquarter .contacts
  {
-    flex-basis: 30%;
+    flex-basis: 33%;
 }
 
 .vaesen .headquarter .header .name {

@@ -15,6 +15,7 @@
 
 .vaesen .player .attributes .attribute b:hover {
     text-shadow: 0 0 10px darkolivegreen;
+    cursor: pointer;
 }
 
 .vaesen .player .attributes .attribute input {
@@ -52,7 +53,7 @@
 
 .vaesen .player .skills .skill {
     margin: 3px;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .vaesen .player .skills .skill b {
@@ -61,6 +62,7 @@
 
 .vaesen .player .skills .skill b:hover {
     text-shadow: 0 0 10px darkolivegreen;
+    cursor: pointer;
 }
 
 .vaesen .player .skills .skill input {
@@ -100,4 +102,5 @@
 .vaesen .player .conditions b.condition:hover,
 .vaesen .player .conditions div.condition:hover {
     text-shadow: 0 0 10px darkolivegreen;
+    cursor: pointer;
 }

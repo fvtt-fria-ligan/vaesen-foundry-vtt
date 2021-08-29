@@ -7,7 +7,7 @@
                 <b class="name">{{localize "UPGRADE.NAME"}}</b>
                 <b class="function">{{localize "UPGRADE.FUNCTION"}}</b>
                 <b class="asset">{{localize "UPGRADE.ASSET"}}</b>
-                <a class="button item-create" title="Add Personnel" data-type="upgrade" data-category="personnel"><i class="fas fa-plus"></i></a>
+                <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="upgrade" data-category="personnel"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
                 {{#each data.items as |item|}}
@@ -18,8 +18,8 @@
                             <div class="function">{{item.data.function}}</div>
                             <div class="asset">{{item.data.asset}}</div>
                             <div class="button">
-                                <a class="item-control item-edit" title="Edit Personnel"><i class="fas fa-edit"></i></a>
-                                <a class="item-control item-delete" title="Delete Personnel"><i class="fas fa-trash"></i></a>
+                                <a class="item-control item-edit" title='{{localize  "UI.EDIT"}}'><i class="fas fa-edit"></i></a>
+                                <a class="item-control item-delete" title='{{localize  "UI.DELETE"}}'><i class="fas fa-trash"></i></a>
                             </div>
                         </div>
                     {{/if}}

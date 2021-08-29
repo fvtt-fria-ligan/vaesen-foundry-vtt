@@ -3,7 +3,7 @@
   "name": "vaesen",
   "title": "Vaesen",
   "description": "Nordic horror role-playing",
-  "version": "2.1.7",
+  "version": "2.2.0",
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "0.8.9",
   "templateVersion": 2,
@@ -12,6 +12,7 @@
   "esmodules": [
     "script/hooks.js"
   ],
+  "initiative": "1d10",
   "styles": [
     "style/common.css",
     "style/player.css",

@@ -1,9 +1,12 @@
-import { prepareRollDialog, push, roll } from "../util/roll.js";
+import { prepareRollDialog, push } from "../util/roll.js";
 import {conditions} from "../util/conditions.js";
+import { YearZeroRoll } from "../lib/yzur.js";
 
 export class PlayerCharacterSheet extends ActorSheet {
 
-    dices = [];
+
+    //TODO convert dices[] to a YZUR roll object to pass rolls and allow pushes
+    dices = new YearZeroRoll;
     lastTestName = "";
     lastDamage = 0;
 
@@ -23,13 +26,13 @@ export class PlayerCharacterSheet extends ActorSheet {
         if (this.actor.isOwner) {
             buttons = [
                 {
-                    label: "Roll",
+                    label: game.i18n.localize("ROLL.ROLL"),
                     class: "custom-roll",
                     icon: "fas fa-dice",
-                    onclick: (ev) => prepareRollDialog(this, "Roll", 0, 0, 0, 0),
+                    onclick: (ev) => prepareRollDialog(this, game.i18n.localize("ROLL.ROLL"), 0, 0, 0, 0),
                 },
                 {
-                    label: "Push",
+                    label: game.i18n.localize("ROLL.PUSH"),
                     class: "push-roll",
                     icon: "fas fa-skull",
                     onclick: (ev) => push(this),
@@ -44,9 +47,6 @@ export class PlayerCharacterSheet extends ActorSheet {
         this.setSwag(superData.data);
         this.computeSkills(superData.data);
         this.computeItems(superData.data);
-        //console.log("these are the effects we have: ")
-        //console.log(this.actor.effects);
-        //this.affirmConditions(this.actor);
         return superData;
     }
 
@@ -115,7 +115,7 @@ export class PlayerCharacterSheet extends ActorSheet {
         html.find("input").focusin(ev => this.onFocusIn(ev));
 
         html.find('.resources b').click(ev => {
-            prepareRollDialog(this, "Resources", 0, 0, this.actor.data.data.resources, 0)
+            prepareRollDialog(this, game.i18n.localize("RESOURCES"), 0, 0, this.actor.data.data.resources, 0)
         });
         //html.find(".physical .condition").click(conditions.eventsProcessing.onToggleEffect.bind(this));
         html.find('.physical .condition').click(ev => {
@@ -177,10 +177,11 @@ export class PlayerCharacterSheet extends ActorSheet {
             const skillName = div.data("key");
             const skill = this.actor.data.data.skill[skillName];
             const attribute = this.actor.data.data.attribute[skill.attribute];
+            
             let bonusConditions = this.computeBonusFromConditions(skill.attribute);
             let bonusArmor = this.computeBonusFromArmor(skillName);
             const testName = game.i18n.localize(skill.label);
-            prepareRollDialog(this, testName, attribute.value, skill.value,  bonusConditions + bonusArmor, 0, skill.attribute, testName )
+            prepareRollDialog(this, testName, attribute.value, skill.value,  bonusConditions + bonusArmor, 0, game.i18n.localize(attribute.label+"_ROLL"), testName )
             //prepareRollDialog(this, testName, attribute.value, skill.value, bonusConditions + bonusArmor, 0)
         });
 
@@ -289,11 +290,11 @@ export class PlayerCharacterSheet extends ActorSheet {
         if(type==="physical"){
             
             let pool = physique+precision;
-            prepareRollDialog(this, "Physical Recovery", pool, 0, 0, 0, "Physique + Precision");
+            prepareRollDialog(this,  game.i18n.localize("ROLL.PREC"), pool, 0, 0, 0, game.i18n.localize("ATTRIBUTE.PHYSIQUE_ROLL")+" + "+game.i18n.localize("ATTRIBUTE.PRECISION_ROLL")); 
         } else {
             
             let pool = logic+empathy;
-            prepareRollDialog(this, "Mental Recovery", pool, 0, 0, 0, "Logic + Empathy");
+            prepareRollDialog(this, game.i18n.localize("ROLL.MREC"), pool, 0, 0, 0, game.i18n.localize("ATTRIBUTE.LOGIC_ROLL")+" + "+game.i18n.localize("ATTRIBUTE.EMPATHY_ROLL"));
         }
 
         

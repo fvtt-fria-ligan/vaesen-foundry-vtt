@@ -1,8 +1,9 @@
 import { prepareRollDialog } from "../util/roll.js";
+import { YearZeroRoll } from "../lib/yzur.js";
 
 export class VaesenCharacterSheet extends ActorSheet {
-
-    dices = [];
+     //TODO convert dices[] to a YZUR roll object to pass rolls and allow pushes
+    dices = new YearZeroRoll;
     lastTestName = "";
     lastDamage = 0;
 

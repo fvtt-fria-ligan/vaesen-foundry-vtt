@@ -51,6 +51,7 @@
 
 .vaesen .player .header .resources b:hover {
     text-shadow: 0 0 10px darkolivegreen;
+	cursor: pointer;
 }
 
 .vaesen .player .header .resources input {

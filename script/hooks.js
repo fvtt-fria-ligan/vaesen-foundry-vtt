@@ -14,13 +14,25 @@ import { AttackCharacterSheet } from "./sheet/attack.js";
 import { UpgradeCharacterSheet } from "./sheet/upgrade.js";
 import { prepareRollDialog, push } from "./util/roll.js";
 import { registerSystemSettings } from "./util/settings.js";
-import {vaesen} from "./config.js"
+import {vaesen} from "./config.js";
 import {conditions} from "./util/conditions.js";
+import { YearZeroRollManager } from './lib/yzur.js';
+import * as Chat from "./util/chat.js";
 
 Hooks.once("ready", function(){
     conditions.onReady();
 });
 
+
+Hooks.on("renderChatMessage", (app, html, data) => {
+  Chat.hideChatActionButtons(app, html, data);
+})
+Hooks.on('renderChatLog', (app, html, data) => {
+  
+  html.on('click', '.dice-button.push', _onPush);
+  
+  
+});
 
 Hooks.once("init", () => {
     CONFIG.vaesen = vaesen;
@@ -47,23 +59,27 @@ Hooks.once("init", () => {
     preloadHandlebarsTemplates();
     // Register System Settings
     registerSystemSettings();
-    
+    YearZeroRollManager.register('vae', {
+      'ROLL.baseTemplate': 'systems/vaesen/templates/dice/broll.hbs',
+      'ROLL.chatTemplate': 'systems/vaesen/templates/dice/roll.hbs',
+      'ROLL.tooltipTemplate': 'systems/vaesen/templates/dice/tooltip.hbs',
+      'ROLL.infosTemplate': 'systems/vaesen/templates/dice/infos.hbs'
+    });
     // render cutstom effect icons
-    if(game.data.version == '0.8.8' || game.data.version == '0.8.7' || game.data.version == '0.8.6'){
-    Token.prototype._drawEffect = async function(src, i, bg, w, tint) {
-			const multiplier = 3;
-			const divisor = 3 * this.data.height;
-			w = (w / 2) * multiplier;
-			let tex = await loadTexture(src);
-      
-			let icon = this.effects.addChild(new PIXI.Sprite(tex));
-			icon.width = icon.height = w;
-			icon.y = Math.floor(i / divisor) * w;
-			icon.x = (i % divisor) * w;
-			if ( tint ) icon.tint = tint;
-			this.effects.addChild(icon);
-       
-		};
+    if(game.data.version == '0.8.9' || game.data.version == '0.8.8' || game.data.version == '0.8.7' || game.data.version == '0.8.6'){
+        Token.prototype._drawEffect = async function(src, i, bg, w, tint) {
+          const multiplier = 3;
+          const divisor = 3 * this.data.height;
+          w = (w / 2) * multiplier;
+          let tex = await loadTexture(src);
+          
+          let icon = this.effects.addChild(new PIXI.Sprite(tex));
+          icon.width = icon.height = w;
+          icon.y = Math.floor(i / divisor) * w;
+          icon.x = (i % divisor) * w;
+          if ( tint ) icon.tint = tint;
+          this.effects.addChild(icon);
+        };
     } else {
       Token.prototype._drawEffect = async function(src, i, bg, w, tint) {
         const multiplier = 3;
@@ -117,6 +133,26 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     default: true
   });
 });
+
+
+async function _onPush(event) {
+  event.preventDefault();
+
+  // Get the message.
+  let chatCard = event.currentTarget.closest('.chat-message');
+  let messageId = chatCard.dataset.messageId;
+  let message = game.messages.get(messageId);
+
+  // Copy the roll.
+  let roll = message.roll.duplicate();
+
+  // Delete the previous message.
+  await message.delete();
+
+  // Push the roll and send it.
+  await roll.push({ async: true });
+  await roll.toMessage();
+}
 
 function preloadHandlebarsTemplates() {
     const templatePaths = [

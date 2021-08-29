@@ -1,8 +1,9 @@
 import { prepareRollDialog, push } from "../util/roll.js";
+import { YearZeroRoll } from "../lib/yzur.js";
 
 export class NpcCharacterSheet extends ActorSheet {
-
-    dices = [];
+     //TODO convert dices[] to a YZUR roll object to pass rolls and allow pushes
+    dices = new YearZeroRoll;
     lastTestName = "";
     lastDamage = 0;
 
@@ -16,13 +17,14 @@ export class NpcCharacterSheet extends ActorSheet {
             tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main"}]
         });
     }
-
+    // move this to a utility to share between sheets
+    //TODO localize labels and passed test value
     _getHeaderButtons() {
         let buttons = super._getHeaderButtons();
         if (this.actor.isOwner) {
             buttons = [
                 {
-                    label: "Roll",
+                    label: "Roll",  
                     class: "custom-roll",
                     icon: "fas fa-dice",
                     onclick: (ev) => prepareRollDialog(this, "Roll", 0, 0, 0, 0),

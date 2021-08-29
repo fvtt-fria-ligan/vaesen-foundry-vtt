@@ -6,7 +6,7 @@
                 <b class="icon">{{localize "TALENT.ICON"}}</b>
                 <b class="name">{{localize "TALENT.NAME"}}</b>
                 <b class="description">{{localize "TALENT.DESCRIPTION"}}</b>
-                <a class="button item-create" title="Add Talent" data-type="talent"><i class="fas fa-plus"></i></a>
+                <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="talent"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
                 {{#each data.items as |item|}}
@@ -16,8 +16,8 @@
                             <div class="name">{{item.name}}</div>
                             <div class="description">{{item.data.description}}</div>
                             <div class="button">
-                                <a class="item-control item-edit" title="Edit Talent"><i class="fas fa-edit"></i></a>
-                                <a class="item-control item-delete" title="Delete Talent"><i class="fas fa-trash"></i></a>
+                                <a class="item-control item-edit" title='{{localize  "UI.EDIT"}}'><i class="fas fa-edit"></i></a>
+                                <a class="item-control item-delete" title='{{localize  "UI.DELETE"}}'><i class="fas fa-trash"></i></a>
                             </div>
                         </div>
                     {{/if}}

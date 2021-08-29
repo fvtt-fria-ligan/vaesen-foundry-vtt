@@ -1,25 +1,31 @@
-export function prepareRollDialog(sheet, testName,  attributeDefault, skillDefault, bonusDefault, damageDefault, attName = "Attribute", skName = "Skill"){
+
+import {YearZeroRoll} from '../lib/yzur.js'
+
+
+export function prepareRollDialog(sheet, testName,  attributeDefault, skillDefault, bonusDefault, damageDefault, attName = game.i18n.localize("ATTACK.ATTRIBUTE") , skName = game.i18n.localize("ROLL.SKILL")){
+   
+
+
     let attributeHtml = buildHtmlDialog(attName, attributeDefault, "attribute");
     let skillHtml = buildHtmlDialog(skName, skillDefault, "skill");
-    let bonusHtml = buildInputHtmlDialog("Bonus Dice", bonusDefault, "bonus");
-    let damageHtml = buildInputHtmlDialog("Damage", damageDefault, "damage");
+    let bonusHtml = buildInputHtmlDialog(game.i18n.localize("ROLL.BONUS"), bonusDefault, "bonus");
+    let damageHtml = buildInputHtmlDialog(game.i18n.localize("ROLL.DAMAGE"), damageDefault, "damage");
    
 
     let d = new Dialog({
         title: "Test : " + testName,
         content: buildDivHtmlDialog(`
             <div class="roll-fields">
-            <h2 class="title"> Test: ` + testName + `
+            <h2 class="title"> `+ game.i18n.localize("ROLL.TEST") +`: ` + testName + `
             </h2>
             <div class="flex column grow align-center heavy-border" style="width:200px;">
            `+ attributeHtml + skillHtml + ` 
-        <div align-center style="flex-basis:33%;"> <strong>Base Dice Pool: </strong> `+ (attributeDefault+skillDefault) + `</div>
-        
+        <div align-center style="flex-basis:33%;"> <strong>`+ game.i18n.localize("ROLL.BASE.POOL") +`:</strong> `+ (attributeDefault+skillDefault) + `</div>
         </div><div class="flex column grow align-center light-border" style="width:200px; margin:auto; padding:5px; margin-bottom: 3px;">` + bonusHtml + damageHtml + `</div></div>`),
         buttons: {
             roll: {
                 icon: '<i class="fas fa-check"></i>',
-                label: "Roll",
+                label: game.i18n.localize("ROLL.ROLL"),
                 callback: (html) => {
                     let attribute = html.find('#attribute')[0].value;
                     let skill = html.find('#skill')[0].value;
@@ -37,7 +43,7 @@ export function prepareRollDialog(sheet, testName,  attributeDefault, skillDefau
             },
             cancel: {
                 icon: '<i class="fas fa-times"></i>',
-                label: "Cancel",
+                label: game.i18n.localize("ROLL.CANCEL"),
                 callback: () => {}
             }
         },
@@ -52,106 +58,47 @@ export function prepareRollDialog(sheet, testName,  attributeDefault, skillDefau
 
 
 export function roll(sheet, testName, attribute, skill, bonus, damage) {
-    sheet.dices = [];
+   
+
+    sheet.dices = new YearZeroRoll;
     sheet.lastTestName = testName;
     sheet.lastDamage = damage;
     let numberOfDice = attribute + skill + bonus;
+
+
     rollDice(sheet, numberOfDice);
-    showDice(sheet, false);
+    //sendRollToChat(sheet, false);
 }
 
-export function push(sheet) {
-    let numberOfDiceToPush = sheet.dices.filter(dice => dice !== 6).length;
-    sheet.dices = sheet.dices.filter(dice => dice === 6);
-    rollDice(sheet, numberOfDiceToPush);
-    showDice(sheet, true);
+export async function push(sheet) {
+    await sheet.dices.push({async: true});
+    await sheet.dices.toMessage();
+   // sendRollToChat(sheet, true);
 }
 
-function showDice(sheet, isPushed) {
-    if (game.dice3d) {
-        // DiceSoNice module is installed
-        const dice = sheet.dices.map(r => {
-            return {
-                result: r,
-                resultLabel: r,
-                type: "d6",
-                vectors: [],
-                options: {}
-            };
-        });
-        const data = { throws:[{ dice }] };
-        // send the roll to chat once the DSN roll is finished
-        game.dice3d.show(data, game.user, true).then(displayed => { sendRollToChat(sheet, isPushed); });
-    } else {
-        // DiceSoNice not installed, so just send the roll to chat
-        sendRollToChat(sheet, isPushed);
-    }
-}
-
-function sendRollToChat(sheet, isPushed) {
-    sheet.dices.sort(function(a, b){return b - a});
-    let numberOfSuccess = countSuccess(sheet);
-    let resultMessage;
-    let damageMessage;
-    if (isPushed) {
-        if (numberOfSuccess > 0) {
-            resultMessage = "<b style='color:green; text-align: center;'>" + sheet.lastTestName + "</b> (PUSHED)</br>";
-        } else {
-            resultMessage = "<b style='color:red; text-align: center;'>" + sheet.lastTestName + "</b> (PUSHED)</br>";
-        }
-    } else {
-        if (numberOfSuccess > 0) {
-            resultMessage = "<b style='color:green; text-align: center;'>" + sheet.lastTestName + "</b></br>";
-        } else {
-            resultMessage = "<b style='color:red; text-align: center;'>" + sheet.lastTestName + "</b></br>";
-        }
-    }
-    let successMessage = "<b> Success:</b> " + numberOfSuccess + "</br>";
-    let diceMessage = printDices(sheet) + "</br>";
-    let chatData;
-    if(sheet.lastDamage > 0){
-    damageMessage = "<b> Damage:</b> " + sheet.lastDamage + "</br>";
-    chatData = {
-        user: game.user.id,
-        rollMode: game.settings.get("core", "rollMode"),
-        content: resultMessage + successMessage + damageMessage + diceMessage
-    };
-    } else {
-        chatData = {
-            user: game.user.id,
-            rollMode: game.settings.get("core", "rollMode"),
-            content: resultMessage + successMessage  + diceMessage
-        };
-    }
-    
-    
-   
-    if (["gmroll", "blindroll"].includes(chatData.rollMode)) {
-        chatData.whisper = ChatMessage.getWhisperRecipients("GM");
-    } else if (chatData.rollMode === "selfroll") {
-        chatData.whisper = [game.user];
-    }
-    ChatMessage.create(chatData, {});
-}
-
-function rollDice(sheet, numberOfDice) {
+async function rollDice(sheet, numberOfDice) {
+    let actor = game.actors.get(sheet.object.data._id);
     if (numberOfDice <= 0) {
         numberOfDice = 1;
     }
-    let die;
-    if (DiceTerm !== undefined) {
-        die = new Die({ faces: 6, number: numberOfDice });
-        die.evaluate();
-    } else {
-        die = new Die(numberOfFaces);
-        die.roll(numberOfDice);
-    }
-    die.results.forEach(r => {
-        sheet.dices.push(r.result);
-    });
+
+    let dice = {
+        skill: numberOfDice
+    };
+    
+    let r = YearZeroRoll.createFromDiceQuantities(dice, {title : sheet.lastTestName, damage: sheet.lastDamage, owner: actor.id} );
+    
+    //async toMessage(messageData = {}, { rollMode = null, create = true } = {})
+    
+   // r.evaluate();
+    await r.toMessage({speaker: ChatMessage.getSpeaker({actor: actor, token: actor.img})})
+    //await r.render({speaker: ChatMessage.getSpeaker({actor: actor, token: actor.img}),  type: CONST.CHAT_MESSAGE_TYPES.ROLL, owner: actor.id}); // define the messageData to give the info we need to pass for our sheet etc
+    console.log(r.getTerms('skill'));
+    sheet.dices = r.duplicate();
 }
 
 function printDices(sheet) {
+    
     let message = "";
     sheet.dices.forEach(dice => {
         message = message + "<img width='25px' height='25px' style='border:none;margin-right:2px;margin-top:2px' src='systems/vaesen/asset/dice-" + dice + ".png'/>"
@@ -159,9 +106,7 @@ function printDices(sheet) {
     return message;
 }
 
-function countSuccess(sheet) {
-    return sheet.dices.filter(dice => dice === 6).length;
-}
+
 
 function buildInputHtmlDialog(diceName, diceValue, type) {
     return `

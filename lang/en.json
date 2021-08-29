@@ -162,5 +162,27 @@
   "WEAPON.AVAILABILITY": "Availability",
   "WEAPON.SKILL": "Skill",
 
-  "SETTINGS.SWAG": "Use official Vaesen Logo as Header Image on Character Sheets"
+  "UI.FAVORITE" : "Toggle Favorite",
+  "UI.EDIT" : "Edit",
+  "UI.DELETE": "Delete",
+  "UI.ADD" : "Create New",
+  "UI.ROLL.PREC": "Roll Physical Recovery",
+  "UI.ROLL.MREC": "Roll Mental Recovery",
+
+  "SETTINGS.SWAG": "Use official Vaesen Logo as Header Image on Character Sheets",
+
+  "CHAT.SUCCESS": "Successes",
+  "ROLL.BASE.POOL": "Base Dice Pool",
+  "ROLL.TEST" : "Test",
+  "ROLL.ROLL" : "Roll",
+  "ROLL.PUSH": "Push",
+  "ROLL.CANCEL" : "Cancel",
+  "ROLL.SKILL": "Skill",
+  "ROLL.PREC": "Physical Recovery",
+  "ROLL.MREC": "Mental Recovery",
+  "ROLL.BONUS": "Bonus Dice",
+  "ROLL.DAMAGE": "Damage",
+
+  "YZUR.CHAT.ROLL.Push" : "Push",
+  "YZUR.DIETYPES.SkillDie" : "Success Count"
 }

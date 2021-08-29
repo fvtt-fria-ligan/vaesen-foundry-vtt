@@ -7,7 +7,7 @@
                 <b class="name">{{localize "GEAR.NAME"}}</b>
                 <b class="bonus">{{localize "GEAR.BONUS"}}</b>
                 <b class="effect">{{localize "GEAR.EFFECT"}}</b>
-                <a class="button item-create" title="Add Gear" data-type="gear"><i class="fas fa-plus"></i></a>
+                <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="gear"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
                 {{#each data.items as |item|}}
@@ -18,8 +18,8 @@
                             <div class="bonus">{{item.data.bonus}}</div>
                             <div class="effect">{{item.data.effect}}</div>
                             <div class="button">
-                                <a class="item-control item-edit" title="Edit Gear"><i class="fas fa-edit"></i></a>
-                                <a class="item-control item-delete" title="Delete Gear"><i class="fas fa-trash"></i></a>
+                                <a class="item-control item-edit" title='{{localize  "UI.EDIT"}}'><i class="fas fa-edit"></i></a>
+                                <a class="item-control item-delete" title='{{localize  "UI.DELETE"}}'><i class="fas fa-trash"></i></a>
                             </div>
                         </div>
                     {{/if}}

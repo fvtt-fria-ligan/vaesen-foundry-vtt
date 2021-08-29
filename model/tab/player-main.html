@@ -84,7 +84,7 @@
         <b class="title">{{localize "HEADER.CONDITIONS"}}</b>
         <div class="flex row grow margin">
             <div class="conditions physical flex column" data-key="physical">
-                <b class="header">{{localize "CONDITION.PHYSICAL"}} <a class="roll-recovery" title="Roll Physical Recovery"><i class="fas fa-dice-d6"></i></a> </b>
+                <b class="header">{{localize "CONDITION.PHYSICAL"}} <a class="roll-recovery" title='{{localize  "UI.ROLL.PREC"}}'><i class="fas fa-dice-d6"></i></a> </b>
                 <div class="flex column grow center wrap">
                     {{#each data.data.condition.physical.states as |condition key|}}
                     <div class="flex row grow">
@@ -105,7 +105,7 @@
                 </div>
             </div>
             <div class="conditions mental flex column" data-key="mental">
-                <b class="header">{{localize "CONDITION.MENTAL"}} <a class="roll-recovery" title="Roll Mental Recovery"><i class="fas fa-dice-d6"></i></a> </b>
+                <b class="header">{{localize "CONDITION.MENTAL"}} <a class="roll-recovery" title='{{localize  "UI.ROLL.MREC"}}'><i class="fas fa-dice-d6"></i></a> </b>
                 <div class="flex column grow center wrap">
                     {{#each data.data.condition.mental.states as |condition key|}}
                     <div class="flex row grow">

@@ -7,7 +7,7 @@
                 <b class="name">{{localize "CONDITION.NAME"}}</b>
                 <b class="bonus">{{localize "CONDITION.BONUS"}}</b>
                 
-                <a class="button item-create" title="Add Condition" data-type="condition"><i class="fas fa-plus"></i></a>
+                <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="condition"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
                 {{#each data.items as |item|}}
@@ -24,8 +24,8 @@
                             <div class="bonus">{{item.data.bonus}}</div>
                             
                             <div class="button">
-                                <a class="item-control item-edit" title="Edit Armor"><i class="fas fa-edit"></i></a>
-                                <a class="item-control item-delete" title="Delete Armor"><i class="fas fa-trash"></i></a>
+                                <a class="item-control item-edit" title='{{localize  "UI.EDIT"}}'><i class="fas fa-edit"></i></a>
+                                <a class="item-control item-delete" title='{{localize  "UI.DELETE"}}'><i class="fas fa-trash"></i></a>
                             </div>
                             </div>
                         </div>
