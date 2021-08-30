@@ -3,7 +3,7 @@
   "name": "vaesen",
   "title": "Vaesen",
   "description": "Nordic horror role-playing",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "0.8.9",
   "templateVersion": 2,
@@ -60,7 +60,7 @@
     },
 	{
       "lang": "es",
-      "name": "Spanish",
+      "name": "Español",
       "path": "lang/es.json"
     }
   ],
