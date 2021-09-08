@@ -34,6 +34,10 @@ This system provides character sheets and items for  your play, if you would lik
 
 ## Release Notes
 
+v2.2.3
+- CSS fix for notes section
+- adjustment on paths for backend to fix old chat card issues
+
 v2.2.2
 - Relationship item created
 - Relationships added to the NOTE tab on the character sheet

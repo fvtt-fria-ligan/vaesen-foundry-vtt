@@ -18,7 +18,7 @@
 }
 @font-face {
   font-family: Baskerville;
-  src: url(/systems/vaesen/fonts/BASKVILL.ttf);
+  src: url(/systems/vaesen/fonts/LibreBaskerville-Regular.ttf);
 }
 @font-face {
   font-family: Lin;
@@ -231,7 +231,7 @@
 .vaesen .dice-total {
   font-family: Baskerville, sans-serif;
   text-transform: uppercase;
-  font-size: 1.1em;
+  font-size: 1em;
 }
 .vaesen .dice-total.success {
   background: #c5d1a5;
@@ -244,7 +244,7 @@
 .vaesen .dice-roll .dice-flavor {
   text-align: center;
   font-family: Baskerville, serif;
-  font-size: 1.5em;
+  font-size: 1em;
   font-weight: bolder;
   color: #412017;
   text-transform: uppercase;
@@ -368,7 +368,7 @@ h4 {
 .chat-message .chat-flavor {
   text-align: center;
   font-family: Baskerville, serif;
-  font-size: 1.5em;
+  font-size: 1em;
   font-weight: bolder;
   color: #412017;
   text-transform: uppercase;

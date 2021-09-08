@@ -3,7 +3,7 @@
   "name": "vaesen",
   "title": "Vaesen",
   "description": "Nordic horror role-playing",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "0.8.9",
   "templateVersion": 2,
@@ -12,11 +12,11 @@
   "media": [
 		{
 			"type": "cover",
-			"url": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/tree/master/asset/welcome.jpg?raw=true"
+			"url": "https://raw.githubusercontent.com/fvtt-fria-ligan/vaesen-foundry-vtt/master/asset/welcome.jpg"
 		},
 		{
 			"type": "screenshot",
-			"url": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/tree/master/asset/screen_shot.png?raw=true"
+			"url": "https://raw.githubusercontent.com/fvtt-fria-ligan/vaesen-foundry-vtt/master/asset/screen_shot.png"
 		}
 	],
   "esmodules": [
