@@ -272,7 +272,7 @@ export class YearZeroRoll extends Roll {
    * @param {number} data.maxPush  The maximum number of times the roll can be pushed
    * @param {number} data.damage On optional declaration of Damage Value
    * @param {string} data.owner ID of the actor that owns this roll (used to flag chat items)
-   * @param {string} data.toekn URL of the token of the actor that owns this roll
+   * @param {string} data.token URL of the token of the actor that owns this roll
    */
   constructor(formula, data = {}, options = {}) {
     super(formula, data, options);
@@ -958,7 +958,7 @@ export class YearZeroRoll extends Roll {
 
   /** @override */
   async render(chatOptions = {}) {
-    console.log(chatOptions);
+    
     if (CONFIG.debug.dice) console.warn(this);
     if (this.name){
     chatOptions = foundry.utils.mergeObject({
@@ -976,7 +976,7 @@ export class YearZeroRoll extends Roll {
     }, chatOptions);
   }
     const isPrivate = chatOptions.isPrivate;
-    console.log(chatOptions);
+    
     // Executes the roll, if needed.
     if (!this._evaluated) await this.evaluate();
 
@@ -1013,7 +1013,7 @@ export class YearZeroRoll extends Roll {
     }, messageData);
   
     // messageData.roll = this; // Already added in super.
-    console.log(messageData);
+   
     return await super.toMessage(messageData, { rollMode, create });
   }
 
@@ -1556,10 +1556,10 @@ const YZUR = {
     diceSorting: ['base', 'skill', 'neg', 'gear', 'arto', 'loc', 'ammo'],
   },
   ROLL: {
-    baseTemplate: 'templates/dice/broll.hbs',
-    chatTemplate: 'templates/dice/roll.html',
-    tooltipTemplate: 'templates/dice/tooltip.html',
-    infosTemplate: 'templates/dice/infos.hbs',
+    baseTemplate: 'model/templates/dice/broll.hbs',
+    chatTemplate: 'model/templates/dice/roll.html',
+    tooltipTemplate: 'model/templates/dice/tooltip.html',
+    infosTemplate: 'model/templates/dice/infos.hbs',
   },
   DICE: {
     localizeDieTypes: true,

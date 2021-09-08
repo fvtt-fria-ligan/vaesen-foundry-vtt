@@ -1,0 +1,47 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+    <div class="critical-injury item-sheet flexrow">
+        <div class="item-sidebar">
+           <img class="icon" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        </div>  
+        <div class="item-info">
+            <div class="name flex column wrap">
+                <h1 style="text-align: center;">{{localize "CRITICAL_INJURY.NAME"}}</h1>
+                <br /><img src="systems/vaesen/asset/h-rule.png" width="90%" style="margin-bottom: 5px;"/>   
+            </div>
+            <div class="type flex row wrap center">
+
+                <h3>{{localize "NAME"}}:&nbsp;</h3>
+                <input name="name" type="text" value="{{item.name}}" style="width: 30%; margin-right:5px;"/>
+                <b style="margin-right: 5px;">{{localize "CRITICAL_INJURY.TYPE"}}: </b>
+                <select name="data.type">
+                    {{#select data.data.type}}
+                        <option value="physical">{{localize "CONDITION.PHYSICAL"}}</option>
+                        <option value="mental">{{localize "CONDITION.MENTAL"}}</option>
+                    {{/select}}
+                </select>
+                
+                <b style="margin-right: 5px; margin-left:5px;">{{localize "CRITICAL_INJURY.PERMANENT"}}: </b>
+                <select  name="data.permanent">
+                    {{#select data.data.permanent}}
+                        <option value="No">{{localize "NO"}}</option>
+                        <option value="Yes">{{localize "YES"}}</option>
+                    {{/select}}
+                </select>
+            </div>
+            <div class="flex row wrap center">
+                <div class="fatal flex row wrap center">
+                    <b>{{localize "CRITICAL_INJURY.FATAL"}}</b>
+                    <input name="data.fatal" type="text" value="{{data.data.fatal}}" style="margin-right:5px;"/>
+                </div>
+                <div class="time-limit flex row wrap center">
+                    <b>{{localize "CRITICAL_INJURY.TIME_LIMIT"}}</b>
+                    <input name="data.timeLimit" type="text" value="{{data.data.timeLimit}}" style="margin-right:5px;"/>
+                </div>
+            </div>
+            <div class="effect flex row wrap">
+                <b>{{localize "CRITICAL_INJURY.EFFECT"}}</b>
+                <input name="data.effect" type="text" value="{{data.data.effect}}"/>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,6 +1,7 @@
 import { prepareRollDialog, push } from "../util/roll.js";
 import {conditions} from "../util/conditions.js";
 import { YearZeroRoll } from "../lib/yzur.js";
+import { buildChatCard } from "../util/chat.js";
 
 export class PlayerCharacterSheet extends ActorSheet {
 
@@ -111,6 +112,7 @@ export class PlayerCharacterSheet extends ActorSheet {
         html.find('.item-edit').click(ev => { this.onItemUpdate(ev); });
         html.find('.item-delete').click(ev => { this.onItemDelete(ev); });
         html.find('.fav-togle').click(ev => {this.onFavTogle(ev);});
+        html.find('.to-chat').click(ev => {this.sendToChat(ev);});
         html.find('.roll-recovery').click(ev => {this.onRecovery(ev);});
         html.find("input").focusin(ev => this.onFocusIn(ev));
 
@@ -206,6 +208,10 @@ export class PlayerCharacterSheet extends ActorSheet {
         html.find('.talent .name').click(ev => { this.onItemUpdate(ev); });
         html.find('.talent .description').click(ev => { this.onItemUpdate(ev); });
 
+        //html.find('.relationship .name').click(ev => { this.onItemUpdate(ev); });
+        html.find('.relationship .name').click(ev => { this.onItemSummary(ev, "relationship"); });
+        html.find('.relationship .description').click(ev => { this.onItemSummary(ev, "relationship"); });
+
         html.find('.gear .icon').click(ev => { this.onItemUpdate(ev); });
         html.find('.gear .name').click(ev => { this.onItemUpdate(ev); });
         html.find('.gear .bonus').click(ev => { this.onItemUpdate(ev); });
@@ -228,12 +234,68 @@ export class PlayerCharacterSheet extends ActorSheet {
             item.isArmor = item.type === 'armor';
             item.isTalent = item.type === 'talent';
             item.isGear = item.type === 'gear';
+            item.isRelationship = item.type === 'relationship';
         }
+       
     }
 	
 	setSwag(data) {
 		data.swag = game.settings.get("vaesen", "swag") ? true : false;
 	}
+
+     /****** Toggle the roll-down of expanded item information.  */
+     onItemSummary(event, type){
+        let div=$(event.currentTarget).parents(".item"),
+        item = this.actor.items.get(div.data("itemId")),
+        chatData = '';
+
+        switch (type){
+            case "relationship":
+                
+                chatData = "<p class='item-desc'><b>" + game.i18n.localize("NOTES") + 
+                ":</b> " + item.data.data.notes + "</br></p>" ;
+                break;
+            case "condition":
+                
+                chatData =  "<p class='item-desc'><b>" + game.i18n.localize("CONDITION.DESCRIPTION") + 
+                            ":</b> " + item.data.data.description + "</br></p>" ;
+                break;
+           case "attack":
+                chatData =  "<p class='item-desc'><b>" + game.i18n.localize("WEAPON.DAMAGE") + 
+                ":</b> " + item.data.data.damage +" | <b>" + game.i18n.localize("WEAPON.RANGE") + 
+                ":</b> " + item.data.data.range +"</br></p>";
+                break;
+            case "gear":
+                chatData =  "<p class='item-desc'><b>" + game.i18n.localize("GEAR.BONUS") + 
+                ":</b> " + item.data.data.bonus +"</br><b>" + game.i18n.localize("GEAR.EFFECT") + 
+                ":</b> " + item.data.data.effect +"</br><b>" + game.i18n.localize("GEAR.DESCRIPTION") + 
+                ":</b> " + item.data.data.description +"</br></p>";
+                break;
+            case "magic":
+                chatData =  "<p class='item-desc'><b>" + game.i18n.localize("MAGIC.CATEGORY") + 
+                ":</b> " + item.data.data.category +" </br><b>" +  game.i18n.localize("MAGIC.DESCRIPTION") + 
+                ":</b> " + item.data.data.description +"</br></p>";
+                break;
+            case "armor":
+                chatData =  "<p class='item-desc'><b>" + game.i18n.localize("ARMOR.PROTECTION") + 
+                            ":</b> " + item.data.data.protection +" | <b>" + game.i18n.localize("ARMOR.AGILITY") + 
+                            ":</b> " + item.data.data.agility +"</br></p>";
+                break;
+        }
+
+        if(chatData === null){
+            return;
+        } else if (div.hasClass("expanded")){
+            let sum = div.children(".item-summary");
+            sum.slideUp(200, () => sum.remove());
+        } else {
+            let sum = $(`<div class="item-summary">${chatData}</div>`);
+            div.append(sum.hide());
+            sum.slideDown(200);
+        }
+        div.toggleClass("expanded");
+    }
+
 
     onItemCreate(event) {
         event.preventDefault();
@@ -276,6 +338,16 @@ export class PlayerCharacterSheet extends ActorSheet {
 		item.update();
 			
 	}
+
+    sendToChat(event) {
+        const div = $(event.currentTarget).parents(".item");
+        const item = this.actor.items.get(div.data("itemId"));
+        const data = item.data;
+        let type = data.type;
+        let chatData = buildChatCard(type, data);
+        ChatMessage.create(chatData, {});
+    }
+
     onRecovery(event) {
         event.preventDefault();
         let actor = this.actor;

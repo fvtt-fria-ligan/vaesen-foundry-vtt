@@ -21,6 +21,7 @@
   "ARMOR.PROTECTION": "Protection",
   "ARMOR.AGILITY": "Agility",
   "ARMOR.AVAILABILITY": "Availability",
+  
 
   "ATTACK.ICON": "Icon",
   "ATTACK.NAME": "Attack",
@@ -38,6 +39,7 @@
   "BIO.POINTS": "Development Points",
   "BIO.BUILDING": "Building",
   "BIO.LOCATION": "Location",
+  "BIO.RELATIONSHIP": "Relationship",
 
   "CONDITION.PHYSICAL": "PHYSICAL",
   "CONDITION.MENTAL": "MENTAL",
@@ -74,6 +76,11 @@
   "SECRET": "Secret",
   "YES": "Yes",
   "NO": "No",
+  "NOTES": "Notes",
+  "DESCRIPTION": "Description",
+  "TYPE" : "Type",
+  "NAME" : "Name",
+  
 
   "GEAR.ICON": "Icon",
   "GEAR.NAME": "Gear",
@@ -103,6 +110,7 @@
   "HEADER.CONTACT": "CONTACT",
   "HEADER.PERSONNEL": "PERSONNEL",
   "HEADER.FAVORITES": "FAVORITES",
+  "HEADER.RELATIONSHIPS": "RELATIONSHIPS",
 
   "MAGIC.ICON": "Icon",
   "MAGIC.NAME": "Magic",
@@ -184,5 +192,11 @@
   "ROLL.DAMAGE": "Damage",
 
   "YZUR.CHAT.ROLL.Push" : "Push",
-  "YZUR.DIETYPES.SkillDie" : "Success Count"
+  "YZUR.DIETYPES.SkillDie" : "Success Count",
+
+  "RELATIONSHIP.WITH": "Relationship With",
+  "RELATIONSHIP.NATURE": "Nature of Relationship",
+  "RELATIONSHIP.WT": "With",
+  "RELATIONSHIP.NT": "Nature"
+
 }

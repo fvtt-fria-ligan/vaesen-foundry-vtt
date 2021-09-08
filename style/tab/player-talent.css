@@ -1,18 +1,33 @@
-.vaesen .player .talents .scrollable {
+.vaesen .player .talents .scrollable,
+.vaesen .player .relationships .scrollable {
     overflow-y: auto;
     height: 501px;
     max-height: 501px;
 }
 
-.vaesen .player .talents .talent.item:hover {
+.vaesen .player .relationships{
+    flex-basis: 45%;
+}
+
+.vaesen .player .notes{
+    flex-basis: 55%;
+}
+.vaesen .player .relationships .relationship.item{
+    line-height: 25px;
+}
+
+.vaesen .player .talents .talent.item:hover,
+.vaesen .player .relationships .relationship.item:hover {
     text-shadow: 0 0 10px darkolivegreen;
 }
 
-.vaesen .player .talents .talent.item:nth-child(even) {
+.vaesen .player .talents .talent.item:nth-child(even),
+.vaesen .player .relationships .relationship.item:nth-child(even) {
     background-color: #d6c9c2;
 }
 
-.vaesen .player .talents .talent.item:nth-child(odd) {
+.vaesen .player .talents .talent.item:nth-child(odd),
+.vaesen .player .relationships .relationship.item:nth-child(odd) {
     background-color: #ebe4e0;
 }
 
@@ -24,14 +39,18 @@
     border: 0;
 }
 
-.vaesen .player .talents .talent .name {
-    flex-basis: 21%;
+.vaesen .player .talents .talent .name,
+.vaesen .player .relationships .relationship .name {
+    flex-basis: 20%;
 }
 
-.vaesen .player .talents .talent .description {
+.vaesen .player .talents .talent .description,
+.vaesen .player .relationships .relationship .description {
     flex-basis: 65%;
 }
 
-.vaesen .player .talents .talent .button {
-    flex-basis: 5%;
+.vaesen .player .talents .talent .button, 
+.vaesen .player .relationships .relationship .button  {
+    flex-basis: 20%;
 }
+

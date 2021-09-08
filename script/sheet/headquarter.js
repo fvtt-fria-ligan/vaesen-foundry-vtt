@@ -1,3 +1,5 @@
+import { buildChatCard } from "../util/chat.js";
+
 export class HeadquarterCharacterSheet extends ActorSheet {
 
     static get defaultOptions() {
@@ -22,6 +24,7 @@ export class HeadquarterCharacterSheet extends ActorSheet {
         html.find('.item-create').click(ev => { this.onItemCreate(ev); });
         html.find('.item-edit').click(ev => { this.onItemUpdate(ev); });
         html.find('.item-delete').click(ev => { this.onItemDelete(ev); });
+        html.find('.to-chat').click(ev => {this.sendToChat(ev);});
         html.find("input").focusin(ev => this.onFocusIn(ev));
 
         html.find('.upgrade .icon').click(ev => { this.onItemUpdate(ev); });
@@ -36,6 +39,17 @@ export class HeadquarterCharacterSheet extends ActorSheet {
             item.isContact = item.type === 'upgrade' && item.data.category === "contact";
             item.isPersonnel = item.type === 'upgrade' && item.data.category === "personnel";
         }
+    }
+
+
+    sendToChat(event) {
+        
+        const div = $(event.currentTarget).parents(".item");
+        const item = this.actor.items.get(div.data("itemId"));
+        const data = item.data;
+        let type = data.type;
+        let chatData = buildChatCard(type, data);
+        ChatMessage.create(chatData, {});
     }
 
     onItemCreate(event) {
@@ -67,13 +81,13 @@ export class HeadquarterCharacterSheet extends ActorSheet {
         event.preventDefault();
         let div=$(event.currentTarget).parents(".item");
         const item = this.actor.items.get(div.data("itemId"));
-        console.log(item.data.data.description);
+        
         let chatData = "<p class='item-desc'><b>" + game.i18n.localize("UPGRADE.DESCRIPTION") + 
             ": </b>" + item.data.data.description + "</br><b>" 
             + game.i18n.localize("UPGRADE.FUNCTION") + ": </b>" + item.data.data.function +
             " </br><b>" + game.i18n.localize("UPGRADE.ASSET") + ": </b>" + item.data.data.asset +
              "</br></p>";
-        console.log(chatData);
+       
         if(item.data.data.description.value === null){
             return;
         } else if (div.hasClass("expanded")){

@@ -1,0 +1,41 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+    <div class="armor item-sheet flexrow">
+
+        <div class="item-sidebar">
+           <img class="icon" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        </div>   
+
+
+        <div class="item-info">
+            <div class="flex column wrap">
+                <h1 style="text-align: center;">{{localize "ARMOR.NAME"}}</h1>
+                <br /><img src="systems/vaesen/asset/h-rule.png" width="90%" />   
+                
+            </div>
+            <div class="flex column wrap center">
+                <div class="name flex row wrap center flex-start">
+                        <h3>{{localize "DESCRIPTION"}}:&nbsp;</h3>
+                        <div><input name="name" type="text" value="{{item.name}}"/></div>
+                    </div>
+                <div class="flex row wrap grow">
+                    <div class="protection flex row wrap center ">
+                        <b>{{localize "ARMOR.PROTECTION"}}:&nbsp;</b>
+                        <input name="data.protection" type="text" value="{{data.data.protection}}"/>
+                    </div>
+                    <div class="agility flex row wrap center">
+                        <b>{{localize "ARMOR.AGILITY"}}</b>
+                        <input name="data.agility" type="text" value="{{data.data.agility}}"/>
+                    </div>
+                    <div class="availability flex row wrap center">
+                        <b>{{localize "ARMOR.AVAILABILITY"}}</b>
+                        <input name="data.availability" type="text" value="{{data.data.availability}}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+

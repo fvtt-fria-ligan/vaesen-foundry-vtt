@@ -1,0 +1,44 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+    <div class="weapon item-sheet flexrow">
+        <div class="item-sidebar">
+        <img class="icon" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        </div>
+        <div class="item-info">
+
+            <div class="flex column wrap">
+                <h1 style="text-align: center;">{{localize "WEAPON.NAME"}}</h1>
+                <br /><img src="systems/vaesen/asset/h-rule.png" width="90%" style="margin-bottom: 5px;"/>   
+                
+            </div>
+            
+            <div class="skill flex row wrap center">
+                <h3>{{localize "TYPE"}}:&nbsp;</h3>
+                <input name="name" type="text" value="{{item.name}}" style="width: 40%; margin-right:5px;"/>
+                <h3>{{localize "WEAPON.SKILL"}}: &nbsp;</h3>
+                <select name="data.skill">
+                    {{#select data.data.skill}}
+                        <option value="force">{{localize "SKILL.FORCE"}}</option>
+                        <option value="closeCombat">{{localize "SKILL.CLOSE_COMBAT"}}</option>
+                        <option value="rangedCombat">{{localize "SKILL.RANGED_COMBAT"}}</option>
+                    {{/select}}
+                </select>
+            </div>
+            <div class="damage flex row wrap center">
+                <b>{{localize "WEAPON.DAMAGE"}}</b>
+                <input name="data.damage" type="text" value="{{data.data.damage}}"/>
+            </div>
+            <div class="range flex row wrap center">
+                <b>{{localize "WEAPON.RANGE"}}</b>
+                <input name="data.range" type="text" value="{{data.data.range}}"/>
+            </div>
+            <div class="bonus flex row wrap center">
+                <b>{{localize "WEAPON.BONUS"}}</b>
+                <input name="data.bonus" type="text" value="{{data.data.bonus}}"/>
+            </div>
+            <div class="availability flex row wrap center">
+                <b>{{localize "WEAPON.AVAILABILITY"}}</b>
+                <input name="data.availability" type="text" value="{{data.data.availability}}"/>
+            </div>
+        </div>
+    </div>
+</form>

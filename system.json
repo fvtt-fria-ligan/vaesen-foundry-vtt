@@ -3,17 +3,28 @@
   "name": "vaesen",
   "title": "Vaesen",
   "description": "Nordic horror role-playing",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "0.8.9",
   "templateVersion": 2,
   "author": "perfectro, Dr Ogres, fvtt-fria-ligan",
   "scripts": [],
+  "media": [
+		{
+			"type": "cover",
+			"url": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/tree/master/asset/welcome.jpg?raw=true"
+		},
+		{
+			"type": "screenshot",
+			"url": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/tree/master/asset/screen_shot.png?raw=true"
+		}
+	],
   "esmodules": [
     "script/hooks.js"
   ],
   "initiative": "1d10",
   "styles": [
+    "vaesen.css",
     "style/common.css",
     "style/player.css",
     "style/tab/player-main.css",

@@ -1,14 +1,33 @@
-export class AttackCharacterSheet extends ItemSheet {
+import {buildChatCard} from '../util/chat.js';
+
+export class vaesenItemSheet extends ItemSheet {
+    constructor(...args) {
+        super(...args);
+    }
+
 
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
+            width : 650, 
+            height: 350,
             classes: ["vaesen", "sheet", "item"],
-            template: "systems/vaesen/model/attack.html",
-            width: 400,
-            height: 341,
-            resizable: false
+            resizable: true, 
         });
     }
+
+
+    get template() {
+        return `systems/vaesen/model/items/${this.item.data.type}.hbs`;
+    }
+
+
+    getData() {
+        const data = super.getData();
+        
+        
+        return data;
+    }
+
 
     _getHeaderButtons() {
         let buttons = super._getHeaderButtons();
@@ -23,11 +42,6 @@ export class AttackCharacterSheet extends ItemSheet {
         return buttons;
     }
 
-    getData() {
-        const superData = super.getData();
-        return superData;
-    }
-
     activateListeners(html) {
         super.activateListeners(html);
         html.find("input").focusin(ev => this.onFocusIn(ev));
@@ -38,14 +52,10 @@ export class AttackCharacterSheet extends ItemSheet {
     }
 
     sendToChat(data) {
-        let message = "<b>" + data.name.toUpperCase() + "</b></br>" +
-            "<b>" + game.i18n.localize("ATTACK.DAMAGE") + ": </b>" + data.data.damage + "</br>" +
-            "<b>" + game.i18n.localize("ATTACK.RANGE") + ": </b>" + data.data.range + "</br>" +
-            "<b>" + game.i18n.localize("ATTACK.DESCRIPTION") + ": </b>" + data.data.bonus + "</br>";
-        let chatData = {
-            user: game.user.id,
-            content: message
-        };
+        
+        let type = data.type;
+        let chatData = buildChatCard(type, data);
+        
         ChatMessage.create(chatData, {});
     }
 }

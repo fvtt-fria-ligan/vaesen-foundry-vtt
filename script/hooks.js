@@ -3,21 +3,13 @@ import { PlayerCharacterSheet } from "./sheet/player.js";
 import { NpcCharacterSheet } from "./sheet/npc.js";
 import { VaesenCharacterSheet } from "./sheet/vaesen.js";
 import { HeadquarterCharacterSheet } from "./sheet/headquarter.js";
-import { CriticalInjuryCharacterSheet } from "./sheet/critical-injury.js";
-import { WeaponCharacterSheet } from "./sheet/weapon.js";
-import { ArmorCharacterSheet } from "./sheet/armor.js";
-import { TalentCharacterSheet } from "./sheet/talent.js";
-import { GearCharacterSheet } from "./sheet/gear.js";
-import { MagicCharacterSheet } from "./sheet/magic.js";
-import { ConditionCharacterSheet } from "./sheet/condition.js";
-import { AttackCharacterSheet } from "./sheet/attack.js";
-import { UpgradeCharacterSheet } from "./sheet/upgrade.js";
 import { prepareRollDialog, push } from "./util/roll.js";
 import { registerSystemSettings } from "./util/settings.js";
 import {vaesen} from "./config.js";
 import {conditions} from "./util/conditions.js";
 import { YearZeroRollManager } from './lib/yzur.js';
 import * as Chat from "./util/chat.js";
+import { vaesenItemSheet }  from "./sheet/itemSheet.js";
 
 Hooks.once("ready", function(){
     conditions.onReady();
@@ -47,23 +39,15 @@ Hooks.once("init", () => {
     Actors.registerSheet("vaesen", VaesenCharacterSheet, { types: ["vaesen"], makeDefault: true });
     Actors.registerSheet("vaesen", HeadquarterCharacterSheet, { types: ["headquarter"], makeDefault: true });
     Items.unregisterSheet("core", ItemSheet);
-    Items.registerSheet("vaesen", CriticalInjuryCharacterSheet, {types: ["criticalInjury"], makeDefault: true});
-    Items.registerSheet("vaesen", WeaponCharacterSheet, {types: ["weapon"], makeDefault: true});
-    Items.registerSheet("vaesen", ArmorCharacterSheet, {types: ["armor"], makeDefault: true});
-    Items.registerSheet("vaesen", TalentCharacterSheet, {types: ["talent"], makeDefault: true});
-    Items.registerSheet("vaesen", GearCharacterSheet, {types: ["gear"], makeDefault: true});
-    Items.registerSheet("vaesen", MagicCharacterSheet, {types: ["magic"], makeDefault: true});
-    Items.registerSheet("vaesen", ConditionCharacterSheet, {types: ["condition"], makeDefault: true});
-    Items.registerSheet("vaesen", AttackCharacterSheet, {types: ["attack"], makeDefault: true});
-    Items.registerSheet("vaesen", UpgradeCharacterSheet, {types: ["upgrade"], makeDefault: true});
+    Items.registerSheet("vaesen", vaesenItemSheet, {makeDefault: true});
     preloadHandlebarsTemplates();
     // Register System Settings
     registerSystemSettings();
     YearZeroRollManager.register('vae', {
-      'ROLL.baseTemplate': 'systems/vaesen/templates/dice/broll.hbs',
-      'ROLL.chatTemplate': 'systems/vaesen/templates/dice/roll.hbs',
-      'ROLL.tooltipTemplate': 'systems/vaesen/templates/dice/tooltip.hbs',
-      'ROLL.infosTemplate': 'systems/vaesen/templates/dice/infos.hbs'
+      'ROLL.baseTemplate': 'systems/vaesen/model/templates/dice/broll.hbs',
+      'ROLL.chatTemplate': 'systems/vaesen/model/templates/dice/roll.hbs',
+      'ROLL.tooltipTemplate': 'systems/vaesen/model/templates/dice/tooltip.hbs',
+      'ROLL.infosTemplate': 'systems/vaesen/model/templates/dice/infos.hbs'
     });
     // render cutstom effect icons
     if(game.data.version == '0.8.9' || game.data.version == '0.8.8' || game.data.version == '0.8.7' || game.data.version == '0.8.6'){
@@ -165,29 +149,22 @@ function preloadHandlebarsTemplates() {
         "systems/vaesen/model/tab/player-note.html",
         "systems/vaesen/model/npc.html",
         "systems/vaesen/model/tab/npc-main.html",
-        "systems/vaesen/model/tab/npc-combat.html",
-        "systems/vaesen/model/tab/npc-talent.html",
-        "systems/vaesen/model/tab/npc-gear.html",
         "systems/vaesen/model/tab/npc-note.html",
         "systems/vaesen/model/vaesen.html",
         "systems/vaesen/model/tab/vaesen-main.html",
-        "systems/vaesen/model/tab/vaesen-combat.html",
-        "systems/vaesen/model/tab/vaesen-gear.html",
         "systems/vaesen/model/tab/vaesen-note.html",
         "systems/vaesen/model/headquarter.html",
         "systems/vaesen/model/tab/headquarter-history.html",
-        "systems/vaesen/model/tab/headquarter-facilities.html",
-        "systems/vaesen/model/tab/headquarter-contact.html",
-        "systems/vaesen/model/tab/headquarter-personnel.html",
         "systems/vaesen/model/tab/headquarter-upgrades.html",
-        "systems/vaesen/model/critical-injury.html",
-        "systems/vaesen/model/weapon.html",
-        "systems/vaesen/model/armor.html",
-        "systems/vaesen/model/talent.html",
-        "systems/vaesen/model/gear.html",
-        "systems/vaesen/model/magic.html",
-        "systems/vaesen/model/condition.html",
-        "systems/vaesen/model/attack.html"
+        "systems/vaesen/model/items/criticalInjury.hbs",
+        "systems/vaesen/model/items/weapon.hbs",
+        "systems/vaesen/model/items/armor.hbs",
+        "systems/vaesen/model/items/talent.hbs",
+        "systems/vaesen/model/items/gear.hbs",
+        "systems/vaesen/model/items/magic.hbs",
+        "systems/vaesen/model/items/condition.hbs",
+        "systems/vaesen/model/items/attack.hbs", 
+        "systems/vaesen/model/items/relationship.hbs"
     ];
     return loadTemplates(templatePaths);
 }

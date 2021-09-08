@@ -45,7 +45,7 @@
 }
 
 .vaesen .player .critical-injuries .critical-injury .button {
-    flex-basis: 10%;
+    flex-basis: 15%;
 }
 
 .vaesen .player .weapons .scrollable {
@@ -91,7 +91,7 @@
 }
 
 .vaesen .player .weapons .weapon .button {
-    flex-basis: 10%;
+    flex-basis: 15%;
 }
 
 .vaesen .player .armors .scrollable {
@@ -133,5 +133,5 @@
 }
 
 .vaesen .player .armors .armor .button {
-    flex-basis: 10%;
+    flex-basis: 15%;
 }

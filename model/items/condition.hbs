@@ -1,0 +1,31 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+    {{!-- Item Sheet Header --}} 
+    <div class="item-sheet flexrow">
+        <div class="item-sidebar">
+            <img class="icon" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+        </div>   
+
+        <div class="item-info">
+            <h1 class="us-text">{{localize "CONDITION.NAME"}}</h1>
+            <br /><img src="systems/vaesen/asset/h-rule.png" width="90%" />  
+            <div class="header-details flexcol">
+                
+                <span class = "charname">
+                    <b>{{localize "NAME"}}: </b>
+                    <input name="name" type="text" value="{{item.name}}" />
+                </span>
+            </div>
+
+            <div class="item-desc flexcol">
+                <b>{{localize "CONDITION.BONUS"}}</b>
+                <input name="data.bonus" type="text" value="{{data.data.bonus}}"/>
+             </div>
+
+            <div class="item-notes">
+                <b>{{localize "CONDITION.DESCRIPTION"}}</b>
+                <textarea name="data.description">{{data.data.description}}</textarea>
+            </div>
+        </div>
+    </div>
+</form>
+

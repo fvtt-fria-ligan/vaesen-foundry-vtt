@@ -1,5 +1,6 @@
 import { prepareRollDialog } from "../util/roll.js";
 import { YearZeroRoll } from "../lib/yzur.js";
+import { buildChatCard } from "../util/chat.js";
 
 export class VaesenCharacterSheet extends ActorSheet {
      //TODO convert dices[] to a YZUR roll object to pass rolls and allow pushes
@@ -44,6 +45,7 @@ export class VaesenCharacterSheet extends ActorSheet {
         html.find('.item-create').click(ev => { this.onItemCreate(ev); });
         html.find('.item-edit').click(ev => { this.onItemUpdate(ev); });
         html.find('.item-delete').click(ev => { this.onItemDelete(ev); });
+        html.find('.to-chat').click(ev => {this.sendToChat(ev);});
         html.find("input").focusin(ev => this.onFocusIn(ev));
 
         html.find('.attribute b').click(ev => {
@@ -105,6 +107,15 @@ export class VaesenCharacterSheet extends ActorSheet {
             await this.actor.updateEmbeddedDocuments("Item", [{_id: itemID, "data.active": true}]);
         }
         
+    }
+
+    sendToChat(event) {
+        const div = $(event.currentTarget).parents(".item");
+        const item = this.actor.items.get(div.data("itemId"));
+        const data = item.data;
+        let type = data.type;
+        let chatData = buildChatCard(type, data);
+        ChatMessage.create(chatData, {});
     }
 
     /****** Toggle the roll-down of expanded item information.  */

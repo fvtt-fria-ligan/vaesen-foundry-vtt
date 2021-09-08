@@ -1,150 +1,92 @@
+@import "./config.less";
 
-/******************************
-/        Fonts
-******************************/
-@font-face{
-    font-family: Eccentric;
-    src:url(/systems/vaesen/fonts/EccentricStd.otf);
-}
+#token-hud{ 
+    .status-effects{
+        top: 37%; 
+	    width: 160px; 
+	    grid-template-columns: 40px 40px 40px 40px;
+        .effect-control { 
+            height: 40px;
+            width: 40px;
+        }
+    }
+}  
 
-@font-face{
-	font-family: BethEllen;
-	src: url(/systems/vaesen/fonts/BethEllen-Regular.ttf);
-}
-
-@font-face{
-	font-family: Albertus;
-	src: url(/systems/vaesen/fonts/AlbertusMediumRegular.ttf);
-}
-
-@font-face{
-	font-family: Baskerville;
-	src: url(/systems/vaesen/fonts/BASKVILL.ttf);
-}
-
-@font-face{
-	font-family: Lin;
-	src: url(/systems/vaesen/fonts/LinLibertine_R.ttf);
-}
-
-@font-face{
-	font-family: IntervogueBlack;
-	src: url(/systems/vaesen/fonts/Intervogue_Black.otf);
-}
-
-@font-face{
-	font-family: IntervogueReg;
-	src: url(/systems/vaesen/fonts/Intervogue_Reg.otf);
-}
-
-@font-face{
-	font-family: PicaItalic;
-	src: url(/systems/vaesen/fonts/IMFellDoublePica-Italic.ttf);
-}
-@font-face{
-	font-family: Pica;
-	src: url(/systems/vaesen/fonts/IMFellDoublePica-Regular.ttf);
-}
+.vaesen{
+    //sheet common elements    
+    .name{
+        text-align: center;
+    }
+    .portrait{
+        margin-bottom: 0px;
+    }
 
 
-#token-hud .status-effects .effect-control { 
-	height: 40px;
-	width: 40px;
-}
+    //flexbox and general layout elements
+    .flex {
+        display: flex;
+    }
+    .row {
+        flex-direction: row;
+    }
+    .column {
+        flex-direction: column;
+    }
+    .fit-height{
+        height: fit-content;
+    }
+    .item-desc{
+        text-align: justify;
+        font-size: .8em;
+        justify-content: space-between;
+    
+    }
+    .heavy-border {
+        border: 2px solid #412017;
+        margin: 4px;
+        padding: 3px;
+    }
+    .light-border {
+        border: 1px dashed #826657;
+    }
 
-#token-hud .status-effects { 
-	top: 37%; 
-	width: 160px; 
-	grid-template-columns: 40px 40px 40px 40px;
-}
-
-.vaesen .fit-height{
-    height: fit-content;
-}
-
-.vaesen .item-desc{
-    text-align: justify;
-    font-size: .8em;
-    justify-content: space-between;
-
-}
-
-.vaesen .heavy-border {
-    border: 2px solid #412017;
-    margin: 4px;
-	padding: 3px;
-}
-
-.vaesen .portrait{
-    margin-bottom: 0px;
-}
-
-.vaesen .light-border {
-    border: 1px dashed #826657;
-}
-
-.vaesen .name{
-    text-align: center;
-}
-
-.vaesen .flex {
-    display: flex;
-}
-
-.vaesen .row {
-    flex-direction: row;
-}
-
-.vaesen .column {
-    flex-direction: column;
-}
-
-.vaesen .full {
-    width: 100%;
-    height: 100%;
-}
-
-.vaesen .wrap {
-    flex-wrap: wrap;
-}
-
-.vaesen .center {
-    text-align: center;
- 
+    .full {
+        width: 100%;
+        height: 100%;
+    }
+    .wrap {
+        flex-wrap: wrap;
+    }
+    .center {
+        text-align: center;
+    }
+    .margin {
+        margin: 5px;
+    }
+    .wrapper {
+        margin-bottom: 5px;
+    }
+    .wrapper:last-child {
+        margin-bottom: 0px;
+    }
+    .grow {
+        flex-grow: 1;
+    }
+    .align-center {
+        align-items: center;
+    }
+    .align-end {
+        align-items: flex-end;
+    }
+    .space-around {
+        justify-content: space-around;
+    }
+    .space-between {
+        justify-content: space-between;
+    }
     
 }
 
-.vaesen .margin {
-    margin: 5px;
-}
-
-.vaesen .wrapper {
-    margin-bottom: 5px;
-}
-
-.vaesen .wrapper:last-child {
-    margin-bottom: 0px;
-}
-
-.vaesen .grow {
-    flex-grow: 1;
-}
-
-.vaesen .align-center {
-    align-items: center;
-}
-
-.vaesen .align-end {
-    align-items: flex-end;
-}
-
-.vaesen .space-around {
-    justify-content: space-around;
-}
-
-.vaesen .space-between {
-    justify-content: space-between;
-}
 
 .vaesen .title {
     padding: 5px;
@@ -230,17 +172,6 @@
     border-color: #826657;
 }
 
-.dialog{
-    width: fit-content;
-}
-
-.dialog .dialog-buttons button,
-.dialog .dialog-buttons button.default {
-    border: 1px solid #826657;
-    background-color: #e7e7e7;
-}
-
-
 .vaesen .second{
     flex-grow: 1;
 	align-content: center;
@@ -323,7 +254,6 @@
     color: #412017;
     text-transform: uppercase;
 }
-
 
 .vaesen .dice-infos{
     text-align: center;
@@ -440,10 +370,6 @@ line-height: 40px !important;
 
 }
 
-.chat-message .center{
-    text-align: center;
-}
-
 .chat-message .table-draw .table-results .table-result .result-text {
 text-align: justify;
 }
@@ -457,6 +383,32 @@ object-fit: cover;
 border: none;
 }
 
+.chat-message .chat-item-info{
+    padding: 15px;
+    font-family: Lin;
+    font-size: 1.2em;
+    color: @med-border-color;
+    justify-content: space-between;
+}
+
+.chat-message .center{
+    text-align: center;
+}
+.chat-message .chat-flavor{
+    text-align: center;
+    font-family: Baskerville, serif;
+    font-size: 1.5em;
+    font-weight: bolder;
+    color: @primary-color;
+    text-transform: uppercase;
+
+   
+}
+
+img{
+    border: none;
+    border-radius: 5px;
+} 
 .checkbox-label {
     display: block;
     position: relative;

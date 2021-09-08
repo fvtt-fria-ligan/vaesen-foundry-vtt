@@ -1,11 +1,19 @@
-<form class="{{cssClass}}" autocomplete="off">
-    <div class="magic flex row wrap">
-        <img class="icon" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="50" width="50"/>
-        <div class="name flex row wrap">
-            <h3>{{localize "MAGIC.NAME"}}</h3>
-            <input name="name" type="text" value="{{item.name}}"/>
+<form class="{{cssClass}} flexcol" autocomplete="off">
+    <div class="magic item-sheet flexrow">
+
+        <div class="item-sidebar">
+           <img class="icon" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        </div>  
+
+
+       <div class="item-info">
+        <div class="name flex column wrap">
+            <h1>{{localize "MAGIC.NAME"}}</h1>
+            <br /><img src="systems/vaesen/asset/h-rule.png" width="90%" />  
         </div>
         <div class="category flex row wrap center">
+            <h3>{{localize "NAME"}}:&nbsp;</h3>
+            <input name="name" type="text" value="{{item.name}}" style="width: 40%; margin-right:5px;"/>
             <b>{{localize "MAGIC.CATEGORY"}}</b>
             <select name="data.category">
                 {{#select data.data.category}}
@@ -19,6 +27,7 @@
         <div class="description flex row wrap">
             <b>{{localize "MAGIC.DESCRIPTION"}}</b>
             <textarea name="data.description">{{data.data.description}}</textarea>
+        </div>
         </div>
     </div>
 </form>

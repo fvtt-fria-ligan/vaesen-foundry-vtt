@@ -214,7 +214,8 @@
       "magic",
       "condition",
       "attack",
-      "upgrade"
+      "upgrade",
+      "relationship"
     ],
 	"templates": {
 		"itemFav" :{
@@ -250,7 +251,8 @@
       "availability": 0,
       "effect": "",
       "description": "",
-      "risk": ""
+      "risk": "", 
+      "quantity": ""
     },
     "magic": {
       "description": "",
@@ -274,6 +276,10 @@
       "function": "",
       "asset": "",
       "description": ""
+    },    
+    "relationship": {
+      "description": "",
+      "notes": ""
     }
   }
 }

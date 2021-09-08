@@ -1,6 +1,7 @@
 # Vaesen
-An **UNOFFICIAL** system for playing Vaesen on Foundry VTT.  
-It provides support for **character sheets only**, game content should be drawn from official source books.
+The **OFFICIAL** system for playing Vaesen on Foundry VTT.  
+This system provides character sheets and items for  your play, if you would like to have tables and other pre-made official contnent check out the offical core ruleset Module
+    - https://freeleaguepublishing.com/en/store/?product_id=7092046200981
 
 ## Install
 1. Go to the setup page and choose **Game Systems**.
@@ -16,20 +17,13 @@ It provides support for **character sheets only**, game content should be drawn 
 
 ## To be done in the nearest future
 
-* Character Sheet:
-    * Add "to chat" icon on most items direct from sheet
-    * Add Relationships Item box to Notes tab
-     
-* Item Sheets etc.
-    * clean-up layout
-    * Add relationship Item Type
-
 * Dialogs
     * line up ux and design to match overall look and feel
 
 * Link conditions on sheet and status icons on the character sheet (adding a status from the token toggels it on the sheet and visa versa)
 
-* CSS optimization - convert current CSS structure to SASS or LESS based pre-processor for future ease of adjustment
+* CSS optimization - convert current CSS structure to LESS based pre-processor for future ease of adjustment
+    - underway
 
 ## Related Website
 - https://foundryvtt.com/
@@ -39,6 +33,19 @@ It provides support for **character sheets only**, game content should be drawn 
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Release Notes
+
+v2.2.2
+- Relationship item created
+- Relationships added to the NOTE tab on the character sheet
+    -https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/blob/master/asset/relations_screen.png?raw=true)
+- Backend cleanup - removed obsolete templates etc.
+- Updated Item sheets - Clearer UX in line with other sheets
+- Added 'To Chat' button for items on Actor sheets click the word baloon to send the information on any item to the chat log!
+- CSS fixes for the new roll dialogs
+
+v2.2.1 
+- Fixed error on zip file for dist
+
 v2.2.0 
 - Dice Rolling moved to [Year Zero Universal Roller](https://github.com/Stefouch/foundry-year-zero-roller)
     - this fixes [issue 11](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/11)
