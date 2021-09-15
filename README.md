@@ -34,6 +34,9 @@ This system provides character sheets and items for  your play, if you would lik
 
 ## Release Notes
 
+v2.2.4
+- css fix for cross-platform visual parity
+
 v2.2.3
 - CSS fix for notes section
 - adjustment on paths for backend to fix old chat card issues
