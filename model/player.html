@@ -5,10 +5,26 @@
 					<div class="name">
 							<input name="name" type="text" value="{{actor.name}}"/>
 					</div>
-					<div class="img-frame">
+				
+					{{#if (eq data.portrait "round")}} 
+					<div class="img-frame" style="width: 175px; height: 175px;">
 						<img class="profile-frame" src="systems/vaesen/asset/token_border.png" />
 						<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
 					</div>
+					{{/if}}
+					{{#if (eq data.portrait "portrait")}} 
+					<div class="img-frame" style="width: 115px; height: 170px; margin-top: 3px;">
+						<img class="profile-frame" src="systems/vaesen/asset/token_border_portrait.png" />
+						<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" style="border-radius: 2px; margin-left: 3px; margin-top: 3px; padding: 0px; height: 166px; width: 109px;""/>
+					</div>
+					{{/if}}
+					{{#if (eq data.portrait "landscape")}} 
+					<div class="img-frame" style="width: 175px; height: 117px;">
+						<img class="profile-frame" src="systems/vaesen/asset/token_border_landscape.png" />
+						<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" style="border-radius: 2px; margin-left: 4px; margin-top: 4px; padding: 0px; width: 167px; height: 109px;"/>
+					</div>
+					{{/if}}
+
 					<div class="archetype">  
 							<input name="data.bio.archetype" type="text" value="{{data.data.bio.archetype}}"/>
 							<b>{{localize "BIO.ARCHETYPE"}}</b>

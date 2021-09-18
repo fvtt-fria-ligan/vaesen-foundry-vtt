@@ -40,6 +40,9 @@
   font-family: Pica;
   src: url(/systems/vaesen/fonts/IMFellDoublePica-Regular.ttf);
 }
+h2.module-header {
+  border-bottom: 1px solid #412017;
+}
 #token-hud .status-effects {
   top: 37%;
   width: 160px;

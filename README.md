@@ -34,6 +34,12 @@ This system provides character sheets and items for  your play, if you would lik
 
 ## Release Notes
 
+v2.2.5
+- Dice so Nice! configuration corrected to fix Mac dice not using correct faces.
+- Added Setting to allow player to choose a different portrait format for the character sheet.
+- Removed empty fields from to chat cards on item descriptions
+- pointed references to skills and attributes on chat cards to correct localization strings
+
 v2.2.4
 - css fix for cross-platform visual parity
 

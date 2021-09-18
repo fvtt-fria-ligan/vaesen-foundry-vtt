@@ -178,6 +178,12 @@
   "UI.ROLL.MREC": "Roll Mental Recovery",
 
   "SETTINGS.SWAG": "Use official Vaesen Logo as Header Image on Character Sheets",
+  "SETTINGS.SWAG_NAME" : "Character Sheet Decoration",
+  "SETTINGS.PORTRAIT_HINT": "Select the style of portrait you would like to use on your character sheets, this defaults to round but we have support for Portait and Landscape mode with a 2:3 aspect ratio (175px by 117px is ideal)",
+  "SETTINGS.PORTRAIT": "Portrait Style on Character Sheet",
+  "SETTINGS.PORTRAIT_ROUND": "Round",
+  "SETTINGS.PORTRAIT_PORTRAIT": "2:3 Portrait Orientation",
+  "SETTINGS.PORTRAIT_LANDSCAPE": "3:2 Landscape Orientation",
 
   "CHAT.SUCCESS": "Successes",
   "ROLL.BASE.POOL": "Base Dice Pool",
