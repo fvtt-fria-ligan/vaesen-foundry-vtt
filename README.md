@@ -34,6 +34,9 @@ This system provides character sheets and items for  your play, if you would lik
 
 ## Release Notes
 
+v2.2.8
+- breakout of actor elemetns in css for Less conversion
+
 v2.2.7
 - header adjustments
 

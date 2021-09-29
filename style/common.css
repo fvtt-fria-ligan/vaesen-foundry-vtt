@@ -182,6 +182,7 @@
 .vaesen .sheet-body {
     overflow: hidden;
     flex-grow: 1;
+    height: 500px;
 }
 
 .vaesen .sheet-tabs {

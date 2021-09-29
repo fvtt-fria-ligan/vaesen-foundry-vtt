@@ -549,3 +549,8 @@ img {
   margin: -10px;
   padding: 8px;
 }
+.vaesen .player .sheet-body {
+  overflow: hidden;
+  flex-grow: 1;
+  height: 500px;
+}
