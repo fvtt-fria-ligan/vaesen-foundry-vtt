@@ -33,6 +33,10 @@ This system provides character sheets and items for  your play, if you would lik
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Release Notes
+v2.2.13
+- Spanish Localization updated to include all new strings! 
+- ¡Se actualizó la localización en español para incluir todas las cadenas nuevas!
+
 v2.2.12
 - bug fix - stretched icons for items on combat, talent and gear tabs for actors
       - this fixes [#20](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/20)
