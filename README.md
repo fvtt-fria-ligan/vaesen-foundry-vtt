@@ -34,6 +34,9 @@ This system provides character sheets and items for  your play, if you would lik
 
 ## Release Notes
 
+v2.2.7
+- header adjustments
+
 v2.2.6 
 - Continued work on css refactoring
 - Improvements to CSS for offical content layouts and glitches
