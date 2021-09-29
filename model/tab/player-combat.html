@@ -13,7 +13,7 @@
                 {{#each data.items as |item|}}
                     {{#if item.isArmor}}
                         <div class="armor item flex row center align-center" data-item-id="{{item._id}}">
-                            <img class="icon" src="{{item.img}}" title="{{item.name}}"/>
+                            <div class="icon"><img class="icon" src="{{item.img}}" title="{{item.name}}"/></div>
                             <div class="name">{{item.name}}</div>
                             <div class="protection">{{item.data.protection}}</div>
                             <div class="agility">{{item.data.agility}}</div>
@@ -49,7 +49,7 @@
                 {{#each data.items as |item|}}
                     {{#if item.isWeapon}}
                         <div class="weapon item flex row center align-center" data-item-id="{{item._id}}">
-                            <img class="icon" src="{{item.img}}" title="{{item.name}}"/>
+                            <div class="icon"><img class="icon" src="{{item.img}}" title="{{item.name}}"/></div>
                             <div class="name">{{item.name}}</div>
                             <div class="damage">{{item.data.damage}}</div>
                             <div class="range">{{item.data.range}}</div>
@@ -87,7 +87,7 @@
                 {{#each data.items as |item|}}
                     {{#if item.isCriticalInjury}}
                         <div class="critical-injury item flex row center align-center" data-item-id="{{item._id}}">
-                            <img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/>
+                            <div class="icon"><img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/></div>
                             <div class="name">{{item.name}}</div>
                             <div class="fatal">{{item.data.fatal}}</div>
                             <div class="time-limit">{{item.data.timeLimit}}</div>

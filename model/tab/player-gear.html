@@ -13,7 +13,7 @@
                 {{#each data.items as |item|}}
                     {{#if item.isGear}}
                         <div class="gear item flex row center align-center" data-item-id="{{item._id}}">
-                            <img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/>
+                            <div class="icon"><img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/></div>
                             <div class="name">{{item.name}}</div>
                             <div class="bonus">{{item.data.bonus}}</div>
                             <div class="effect">{{item.data.effect}}</div>

@@ -16,7 +16,7 @@ export function prepareRollDialog(sheet, testName,  attributeDefault, skillDefau
         title: "Test : " + testName,
         content: buildDivHtmlDialog(`
             <div class="roll-fields">
-            <h2 class="title"> `+ game.i18n.localize("ROLL.TEST") +`: ` + testName + `
+            <h2 class="title" style="width: 97%; margin: auto;"> `+ game.i18n.localize("ROLL.TEST") +`: ` + testName + `
             </h2>
             <div class="flex column grow align-center heavy-border" style="width:200px;">
            `+ attributeHtml + skillHtml + ` 
