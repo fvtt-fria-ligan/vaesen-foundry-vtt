@@ -462,11 +462,12 @@ img {
 .vaesen .player .header .name input,
 .vaesen .headquarter .header .name input {
   font-family: Albertus, sans-serif;
-  font-size: 1em;
+  font-size: 1.2em;
   padding: 0px;
   border: 7px solid transparent;
   border-image: url(/systems/vaesen/asset/scooped_corners.svg) round;
   border-image-slice: 33% fill;
+  color: #412017;
   margin-left: 1px;
   margin-right: 3px;
   flex-basis: 30%;
@@ -553,4 +554,39 @@ img {
   overflow: hidden;
   flex-grow: 1;
   height: 500px;
+}
+.vaesen .player .name input {
+  color: #412017;
+}
+.vaesen .monster input[name="name"] {
+  font-family: Albertus, serif;
+  font-size: 1em;
+  color: #412017;
+  border-image-slice: 34% fill;
+}
+.vaesen .monster .title {
+  border-image-slice: 34% fill;
+}
+.vaesen .npc input[name="name"] {
+  font-family: Albertus, serif;
+  font-size: 1em;
+  color: #412017;
+  border-image-slice: 34% fill;
+}
+.vaesen .npc .title {
+  border-image-slice: 34% fill;
+}
+.vaesen .headquarter .name input {
+  color: #412017;
+}
+.dialog {
+  width: fit-content;
+}
+.dialog .dialog-buttons button,
+.dialog .dialog-buttons button.default {
+  border: 1px solid #826657;
+  background-color: #e7e7e7;
+}
+.vaesen .roll-fields .title {
+  border-image-slice: 34% fill;
 }

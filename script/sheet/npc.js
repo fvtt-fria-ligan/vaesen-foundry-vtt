@@ -12,7 +12,7 @@ export class NpcCharacterSheet extends ActorSheet {
         return mergeObject(super.defaultOptions, {
             classes: ["vaesen", "sheet", "actor"],
             template: "systems/vaesen/model/npc.html",
-            width: 600,
+            width: 750,
             height: 748,
             resizable: false,
             tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main"}]
