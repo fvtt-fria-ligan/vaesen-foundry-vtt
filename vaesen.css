@@ -58,6 +58,37 @@ h2.module-header {
 .vaesen .portrait {
   margin-bottom: 0px;
 }
+.vaesen .title {
+  width: 97%;
+  padding: 5px;
+  text-align: center;
+  background-color: #ad9385;
+  margin: 3px;
+  width: 98%;
+}
+.vaesen .tabs .item.active {
+  text-shadow: none;
+  border-bottom: 1px solid #412017;
+  color: #412017;
+}
+.vaesen .sheet-tabs b:hover {
+  text-shadow: 0 0 10px darkolivegreen;
+}
+.vaesen .hqtr-data {
+  min-width: 645px;
+}
+.vaesen input {
+  background-color: #e7e7e7;
+  border-color: #826657;
+}
+.vaesen .headquarter .title {
+  width: 99%;
+  padding: 5px;
+  text-align: center;
+  background-color: #ad9385;
+  margin: 3px;
+  width: 98%;
+}
 .vaesen .flex {
   display: flex;
 }
@@ -117,22 +148,6 @@ h2.module-header {
 .vaesen .space-between {
   justify-content: space-between;
 }
-.vaesen .title {
-  padding: 5px;
-  text-align: center;
-  background-color: #ad9385;
-  margin: 3px;
-}
-.vaesen .tabs .item.active {
-  text-shadow: none;
-  border-bottom: 1px solid #412017;
-  color: #412017;
-}
-.vaesen .tabs .item {
-  text-shadow: none;
-  border-bottom: 1px solid #af9c8d;
-  color: #af9c8d;
-}
 .vaesen .left-block {
   width: 60%;
 }
@@ -151,16 +166,6 @@ h2.module-header {
   background-color: transparent;
   margin-bottom: 0px;
   margin-top: 5px;
-}
-.vaesen .sheet-tabs b:hover {
-  text-shadow: 0 0 10px darkolivegreen;
-}
-.vaesen .hqtr-data {
-  min-width: 645px;
-}
-.vaesen input {
-  background-color: #e7e7e7;
-  border-color: #826657;
 }
 .vaesen .npc .attribute input,
 .vaesen .player .attribute input {
@@ -535,4 +540,12 @@ img {
   border: 1px dashed #412017;
   border-radius: 5px;
   width: 100%;
+}
+.sheet header.sheet-header h1 input {
+  width: 93%;
+}
+.vaesen .item-sheet {
+  background: url(/systems/vaesen/asset/lined_paper.jpg);
+  margin: -10px;
+  padding: 8px;
 }

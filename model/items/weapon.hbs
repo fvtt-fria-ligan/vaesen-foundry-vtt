@@ -13,7 +13,7 @@
             
             <div class="skill flex row wrap center">
                 <h3>{{localize "TYPE"}}:&nbsp;</h3>
-                <input name="name" type="text" value="{{item.name}}" style="width: 40%; margin-right:5px;"/>
+                <input name="name" type="text" value="{{item.name}}" style="width: 56%; margin-right:5px;"/>
                 <h3>{{localize "WEAPON.SKILL"}}: &nbsp;</h3>
                 <select name="data.skill">
                     {{#select data.data.skill}}
@@ -23,19 +23,19 @@
                     {{/select}}
                 </select>
             </div>
-            <div class="damage flex row wrap center">
+            <div class="damage flex row wrap center" style="width: 99%;">
                 <b>{{localize "WEAPON.DAMAGE"}}</b>
                 <input name="data.damage" type="text" value="{{data.data.damage}}"/>
             </div>
-            <div class="range flex row wrap center">
+            <div class="range flex row wrap center" style="width: 99%;">
                 <b>{{localize "WEAPON.RANGE"}}</b>
                 <input name="data.range" type="text" value="{{data.data.range}}"/>
             </div>
-            <div class="bonus flex row wrap center">
+            <div class="bonus flex row wrap center" style="width: 99%;">
                 <b>{{localize "WEAPON.BONUS"}}</b>
                 <input name="data.bonus" type="text" value="{{data.data.bonus}}"/>
             </div>
-            <div class="availability flex row wrap center">
+            <div class="availability flex row wrap center" style="width: 99%;">
                 <b>{{localize "WEAPON.AVAILABILITY"}}</b>
                 <input name="data.availability" type="text" value="{{data.data.availability}}"/>
             </div>

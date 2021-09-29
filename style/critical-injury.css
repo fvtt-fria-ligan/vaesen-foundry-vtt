@@ -23,6 +23,7 @@
 
 .vaesen.item .critical-injury .effect {
     flex-basis: 100%;
+    width: 99%;
 }
 
 .vaesen .player .critical-injuries .scrollable {

@@ -208,7 +208,7 @@
 .vaesen .npc .attribute input,
 .vaesen .player .attribute input{
     text-align: center;
-    flex-basis: 65px;
+    flex-basis: 66px;
     margin-left: 0px;
     margin-right: 5px;
 }
@@ -585,7 +585,7 @@ border: none;
 	font-family: Lin, sans-serif;
 	border: 7px solid transparent;
 	border-image: url(/systems/vaesen/asset/scooped_corners.svg) round;
-	border-image-slice: 33% fill;
+	border-image-slice: 34% fill;
 	background-color: transparent;
 	margin-top: 3px;
 }

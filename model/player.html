@@ -3,7 +3,7 @@
         <div class="header flex row margin align-center">
 				<div class="flex column heavy-border portrait">
 					<div class="name">
-							<input name="name" type="text" value="{{actor.name}}"/>
+							<input name="name" type="text" value="{{actor.name}}" style="width: 97%;"/>
 					</div>
 				
 					{{#if (eq data.portrait "round")}} 
@@ -26,7 +26,7 @@
 					{{/if}}
 
 					<div class="archetype">  
-							<input name="data.bio.archetype" type="text" value="{{data.data.bio.archetype}}"/>
+							<input name="data.bio.archetype" type="text" value="{{data.data.bio.archetype}}" style="width: 97%;"/>
 							<b>{{localize "BIO.ARCHETYPE"}}</b>
 					</div>
 				</div>
