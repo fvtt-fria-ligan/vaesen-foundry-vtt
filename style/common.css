@@ -394,17 +394,6 @@ margin: 0 0 3px;
 
 
 
-.chat-message{
-background: url(/systems/vaesen/asset/lined_paper.jpg);
-}
-
-.chat-message.whisper{
-background: url(/systems/vaesen/asset/lined_paper_whisper.jpg);
-}
-
-.chat-message.blind{
-background: url(/systems/vaesen/asset/lined_paper_blind.jpg);
-}
 
 .chat-message .message-header .message-metadata {
     flex: 1;

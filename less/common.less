@@ -57,17 +57,6 @@ h2.module-header{
         border-color: #826657;
     }
     
-    // hedadquarter sheet elements
-    .headquarter{
-        .title {
-            width: 99%;
-            padding: 5px;
-            text-align: center;
-            background-color: @background-color;
-            margin: 3px;
-            width: 98%;
-        }
-    }
 
 
     //flexbox and general layout elements
@@ -171,13 +160,13 @@ h2.module-header{
 
 .vaesen textarea {
     background-color: @input-background-color;
-    border-color: #826657;
+    border-color: @input-border-color;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .vaesen select {
     background-color: @input-background-color;
-    border-color: #826657;
+    border-color: @input-border-color;
 }
 
 .vaesen .second{
@@ -202,9 +191,7 @@ h2.module-header{
 	margin-bottom: 3px;
 }
 
-.motivation, .trauma, .dark-secret, .advantage, .memento{
-	width: 100%;
-}
+
 .vaesen .res{
 	flex-basis: 20%;
 	margin-bottom: 3px;
@@ -337,11 +324,19 @@ background: url(/systems/vaesen/asset/lined_paper.jpg);
 
 .chat-message.whisper{
 background: url(/systems/vaesen/asset/lined_paper_whisper.jpg);
+    .card-holder img{
+        content:url(/systems/vaesen/asset/unkown_roller.svg);
+    }
 }
 
 .chat-message.blind{
 background: url(/systems/vaesen/asset/lined_paper_blind.jpg);
+    .card-holder img{
+        content:url(/systems/vaesen/asset/unkown_roller.svg);
+    }
 }
+
+
 
 .chat-message .message-header .message-metadata {
     flex: 1;
@@ -530,6 +525,13 @@ img{
 	margin-right: 0px;
 	padding: 8px;
 }
+
+.dialog-content{
+    input[name="name"]{
+        border-image-slice: 34% fill;
+    }
+}
+
 
 .vaesen input{
 	font-family: Lin, sans-serif;

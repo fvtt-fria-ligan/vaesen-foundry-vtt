@@ -19,6 +19,7 @@ This system provides character sheets and items for  your play, if you would lik
 
 * Dialogs
     * line up ux and design to match overall look and feel
+    * potentially move roll dialog to a FormApp to allow for more robust dice pool builiding 
 
 * Link conditions on sheet and status icons on the character sheet (adding a status from the token toggels it on the sheet and visa versa)
 
@@ -33,6 +34,11 @@ This system provides character sheets and items for  your play, if you would lik
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Release Notes
+v2.2.14 
+- blind and gm rolls now hide the token portrait in the chat log from non-gm players to help preserve the mystery of who, or what is making a given roll!. [#19](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/19)
+- Continued work on moving css into less progress is about 20% at this point.  
+
+
 v2.2.13
 - Spanish Localization updated to include all new strings! 
 - ¡Se actualizó la localización en español para incluir todas las cadenas nuevas!

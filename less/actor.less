@@ -4,8 +4,11 @@
 
 .vaesen {
 
+    // character sheet elements
     .player {
-
+        .motivation, .trauma, .dark-secret, .advantage, .memento{
+            width: 100%;
+        }
         .sheet-body {
         overflow: hidden;
         flex-grow: 1;
@@ -16,6 +19,7 @@
         }
     }
 
+    // vaesen sheet elements
     .monster {
         input[name="name"]{
             font-family: Albertus, serif;
@@ -29,6 +33,7 @@
         }
     }
 
+    // npc sheet elements
     .npc{
         input[name="name"]{
             font-family: Albertus, serif;
@@ -41,9 +46,21 @@
         }
     }
 
-    .headquarter{
+
+    // hedadquarter sheet elements
+     .headquarter{
+        .title {
+            width: 99%;
+            padding: 5px;
+            text-align: center;
+            background-color: @background-color;
+            margin: 3px;
+            width: 98%;
+        }
         .name input{
             color: @primary-color;
         }
     }
+    
+
 }

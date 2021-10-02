@@ -81,14 +81,6 @@ h2.module-header {
   background-color: #e7e7e7;
   border-color: #826657;
 }
-.vaesen .headquarter .title {
-  width: 99%;
-  padding: 5px;
-  text-align: center;
-  background-color: #ad9385;
-  margin: 3px;
-  width: 98%;
-}
 .vaesen .flex {
   display: flex;
 }
@@ -205,13 +197,6 @@ h2.module-header {
   flex-basis: 80%;
   margin-bottom: 3px;
 }
-.motivation,
-.trauma,
-.dark-secret,
-.advantage,
-.memento {
-  width: 100%;
-}
 .vaesen .res {
   flex-basis: 20%;
   margin-bottom: 3px;
@@ -320,8 +305,14 @@ h4 {
 .chat-message.whisper {
   background: url(/systems/vaesen/asset/lined_paper_whisper.jpg);
 }
+.chat-message.whisper .card-holder img {
+  content: url(/systems/vaesen/asset/unkown_roller.svg);
+}
 .chat-message.blind {
   background: url(/systems/vaesen/asset/lined_paper_blind.jpg);
+}
+.chat-message.blind .card-holder img {
+  content: url(/systems/vaesen/asset/unkown_roller.svg);
 }
 .chat-message .message-header .message-metadata {
   flex: 1;
@@ -484,6 +475,9 @@ img {
   margin-right: 0px;
   padding: 8px;
 }
+.dialog-content input[name="name"] {
+  border-image-slice: 34% fill;
+}
 .vaesen input {
   font-family: Lin, sans-serif;
   border: 7px solid transparent;
@@ -550,6 +544,13 @@ img {
   margin: -10px;
   padding: 8px;
 }
+.vaesen .player .motivation,
+.vaesen .player .trauma,
+.vaesen .player .dark-secret,
+.vaesen .player .advantage,
+.vaesen .player .memento {
+  width: 100%;
+}
 .vaesen .player .sheet-body {
   overflow: hidden;
   flex-grow: 1;
@@ -575,6 +576,14 @@ img {
 }
 .vaesen .npc .title {
   border-image-slice: 34% fill;
+}
+.vaesen .headquarter .title {
+  width: 99%;
+  padding: 5px;
+  text-align: center;
+  background-color: #ad9385;
+  margin: 3px;
+  width: 98%;
 }
 .vaesen .headquarter .name input {
   color: #412017;
