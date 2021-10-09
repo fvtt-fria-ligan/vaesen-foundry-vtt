@@ -31,6 +31,7 @@ export class vaesenItemSheet extends ItemSheet {
 
     _getHeaderButtons() {
         let buttons = super._getHeaderButtons();
+        console.log(this.item.data);
         buttons = [
             {
                 label: "Display",

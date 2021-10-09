@@ -200,11 +200,10 @@ export const buildChatCard = function(type, data){
             };
         break;
         case 'weapon':
-            
             let skill = '';
-            if(data.data.skill = "closeCombat"){
+            if(data.data.skill == "closeCombat"){
                 skill = game.i18n.localize("SKILL.CLOSE_COMBAT");
-            } else if (data.data.skill = "rangedCombat"){
+            } else if (data.data.skill == "rangedCombat"){
                 skill = game.i18n.localize("SKILL.RANGED_COMBAT");
             } else {
                 skill = game.i18n.localize("SKILL.FORCE");
