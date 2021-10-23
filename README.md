@@ -34,6 +34,12 @@ This system provides character sheets and items for  your play, if you would lik
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Release Notes
+
+v2.2.17
+- Finally (fingers crossed) squished the css graphical glitch on headers
+- verified v9 compatibility for v9 224
+- updated spanish localization
+
 v2.2.16
 - BUGFIX: [#24 Chat Display Defaults all Weapons to "Close Combat"](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/24)
 

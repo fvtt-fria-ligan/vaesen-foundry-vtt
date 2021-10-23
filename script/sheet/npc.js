@@ -13,8 +13,8 @@ export class NpcCharacterSheet extends ActorSheet {
             classes: ["vaesen", "sheet", "actor"],
             template: "systems/vaesen/model/npc.html",
             width: 750,
-            height: 748,
-            resizable: false,
+            height: 800,
+            resizable: true,
             tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main"}]
         });
     }

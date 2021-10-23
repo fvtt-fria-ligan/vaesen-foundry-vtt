@@ -214,6 +214,7 @@ h2.module-header {
 }
 .vaesen p {
   margin: 0px;
+  padding-bottom: 4px;
 }
 .vaesen .dice-roll .dice-formula {
   border: none;
@@ -457,7 +458,7 @@ img {
   padding: 0px;
   border: 7px solid transparent;
   border-image: url(/systems/vaesen/asset/scooped_corners.svg) round;
-  border-image-slice: 33% fill;
+  border-image-slice: 58 fill;
   color: #412017;
   margin-left: 1px;
   margin-right: 3px;
@@ -481,7 +482,7 @@ img {
   font-family: Lin, sans-serif;
   border: 7px solid transparent;
   border-image: url(/systems/vaesen/asset/scooped_corners.svg) round;
-  border-image-slice: 37% fill;
+  border-image-slice: 58 fill;
   background-color: transparent;
   margin-top: 3px;
 }
@@ -490,7 +491,7 @@ img {
   font-family: Lin, sans-serif;
   border: 7px solid transparent;
   border-image: url(/systems/vaesen/asset/scooped_corners.svg) round;
-  border-image-slice: 37% fill;
+  border-image-slice: 58 fill;
   background-color: transparent;
   margin-top: 3px;
 }
@@ -543,12 +544,61 @@ img {
   margin: -10px;
   padding: 8px;
 }
+.vaesen .armors .armor {
+  background: none;
+  margin: 0px;
+  padding: 0px;
+}
+.vaseen.item .attack .icon {
+  border: 1px dashed #826657;
+  border-radius: 10px;
+  margin-right: 5px;
+}
+.vaseen.item .attack .name {
+  flex-basis: 51%;
+}
+.vaseen.item .attack .attribute {
+  flex-basis: 33%;
+}
+.vaseen.item .attack .damage {
+  flex-basis: 50%;
+}
+.vaseen.item .attack .range {
+  flex-basis: 50%;
+}
+.vaseen.item .attack .description {
+  flex-basis: 100%;
+}
+.vaseen.item .attack .description textarea {
+  height: 187px;
+  resize: none;
+}
+.vaseen.item .armor .name {
+  flex-basis: 80%;
+}
+.vaseen.item .armor .protection {
+  flex-basis: 30%;
+}
+.vaseen.item .armor .agility {
+  flex-basis: 30%;
+}
+.vaseen.item .armor .availability {
+  flex-basis: 30%;
+}
 .vaesen .player {
   background: #f9f8f6;
   margin: 0px;
   margin-right: 0px;
   padding: 8px;
   font-size: 0.94em;
+}
+.vaesen .player .armors .scrollable {
+  height: fit-content;
+}
+.vaesen .player .armors .armor img.icon {
+  border: 0;
+  width: 25px;
+  height: 25px;
 }
 .vaesen .player .motivation,
 .vaesen .player .trauma,
@@ -560,7 +610,6 @@ img {
 .vaesen .player .sheet-body {
   overflow: auto;
   flex-grow: 1;
-  height: 500px;
 }
 .vaesen .player .name input {
   color: #412017;
@@ -602,6 +651,26 @@ img {
   border: 1px solid #826657;
   background-color: #e7e7e7;
 }
+.vaesen .roll-dialog {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.vaesen .roll-fields {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+}
 .vaesen .roll-fields .title {
   border-image-slice: 34% fill;
+}
+.vaesen .roll-fields input {
+  background-color: #e7e7e7;
+  border-color: #826657;
+  flex-basis: 35px;
+  margin-bottom: 5px;
 }

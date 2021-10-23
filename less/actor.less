@@ -1,9 +1,7 @@
 @import "./config.less";
 @import "./common.less";
 
-
-.vaesen {
-
+.vaesen{
     // character sheet elements
     .player {
         background: #f9f8f6;
@@ -11,14 +9,23 @@
         margin-right: 0px;
         padding: 8px;
         font-size: 0.94em;
-
+        .armors{ 
+            .scrollable {
+            height: fit-content;
+            }
+            .armor img.icon {
+                border: 0;
+                width: 25px;
+                height: 25px;
+            }
+        }
         .motivation, .trauma, .dark-secret, .advantage, .memento{
             width: 100%;
         }
         .sheet-body {
         overflow: auto;
         flex-grow: 1;
-        height: 500px;
+      
         }
         .name input{
             color: @primary-color;

@@ -8,7 +8,7 @@ export class HeadquarterCharacterSheet extends ActorSheet {
             template: "systems/vaesen/model/headquarter.html",
             width: 900,
             height: 750,
-            resizable: false,
+            resizable: true,
             tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "upgrades"}]
         });
     }

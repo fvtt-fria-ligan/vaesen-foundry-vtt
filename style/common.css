@@ -182,7 +182,7 @@
 .vaesen .sheet-body {
     overflow: hidden;
     flex-grow: 1;
-    height: 500px;
+    
 }
 
 .vaesen .sheet-tabs {
@@ -289,6 +289,7 @@
 
 .vaesen p{
     margin: 0px;
+    padding-bottom: 4px;
 }
 
 
@@ -538,7 +539,7 @@ border: none;
 	padding: 0px;
 	border: 7px solid transparent;
 	border-image: url(/systems/vaesen/asset/scooped_corners.svg) round;
-	border-image-slice: 33% fill;
+	border-image-slice: 58 fill;
 	
 	margin-left: 1px;
 	margin-right: 3px;
@@ -565,7 +566,7 @@ border: none;
 	font-family: Lin, sans-serif;
 	border: 7px solid transparent;
 	border-image: url(/systems/vaesen/asset/scooped_corners.svg) round;
-	border-image-slice: 33% fill;
+	border-image-slice: 58 fill;
 	background-color: transparent;
 	margin-top: 3px;
 }
@@ -575,7 +576,7 @@ border: none;
 	font-family: Lin, sans-serif;
 	border: 7px solid transparent;
 	border-image: url(/systems/vaesen/asset/scooped_corners.svg) round;
-	border-image-slice: 34% fill;
+	border-image-slice: 58 fill;
 	background-color: transparent;
 	margin-top: 3px;
 }

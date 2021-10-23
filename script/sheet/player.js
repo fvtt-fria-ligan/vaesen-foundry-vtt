@@ -17,7 +17,7 @@ export class PlayerCharacterSheet extends ActorSheet {
             template: "systems/vaesen/model/player.html",
             width: 750,
             height: 930,
-            resizable: false,
+            resizable: true,
             tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main"}]
         });
     }
