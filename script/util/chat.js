@@ -40,6 +40,7 @@ export const buildChatCard = function(type, data){
                 token: token,
                 speaker: ChatMessage.getSpeaker(),
                 user: game.user.id,
+                rollMode: game.settings.get("core", "rollMode"),
                 content: message
             };
         break;
@@ -71,6 +72,7 @@ export const buildChatCard = function(type, data){
             chatData = {
                 speaker: ChatMessage.getSpeaker(),
                 user: game.user.id,
+                rollMode: game.settings.get("core", "rollMode"),
                 content: message
             };
         break;
@@ -86,6 +88,7 @@ export const buildChatCard = function(type, data){
             chatData = {
                 speaker: ChatMessage.getSpeaker(),
             user: game.user.id,
+            rollMode: game.settings.get("core", "rollMode"),
             content: message
             };
         break;
@@ -111,6 +114,7 @@ export const buildChatCard = function(type, data){
             chatData = {
                 speaker: ChatMessage.getSpeaker(),
                 user: game.user.id,
+                rollMode: game.settings.get("core", "rollMode"),
                 content: message
             };
         break;
@@ -140,6 +144,7 @@ export const buildChatCard = function(type, data){
             chatData = {
                 speaker: ChatMessage.getSpeaker(),
                 user: game.user.id,
+                rollMode: game.settings.get("core", "rollMode"),
                 content: message
             };
         break;
@@ -155,6 +160,7 @@ export const buildChatCard = function(type, data){
             chatData = {
                 speaker: ChatMessage.getSpeaker(),
                 user: game.user.id,
+                rollMode: game.settings.get("core", "rollMode"),
                 content: message
             };
         break;
@@ -169,6 +175,7 @@ export const buildChatCard = function(type, data){
             chatData = {
                 speaker: ChatMessage.getSpeaker(),
                 user: game.user.id,
+                rollMode: game.settings.get("core", "rollMode"),
                 content: message
             };
         break;
@@ -196,6 +203,7 @@ export const buildChatCard = function(type, data){
             chatData = {
                 speaker: ChatMessage.getSpeaker(),
                 user: game.user.id,
+                rollMode: game.settings.get("core", "rollMode"),
                 content: message
             };
         break;
@@ -222,6 +230,7 @@ export const buildChatCard = function(type, data){
             chatData = {
                 speaker: ChatMessage.getSpeaker(),
                 user: game.user.id,
+                rollMode: game.settings.get("core", "rollMode"),
                 content: message
             };
         break;
@@ -234,9 +243,11 @@ export const buildChatCard = function(type, data){
             "<b>" + game.i18n.localize("BIO.RELATIONSHIP") + ": </b>" + data.data.description + "</br>"+
             "<b>" + game.i18n.localize("NOTES") + ": </b>" + data.data.notes + "</br>"
             +`</div></div>`;
+
             chatData = {
                 speaker: ChatMessage.getSpeaker(),
                 user: game.user.id,
+                rollMode: game.settings.get("core", "rollMode"),
                 content: message
             };
 

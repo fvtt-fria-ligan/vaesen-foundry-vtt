@@ -35,6 +35,10 @@ This system provides character sheets and items for  your play, if you would lik
 
 ## Release Notes
 
+v2.2.18
+- Updated to v9 226
+- fixed relationship header spacing
+
 v2.2.17
 - Finally (fingers crossed) squished the css graphical glitch on headers
 - verified v9 compatibility for v9 224
