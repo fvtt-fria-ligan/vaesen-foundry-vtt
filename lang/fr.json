@@ -1,0 +1,197 @@
+{
+  "ATTRIBUTE.PHYSIQUE": "PHYSIQUE",
+  "ATTRIBUTE.PRECISION": "PRECISION",
+  "ATTRIBUTE.LOGIC": "LOGIQUE",
+  "ATTRIBUTE.EMPATHY": "EMPATHIE",
+  "ATTRIBUTE.PHYSIQUE_ROLL": "Physique",
+  "ATTRIBUTE.PRECISION_ROLL": "Precision",
+  "ATTRIBUTE.LOGIC_ROLL": "Logique",
+  "ATTRIBUTE.EMPATHY_ROLL": "Empathie",
+  "ATTRIBUTE.MIGHT": "VOLONTE",
+
+  "ATTRIBUTE.MAGIC": "MAGIE",
+  "ATTRIBUTE.MANIPULATION": "MANIPULATION",
+  "ATTRIBUTE.MIGHT_ROLL": "Volonté",
+
+  "ATTRIBUTE.MAGIC_ROLL": "Magie",
+  "ATTRIBUTE.MANIPULATION_ROLL": "Manipulation",
+
+  "ARMOR.ICON": "Icône",
+  "ARMOR.NAME": "Armure",
+  "ARMOR.PROTECTION": "Protection",
+  "ARMOR.AGILITY": "Agilité",
+  "ARMOR.AVAILABILITY": "Quantité",
+  
+
+  "ATTACK.ICON": "Icône",
+  "ATTACK.NAME": "Attaque",
+  "ATTACK.DAMAGE": "Dommage",
+
+  "ATTACK.RANGE": "Portée",
+  "ATTACK.DESCRIPTION": "Description",
+
+  "BIO.NAME": "Nom",
+  "BIO.AGE": "Age",
+  "BIO.ARCHETYPE": "Archétype",
+  "BIO.MOTIVATION": "Motivation",
+  "BIO.TRAUMA": "Traumatisme",
+  "BIO.DARK_SECRET": "Terrible secret",
+  "BIO.POINTS": "Points de développement",
+  "BIO.BUILDING": "Type de quartier général",
+  "BIO.LOCATION": "Localisation",
+
+
+  "BIO.RELATIONSHIP": "Relation",
+
+  "CONDITION.PHYSICAL": "PHYSIQUE",
+  "CONDITION.MENTAL": "MENTAL",
+  "CONDITION.BROKEN": "BRISE",
+  "CONDITION.EXHAUSTED": "EXTENUE",
+  "CONDITION.BATTERED": "BATTU",
+  "CONDITION.WOUNDED": "BLESSE",
+  "CONDITION.ANGRY": "EN COLERE",
+  "CONDITION.FRIGHTENED": "EFFRAYE",
+  "CONDITION.HOPELESS": "DESESPERE",
+  "CONDITION.ICON": "Icône",
+  "CONDITION.NAME": "Condition",
+  "CONDITION.BONUS": "Bonus",
+  "CONDITION.DESCRIPTION": "Description",
+
+  "CRITICAL_INJURY.ICON": "Icône",
+  "CRITICAL_INJURY.TYPE": "Type",
+  "CRITICAL_INJURY.NAME": "Blessure",
+  "CRITICAL_INJURY.FATAL": "Fatal",
+  "CRITICAL_INJURY.TIME_LIMIT": "Limite de temps",
+  "CRITICAL_INJURY.PERMANENT": "Permanent",
+  "CRITICAL_INJURY.PERMANENT_SHORT": "Perm.",
+  "CRITICAL_INJURY.EFFECT": "Effet",
+
+  "FEAR.INITIAL": "Peur première rencontre",
+  "FEAR.SUBSEQUENT": "Peur rencontres suivantes",
+
+  "ADVANTAGE": "Avantage",
+  "MEMENTO": "Souvenir",
+  "EXPERIENCE": "Expérience",
+  "RESOURCES": "Niveau de vie",
+  "CAPITAL": "Fonds",
+  "KNOWN": "Connu",
+  "SECRET": "Secret",
+  "YES": "Oui",
+  "NO": "Non",
+  "NOTES": "Notes",
+  "DESCRIPTION": "Description",
+  "TYPE" : "Type",
+  "NAME" : "Nom",
+  
+
+  "GEAR.ICON": "Icône",
+  "GEAR.NAME": "Equipement",
+  "GEAR.BONUS": "Bonus",
+  "GEAR.AVAILABILITY": "Quantité",
+  "GEAR.EFFECT": "Effet",
+  "GEAR.DESCRIPTION": "Description",
+  "GEAR.RISK": "Risque",
+
+  "HEADER.ATTRIBUTES": "ATTRIBUTS",
+  "HEADER.ARMORS": "ARMURES",
+  "HEADER.BIO": "BIO",
+  "HEADER.SKILLS": "COMPETENCES",
+  "HEADER.CONDITIONS": "CONDITIONS",
+  "HEADER.NOTES": "NOTES",
+  "HEADER.ADVANTAGE_MEMENTO": "AVANTAGE / SOUVENIR",
+  "HEADER.CRITICAL_INJURIES": "BLESSURE CRITIQUE",
+  "HEADER.WEAPONS": "ARMES",
+
+  "HEADER.GEAR": "EQUIPEMENT",
+  "HEADER.INFORMATION": "INFORMATION",
+  "HEADER.MAGIC": "MAGIE",
+  "HEADER.ATTACK": "ATTAQUE",
+  "HEADER.RITUAL": "RITUEL",
+  "HEADER.HISTORY": "HISTOIRE",
+
+
+  "HEADER.FACILITIES": "AMENAGEMENTS",
+  "HEADER.FAVORITES": "FAVORIS",
+  "HEADER.RELATIONSHIPS": "RELATIONS",
+
+  "MAGIC.ICON": "Icône",
+  "MAGIC.NAME": "Magie",
+
+  "MAGIC.CATEGORY": "Categorie",
+  "MAGIC.ENCHANTMENT": "Enchantement",
+  "MAGIC.CURSE": "Malédiction",
+  "MAGIC.TROLLCRAFT": "Trollcraft",
+  "MAGIC.POWER": "Mot de pouvoir",
+
+  "SKILL.AGILITY": "Agilité",
+  "SKILL.CLOSE_COMBAT": "Corps à corps",
+  "SKILL.MEDICINE": "Médecine",
+  "SKILL.RANGED_COMBAT": "Attaque à distance",
+  "SKILL.STEALTH": "Furtivité",
+  "SKILL.INVESTIGATION": "Enquête",
+  "SKILL.LEARNING": "Apprentissage",
+
+  "TAB.MAIN": "PRINCIPAL",
+  "TAB.GEAR": "EQUIPEMENT",
+  "TAB.FACILITY": "AMENAGEMENTS",
+  "TAB.UPGRADES" : "AMELIORATIONS",
+
+  "TALENT.ICON": "Icône",
+
+  "TALENT.DESCRIPTION": "Description",
+
+  "UPGRADE.ICON": "Icône",
+  "UPGRADE.NAME": "Amélioration",
+  "UPGRADE.CATEGORY": "Categorie",
+  "UPGRADE.PREREQUISITE": "Prérequis",
+  "UPGRADE.COST": "Coût",
+  "UPGRADE.FUNCTION": "Fonction",
+  "UPGRADE.ASSET": "Asset",
+  "UPGRADE.DESCRIPTION": "Description",
+  "UPGRADE.FACILITY": "Aménagements",
+
+
+  "WEAPON.ICON": "Icône",
+  "WEAPON.NAME": "Arme",
+  "WEAPON.DAMAGE": "Dommage",
+  "WEAPON.RANGE": "Portée",
+
+  "WEAPON.AVAILABILITY": "Quantité",
+  "WEAPON.SKILL": "Compétence",
+
+  "UI.FAVORITE" : "Basculer en favori",
+  "UI.EDIT" : "Editer",
+  "UI.DELETE": "Supprimer",
+  "UI.ADD" : "Créer nouveau",
+  "UI.ROLL.PREC": "Jet de récupération physique ",
+  "UI.ROLL.MREC": "Jet de récupération mental",
+
+  "SETTINGS.SWAG": "Utilise le logo officiel de Vaesen comme en-tête de la fiche de personnage",
+  "SETTINGS.SWAG_NAME" : "Décoration Fiche de personnage",
+
+
+  "SETTINGS.PORTRAIT_ROUND": "Tour",
+  "SETTINGS.PORTRAIT_PORTRAIT": "2:3 Orientation Portrait ",
+  "SETTINGS.PORTRAIT_LANDSCAPE": "3:2 Orientation Paysage",
+
+  "CHAT.SUCCESS": "Succès",
+  "ROLL.BASE.POOL": "Pool de dé de base",
+
+  "ROLL.ROLL" : "Jet",
+  "ROLL.PUSH": "Forcer",
+  "ROLL.CANCEL" : "Annuler",
+  "ROLL.SKILL": "Compétence",
+  "ROLL.PREC": "Récupération physique",
+  "ROLL.MREC": "Récupération mental",
+  "ROLL.BONUS": "Dés bonus",
+  "ROLL.DAMAGE": "Dommage",
+
+  "YZUR.CHAT.ROLL.Push" : "Forcer",
+  "YZUR.DIETYPES.SkillDie" : "Nombre de succés",
+
+  "RELATIONSHIP.WITH": "Relation avec",
+  "RELATIONSHIP.NATURE": "Nature de la relation",
+  "RELATIONSHIP.WT": "Avec"
+
+
+}
