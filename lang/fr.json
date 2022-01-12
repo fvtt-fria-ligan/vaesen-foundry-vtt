@@ -20,7 +20,7 @@
   "ARMOR.NAME": "Armure",
   "ARMOR.PROTECTION": "Protection",
   "ARMOR.AGILITY": "Agilité",
-  "ARMOR.AVAILABILITY": "Quantité",
+  "ARMOR.AVAILABILITY": "Disponibilité",
   
 
   "ATTACK.ICON": "Icône",
@@ -87,7 +87,7 @@
   "GEAR.ICON": "Icône",
   "GEAR.NAME": "Equipement",
   "GEAR.BONUS": "Bonus",
-  "GEAR.AVAILABILITY": "Quantité",
+  "GEAR.AVAILABILITY": "Disponibilité",
   "GEAR.EFFECT": "Effet",
   "GEAR.DESCRIPTION": "Description",
   "GEAR.RISK": "Risque",
@@ -156,7 +156,7 @@
   "WEAPON.DAMAGE": "Dommage",
   "WEAPON.RANGE": "Portée",
 
-  "WEAPON.AVAILABILITY": "Quantité",
+  "WEAPON.AVAILABILITY": "Disponibilité",
   "WEAPON.SKILL": "Compétence",
 
   "UI.FAVORITE" : "Basculer en favori",
