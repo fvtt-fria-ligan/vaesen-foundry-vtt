@@ -35,6 +35,10 @@ This system provides character sheets and items for  your play, if you would lik
 
 ## Release Notes
 
+v2.2.19
+- Continued work on CSS clean up
+- added French Localization
+
 v2.2.18
 - Updated to v9 226
 - fixed relationship header spacing

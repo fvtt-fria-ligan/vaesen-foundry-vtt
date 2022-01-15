@@ -3,9 +3,9 @@
   "name": "vaesen",
   "title": "Vaesen",
   "description": "Nordic horror role-playing",
-  "version": "2.2.18",
+  "version": "2.2.19",
   "minimumCoreVersion": "0.8.6",
-  "compatibleCoreVersion": "9.226",
+  "compatibleCoreVersion": "9",
   "templateVersion": 2,
   "author": "perfectro, Dr Ogres, fvtt-fria-ligan",
   "scripts": [],
@@ -59,6 +59,11 @@
   ],
   "packs": [],
   "languages": [
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json"
+    },
     {
       "lang": "en",
       "name": "English",
