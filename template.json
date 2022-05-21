@@ -1,14 +1,13 @@
 {
   "Actor": {
-    "types": [
-      "player",
-      "npc",
-      "vaesen",
-      "headquarter"
-    ],
+    "types": ["player", "npc", "vaesen", "headquarter"],
     "templates": {
       "attributes": {
         "attribute": {
+          "magic": {
+            "label": "ATTRIBUTE.MAGIC",
+            "value": 0
+          },
           "physique": {
             "label": "ATTRIBUTE.PHYSIQUE",
             "value": 0
@@ -131,11 +130,7 @@
       }
     },
     "player": {
-      "templates": [
-        "attributes",
-        "skills",
-        "conditions"
-      ],
+      "templates": ["attributes", "skills", "conditions"],
       "bio": {
         "age": "",
         "archetype": "",
@@ -151,10 +146,7 @@
       "note": ""
     },
     "npc": {
-      "templates": [
-        "attributes",
-        "skills"
-      ],
+      "templates": ["attributes", "skills"],
       "condition": {
         "physical": {
           "value": 0,
@@ -217,11 +209,11 @@
       "upgrade",
       "relationship"
     ],
-	"templates": {
-		"itemFav" :{
-		  "isFav": false
-		}
-	},
+    "templates": {
+      "itemFav": {
+        "isFav": false
+      }
+    },
     "criticalInjury": {
       "type": "",
       "fatal": "",
@@ -230,7 +222,7 @@
       "permanent": "No"
     },
     "weapon": {
-	  "templates": ["itemFav"],
+      "templates": ["itemFav"],
       "damage": 0,
       "range": "",
       "bonus": 0,
@@ -238,7 +230,7 @@
       "skill": ""
     },
     "armor": {
-	  "templates": ["itemFav"],
+      "templates": ["itemFav"],
       "protection": 0,
       "agility": 0,
       "availability": 0
@@ -251,7 +243,7 @@
       "availability": 0,
       "effect": "",
       "description": "",
-      "risk": "", 
+      "risk": "",
       "quantity": ""
     },
     "magic": {
@@ -276,7 +268,7 @@
       "function": "",
       "asset": "",
       "description": ""
-    },    
+    },
     "relationship": {
       "description": "",
       "notes": ""

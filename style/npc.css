@@ -4,16 +4,19 @@
 }
 
 .vaesen .npc .right{
-    flex-basis: 35%;
+    max-width: 315px;
 }
 
 .vaesen .npc .armors .heading,
 .vaesen .npc .weapons .heading,
-.vaesen .npc .gears .heading{
+.vaesen .npc .gears .heading,
+.vaesen .npc .magics .heading{
     font-size: .8em;
+    justify-content: space-between;
 }
+
 .vaesen .npc .left{
-    flex-basis: 65%;
+    width: 100%;
 }
 .vaesen .npc .header .profile-img {
     border: none;
