@@ -3,11 +3,11 @@
   "name": "vaesen",
   "title": "Vaesen",
   "description": "Nordic horror role-playing",
-  "version": "2.2.19",
+  "version": "3.0.0",
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "9",
   "templateVersion": 2,
-  "author": "perfectro, Dr Ogres, fvtt-fria-ligan",
+  "author": "Dr Ogres, fvtt-fria-ligan, perfectro",
   "scripts": [],
   "media": [
 		{

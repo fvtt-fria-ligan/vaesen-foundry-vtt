@@ -1,0 +1,95 @@
+/* Composition */
+.flex {
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.full {
+  width: 100%;
+  height: 100vh;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.center {
+  text-align: center;
+}
+
+.margin-tight {
+  margin: 0.55rem;
+}
+
+.margin-wide {
+  margin: 1rem;
+}
+
+.wrapper {
+  margin-bottom: 5px;
+}
+
+.wrapper:last-child {
+  margin-bottom: 0px;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.title {
+  padding: 5px;
+  text-align: center;
+  background-color: hsl(21deg, 20%, 60%);
+  margin: 3px;
+}
+
+.left-block {
+  width: 60%;
+}
+
+.right-block {
+  width: 40%;
+}
+
+.tab {
+  width: 100%;
+}
+
+.vaesen .heavy-border {
+  border: 2px solid hsl(13deg, 48%, 17%);
+  margin: 4px;
+  padding: 3px;
+}
+.vaesen .portrait {
+  margin-bottom: 0px;
+}
+.vaesen .light-border {
+  border: 1px dashed hsl(21deg, 20%, 43%);
+}
+.vaesen .name {
+  text-align: center;
+}/*# sourceMappingURL=vaesen_system.css.map */

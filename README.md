@@ -35,6 +35,10 @@ This system provides character sheets and items for  your play, if you would lik
 
 ## Release Notes
 
+v3.0.0
+- Refactored code for chat cards: removed switch statement for Object Literal. 
+- 
+
 v2.2.19
 - Continued work on CSS clean up
 - added French Localization

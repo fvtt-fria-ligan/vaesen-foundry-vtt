@@ -1,5 +1,5 @@
 .vaesen.item .attack .icon {
-    border: 1px dashed #826657;
+    border: 1px dashed hsl(21, 20%, 43%);
     border-radius: 10px;
     margin-right: 5px;
 }
