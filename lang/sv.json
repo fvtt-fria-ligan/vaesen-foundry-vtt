@@ -22,6 +22,7 @@
   "ARMOR.AGILITY": "Rörlighet",
   "ARMOR.AVAILABILITY": "Nivå",
 
+
   "ATTACK.ICON": "Bild",
   "ATTACK.NAME": "Attack",
   "ATTACK.DAMAGE": "Skada",
@@ -38,6 +39,7 @@
   "BIO.POINTS": "Utvecklingspoäng",
   "BIO.BUILDING": "Byggnadstyp",
   "BIO.LOCATION": "Läge",
+  "BIO.RELATIONSHIP": "Relationer",
 
   "CONDITION.PHYSICAL": "FYSISKA",
   "CONDITION.MENTAL": "MENTALA",
@@ -62,8 +64,8 @@
   "CRITICAL_INJURY.PERMANENT_SHORT": "Def.",
   "CRITICAL_INJURY.EFFECT": "Effekt",
 
-  "FEAR.INITIAL": "Nytt.Skräckslag",
-  "FEAR.SUBSEQUENT": "Upprepad.Skräckslag",
+  "FEAR.INITIAL": "Nytt Skräckslag",
+  "FEAR.SUBSEQUENT": "Upprepade Skräckslag",
 
   "ADVANTAGE": "Fördel",
   "MEMENTO": "Minnesföremål",
@@ -74,6 +76,11 @@
   "SECRET": "Hemlighet",
   "YES": "Ja",
   "NO": "Nej",
+  "NOTES": "Anteckningar",
+  "DESCRIPTION": "Beskrivning",
+  "TYPE" : "Typ",
+  "NAME" : "Namn",
+
 
   "GEAR.ICON": "Bild",
   "GEAR.NAME": "Utrustning",
@@ -102,14 +109,16 @@
   "HEADER.FACILITIES": "UTRYMMEN",
   "HEADER.CONTACT": "KONTAKTER",
   "HEADER.PERSONNEL": "PERSONER",
+  "HEADER.FAVORITES": "FAVORITER",
+  "HEADER.RELATIONSHIPS": "RELATIONER",
 
   "MAGIC.ICON": "Bild",
   "MAGIC.NAME": "Trolldom",
   "MAGIC.DESCRIPTION": "Beskrivning",
   "MAGIC.CATEGORY": "Kategori",
-  "MAGIC.ENCHANTMENT": "Tillstånd",
-  "MAGIC.CURSE": "Curse",
-  "MAGIC.TROLLCRAFT": "Trollkraft",
+  "MAGIC.ENCHANTMENT": "Förtrollningar",
+  "MAGIC.CURSE": "Förbannelser",
+  "MAGIC.TROLLCRAFT": "Trollkonster",
   "MAGIC.POWER": "Kraft",
 
   "SKILL.AGILITY": "Rörlighet",
@@ -130,10 +139,12 @@
   "TAB.TALENT": "TALANG",
   "TAB.GEAR": "UTRUSTNING",
   "TAB.NOTE": "ANTECKNINGAR",
+  "TAB.NOTES": "ANTECKNINGAR",
   "TAB.HISTORY": "HISTORIA",
   "TAB.FACILITY": "UTRYMMEN",
   "TAB.CONTACT": "KONTAKTER",
   "TAB.PERSONNEL": "PERSONER",
+  "TAB.UPGRADES" : "FÖRBÄTTRINGAR",
 
   "TALENT.ICON": "Bild",
   "TALENT.NAME": "Talang",
@@ -157,5 +168,41 @@
   "WEAPON.RANGE": "Räckvidd",
   "WEAPON.BONUS": "Bonus",
   "WEAPON.AVAILABILITY": "Nivå",
-  "WEAPON.SKILL": "Färdighet"
+  "WEAPON.SKILL": "Färdighet",
+  
+  "UI.FAVORITE" : "Växla Favoriter",
+  "UI.EDIT" : "Redigera",
+  "UI.DELETE": "Radera",
+  "UI.ADD" : "Skapa ny",
+  "UI.ROLL.PREC": "Slå Fysiskt Återhämtningsslag",
+  "UI.ROLL.MREC": "Slå Mentalt Återhämtningsslag",
+
+  "SETTINGS.SWAG": "Använd Väsens officiella logotyp som Rubrikbild för Karaktärsblad",
+  "SETTINGS.SWAG_NAME" : "Karaktärbladsdekorationer",
+  "SETTINGS.PORTRAIT_HINT": "Välj den karaktärbladsstil du vill ha, rund är standard men vi har support för Porträtt och Landskapsläge med 2:3 bildförhållande (175px gånger 117px är bäst)",
+  "SETTINGS.PORTRAIT": "Porträttstil på Karaktärsblad",
+  "SETTINGS.PORTRAIT_ROUND": "Rund",
+  "SETTINGS.PORTRAIT_PORTRAIT": "2:3 Porträttförhållande",
+  "SETTINGS.PORTRAIT_LANDSCAPE": "3:2 Landskapsförhållande",
+
+  "CHAT.SUCCESS": "Framgångar",
+  "ROLL.BASE.POOL": "Bas tärningspool",
+  "ROLL.TEST" : "Test",
+  "ROLL.ROLL" : "Slå",
+  "ROLL.PUSH": "Pressa",
+  "ROLL.CANCEL" : "Avbryt",
+  "ROLL.SKILL": "Färdighet",
+  "ROLL.PREC": "Fysisk Återhämtning",
+  "ROLL.MREC": "Mental Återhämtning",
+  "ROLL.BONUS": "Bonus tärningar",
+  "ROLL.DAMAGE": "Skada",
+
+  "YZUR.CHAT.ROLL.Push" : "Pressa",
+  "YZUR.DIETYPES.SkillDie" : "Framgångar",
+
+  "RELATIONSHIP.WITH": "Relation Med",
+  "RELATIONSHIP.NATURE": "Typ av Relation",
+  "RELATIONSHIP.WT": "Med",
+  "RELATIONSHIP.NT": "Natur"
+  
 }

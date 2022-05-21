@@ -35,6 +35,9 @@ This system provides character sheets and items for  your play, if you would lik
 
 ## Release Notes
 
+#2.3.1 
+- Updated Swedish Localization thanks to Hasselfloff!
+
 v2.3.0
 - Added Magic attribute to NPC (this is relatively common in the printed mysteries) Sheet 
 - minor css tweaks to NPC sheet 
