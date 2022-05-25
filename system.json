@@ -1,5 +1,4 @@
 {
-
   "name": "vaesen",
   "title": "Vaesen",
   "description": "Nordic horror role-playing",
@@ -10,22 +9,19 @@
   "author": "Dr Ogres, fvtt-fria-ligan, perfectro",
   "scripts": [],
   "media": [
-		{
-			"type": "cover",
-			"url": "https://raw.githubusercontent.com/fvtt-fria-ligan/vaesen-foundry-vtt/master/asset/welcome.jpg"
-		},
-		{
-			"type": "screenshot",
-			"url": "https://raw.githubusercontent.com/fvtt-fria-ligan/vaesen-foundry-vtt/master/asset/screen_shot.png"
-		}
-	],
-  "esmodules": [
-    "script/hooks.js"
+    {
+      "type": "cover",
+      "url": "https://raw.githubusercontent.com/fvtt-fria-ligan/vaesen-foundry-vtt/master/asset/welcome.jpg"
+    },
+    {
+      "type": "screenshot",
+      "url": "https://raw.githubusercontent.com/fvtt-fria-ligan/vaesen-foundry-vtt/master/asset/screen_shot.png"
+    }
   ],
+  "esmodules": ["script/hooks.js"],
   "initiative": "1d10",
   "styles": [
     "style/index.css",
-  
     "style/common.css",
     "style/player.css",
     "style/tab/player-main.css",
@@ -49,12 +45,9 @@
     "style/tab/headquarter-history.css",
     "style/tab/headquarter-upgrade.css",
     "style/weapon.css",
-
     "style/talent.css",
     "style/gear.css",
     "style/magic.css",
-    "style/condition.css",
-
     "style/upgrade.css",
     "style/dialog/roll.css"
   ],
@@ -75,7 +68,7 @@
       "name": "Svenska",
       "path": "lang/sv.json"
     },
-	{
+    {
       "lang": "es",
       "name": "Español",
       "path": "lang/es.json"
@@ -88,6 +81,6 @@
   "url": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt",
   "socket": true,
   "manifest": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/releases/latest/download/system.json",
-  "download": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/releases/latest/download/system.zip",  
+  "download": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/releases/latest/download/system.zip",
   "license": "LICENSE.txt"
 }
