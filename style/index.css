@@ -150,8 +150,16 @@ input.light {
   grid-template-columns: repeat(3, 1fr);
 }
 
+.grid-span-2 {
+  grid-column: 1/span 2;
+}
+
 .grid-span-3 {
   grid-column: 1/span 3;
+}
+
+.grid-align-end {
+  align-self: end;
 }
 
 .block {

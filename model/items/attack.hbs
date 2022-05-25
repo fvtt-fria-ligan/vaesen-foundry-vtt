@@ -1,46 +1,69 @@
-<form class="{{cssClass}} flexcol" autocomplete="off">
-    {{!-- Item Sheet Header --}} 
-    <div class="item-sheet flexrow">
-        <div class="item-sidebar">
-            <img class="icon" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
-        </div>   
-
-        <div class="item-info">
-            <h1 class="us-text">{{localize "ATTACK.NAME"}}</h1>
-            <br /><img src="systems/vaesen/asset/h-rule.png" width="90%" />  
-            
-            <div class="flex row">
-                <div class="header-details flexcol" style="flex-basis: 75%;">
-                    <span class = "charname">
-                        <input name="name" type="text" value="{{item.name}}" />
-                    </span>
-                </div>
-                <div class="item-desc flexcol" style="flex-basis: 25%; margin: 3px;">
-                    <b>{{localize "ATTACK.ATTRIBUTE"}}</b>
-                    <select name="data.attribute">
-                        {{#select data.data.attribute}}
-                            <option value="might">{{localize "ATTRIBUTE.MIGHT_ROLL"}}</option>
-                            <option value="bodyControl">{{localize "ATTRIBUTE.BODY_CONTROL_ROLL"}}</option>
-                            <option value="magic">{{localize "ATTRIBUTE.MAGIC_ROLL"}}</option>
-                            <option value="manipulation">{{localize "ATTRIBUTE.MANIPULATION_ROLL"}}</option>
-                        {{/select}}
-                    </select>
-                </div>
-            </div>
-            <div class="flex row">
-                <div class="damage flex row wrap center">
-                <b>{{localize "ATTACK.DAMAGE"}}</b>
-                <input name="data.damage" type="text" value="{{data.data.damage}}"/>
-                </div>
-                <div class="range flex row wrap center">
-                    <b>{{localize "ATTACK.RANGE"}}</b>
-                    <input name="data.range" type="text" value="{{data.data.range}}"/>
-                </div>
-            </div>
-            <div class="item-notes">
-                <b>{{localize "ATTACK.DESCRIPTION"}}</b>
-                <textarea name="data.description">{{data.data.description}}</textarea>
-            </div>
-        </div>
+<form class="{{cssClass}} flex-col color-brown-700" autocomplete="off">
+  {{! Item Sheet Header }}
+  <div class="bg-offwhite flex-row flex-start">
+    <div class="dl-border w-fc h-100">
+      <img
+        class="w-100p border-none br-5"
+        src="{{item.img}}"
+        data-edit="img"
+        title="{{item.name}}"
+      />
     </div>
+
+    <div class="w-100 padding-sm">
+      <div class="flex-col flex-wrap magin-b-sm">
+        <h1 class="center">{{localize "ATTACK.NAME"}}</h1>
+        <br /><img
+          class="border-none center w-90"
+          src="systems/vaesen/asset/h-rule.png"
+        />
+      </div>
+
+      <div class="grid grid-3col-fr center gap-sm h-100">
+        <div class="grid-span-2 grid-align-end">
+          <input class="light" name="name" type="text" value="{{item.name}}" />
+        </div>
+
+        <div class="flex-col">
+          <b>{{localize "ATTACK.ATTRIBUTE"}}</b>
+          <select name="data.attribute">
+            {{#select data.data.attribute}}
+              <option value="might">{{localize "ATTRIBUTE.MIGHT_ROLL"}}</option>
+              <option value="bodyControl">{{localize
+                  "ATTRIBUTE.BODY_CONTROL_ROLL"
+                }}</option>
+              <option value="magic">{{localize "ATTRIBUTE.MAGIC_ROLL"}}</option>
+              <option value="manipulation">{{localize
+                  "ATTRIBUTE.MANIPULATION_ROLL"
+                }}</option>
+            {{/select}}
+          </select>
+        </div>
+
+        <div class="flex-col center">
+          <b>{{localize "ATTACK.DAMAGE"}}</b>
+          <input
+            class="light"
+            name="data.damage"
+            type="text"
+            value="{{data.data.damage}}"
+          />
+        </div>
+        <div class="flex-col center">
+          <b>{{localize "ATTACK.RANGE"}}</b>
+          <input
+            class="light"
+            name="data.range"
+            type="text"
+            value="{{data.data.range}}"
+          />
+        </div>
+
+        <div class="grid-span-3">
+          <b>{{localize "ATTACK.DESCRIPTION"}}</b>
+          <textarea name="data.description">{{data.data.description}}</textarea>
+        </div>
+      </div>
+    </div>
+  </div>
 </form>
