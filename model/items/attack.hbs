@@ -19,12 +19,12 @@
         />
       </div>
 
-      <div class="grid grid-3col-fr center gap-sm h-100">
-        <div class="grid-span-2 grid-align-end">
+      <div class="grid grid-6col-fr center gap-sm h-100">
+        <div class="grid-span-4 grid-align-end">
           <input class="light" name="name" type="text" value="{{item.name}}" />
         </div>
 
-        <div class="flex-col">
+        <div class="flex-col grid-span-2">
           <b>{{localize "ATTACK.ATTRIBUTE"}}</b>
           <select name="data.attribute">
             {{#select data.data.attribute}}
@@ -40,7 +40,7 @@
           </select>
         </div>
 
-        <div class="flex-col center">
+        <div class="flex-col center grid-span-3">
           <b>{{localize "ATTACK.DAMAGE"}}</b>
           <input
             class="light"
@@ -49,7 +49,7 @@
             value="{{data.data.damage}}"
           />
         </div>
-        <div class="flex-col center">
+        <div class="flex-col center grid-span-3">
           <b>{{localize "ATTACK.RANGE"}}</b>
           <input
             class="light"
@@ -59,7 +59,7 @@
           />
         </div>
 
-        <div class="grid-span-3">
+        <div class="grid-span-6">
           <b>{{localize "ATTACK.DESCRIPTION"}}</b>
           <textarea name="data.description">{{data.data.description}}</textarea>
         </div>
