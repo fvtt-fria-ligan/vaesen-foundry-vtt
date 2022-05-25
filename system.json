@@ -24,7 +24,8 @@
   ],
   "initiative": "1d10",
   "styles": [
-    "vaesen.css",
+    "style/index.css",
+  
     "style/common.css",
     "style/player.css",
     "style/tab/player-main.css",
@@ -48,7 +49,7 @@
     "style/tab/headquarter-history.css",
     "style/tab/headquarter-upgrade.css",
     "style/weapon.css",
-    "style/armor.css",
+
     "style/talent.css",
     "style/gear.css",
     "style/magic.css",

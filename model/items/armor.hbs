@@ -1,41 +1,64 @@
-<form class="{{cssClass}} flexcol" autocomplete="off">
-    <div class="armor item-sheet flexrow">
+<form class="{{cssClass}} flex-col color-brown-700" autocomplete="off">
+  <div class="bg-offwhite flex-row flex-start">
 
-        <div class="item-sidebar">
-           <img class="icon" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
-        </div>   
-
-
-        <div class="item-info">
-            <div class="flex column wrap">
-                <h1 style="text-align: center;">{{localize "ARMOR.NAME"}}</h1>
-                <br /><img src="systems/vaesen/asset/h-rule.png" width="90%" />   
-                
-            </div>
-            <div class="flex column wrap center">
-                <div class="name flex row wrap center flex-start">
-                        <h3>{{localize "DESCRIPTION"}}:&nbsp;</h3>
-                        <div style="width: 70%;"><input name="name" type="text" value="{{item.name}}"/></div>
-                    </div>
-                <div class="flex row wrap grow">
-                    <div class="protection flex row wrap center ">
-                        <b>{{localize "ARMOR.PROTECTION"}}:&nbsp;</b>
-                        <input name="data.protection" type="text" value="{{data.data.protection}}"/>
-                    </div>
-                    <div class="agility flex row wrap center">
-                        <b>{{localize "ARMOR.AGILITY"}}</b>
-                        <input name="data.agility" type="text" value="{{data.data.agility}}"/>
-                    </div>
-                    <div class="availability flex row wrap center">
-                        <b>{{localize "ARMOR.AVAILABILITY"}}</b>
-                        <input name="data.availability" type="text" value="{{data.data.availability}}"/>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="dl-border w-fc h-100">
+      <img
+        class="w-100p border-none br-5"
+        src="{{item.img}}"
+        data-edit="img"
+        title="{{item.name}}"
+      />
     </div>
+
+    <div class="w-100 padding-sm">
+      <div class="flex-col flex-wrap magin-b-sm">
+        <h1 class="center">{{localize "ARMOR.NAME"}}</h1>
+        <br /><img
+          class="border-none center w-90"
+          src="systems/vaesen/asset/h-rule.png"
+        />
+
+      </div>
+      <div class="grid grid-3col-fr center gap-sm h-100">
+        <div class="grid-span-3 flex-row align-items-center">
+          <h3>{{localize "DESCRIPTION"}}:&nbsp;</h3>
+          <div class="w-100"><input
+              class="light"
+              name="name"
+              type="text"
+              value="{{item.name}}"
+            /></div>
+        </div>
+
+        <div class="flex-col center">
+          <b>{{localize "ARMOR.PROTECTION"}}:&nbsp;</b>
+          <input
+            class="light"
+            name="data.protection"
+            type="text"
+            value="{{data.data.protection}}"
+          />
+        </div>
+        <div class="flex-col center">
+          <b>{{localize "ARMOR.AGILITY"}}</b>
+          <input
+            class="light"
+            name="data.agility"
+            type="text"
+            value="{{data.data.agility}}"
+          />
+        </div>
+        <div class="flex-col center">
+          <b>{{localize "ARMOR.AVAILABILITY"}}</b>
+          <input
+            class="light"
+            name="data.availability"
+            type="text"
+            value="{{data.data.availability}}"
+          />
+        </div>
+
+      </div>
+    </div>
+  </div>
 </form>
-
-
-
-

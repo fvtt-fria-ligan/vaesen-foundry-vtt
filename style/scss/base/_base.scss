@@ -1,0 +1,58 @@
+@use "../abstracts" as *;
+
+:root {
+    @each $screen-size, $font-size in $type-scale {
+      @if $screen-size==small {
+        @each $size, $value in $font-size {
+          --fs-#{$size}: #{$value};
+        }
+      } @else if $screen-size==medium {
+      } @else {
+        @include mq(small) {
+          @each $size, $value in $font-size {
+            --fs-#{$size}: #{$value};
+          }
+        }
+      }
+    }
+  
+    @each $screen-size, $value in $breakpoints {
+      --bp-#{$screen-size}: #{$value};
+    }
+  }
+  
+.window-app .window-content{
+  color: $brown-700;
+  background-color: $off-white;
+
+}
+
+// Background colors
+
+.bg-offwhite{
+    background-color: $off-white;
+}
+
+
+//borders
+
+.dl-border{
+  border: 10px solid transparent;
+	border-image: url(/systems/vaesen/asset/ft_border.png) 15 round;
+}
+
+.border-none{
+  border: none;
+}
+
+.br-5{
+  border-radius: 5px;
+}
+
+input.light{
+  border: 7px solid transparent;
+  border-image: url(/systems/vaesen/asset/scooped_corners.svg) round;
+  border-image-slice: 58 fill;
+  margin-block: 3px;
+  filter: drop-shadow(2px 2px $brown-700);
+}

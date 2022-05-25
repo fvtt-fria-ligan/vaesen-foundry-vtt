@@ -222,13 +222,13 @@
 
 .vaesen textarea {
     background-color: #e7e7e7;
-    border-color: #826657;
+    border-color: #846758;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .vaesen select {
     background-color: #e7e7e7;
-    border-color: #826657;
+    border-color: hsl(21, 20%, 43%);
 }
 
 .dialog{
@@ -306,13 +306,13 @@
     font-size: .9em;
 }
 .vaesen .dice-total.success {
-    background: #c5d1a5;
+    background: hsl(76, 32%, 73%);
     color: #344117;
 
 }
 
 .vaesen .dice-total.failure{
-    background: #d1b9a5;
+    background: hsl(27, 32%, 73%);
     color: #411717;
 
 }
@@ -345,7 +345,7 @@ input[type="number"]:focus,
 input[type="password"]:focus,
 input[type="date"]:focus,
 input[type="time"]:focus {
-  box-shadow: 0 0 5px darkolivegreen;
+  box-shadow: 0 0 5px hsl(82, 39%, 30%);
 }
 
 a:hover{
