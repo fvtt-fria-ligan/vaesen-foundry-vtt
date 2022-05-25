@@ -154,6 +154,10 @@ input.light {
   grid-template-columns: repeat(3, 1fr);
 }
 
+.grid-4col-fr {
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .grid-6col-fr {
   grid-template-columns: repeat(6, 1fr);
 }
