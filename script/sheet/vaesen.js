@@ -20,6 +20,7 @@ export class VaesenCharacterSheet extends ActorSheet {
     }
 
     _getHeaderButtons() {
+        console.log(this.actor);
         let buttons = super._getHeaderButtons();
         if (this.actor.isOwner) {
             buttons = [

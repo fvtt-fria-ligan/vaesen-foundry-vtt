@@ -6,12 +6,15 @@ import { buildChatCard } from "../util/chat.js";
 export class PlayerCharacterSheet extends ActorSheet {
 
 
+    
+
     //TODO convert dices[] to a YZUR roll object to pass rolls and allow pushes
     dices = new YearZeroRoll;
     lastTestName = "";
     lastDamage = 0;
 
     static get defaultOptions() {
+          
         return mergeObject(super.defaultOptions, {
             classes: ["vaesen", "sheet", "actor"],
             template: "systems/vaesen/model/player.html",
@@ -49,6 +52,7 @@ export class PlayerCharacterSheet extends ActorSheet {
         this.setPortrait(superData.data);
         this.computeSkills(superData.data);
         this.computeItems(superData.data);
+      
         return superData;
     }
 
@@ -241,7 +245,9 @@ export class PlayerCharacterSheet extends ActorSheet {
     }
 	
 	setSwag(data) {
+       
 		data.swag = game.settings.get("vaesen", "swag") ? true : false;
+        console.log("setSwag", data);
 	}
 
     setPortrait(data){
@@ -306,6 +312,7 @@ export class PlayerCharacterSheet extends ActorSheet {
         event.preventDefault();
         let header = event.currentTarget;
         let data = duplicate(header.dataset);
+        console.log(data);
         data["name"] = `New ${data.type.capitalize()}`;
         this.actor.createEmbeddedDocuments("Item", [data]);
     }

@@ -10,13 +10,13 @@
 			<b class="button"> &nbsp;&nbsp; </b>
 		</div>
 		<div class="scrollable">		
-            {{#each data.items as |item|}}
+            {{#each items as |item|}}
                 {{#if item.isArmor}}
-					{{#if item.data.isFav}}
+					{{#if item.system.isFav}}
                         <div class="favorite item armor flex row center align-center" data-item-id="{{item._id}}">
                             <img class="icon" src="{{item.img}}" title="{{item.name}}"/>
                             <div class="name">{{item.name}}</div>
-                            <div class="protection">{{item.data.protection}}</div>
+                            <div class="protection">{{item.system.protection}}</div>
                             
                             <div class="button">
                                 <a class="item-control to-chat" title='{{localize UI.CHAT}}'><i class="fas fa-comment"></i></a>
@@ -38,14 +38,14 @@
                 <b class="button"> &nbsp;&nbsp;&nbsp;&nbsp; </b>
             </div>
 		<div class="scrollable">
-                {{#each data.items as |item|}}
+                {{#each items as |item|}}
                     {{#if item.isWeapon}}
-						{{#if item.data.isFav}}
+						{{#if item.system.isFav}}
                         <div class="favorite weapon item flex row center align-center" data-item-id="{{item._id}}">
                             <img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/>
                             <div class="name">{{item.name}}</div>
-                            <div class="damage">{{item.data.damage}}</div>
-                            <div class="range">{{item.data.range}}</div>
+                            <div class="damage">{{item.system.damage}}</div>
+                            <div class="range">{{item.system.range}}</div>
                             
                             <div class="button">
                                 <a class="item-control to-chat" title='{{localize UI.CHAT}}'><i class="fas fa-comment"></i></a>

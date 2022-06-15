@@ -10,7 +10,7 @@
                 <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="condition"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
-                {{#each data.items as |item|}}
+                {{#each items as |item|}}
                     {{#if item.isCondition}}
                         
                         <div class="condition item flex column center " data-item-id="{{item._id}}">
@@ -18,7 +18,7 @@
                             <div class="selected checkbox-container">
                                 <label class="checkbox-label">
                                     <input type="checkbox" name="conditon" id="{{item._id}}"
-                                    {{#if item.data.active}}
+                                    {{#if item.system.active}}
                                         checked 
                                     {{/if}}
                                     />
@@ -26,7 +26,7 @@
                                 </label>
                             </div>
                             <div class="name">{{item.name}}</div>
-                            <div class="bonus">{{item.data.bonus}}</div>
+                            <div class="bonus">{{item.system.bonus}}</div>
                             
                             <div class="button">
                                 <a class="item-control to-chat" title='{{localize UI.CHAT}}'><i class="fas fa-comment"></i></a>
@@ -53,7 +53,7 @@
                 <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="magic"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
-                {{#each data.items as |item|}}
+                {{#each items as |item|}}
                     {{#if item.isMagic}}
                         <div class="magic item flex column center align-center" data-item-id="{{item._id}}">
                             <div class="flex row center space-between grow" style="width: 100%;">
