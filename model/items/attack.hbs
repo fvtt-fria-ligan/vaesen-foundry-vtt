@@ -26,8 +26,8 @@
 
         <div class="flex-col grid-span-2">
           <b>{{localize "ATTACK.ATTRIBUTE"}}</b>
-          <select name="data.attribute">
-            {{#select data.data.attribute}}
+          <select name="system.attribute">
+            {{#select data.system.attribute}}
               <option value="might">{{localize "ATTRIBUTE.MIGHT_ROLL"}}</option>
               <option value="bodyControl">{{localize
                   "ATTRIBUTE.BODY_CONTROL_ROLL"
@@ -44,24 +44,24 @@
           <b>{{localize "ATTACK.DAMAGE"}}</b>
           <input
             class="light"
-            name="data.damage"
+            name="system.damage"
             type="text"
-            value="{{data.data.damage}}"
+            value="{{data.system.damage}}"
           />
         </div>
         <div class="flex-col center grid-span-3">
           <b>{{localize "ATTACK.RANGE"}}</b>
           <input
             class="light"
-            name="data.range"
+            name="system.range"
             type="text"
-            value="{{data.data.range}}"
+            value="{{data.system.range}}"
           />
         </div>
 
         <div class="grid-span-6">
           <b>{{localize "ATTACK.DESCRIPTION"}}</b>
-          <textarea name="data.description">{{data.data.description}}</textarea>
+          <textarea name="system.description">{{data.system.description}}</textarea>
         </div>
       </div>
     </div>

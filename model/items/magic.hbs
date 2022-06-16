@@ -15,8 +15,8 @@
             <h3>{{localize "NAME"}}:&nbsp;</h3>
             <input name="name" type="text" value="{{item.name}}" style="width: 55%; margin-right:5px;"/>
             <b>{{localize "MAGIC.CATEGORY"}}</b>
-            <select name="data.category">
-                {{#select data.data.category}}
+            <select name="system.category">
+                {{#select data.system.category}}
                     <option value="power">{{localize "MAGIC.POWER"}}</option>
                     <option value="enchantment">{{localize "MAGIC.ENCHANTMENT"}}</option>
                     <option value="curse">{{localize "MAGIC.CURSE"}}</option>
@@ -26,7 +26,7 @@
         </div>
         <div class="description flex row wrap">
             <b>{{localize "MAGIC.DESCRIPTION"}}</b>
-            <textarea name="data.description">{{data.data.description}}</textarea>
+            <textarea name="system.description">{{data.system.description}}</textarea>
         </div>
         </div>
     </div>

@@ -15,8 +15,8 @@
                 <h3>{{localize "TYPE"}}:&nbsp;</h3>
                 <input name="name" type="text" value="{{item.name}}" style="width: 56%; margin-right:5px;"/>
                 <h3>{{localize "WEAPON.SKILL"}}: &nbsp;</h3>
-                <select name="data.skill">
-                    {{#select data.data.skill}}
+                <select name="system.skill">
+                    {{#select data.system.skill}}
                         <option value="force">{{localize "SKILL.FORCE"}}</option>
                         <option value="closeCombat">{{localize "SKILL.CLOSE_COMBAT"}}</option>
                         <option value="rangedCombat">{{localize "SKILL.RANGED_COMBAT"}}</option>
@@ -25,19 +25,19 @@
             </div>
             <div class="damage flex row wrap center" style="width: 99%;">
                 <b>{{localize "WEAPON.DAMAGE"}}</b>
-                <input name="data.damage" type="text" value="{{data.data.damage}}"/>
+                <input name="system.damage" type="text" value="{{data.system.damage}}"/>
             </div>
             <div class="range flex row wrap center" style="width: 99%;">
                 <b>{{localize "WEAPON.RANGE"}}</b>
-                <input name="data.range" type="text" value="{{data.data.range}}"/>
+                <input name="system.range" type="text" value="{{data.system.range}}"/>
             </div>
             <div class="bonus flex row wrap center" style="width: 99%;">
                 <b>{{localize "WEAPON.BONUS"}}</b>
-                <input name="data.bonus" type="text" value="{{data.data.bonus}}"/>
+                <input name="system.bonus" type="text" value="{{data.system.bonus}}"/>
             </div>
             <div class="availability flex row wrap center" style="width: 99%;">
                 <b>{{localize "WEAPON.AVAILABILITY"}}</b>
-                <input name="data.availability" type="text" value="{{data.data.availability}}"/>
+                <input name="system.availability" type="text" value="{{data.system.availability}}"/>
             </div>
         </div>
     </div>

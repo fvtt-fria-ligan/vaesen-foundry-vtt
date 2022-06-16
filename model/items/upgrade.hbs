@@ -17,8 +17,8 @@
                 </div>
                 <div class="category flex row wrap center" style="flex-basis: 33%; margin: 3px; line-height: 2;">
                     <b>{{localize "UPGRADE.CATEGORY"}}</b>
-                    <select name="data.category">
-                        {{#select data.data.category}}
+                    <select name="system.category">
+                        {{#select data.system.category}}
                             <option value="facility">{{localize "UPGRADE.FACILITY"}}</option>
                             <option value="contact">{{localize "UPGRADE.CONTACT"}}</option>
                             <option value="personnel">{{localize "UPGRADE.PERSONNEL"}}</option>
@@ -31,11 +31,11 @@
                 
                 <div class="cost flex row wrap center">
                     <b>{{localize "UPGRADE.COST"}}</b>
-                        <input name="data.cost" type="text" value="{{data.data.cost}}"/>
+                        <input name="system.cost" type="text" value="{{data.system.cost}}"/>
                 </div>
                 <div class="prerequisite flex row wrap">
                     <b>{{localize "UPGRADE.PREREQUISITE"}}</b>
-                    <input name="data.prerequisite" type="text" value="{{data.data.prerequisite}}"/>
+                    <input name="system.prerequisite" type="text" value="{{data.system.prerequisite}}"/>
                 </div>
             </div>
 
@@ -43,15 +43,15 @@
                 
                 <div class="function flex row wrap">
                     <b>{{localize "UPGRADE.FUNCTION"}}</b>
-                    <textarea name="data.function">{{data.data.function}}</textarea>
+                    <textarea name="system.function">{{data.system.function}}</textarea>
                 </div>
                 <div class="asset flex row wrap">
                     <b>{{localize "UPGRADE.ASSET"}}</b>
-                    <textarea name="data.asset">{{data.data.asset}}</textarea>
+                    <textarea name="system.asset">{{data.system.asset}}</textarea>
                 </div>
                 <div class="description flex row wrap">
                     <b>{{localize "TALENT.DESCRIPTION"}}</b>
-                    <textarea name="data.description">{{data.data.description}}</textarea>
+                    <textarea name="system.description">{{data.system.description}}</textarea>
                 </div>
             </div>
         </div>
