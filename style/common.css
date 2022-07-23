@@ -537,7 +537,7 @@ border: none;
 	font-family: Albertus, sans-serif;
 	font-size: 1em;
 	padding: 0px;
-	border: 7px solid transparent;
+	border: 8px solid transparent;
 	border-image: url(/systems/vaesen/asset/scooped_corners.svg) round;
 	border-image-slice: 58 fill;
 	
@@ -564,7 +564,7 @@ border: none;
 
 .vaesen input{
 	font-family: Lin, sans-serif;
-	border: 7px solid transparent;
+	border: 8px solid transparent;
 	border-image: url(/systems/vaesen/asset/scooped_corners.svg) round;
 	border-image-slice: 58 fill;
 	background-color: transparent;
@@ -574,9 +574,9 @@ border: none;
 .vaesen .player .header input,
 .vaesen .headquarter .header input{
 	font-family: Lin, sans-serif;
-	border: 7px solid transparent;
+	border: 8px solid transparent;
 	border-image: url(/systems/vaesen/asset/scooped_corners.svg) round;
-	border-image-slice: 58 fill;
+	border-image-slice: 35% fill;
 	background-color: transparent;
 	margin-top: 3px;
 }

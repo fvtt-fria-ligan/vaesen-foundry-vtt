@@ -1,13 +1,7 @@
 .idea/
 *.code-workspace
-asset/npc.png~
-asset/dice-6.png~
-asset/vaesen.png~
-README.md
-asset/headquarter.png~
-asset/player_update.png~
+
 script/lib/yzur1.js
-asset/headquarter.png~
-asset/token_border_landscape.png~
-asset/token_border_portrait.png~
-asset/.token_border.png-autosave.kra
+
+*.kra
+*.png~
