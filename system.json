@@ -29,9 +29,6 @@
     "style/headquarter.css",
     "style/tab/headquarter-history.css",
     "style/tab/headquarter-upgrade.css",
-    "style/weapon.css",
-    "style/talent.css",
-    "style/upgrade.css",
     "style/dialog/roll.css"
   ],
   "languages": [
