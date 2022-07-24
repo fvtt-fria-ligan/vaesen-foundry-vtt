@@ -1,33 +1,58 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
-    <div class="magic item-sheet flexrow">
+  <div class="bg-offwhite flex-row flex-start">
 
-        <div class="item-sidebar">
-           <img class="icon" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
-        </div>  
-
-
-       <div class="item-info">
-        <div class="name flex column wrap">
-            <h1>{{localize "MAGIC.NAME"}}</h1>
-            <br /><img src="systems/vaesen/asset/h-rule.png" width="90%" />  
-        </div>
-        <div class="category flex row wrap center">
-            <h3>{{localize "NAME"}}:&nbsp;</h3>
-            <input name="name" type="text" value="{{item.name}}" style="width: 55%; margin-right:5px;"/>
-            <b>{{localize "MAGIC.CATEGORY"}}</b>
-            <select name="system.category">
-                {{#select data.system.category}}
-                    <option value="power">{{localize "MAGIC.POWER"}}</option>
-                    <option value="enchantment">{{localize "MAGIC.ENCHANTMENT"}}</option>
-                    <option value="curse">{{localize "MAGIC.CURSE"}}</option>
-                    <option value="trollcraft">{{localize "MAGIC.TROLLCRAFT"}}</option>
-                {{/select}}
-            </select>
-        </div>
-        <div class="description flex row wrap">
-            <b>{{localize "MAGIC.DESCRIPTION"}}</b>
-            <textarea name="system.description">{{data.system.description}}</textarea>
-        </div>
-        </div>
+    <div class="dl-border w-fc h-100">
+      <img
+        class="w-100p border-none br-5"
+        src="{{item.img}}"
+        data-edit="img"
+        title="{{item.name}}"
+      />
     </div>
+
+    <div class="w-100 padding-sm">
+      <div class="flex-col flex-wrap magin-b-sm">
+        <h1 class="center">{{localize "MAGIC.NAME"}}</h1>
+        <br /><img
+          src="systems/vaesen/asset/h-rule.png"
+          class="border-none center w-90"
+        />
+      </div>
+
+      <div class="grid grid-2col-fr center gap-sm h-100">
+        <div class="grid-align-end">
+          <h3>{{localize "NAME"}}:&nbsp;</h3>
+          <input
+            class="light"
+            name="name"
+            type="text"
+            value="{{item.name}}"
+            
+          />
+        </div>
+        <div class="grid-align-end">
+          <h3>{{localize "MAGIC.CATEGORY"}}</h3>
+          <select name="system.category">
+            {{#select data.system.category}}
+              <option value="power">{{localize "MAGIC.POWER"}}</option>
+              <option value="enchantment">{{localize
+                  "MAGIC.ENCHANTMENT"
+                }}</option>
+              <option value="curse">{{localize "MAGIC.CURSE"}}</option>
+              <option value="trollcraft">{{localize
+                  "MAGIC.TROLLCRAFT"
+                }}</option>
+            {{/select}}
+          </select>
+        </div>
+        <div class="grid-span-2 grid-align-end">
+          <b>{{localize "MAGIC.DESCRIPTION"}}</b>
+          <textarea
+            name="system.description"
+          >{{data.system.description}}</textarea>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </form>

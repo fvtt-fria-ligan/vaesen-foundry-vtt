@@ -1,0 +1,22 @@
+@use "../abstracts" as *;
+
+.journal-sheet{
+
+    & form{
+        background: var(--white);
+
+         & input[name="name"]{
+            font-size: 1.5rem;
+            height: 2rem;
+            line-height: 2rem;
+            background: none;
+            color: var(--brown-700);
+            border: none;
+         }
+    }
+
+    & nav{
+        background: url( /systems/vaesen/asset/denim075.png) repeat;
+        border-bottom: 1px solid var(--brown-200);
+    }
+}
