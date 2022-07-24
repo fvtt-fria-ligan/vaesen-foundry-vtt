@@ -20,7 +20,7 @@ export class HeadquarterCharacterSheet extends ActorSheet {
 
   getData() {
     const superData = super.getData();
-    this.computeItems(superData.data);
+    this.computeItems(superData);
     return superData;
   }
 
@@ -55,13 +55,14 @@ export class HeadquarterCharacterSheet extends ActorSheet {
   }
 
   computeItems(data) {
+    console.log(data);
     for (let item of Object.values(data.items)) {
       item.isFacility =
-        item.type === "upgrade" && item.data.category === "facility";
+        item.type === "upgrade" && item.system.category === "facility";
       item.isContact =
-        item.type === "upgrade" && item.data.category === "contact";
+        item.type === "upgrade" && item.system.category === "contact";
       item.isPersonnel =
-        item.type === "upgrade" && item.data.category === "personnel";
+        item.type === "upgrade" && item.system.category === "personnel";
     }
   }
 

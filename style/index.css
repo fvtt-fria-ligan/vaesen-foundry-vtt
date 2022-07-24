@@ -233,17 +233,87 @@ input.light {
 }
 
 .journal-sheet form {
-  background: var(--white);
+  background: white;
 }
 .journal-sheet form input[name=name] {
   font-size: 1.5rem;
   height: 2rem;
   line-height: 2rem;
   background: none;
-  color: var(--brown-700);
+  color: hsl(13deg, 48%, 17%);
   border: none;
 }
 .journal-sheet nav {
   background: url(/systems/vaesen/asset/denim075.png) repeat;
-  border-bottom: 1px solid var(--brown-200);
+  border-bottom: 1px solid hsl(21deg, 20%, 60%);
+}
+
+.journal-entry-page {
+  max-width: 55ch;
+  margin: 0 auto;
+}
+.journal-entry-page table tr:nth-child(odd) {
+  background: #e6ded6;
+  border-top: 1px solid #412017;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+}
+.journal-entry-page table tr:nth-child(even) {
+  background: #ffffff;
+  border-top: 1px solid #412017;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+}
+.journal-entry-page table td {
+  border-left: none;
+  border-right: none;
+  font-family: IntervogueReg;
+  font-style: normal;
+  text-align: left;
+  padding: 0.3em;
+}
+.journal-entry-page th {
+  padding: 0.3em;
+  text-align: left;
+  border-top: hidden;
+  word-break: keep-all;
+}
+.journal-entry-page table thead tr {
+  background: #ffffff;
+  border-top: hidden;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  font-family: IntervogueBlack;
+  font-weight: 700;
+  font-style: normal;
+  color: #412017;
+  text-shadow: none;
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+
+.journal-entry-page ul {
+  list-style: url("/systems/vaesen/asset/bullet.svg");
+  margin: 2px;
+}
+
+.info-box {
+  width: 55ch;
+  margin: 0 auto;
+}
+
+a.content-link {
+  color: hsl(13deg, 48%, 17%);
+  text-decoration: none;
+  background: none;
+  padding: 0;
+  white-space: nowrap;
+  word-break: break-all;
+  border: none;
+}
+a.content-link i {
+  color: hsl(13deg, 48%, 17%);
 }/*# sourceMappingURL=index.css.map */
