@@ -34,8 +34,10 @@ This system provides character sheets and items for  your play, if you would lik
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Release Notes
+v2.3.2
+-fixed css for Vasen sheet note field not showing.
 
-#2.3.1 
+v2.3.1 
 - Updated Swedish Localization thanks to Hasselfloff!
 
 v2.3.0
