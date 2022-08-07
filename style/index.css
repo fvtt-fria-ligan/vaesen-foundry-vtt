@@ -94,17 +94,21 @@ h4 {
 
 .window-app .window-content {
   color: hsl(13deg, 48%, 17%);
-  background-color: hsl(40deg, 20%, 97%);
+  background-color: hsl(40deg, 20%, 80%);
 }
 
 .bg-offwhite {
-  background-color: hsl(40deg, 20%, 97%);
+  background-color: hsl(40deg, 20%, 80%);
+}
+
+.bg-brown-100 {
+  background-color: hsl(0deg, 0%, 91%);
 }
 
 .dl-border {
   border: 10px solid transparent;
-  -o-border-image: url(/systems/vaesen/asset/ft_border.png) 15 round;
-     border-image: url(/systems/vaesen/asset/ft_border.png) 15 round;
+  -o-border-image: url(/systems/vaesen/asset/ft_border.png) 15 stretch;
+     border-image: url(/systems/vaesen/asset/ft_border.png) 15 stretch;
 }
 
 .border-none {
@@ -117,8 +121,8 @@ h4 {
 
 input.light {
   border: 7px solid transparent;
-  -o-border-image: url(/systems/vaesen/asset/scooped_corners.svg) round;
-     border-image: url(/systems/vaesen/asset/scooped_corners.svg) round;
+  -o-border-image: url(/systems/vaesen/asset/scooped_corners.svg) stretch;
+     border-image: url(/systems/vaesen/asset/scooped_corners.svg) stretch;
   border-image-slice: 58 fill;
   margin-block: 3px;
   filter: drop-shadow(2px 2px hsl(13deg, 48%, 17%));

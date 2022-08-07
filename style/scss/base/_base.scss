@@ -33,12 +33,16 @@
     background-color: $off-white;
 }
 
+.bg-brown-100{
+    background-color: $brown-100;
+}
+
 
 //borders
 
 .dl-border{
   border: 10px solid transparent;
-	border-image: url(/systems/vaesen/asset/ft_border.png) 15 round;
+	border-image: url(/systems/vaesen/asset/ft_border.png) 15 stretch;
 }
 
 .border-none{
@@ -51,7 +55,7 @@
 
 input.light{
   border: 7px solid transparent;
-  border-image: url(/systems/vaesen/asset/scooped_corners.svg) round;
+  border-image: url(/systems/vaesen/asset/scooped_corners.svg) stretch;
   border-image-slice: 58 fill;
   margin-block: 3px;
   filter: drop-shadow(2px 2px $brown-700);
