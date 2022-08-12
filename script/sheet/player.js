@@ -570,23 +570,23 @@ export class PlayerCharacterSheet extends ActorSheet {
 
   onWeaponRoll(event) {
     const div = $(event.currentTarget).parents(".weapon");
-    const item = this.actor.data.items.get(div.data("itemId"));
+    const item = this.actor.items.get(div.data("itemId"));
     const testName = item.name;
     let attribute = 0;
     let skill = 0;
     let bonusFromCondition = 0;
-    let bonusFromWeapon = parseInt(item.data.data.bonus, 10);
-    if (item.data.data.skill === "force") {
-      attribute = this.actor.data.data.attribute.physique.value;
-      skill = this.actor.data.data.skill.force.value;
+    let bonusFromWeapon = parseInt(item.system.bonus, 10);
+    if (item.system.skill === "force") {
+      attribute = this.actor.system.attribute.physique.value;
+      skill = this.actor.system.skill.force.value;
       bonusFromCondition = this.computeBonusFromConditions("physique");
-    } else if (item.data.data.skill === "closeCombat") {
-      attribute = this.actor.data.data.attribute.physique.value;
-      skill = this.actor.data.data.skill.closeCombat.value;
+    } else if (item.system.skill === "closeCombat") {
+      attribute = this.actor.system.attribute.physique.value;
+      skill = this.actor.system.skill.closeCombat.value;
       bonusFromCondition = this.computeBonusFromConditions("physique");
-    } else if (item.data.data.skill === "rangedCombat") {
-      attribute = this.actor.data.data.attribute.precision.value;
-      skill = this.actor.data.data.skill.rangedCombat.value;
+    } else if (item.system.skill === "rangedCombat") {
+      attribute = this.actor.system.attribute.precision.value;
+      skill = this.actor.system.skill.rangedCombat.value;
       bonusFromCondition = this.computeBonusFromConditions("precision");
     }
     prepareRollDialog(
@@ -595,7 +595,7 @@ export class PlayerCharacterSheet extends ActorSheet {
       attribute,
       skill,
       bonusFromWeapon + bonusFromCondition,
-      item.data.data.damage
+      item.system.damage
     );
   }
 

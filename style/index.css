@@ -320,4 +320,11 @@ a.content-link {
 }
 a.content-link i {
   color: hsl(13deg, 48%, 17%);
+}
+
+.icon-img {
+  width: 25px;
+  height: 25px;
+  border: none;
+  border-radius: 0;
 }/*# sourceMappingURL=index.css.map */
