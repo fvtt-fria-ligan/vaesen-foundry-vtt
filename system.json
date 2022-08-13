@@ -1,24 +1,12 @@
 {
-  "name": "vaesen",
   "title": "Vaesen",
   "description": "Nordic horror role-playing",
-  "version": "2.3.4",
-  "minimumCoreVersion": "0.8.6",
-  "compatibleCoreVersion": "9",
-  "templateVersion": 2,
-  "author": "Dr Ogres, fvtt-fria-ligan, perfectro",
-  "scripts": [],
-  "media": [
-    {
-      "type": "cover",
-      "url": "https://raw.githubusercontent.com/fvtt-fria-ligan/vaesen-foundry-vtt/master/asset/welcome.jpg"
-    },
-    {
-      "type": "screenshot",
-      "url": "https://raw.githubusercontent.com/fvtt-fria-ligan/vaesen-foundry-vtt/master/asset/screen_shot.png"
-    }
+
+  "version": "3.0.0",
+  "esmodules": [
+    "script/hooks.js"
+
   ],
-  "esmodules": ["script/hooks.js"],
   "initiative": "1d10",
   "styles": [
     "style/index.css",
@@ -35,7 +23,6 @@
     "style/tab/npc-talent.css",
     "style/tab/npc-gear.css",
     "style/tab/npc-note.css",
-    
     "style/vaesen.css",
     "style/tab/vaesen-main.css",
     "style/tab/vaesen-combat.css",
@@ -44,14 +31,8 @@
     "style/headquarter.css",
     "style/tab/headquarter-history.css",
     "style/tab/headquarter-upgrade.css",
-    "style/weapon.css",
-    "style/talent.css",
-    "style/gear.css",
-    "style/magic.css",
-    "style/upgrade.css",
     "style/dialog/roll.css"
   ],
-  "packs": [],
   "languages": [
     {
       "lang": "fr",
@@ -81,11 +62,19 @@
   ],
   "gridDistance": 1,
   "gridUnits": "m",
-  "primaryTokenAttribute": null,
-  "secondaryTokenAttribute": null,
   "url": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt",
   "socket": true,
   "manifest": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/releases/latest/download/system.json",
   "download": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/releases/latest/download/system.zip",
-  "license": "LICENSE.txt"
+  "license": "LICENSE.txt",
+  "id": "vaesen",
+  "authors": [
+    {
+      "name": "Dr Ogres, fvtt-fria-ligan, perfectro"
+    }
+  ],
+  "compatibility": {
+    "minimum": "10",
+    "verified": "10"
+  }
 }

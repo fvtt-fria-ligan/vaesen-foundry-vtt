@@ -572,7 +572,7 @@ export class YearZeroRoll extends Roll {
       console.warn(`${YearZeroRoll.name} | Invalid roll formula: "${formula}"`);
       formula = yzGame === 't2k' ? '1d6' : '1ds';
     }
-    const token = game.actors.get(owner).data.img
+    const token = game.actors.get(owner).img
     // Creates the roll.
     const roll = new YearZeroRoll(formula, { name: title, game: yzGame, maxPush, damage, owner, token });
     if (CONFIG.debug.dice) console.log(roll);

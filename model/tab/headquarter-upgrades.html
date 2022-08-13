@@ -9,7 +9,7 @@
                 <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="upgrade" data-category="facility"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
-                {{#each data.items as |item|}}
+                {{#each items as |item|}}
                     {{#if item.isFacility}}
                     <div class="upgrade item flex column  grow" data-item-id="{{item._id}}">
                         <div class="flex row center align-center space-between grow">
@@ -38,7 +38,7 @@
                 <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="upgrade" data-category="personnel"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
-                {{#each data.items as |item|}}
+                {{#each items as |item|}}
                     {{#if item.isPersonnel}}
                     <div class="upgrade item flex column  grow" data-item-id="{{item._id}}">
                         <div class="flex row center align-center space-between grow">
@@ -67,7 +67,7 @@
                 <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="upgrade" data-category="contact"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
-                {{#each data.items as |item|}}
+                {{#each items as |item|}}
                     {{#if item.isContact}}
                     <div class="upgrade item flex column  grow" data-item-id="{{item._id}}">
                         <div class="flex row center align-center space-between grow">

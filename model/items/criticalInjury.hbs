@@ -26,8 +26,8 @@
         <div class="flex-col center">
           <b style="margin-right: 5px;">{{localize "CRITICAL_INJURY.TYPE"}}:
           </b>
-          <select name="data.type">
-            {{#select data.data.type}}
+          <select name="system.type">
+            {{#select data.system.type}}
               <option value="physical">{{localize
                   "CONDITION.PHYSICAL"
                 }}</option>
@@ -40,8 +40,8 @@
               "CRITICAL_INJURY.PERMANENT"
             }}:
           </b>
-          <select name="data.permanent">
-            {{#select data.data.permanent}}
+          <select name="system.permanent">
+            {{#select data.system.permanent}}
               <option value="No">{{localize "NO"}}</option>
               <option value="Yes">{{localize "YES"}}</option>
             {{/select}}
@@ -52,24 +52,24 @@
           <b>{{localize "CRITICAL_INJURY.FATAL"}}</b>
           <input
             class="light"
-            name="data.fatal"
+            name="system.fatal"
             type="text"
-            value="{{data.data.fatal}}"
+            value="{{data.system.fatal}}"
           />
         </div>
         <div class="grid-span-2 grid-align-end">
           <b>{{localize "CRITICAL_INJURY.TIME_LIMIT"}}</b>
           <input
             class="light"
-            name="data.timeLimit"
+            name="system.timeLimit"
             type="text"
-            value="{{data.data.timeLimit}}"
+            value="{{data.system.timeLimit}}"
           />
         </div>
 
         <div class="grid-span-4 grid-align-end">
           <b>{{localize "CRITICAL_INJURY.EFFECT"}}</b>
-          <input class="light" name="data.effect" type="text" value="{{data.data.effect}}" />
+          <input class="light" name="system.effect" type="text" value="{{data.system.effect}}" />
         </div>
       </div>
     </div>

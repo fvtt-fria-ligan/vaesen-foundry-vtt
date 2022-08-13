@@ -1,29 +1,59 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
-    {{!-- Item Sheet Header --}} 
-    <div class="item-sheet flexrow">
-        <div class="item-sidebar">
-            <img class="icon" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
-        </div>   
-
-        <div class="item-info">
-            <h1 class="us-text">{{localize "BIO.RELATIONSHIP"}}</h1>
-            <br /><img src="systems/vaesen/asset/h-rule.png" width="90%" />  
-            <div class="header-details flexcol">
-                <lable>{{localize "RELATIONSHIP.WITH"}}:</lable>
-                <span class = "charname">
-                    <input name="name" type="text" value="{{item.name}}" style="width: 99%;"/>
-                </span>
-            </div>
-
-            <div class="item-desc flexcol">
-                <label>{{localize "RELATIONSHIP.NATURE"}}:</label>
-                <input class="relationship-desc" name="data.description" data-field="data.data.description" type="text" value="{{data.data.description}}"/>
-            </div>
-
-            <div class="item-notes">
-                <label>{{localize "NOTES"}}:</label>
-                <textarea id="notes" name="data.notes" rows="6" wrap="soft">{{data.data.notes}}</textarea>
-            </div>
-        </div>
+  {{! Item Sheet Header }}
+  <div class="bg-offwhite flex-row flex-start">
+    <div class="dl-border w-fc h-100">
+      <img
+        class="w-100p border-none br-5"
+        src="{{item.img}}"
+        data-edit="img"
+        title="{{item.name}}"
+      />
     </div>
+
+    <div class="w-100 padding-sm">
+      <div class="flex-col flex-wrap magin-b-sm">
+        <h1 class="center">{{localize "BIO.RELATIONSHIP"}}</h1>
+        <br /><img
+          src="systems/vaesen/asset/h-rule.png"
+          class="border-none center w-90"
+        />
+      </div>
+ <div class="grid grid-2col-fr center gap-sm h-100">
+      <div class="grid-align-end">
+        <h3>{{localize "RELATIONSHIP.WITH"}}:</h3>
+        <span class="charname">
+          <input
+            class="light"
+            name="name"
+            type="text"
+            value="{{item.name}}"
+           
+          />
+        </span>
+      </div>
+
+      <div class="grid-align-end">
+        <h3>{{localize "RELATIONSHIP.NATURE"}}:</h3>
+        <input
+          class="light"
+          name="system.description"
+          data-field="system.system.description"
+          type="text"
+          value="{{data.system.description}}"
+        />
+      </div>
+
+      <div class="grid-span-2 grid-align-end">
+        <h3>{{localize "NOTES"}}:</h3>
+        <textarea
+          id="notes"
+          name="system.notes"
+          rows="6"
+          wrap="soft"
+        >{{data.system.notes}}</textarea>
+      </div>
+</div>
+
+    </div>
+  </div>
 </form>

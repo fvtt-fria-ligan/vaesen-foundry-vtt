@@ -4,16 +4,16 @@
         <div class="flex row grow wrap margin">
             <div class="known flex row wrap">
                 <b>{{localize "KNOWN"}}</b>
-                <textarea name="data.known">{{data.data.known}}</textarea>
+                <textarea name="system.known">{{data.system.known}}</textarea>
             </div>
             <div class="secret flex row wrap">
                 <b>{{localize "SECRET"}}</b>
-                <textarea name="data.secret">{{data.data.secret}}</textarea>
+                <textarea name="system.secret">{{data.system.secret}}</textarea>
             </div>
         </div>
     </div>
     <div class="flex column heavy-border wrapper grow">
         <b class="title">{{localize "HEADER.NOTES"}}</b>
-        {{editor content=data.data.note target="data.note" button=true owner=owner editable=true}}
+        {{editor data.system.note target="system.note" button=true owner=owner editable=true}}
     </div>
 </div>

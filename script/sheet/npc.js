@@ -11,7 +11,7 @@ export class NpcCharacterSheet extends ActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["vaesen", "sheet", "actor"],
-      template: "systems/vaesen/model/npc.html",
+      template: "systems/vaesen/model/npc.hbs",
       width: 750,
       height: 800,
       resizable: true,
@@ -249,7 +249,7 @@ export class NpcCharacterSheet extends ActorSheet {
   }
 
   computeSkills(data) {
-    for (let skill of Object.values(data.data.skill)) {
+    for (let skill of Object.values(data.system.skill)) {
       skill.hasPhysique = skill.attribute === "physique";
       skill.hasPrecision = skill.attribute === "precision";
       skill.hasLogic = skill.attribute === "logic";
