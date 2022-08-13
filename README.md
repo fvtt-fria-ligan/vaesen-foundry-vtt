@@ -33,9 +33,26 @@ This system provides character sheets and items for  your play, if you would lik
 ## Licence
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
-## Release Notes
 
+## Release Notes
+=======
 # 3.0.0
+ - v10-testing
+
+v2.3.4
+ - Fixed colors on DSN dice
+ - Added German Localization thanks [Ivy Coyote](https://github.com/IvyCoyote) (issue[33](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/33))
+ - fixed display of conditions on Vaesen sheet. (issue [35](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/35))
+
+v2.3.3
+ - Fixed double roll for icons on player combat tab
+
+v2.3.2
+-fixed css for Vasen sheet note field not showing.
+
+v2.3.1 
+- Updated Swedish Localization thanks to Hasselfloff!
+
 
 Welcome to the Alpha build of the Vaesen System for Foundry VTT v10
 This release is an early build for testing on the V10 upgrade of foundry 

@@ -1,9 +1,11 @@
 {
   "title": "Vaesen",
   "description": "Nordic horror role-playing",
+
   "version": "3.0.0",
   "esmodules": [
     "script/hooks.js"
+
   ],
   "initiative": "1d10",
   "styles": [
@@ -51,6 +53,11 @@
       "lang": "es",
       "name": "Español",
       "path": "lang/es.json"
+    },
+    {
+      "lang": "de",
+      "name": "Deutsche",
+      "path": "lang/de.json"
     }
   ],
   "gridDistance": 1,
