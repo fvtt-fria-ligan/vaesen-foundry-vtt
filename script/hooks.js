@@ -89,7 +89,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     description: 'Vaesen Dice',
     category: 'Vaesen',
     foreground: "#2D1A00",
-    background: "#F5F4F1",
+    background: "#e2c8b6",
     outline: '#402117',
     material: 'wood',
     default: true

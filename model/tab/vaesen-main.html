@@ -2,9 +2,9 @@
     <div class="flex column heavy-border" style="width: 97%;">
         <b class="title" style="width: 95%; margin: auto;">{{localize "HEADER.CONDITIONS"}}</b>
         <div class="conditions flex column margin grow">
-            <div class="condition flex row center light-border">
+            <div class="condition  center light-border grid grid-conditions">
                 
-                <b class="name">{{localize "CONDITION.NAME"}}</b>
+                <b class="name span-2">{{localize "CONDITION.NAME"}}</b>
                 <b class="bonus">{{localize "CONDITION.BONUS"}}</b>
                 
                 <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="condition"><i class="fas fa-plus"></i></a>
@@ -14,7 +14,7 @@
                     {{#if item.isCondition}}
                         
                         <div class="condition item flex column center " data-item-id="{{item._id}}">
-                            <div class="flex row center space-between grow">
+                            <div class="grid grid-conditions">
                             <div class="selected checkbox-container">
                                 <label class="checkbox-label">
                                     <input type="checkbox" name="conditon" id="{{item._id}}"

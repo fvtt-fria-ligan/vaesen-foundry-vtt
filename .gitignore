@@ -10,4 +10,5 @@ script/lib/yzur1.js
 asset/headquarter.png~
 asset/token_border_landscape.png~
 asset/token_border_portrait.png~
-asset/.token_border.png-autosave.kra
+*.kra
+*.png~

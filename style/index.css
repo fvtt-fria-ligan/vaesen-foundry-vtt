@@ -146,6 +146,10 @@ input.light {
   display: grid;
 }
 
+.grid-conditions {
+  grid-template-columns: 25px auto 75px 55px;
+}
+
 .grid-2col-fr {
   grid-template-columns: repeat(2, 1fr);
 }
@@ -180,6 +184,10 @@ input.light {
 
 .grid-align-end {
   align-self: end;
+}
+
+.span-2 {
+  grid-column: span 2;
 }
 
 .block {
