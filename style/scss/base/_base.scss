@@ -40,6 +40,23 @@
 
 //borders
 
+
+
+
+.title.dark{
+  
+    border: 7px solid transparent;
+    border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
+    border-image-slice: 58 fill;
+    margin-block: 3px;
+    filter: drop-shadow(2px 2px $brown-700);
+  
+}
+
+.heavy-border{
+    border: 2px solid $brown-300;
+}
+
 .dl-border{
   border: 10px solid transparent;
 	border-image: url(/systems/vaesen/asset/ft_border.png) 15 stretch;
@@ -56,6 +73,14 @@
 input.light{
   border: 7px solid transparent;
   border-image: url(/systems/vaesen/asset/scooped_corners.svg) stretch;
+  border-image-slice: 58 fill;
+  margin-block: 3px;
+  filter: drop-shadow(2px 2px $brown-700);
+}
+
+input.dark{
+  border: 7px solid transparent;
+  border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
   border-image-slice: 58 fill;
   margin-block: 3px;
   filter: drop-shadow(2px 2px $brown-700);

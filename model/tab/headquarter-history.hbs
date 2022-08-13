@@ -1,6 +1,8 @@
-<div class="flex column full hqtr-data">
-    <div class="flex-column heavy-border wrapper grow">
-        <b class="title" style="width: 100%; margin-left: 0px;" >{{localize "HEADER.HISTORY"}}</b>
+<div class="flex-col w-100 min-w-600">
+    <div class="flex-col heavy-border margin-b-sm padding-sm">
+        <b class="title dark" style="width: 100%; margin-left: 0px;" >{{localize "HEADER.HISTORY"}}</b>
+        <div class="content">
         {{editor data.system.note target="system.note" button=true owner=owner editable=true}}
+        </div>
     </div>
 </div>

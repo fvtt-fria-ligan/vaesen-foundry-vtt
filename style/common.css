@@ -146,12 +146,7 @@
     justify-content: space-between;
 }
 
-.vaesen .title {
-    padding: 5px;
-    text-align: center;
-    background-color: #ad9385;
-    margin: 3px;
-}
+
 
 .vaesen .tabs .item.active{
 	text-shadow: none;
