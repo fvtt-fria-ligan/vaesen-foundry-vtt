@@ -49,7 +49,7 @@
                 {{#each data.items as |item|}}
                     {{#if item.isWeapon}}
                         <div class="weapon item flex row center align-center" data-item-id="{{item._id}}">
-                            <div class="icon"><img class="icon" src="{{item.img}}" title="{{item.name}}"/></div>
+                            <div class="icon-box"><img class="icon" src="{{item.img}}" title="{{item.name}}"/></div>
                             <div class="name">{{item.name}}</div>
                             <div class="damage">{{item.data.damage}}</div>
                             <div class="range">{{item.data.range}}</div>
