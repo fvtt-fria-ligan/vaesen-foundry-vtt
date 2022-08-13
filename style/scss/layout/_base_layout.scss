@@ -29,6 +29,10 @@
     grid-template-columns: 25px auto 75px 55px;
 }
 
+.grid-2col-300px-1fr{
+    grid-template-columns: 300px 1fr;
+}
+
 .grid-2col-fr{
     grid-template-columns: repeat(2, 1fr);
 }
