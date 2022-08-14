@@ -2,11 +2,11 @@
     <div class="flex column heavy-border  facilities">
         <b class="title">{{localize "HEADER.FACILITIES"}}</b>
         <div class="upgrades flex column margin grow">
-            <div class="upgrade flex row center light-border space-between">
+            <div class="upgrade grid grid-3col-fr light-border gap">
                 <b class="icon">{{localize "UPGRADE.ICON"}}</b>
                 <b class="name">{{localize "UPGRADE.NAME"}}</b>
                 
-                <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="upgrade" data-category="facility"><i class="fas fa-plus"></i></a>
+                <div class="center"><a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="upgrade" data-category="facility"><i class="fas fa-plus"></i></a></div>
             </div>
             <div class="scrollable">
                 {{#each items as |item|}}
@@ -31,11 +31,11 @@
     <div class="flex column heavy-border  personnel">
         <b class="title">{{localize "HEADER.PERSONNEL"}}</b>
         <div class="upgrades flex column margin grow">
-            <div class="upgrade flex row center light-border space-between">
+            <div class="upgrade grid grid-3col-fr light-border gap">
                 <b class="icon">{{localize "UPGRADE.ICON"}}</b>
                 <b class="name">{{localize "UPGRADE.NAME"}}</b>
                 
-                <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="upgrade" data-category="personnel"><i class="fas fa-plus"></i></a>
+               <div class="center"> <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="upgrade" data-category="personnel"><i class="fas fa-plus"></i></a></div>
             </div>
             <div class="scrollable">
                 {{#each items as |item|}}
@@ -60,11 +60,11 @@
     <div class="flex column heavy-border  contacts">
         <b class="title">{{localize "HEADER.CONTACT"}}</b>
         <div class="upgrades flex column margin grow">
-            <div class="upgrade flex row center light-border space-between">
+            <div class="upgrade grid grid-3col-fr light-border gap">
                 <b class="icon">{{localize "UPGRADE.ICON"}}</b>
                 <b class="name">{{localize "UPGRADE.NAME"}}</b>
                 
-                <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="upgrade" data-category="contact"><i class="fas fa-plus"></i></a>
+                <div class="center"><a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="upgrade" data-category="contact"><i class="fas fa-plus"></i></a></div>
             </div>
             <div class="scrollable">
                 {{#each items as |item|}}
