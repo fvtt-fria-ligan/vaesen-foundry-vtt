@@ -2,7 +2,7 @@
     <div class="flex column heavy-border wrapper" style="width: 99%;">
         <b class="title" style="width: 85%; margin: auto;">{{localize "HEADER.ARMORS"}}</b>
         <div class="armors flex column margin grow">
-            <div class="armor flex row center light-border">
+            <div class="armor grid grid-5col-fr gap center light-border w-100">
                 <b class="icon">{{localize "ARMOR.ICON"}}</b>
                 <b class="name">{{localize "ARMOR.NAME"}}</b>
                 <b class="protection">{{localize "ARMOR.PROTECTION"}}</b>
@@ -12,8 +12,8 @@
             <div class="scrollable">
                 {{#each data.items as |item|}}
                     {{#if item.isArmor}}
-                        <div class="armor item flex row center align-center" data-item-id="{{item._id}}">
-                            <div class="icon"><img class="icon" src="{{item.img}}" title="{{item.name}}"/></div>
+                        <div class="armor item grid grid-5col-fr gap center align-center" data-item-id="{{item._id}}">
+                            <div class="icon"><img class="icon" src="{{item.img}}" title="{{item.name}}" width="25px" height="auto"/></div>
                             <div class="name">{{item.name}}</div>
                             <div class="protection">{{item.data.protection}}</div>
                             <div class="agility">{{item.data.agility}}</div>
@@ -37,7 +37,7 @@
     <div class="flex column heavy-border wrapper" style="width: 99%;">
         <b class="title" style="width: 85%; margin: auto;">{{localize "HEADER.WEAPONS"}}</b>
         <div class="weapons flex column margin grow">
-            <div class="weapon flex row center light-border">
+            <div class="weapon grid grid-6col-fr gap center light-border w-100">
                 <b class="icon">{{localize "WEAPON.ICON"}}</b>
                 <b class="name">{{localize "WEAPON.NAME"}}</b>
                 <b class="damage">{{localize "WEAPON.DAMAGE"}}</b>
@@ -48,8 +48,8 @@
             <div class="scrollable">
                 {{#each data.items as |item|}}
                     {{#if item.isWeapon}}
-                        <div class="weapon item flex row center align-center" data-item-id="{{item._id}}">
-                            <div class="icon-box"><img class="icon" src="{{item.img}}" title="{{item.name}}"/></div>
+                        <div class="weapon item grid grid-6col-fr gap center align-center w-100" data-item-id="{{item._id}}">
+                            <div class="icon-box"><img class="icon" src="{{item.img}}" title="{{item.name}}" width="25px" height="auto"/></div>
                             <div class="name">{{item.name}}</div>
                             <div class="damage">{{item.data.damage}}</div>
                             <div class="range">{{item.data.range}}</div>
@@ -74,7 +74,7 @@
     <div class="flex column heavy-border wrapper" style="width: 99%;">
         <b class="title" style="width: 85%; margin: auto;">{{localize "HEADER.CRITICAL_INJURIES"}}</b>
         <div class="critical-injuries flex column margin grow">
-            <div class="critical-injury flex row center light-border">
+            <div class="critical-injury grid grid-7col-fr gap center light-border w-100">
                 <b class="icon">{{localize "CRITICAL_INJURY.ICON"}}</b>
                 <b class="name">{{localize "CRITICAL_INJURY.NAME"}}</b>
                 <b class="fatal">{{localize "CRITICAL_INJURY.FATAL"}}</b>
@@ -86,8 +86,8 @@
             <div class="scrollable">
                 {{#each data.items as |item|}}
                     {{#if item.isCriticalInjury}}
-                        <div class="critical-injury item flex row center align-center" data-item-id="{{item._id}}">
-                            <div class="icon"><img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/></div>
+                        <div class="critical-injury item grid grid-7col-fr gap center align-center w-100" data-item-id="{{item._id}}">
+                            <div class="icon"><img class="icon" src="{{item.img}}" title="{{item.name}}" height="25" width="auto"/></div>
                             <div class="name">{{item.name}}</div>
                             <div class="fatal">{{item.data.fatal}}</div>
                             <div class="time-limit">{{item.data.timeLimit}}</div>

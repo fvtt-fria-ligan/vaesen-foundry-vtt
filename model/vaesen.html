@@ -23,7 +23,7 @@
                     <div class="flex column heavy-border wrapper">
                         <b class="title" style="width: 95%; margin: auto;">{{localize "HEADER.ARMORS"}}</b>
                         <div class="armors flex column margin grow">
-                            <div class="armor flex row center light-border">
+                            <div class="armor grid grid-3col-fr center light-border w-100">
                                 <b class="icon">{{localize "ARMOR.ICON"}}</b>
                                 <b class="name">{{localize "ARMOR.NAME"}}</b>
                                 <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="armor"><i class="fas fa-plus"></i></a>
@@ -32,7 +32,7 @@
                                 {{#each data.items as |item|}}
                                     {{#if item.isArmor}}
                                         <div class="armor item flex column center align-center" data-item-id="{{item._id}}">
-                                            <div class="flex row center space-between grow" style="width: 100%;">
+                                            <div class="grid grid-3col-fr center w-100" style="width: 100%;">
                                         <img class="icon" src="{{item.img}}" title="{{item.name}}" height="25" width="25"/>
                                         <div class="name">{{item.name}}</div>
                                         <div class="button">
@@ -51,7 +51,7 @@
                     <div class="flex column heavy-border wrapper">
                         <b class="title" style="width: 95%; margin: auto;">{{localize "HEADER.ATTACK"}}</b>
                         <div class="attacks flex column margin grow">
-                            <div class="attack flex row center light-border">
+                            <div class="attack grid grid-3col-fr center light-border w-100">
                                 <b class="icon">{{localize "ATTACK.ICON"}}</b>
                                 <b class="name">{{localize "ATTACK.NAME"}}</b>
                                 <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="attack"><i class="fas fa-plus"></i></a>
@@ -60,7 +60,7 @@
                                 {{#each data.items as |item|}}
                                     {{#if item.isAttack}}
                                         <div class="attack item flex column center align-center" data-item-id="{{item._id}}">
-                                            <div class="flex row center space-between grow" style="width: 100%;">
+                                            <div class="grid grid-3col-fr center w-100" style="width: 100%;">
                                             <img class="icon" src="{{item.img}}" title="{{item.name}}" height="25" width="25"/>
                                             <div class="name">{{item.name}}</div>
                                             <div class="button">
@@ -79,7 +79,7 @@
                     <div class="flex column heavy-border wrapper">
                         <b class="title" style="width: 95%; margin: auto;">{{localize "HEADER.GEAR"}}</b>
                         <div class="gears flex column margin grow">
-                            <div class="gear flex row center light-border">
+                            <div class="gear grid grid-3col-fr center light-border w-100">
                                 <b class="icon">{{localize "GEAR.ICON"}}</b>
                                 <b class="name">{{localize "GEAR.NAME"}}</b>
                                 <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="gear"><i class="fas fa-plus"></i></a>
@@ -88,7 +88,7 @@
                                 {{#each data.items as |item|}}
                                     {{#if item.isGear}}
                                         <div class="gear item flex column center align-center" data-item-id="{{item._id}}">
-                                            <div class="flex row center space-between grow" style="width: 100%;">
+                                            <div class="grid grid-3col-fr center " style="width: 100%;">
                                             <img class="icon" src="{{item.img}}" title="{{item.name}}" height="25" width="25"/>
                                             <div class="name">{{item.name}}</div>
                                             <div class="button">
