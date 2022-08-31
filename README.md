@@ -36,6 +36,9 @@ This system provides character sheets and items for  your play, if you would lik
 
 ## Release Notes
 
+v2.3.5
+- Fixed spacing and headers on HQ sheet for upgrades
+
 v2.3.4
  - Fixed colors on DSN dice
  - Added German Localization thanks [Ivy Coyote](https://github.com/IvyCoyote) (issue[33](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/33))
