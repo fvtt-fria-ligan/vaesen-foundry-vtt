@@ -12,7 +12,7 @@
                 {{#each data.items as |item|}}
                     {{#if item.isFacility}}
                     <div class="upgrade item flex column  grow" data-item-id="{{item._id}}">
-                        <div class="flex row center align-center space-between grow">
+                        <div class="grid grid-3col-fr gap">
                         <img class="icon" src="{{item.img}}" title="{{item.name}}" width="25px" height="25px"/>
                         <div class="name">{{item.name}}</div>
                         
@@ -41,7 +41,7 @@
                 {{#each data.items as |item|}}
                     {{#if item.isPersonnel}}
                     <div class="upgrade item flex column  grow" data-item-id="{{item._id}}">
-                        <div class="flex row center align-center space-between grow">
+                        <div class="grid grid-3col-fr gap">
                                 <img class="icon" src="{{item.img}}" title="{{item.name}}" width="25px" height="25px"/>
                             <div class="name">{{item.name}}</div>
                            
@@ -70,7 +70,7 @@
                 {{#each data.items as |item|}}
                     {{#if item.isContact}}
                     <div class="upgrade item flex column  grow" data-item-id="{{item._id}}">
-                        <div class="flex row center align-center space-between grow">
+                        <div class="grid grid-3col-fr gap">
                             <img class="icon" src="{{item.img}}" title="{{item.name}}" width="25px" height="25px"/>
                             <div class="name">{{item.name}}</div>
         
