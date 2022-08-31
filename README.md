@@ -36,6 +36,9 @@ This system provides character sheets and items for  your play, if you would lik
 
 ## Release Notes
 
+v2.3.6 
+-Fixed header alignments
+
 v2.3.5
 - Fixed spacing and headers on HQ sheet for upgrades
 
