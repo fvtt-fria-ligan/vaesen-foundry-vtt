@@ -34,3 +34,7 @@ h4{
 .title{
     text-align: center;
   }
+
+.list-item:nth-child(odd) {
+    background-color: $brown-200;
+}

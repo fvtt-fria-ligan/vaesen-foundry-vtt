@@ -102,31 +102,31 @@ export class HeadquarterCharacterSheet extends ActorSheet {
 
   onItemSummary(event) {
     event.preventDefault();
-    let div = $(event.currentTarget).parents(".item");
+    let div = $(event.currentTarget).parents(".list-item");
     const item = this.actor.items.get(div.data("itemId"));
-
+   
     let chatData =
       "<p class='item-desc'><b>" +
       game.i18n.localize("UPGRADE.DESCRIPTION") +
       ": </b>" +
-      item.data.data.description +
+      item.system.description +
       "</br><b>" +
       game.i18n.localize("UPGRADE.FUNCTION") +
       ": </b>" +
-      item.data.data.function +
+      item.system.function +
       " </br><b>" +
       game.i18n.localize("UPGRADE.ASSET") +
       ": </b>" +
-      item.data.data.asset +
+      item.system.asset +
       "</br></p>";
 
-    if (item.data.data.description.value === null) {
+    if (item.system.description.value === null) {
       return;
     } else if (div.hasClass("expanded")) {
-      let summary = div.children(".item-summary");
+      let summary = div.children("#item-summary");
       summary.slideUp(200, () => summary.remove());
     } else {
-      let sum = $(`<div class="item-summary">${chatData}</div>`);
+      let sum = $(`<div class="item-summary grid-span-3" id="item-summary">${chatData}</div>`);
       div.append(sum.hide());
       sum.slideDown(200);
     }
