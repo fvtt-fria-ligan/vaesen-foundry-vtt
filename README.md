@@ -44,7 +44,7 @@ v3.0.0
  - v10-testing
 
 v2.3.6 
--Fixed header alignments
+- Fixed header alignments
 
 v2.3.5
 - Fixed spacing and headers on HQ sheet for upgrades
