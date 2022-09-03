@@ -1,60 +1,86 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
-    {{!-- Item Sheet Header --}} 
-    <div class="item-sheet flexrow">
-        <div class="item-sidebar">
-            <img class="icon" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
-        </div>   
-
-        <div class="item-info">
-            <h1 class="us-text">{{localize "UPGRADE.NAME"}}</h1>
-            <br /><img src="systems/vaesen/asset/h-rule.png" width="90%" />  
-            <div class="header-details flex row">
-                <div class="name flex row" style="flex-basis: 67%; line-height: 3;">
-                    <b style="margin-right: 6px; align-self: baseline;">{{localize "NAME"}}:</b>
-                    <span class = "charname" style="flex-basis: 95%;">
-                        <input name="name" type="text" value="{{item.name}}" />
-                    </span>
-                </div>
-                <div class="category flex row wrap center" style="flex-basis: 33%; margin: 3px; line-height: 2;">
-                    <b>{{localize "UPGRADE.CATEGORY"}}</b>
-                    <select name="data.category">
-                        {{#select data.data.category}}
-                            <option value="facility">{{localize "UPGRADE.FACILITY"}}</option>
-                            <option value="contact">{{localize "UPGRADE.CONTACT"}}</option>
-                            <option value="personnel">{{localize "UPGRADE.PERSONNEL"}}</option>
-                        {{/select}}
-                    </select>
-                </div>
-            </div>
-            
-            <div class="item-desc flex row">
-                
-                <div class="cost flex row wrap center">
-                    <b>{{localize "UPGRADE.COST"}}</b>
-                        <input name="data.cost" type="text" value="{{data.data.cost}}"/>
-                </div>
-                <div class="prerequisite flex row wrap">
-                    <b>{{localize "UPGRADE.PREREQUISITE"}}</b>
-                    <input name="data.prerequisite" type="text" value="{{data.data.prerequisite}}"/>
-                </div>
-            </div>
-
-            <div class="item-notes">
-                
-                <div class="function flex row wrap">
-                    <b>{{localize "UPGRADE.FUNCTION"}}</b>
-                    <textarea name="data.function">{{data.data.function}}</textarea>
-                </div>
-                <div class="asset flex row wrap">
-                    <b>{{localize "UPGRADE.ASSET"}}</b>
-                    <textarea name="data.asset">{{data.data.asset}}</textarea>
-                </div>
-                <div class="description flex row wrap">
-                    <b>{{localize "TALENT.DESCRIPTION"}}</b>
-                    <textarea name="data.description">{{data.data.description}}</textarea>
-                </div>
-            </div>
-        </div>
+  {{! Item Sheet Header }}
+  <div class="bg-offwhite flex-row flex-start">
+    <div class="dl-border w-fc h-100">
+      <img
+        class="w-100p border-none br-5"
+        src="{{item.img}}"
+        data-edit="img"
+        title="{{item.name}}"
+      />
     </div>
-</form>
 
+    <div class="w-100 padding-sm">
+
+      <div class="flex-col flex-wrap magin-b-sm">
+        <h1 class="center">{{localize "UPGRADE.NAME"}}</h1>
+        <br /><img
+          src="systems/vaesen/asset/h-rule.png"
+          class="border-none center w-90"
+        />
+      </div>
+
+      <div class="grid grid-4col-fr center gap-sm h-100">
+
+        <h3>
+          {{localize "NAME"}}:
+        </h3>
+        <div class="grid-align-end grid-span-3">
+          <input class="light" name="name" type="text" value="{{item.name}}" />
+        </div>
+
+        <div>
+          <h3>{{localize "UPGRADE.CATEGORY"}}</h3>
+          <select name="system.category">
+            {{#select data.system.category}}
+              <option value="facility">{{localize "UPGRADE.FACILITY"}}</option>
+              <option value="contact">{{localize "UPGRADE.CONTACT"}}</option>
+              <option value="personnel">{{localize
+                  "UPGRADE.PERSONNEL"
+                }}</option>
+            {{/select}}
+          </select>
+        </div>
+
+        <div class="flex-row flex-wrap center">
+          <h3>{{localize "UPGRADE.COST"}}</h3>
+          <input
+            class="light"
+            name="system.cost"
+            type="text"
+            value="{{data.system.cost}}"
+          />
+        </div>
+        <div class="flex-row flex-wrap grid-span-2">
+          <h3>{{localize "UPGRADE.PREREQUISITE"}}</h3>
+          <input
+            class="light"
+            name="system.prerequisite"
+            type="text"
+            value="{{data.system.prerequisite}}"
+          />
+        </div>
+
+      </div>
+      <div class="item-notes">
+
+        <div class="function flex-row flex-wrap">
+          <b>{{localize "UPGRADE.FUNCTION"}}</b>
+          <textarea name="system.function">{{data.system.function}}</textarea>
+        </div>
+        <div class="asset flex-row flex-wrap">
+          <b>{{localize "UPGRADE.ASSET"}}</b>
+          <textarea name="system.asset">{{data.system.asset}}</textarea>
+        </div>
+        <div class="description flex-row flex-wrap">
+          <b>{{localize "TALENT.DESCRIPTION"}}</b>
+          <textarea
+            name="system.description"
+          >{{data.system.description}}</textarea>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</form>

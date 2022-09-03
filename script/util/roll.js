@@ -77,7 +77,9 @@ export async function push(sheet) {
 }
 
 async function rollDice(sheet, numberOfDice) {
-    let actor = game.actors.get(sheet.object.data._id);
+   
+    let actor = game.actors.get(sheet.object._id);
+    
     if (numberOfDice <= 0) {
         numberOfDice = 1;
     }

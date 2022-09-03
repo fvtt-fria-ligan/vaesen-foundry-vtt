@@ -2,11 +2,8 @@ export class VaesenActor extends Actor {
 
     prepareData(){
         super.prepareData();
-        const actorData = this.data;
-
-        this.data.exp = actorData.data.experience;
-		
-		
+        const actorData = this.system;
+        this.system.exp = actorData.experience;
     }
 
    /* -------------------------------------------- */

@@ -29,12 +29,33 @@
     grid-template-columns: 25px auto 75px 55px;
 }
 
+.grid-2col-300px-1fr{
+    grid-template-columns: 300px 1fr;
+}
+
+.grid-2col-250px-1fr{
+    grid-template-columns: 250px 1fr;
+}
+
 .grid-2col-fr{
     grid-template-columns: repeat(2, 1fr);
 }
 
 .grid-3col-fr{
     grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-auto-2col-fr{
+    grid-template-columns: auto repeat(2, 1fr);
+}
+
+
+.grid-30px-2col-fr{
+    grid-template-columns: 30px repeat(2, 1fr);
+}
+
+.grid-30px-1fr-auto{
+    grid-template-columns: 30px 1fr auto;
 }
 
 .grid-4col-fr{
@@ -112,4 +133,24 @@
 
 .center{
     margin: 0 auto;
+}
+
+.min-w-600{
+    min-width: 600px;
+}
+
+.min-h-500{
+    min-height: 500px;
+}
+
+.content{
+    max-width: 65ch;
+}
+
+.gap{
+    gap: .5rem;
+}
+
+.gap-sm{
+    gap: .25rem;
 }

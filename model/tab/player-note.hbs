@@ -8,13 +8,13 @@
                 <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="relationship"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
-                {{#each data.items as |item|}}
+                {{#each items as |item|}}
                     {{#if item.isRelationship}}
 
                         <div class="relationship item center align-center" data-item-id="{{item._id}}">
                             <div class="grid grid-3col-fr w-100" style="width: 100%;">
                             <div class="name">{{item.name}}</div>
-                            <div class="description">{{item.data.description}}</div>
+                            <div class="description">{{item.system.description}}</div>
                             <div class="button">
                                 <a class="item-control to-chat" title='{{localize UI.CHAT}}'><i class="fas fa-comment"></i></a>
                                 <a class="item-control item-edit" title='{{localize  "UI.EDIT"}}'><i class="fas fa-edit"></i></a>
@@ -30,6 +30,6 @@
     </div>
     <div class="flex column heavy-border notepad">
         <b class="title" style="width: 85%; margin: auto;">{{localize "HEADER.NOTES"}}</b>
-        {{editor content=data.data.note target="data.note" button=true owner=owner editable=true}}
+        {{editor data.system.note target="system.note" button=true owner=owner editable=true}}
     </div>
 </div>

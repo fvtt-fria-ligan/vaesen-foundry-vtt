@@ -1,0 +1,157 @@
+<div class="flex-row w-100">
+  <div class="flex column heavy-border facilities">
+    <b class="title">{{localize "HEADER.FACILITIES"}}</b>
+    <div class="upgrades flex column margin grow">
+      <div class="grid grid-3col-fr light-border gap">
+        <b class="icon">{{localize "UPGRADE.ICON"}}</b>
+        <b class="name">{{localize "UPGRADE.NAME"}}</b>
+
+        <div class="center"><a
+            class="button item-create"
+            title="{{localize 'UI.ADD'}}"
+            data-type="upgrade"
+            data-category="facility"
+          ><i class="fas fa-plus"></i></a></div>
+      </div>
+      <div class="scrollable">
+        {{#each items as |item|}}
+          {{#if item.isFacility}}
+            <div
+              class="upgrade item list-item grid grid-30px-1fr-auto gap"
+              data-item-id="{{item._id}}"
+            >
+
+              <img
+                class="icon"
+                src="{{item.img}}"
+                title="{{item.name}}"
+                width="25px"
+                height="25px"
+              />
+              <div class="name">{{item.name}}</div>
+
+              <div class="button">
+                <a class="item-control to-chat" title="{{localize UI.CHAT}}"><i
+                    class="fas fa-comment"
+                  ></i></a>
+                <a
+                  class="item-control item-edit"
+                  title="{{localize 'UI.EDIT'}}"
+                ><i class="fas fa-edit"></i></a>
+                <a
+                  class="item-control item-delete"
+                  title="{{localize 'UI.DELETE'}}"
+                ><i class="fas fa-trash"></i></a>
+              </div>
+
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div class="flex column heavy-border personnel">
+    <b class="title">{{localize "HEADER.PERSONNEL"}}</b>
+    <div class="upgrades flex column margin grow">
+      <div class="upgrade item grid grid-3col-fr light-border gap">
+        <b class="icon">{{localize "UPGRADE.ICON"}}</b>
+        <b class="name">{{localize "UPGRADE.NAME"}}</b>
+
+        <div class="center">
+          <a
+            class="button item-create"
+            title="{{localize 'UI.ADD'}}"
+            data-type="upgrade"
+            data-category="personnel"
+          ><i class="fas fa-plus"></i></a></div>
+      </div>
+      <div class="scrollable">
+        {{#each items as |item|}}
+          {{#if item.isPersonnel}}
+            <div
+              class="upgrade item list-item grid grid-30px-1fr-auto gap"
+              data-item-id="{{item._id}}"
+            >
+
+              <img
+                class="icon"
+                src="{{item.img}}"
+                title="{{item.name}}"
+                width="25px"
+                height="25px"
+              />
+              <div class="name">{{item.name}}</div>
+
+              <div class="button">
+                <a class="item-control to-chat" title="{{localize UI.CHAT}}"><i
+                    class="fas fa-comment"
+                  ></i></a>
+                <a
+                  class="item-control item-edit"
+                  title="{{localize 'UI.EDIT'}}"
+                ><i class="fas fa-edit"></i></a>
+                <a
+                  class="item-control item-delete"
+                  title="{{localize 'UI.DELETE'}}"
+                ><i class="fas fa-trash"></i></a>
+              </div>
+
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div class="flex column heavy-border contacts">
+    <b class="title">{{localize "HEADER.CONTACT"}}</b>
+    <div class="upgrades flex column margin grow">
+      <div class="upgrade grid grid-3col-fr light-border gap">
+        <b class="icon">{{localize "UPGRADE.ICON"}}</b>
+        <b class="name">{{localize "UPGRADE.NAME"}}</b>
+
+        <div class="center"><a
+            class="button item-create"
+            title="{{localize 'UI.ADD'}}"
+            data-type="upgrade"
+            data-category="contact"
+          ><i class="fas fa-plus"></i></a></div>
+      </div>
+      <div class="scrollable">
+        {{#each items as |item|}}
+          {{#if item.isContact}}
+            <div
+              class="upgrade list-item item grid grid-30px-1fr-auto gap" 
+              data-item-id="{{item._id}}"
+            >
+              
+                <img
+                  class="icon"
+                  src="{{item.img}}"
+                  title="{{item.name}}"
+                  width="25px"
+                  height="25px"
+                />
+                <div class="name">{{item.name}}</div>
+
+                <div class="button">
+                  <a
+                    class="item-control to-chat"
+                    title="{{localize UI.CHAT}}"
+                  ><i class="fas fa-comment"></i></a>
+                  <a
+                    class="item-control item-edit"
+                    title="{{localize 'UI.EDIT'}}"
+                  ><i class="fas fa-edit"></i></a>
+                  <a
+                    class="item-control item-delete"
+                    title="{{localize 'UI.DELETE'}}"
+                  ><i class="fas fa-trash"></i></a>
+                </div>
+              
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>

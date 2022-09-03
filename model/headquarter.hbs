@@ -1,7 +1,7 @@
 <form class="{{cssClass}}" autocomplete="off">
-    <div class="headquarter flex row">
-        <div class="header flex row">
-            <div class="flex column margin align-center">
+    <div class="headquarter grid grid-2col-250px-1fr">
+        <div class="header flex-row">
+            <div class="flex-col margin align-center">
                 <div class="flex column heavy-border portrait">
                     <div class="name" style="width: 98%;">
                         
@@ -13,7 +13,7 @@
                     </div>  
                     <div class="building">
                         
-                        <input name="data.bio.building" type="text" value="{{data.data.bio.building}}" style="width: 97%;"/>
+                        <input name="data.bio.building" type="text" value="{{data.system.bio.building}}" style="width: 97%;"/>
                         <b>{{localize "BIO.BUILDING"}}</b>
                     </div>
                     
@@ -22,12 +22,12 @@
                     <div class="heavy-border flex column">
                     <div class="location">
                        
-                        <input name="data.bio.location" type="text" value="{{data.data.bio.location}}"/>
+                        <input name="data.bio.location" type="text" value="{{data.system.bio.location}}"/>
                         <b>{{localize "BIO.LOCATION"}}</b>
                     </div>
                     <div class="point">
                         
-                        <input name="data.bio.point" type="text" value="{{data.data.bio.point}}" data-dtype="Number"/>
+                        <input name="data.bio.point" type="text" value="{{data.system.bio.point}}" data-dtype="Number"/>
                         <b>{{localize "BIO.POINTS"}}</b>
                     </div>
                     </div>
@@ -44,10 +44,10 @@
 
             <div class="sheet-body flex row">
                 <div class="tab upgrades" data-group="primary" data-tab="upgrades">
-                    {{> systems/vaesen/model/tab/headquarter-upgrades.html}}
+                    {{> systems/vaesen/model/tab/headquarter-upgrades.hbs}}
                 </div>
                 <div class="tab history" data-group="primary" data-tab="history">
-                    {{> systems/vaesen/model/tab/headquarter-history.html}}
+                    {{> systems/vaesen/model/tab/headquarter-history.hbs}}
                 </div>
                 
                 

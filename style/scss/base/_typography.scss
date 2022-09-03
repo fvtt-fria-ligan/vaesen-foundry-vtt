@@ -26,3 +26,15 @@ h4{
 .color-brown-700{
     color: $brown-700;
 }
+
+.title-case{
+    text-transform: capitalize;
+}
+
+.title{
+    text-align: center;
+  }
+
+.list-item:nth-child(odd) {
+    background-color: $brown-200;
+}

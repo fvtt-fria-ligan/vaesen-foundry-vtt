@@ -38,6 +38,10 @@
   src: url(/systems/vaesen/fonts/IMFellDoublePica-Regular.ttf);
 }
 /* media query mixin */
+.tox {
+  height: 100%;
+}
+
 h1, h2, h3, h4 {
   font-family: Albertus, serif;
   border-bottom: none;
@@ -62,6 +66,18 @@ h4 {
 
 .color-brown-700 {
   color: hsl(13deg, 48%, 17%);
+}
+
+.title-case {
+  text-transform: capitalize;
+}
+
+.title {
+  text-align: center;
+}
+
+.list-item:nth-child(odd) {
+  background-color: hsl(21deg, 20%, 60%);
 }
 
 :root {
@@ -90,17 +106,34 @@ h4 {
 
 .window-app .window-content {
   color: hsl(13deg, 48%, 17%);
-  background-color: hsl(40deg, 20%, 97%);
+  background-color: hsl(40deg, 20%, 80%);
 }
 
 .bg-offwhite {
-  background-color: hsl(40deg, 20%, 97%);
+  background-color: hsl(40deg, 20%, 80%);
+}
+
+.bg-brown-100 {
+  background-color: hsl(0deg, 0%, 91%);
+}
+
+.title.dark {
+  border: 7px solid transparent;
+  -o-border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
+     border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
+  border-image-slice: 58 fill;
+  margin-block: 3px;
+  filter: drop-shadow(2px 2px hsl(13deg, 48%, 17%));
+}
+
+.heavy-border {
+  border: 2px solid hsl(21deg, 20%, 43%);
 }
 
 .dl-border {
   border: 10px solid transparent;
-  -o-border-image: url(/systems/vaesen/asset/ft_border.png) 15 round;
-     border-image: url(/systems/vaesen/asset/ft_border.png) 15 round;
+  -o-border-image: url(/systems/vaesen/asset/ft_border.png) 15 stretch;
+     border-image: url(/systems/vaesen/asset/ft_border.png) 15 stretch;
 }
 
 .border-none {
@@ -111,13 +144,37 @@ h4 {
   border-radius: 5px;
 }
 
+.vaesen .title {
+  border: 7px solid transparent;
+  padding: 0px;
+  -o-border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
+     border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
+  border-image-slice: 58 fill;
+  background-color: transparent;
+  margin: 3px;
+  filter: drop-shadow(2px 2px hsl(13deg, 48%, 17%));
+}
+
 input.light {
   border: 7px solid transparent;
-  -o-border-image: url(/systems/vaesen/asset/scooped_corners.svg) round;
-     border-image: url(/systems/vaesen/asset/scooped_corners.svg) round;
+  -o-border-image: url(/systems/vaesen/asset/scooped_corners.svg) stretch;
+     border-image: url(/systems/vaesen/asset/scooped_corners.svg) stretch;
   border-image-slice: 58 fill;
   margin-block: 3px;
   filter: drop-shadow(2px 2px hsl(13deg, 48%, 17%));
+}
+
+input.dark {
+  border: 7px solid transparent;
+  -o-border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
+     border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
+  border-image-slice: 58 fill;
+  margin-block: 3px;
+  filter: drop-shadow(2px 2px hsl(13deg, 48%, 17%));
+}
+
+.icon {
+  border: none;
 }
 
 .flex-col {
@@ -150,12 +207,32 @@ input.light {
   grid-template-columns: 25px auto 75px 55px;
 }
 
+.grid-2col-300px-1fr {
+  grid-template-columns: 300px 1fr;
+}
+
+.grid-2col-250px-1fr {
+  grid-template-columns: 250px 1fr;
+}
+
 .grid-2col-fr {
   grid-template-columns: repeat(2, 1fr);
 }
 
 .grid-3col-fr {
   grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-auto-2col-fr {
+  grid-template-columns: auto repeat(2, 1fr);
+}
+
+.grid-30px-2col-fr {
+  grid-template-columns: 30px repeat(2, 1fr);
+}
+
+.grid-30px-1fr-auto {
+  grid-template-columns: 30px 1fr auto;
 }
 
 .grid-4col-fr {
@@ -236,6 +313,26 @@ input.light {
   margin: 0 auto;
 }
 
+.min-w-600 {
+  min-width: 600px;
+}
+
+.min-h-500 {
+  min-height: 500px;
+}
+
+.content {
+  max-width: 65ch;
+}
+
+.gap {
+  gap: 0.5rem;
+}
+
+.gap-sm {
+  gap: 0.25rem;
+}
+
 .padding-sm {
   padding: 0.25rem;
 }
@@ -246,4 +343,97 @@ input.light {
 
 .gap-sm {
   gap: 0.25rem;
+}
+
+.journal-sheet form {
+  background: white;
+}
+.journal-sheet form input[name=name] {
+  font-size: 1.5rem;
+  height: 2rem;
+  line-height: 2rem;
+  background: none;
+  color: hsl(13deg, 48%, 17%);
+  border: none;
+}
+.journal-sheet nav {
+  background: url(/systems/vaesen/asset/denim075.png) repeat;
+  border-bottom: 1px solid hsl(21deg, 20%, 60%);
+}
+
+.journal-entry-page {
+  max-width: 55ch;
+  margin: 0 auto;
+}
+.journal-entry-page table tr:nth-child(odd) {
+  background: #e6ded6;
+  border-top: 1px solid #412017;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+}
+.journal-entry-page table tr:nth-child(even) {
+  background: #ffffff;
+  border-top: 1px solid #412017;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+}
+.journal-entry-page table td {
+  border-left: none;
+  border-right: none;
+  font-family: IntervogueReg;
+  font-style: normal;
+  text-align: left;
+  padding: 0.3em;
+}
+.journal-entry-page th {
+  padding: 0.3em;
+  text-align: left;
+  border-top: hidden;
+  word-break: keep-all;
+}
+.journal-entry-page table thead tr {
+  background: #ffffff;
+  border-top: hidden;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  font-family: IntervogueBlack;
+  font-weight: 700;
+  font-style: normal;
+  color: #412017;
+  text-shadow: none;
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+
+.journal-entry-page ul {
+  list-style: url("/systems/vaesen/asset/bullet.svg");
+  margin: 2px;
+}
+
+.info-box {
+  width: 55ch;
+  margin: 0 auto;
+}
+
+a.content-link {
+  color: hsl(13deg, 48%, 17%);
+  text-decoration: none;
+  background: none;
+  padding: 0;
+  white-space: nowrap;
+  word-break: break-all;
+  border: none;
+}
+a.content-link i {
+  color: hsl(13deg, 48%, 17%);
+}
+
+.icon-img {
+  width: 25px;
+  height: 25px;
+  border: none;
+  border-radius: 0;
 }/*# sourceMappingURL=index.css.map */

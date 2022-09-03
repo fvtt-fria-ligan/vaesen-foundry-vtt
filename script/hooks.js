@@ -49,37 +49,7 @@ Hooks.once("init", () => {
       'ROLL.tooltipTemplate': 'systems/vaesen/model/templates/dice/tooltip.hbs',
       'ROLL.infosTemplate': 'systems/vaesen/model/templates/dice/infos.hbs'
     });
-    // render cutstom effect icons
-    if(game.data.version == '0.8.9' || game.data.version == '0.8.8' || game.data.version == '0.8.7' || game.data.version == '0.8.6'){
-        Token.prototype._drawEffect = async function(src, i, bg, w, tint) {
-          const multiplier = 3;
-          const divisor = 3 * this.data.height;
-          w = (w / 2) * multiplier;
-          let tex = await loadTexture(src);
-          
-          let icon = this.effects.addChild(new PIXI.Sprite(tex));
-          icon.width = icon.height = w;
-          icon.y = Math.floor(i / divisor) * w;
-          icon.x = (i % divisor) * w;
-          if ( tint ) icon.tint = tint;
-          this.effects.addChild(icon);
-        };
-    } else {
-      Token.prototype._drawEffect = async function(src, i, bg, w, tint) {
-        const multiplier = 3;
-        const divisor = 3 * this.data.height;
-        w = (w / 2) * multiplier;
-        let tex = await loadTexture(src);
-        
-        let icon = this.hud.effects.addChild(new PIXI.Sprite(tex));
-        icon.width = icon.height = w;
-        icon.y = Math.floor(i / divisor) * w;
-        icon.x = (i % divisor) * w;
-        if ( tint ) icon.tint = tint;
-        this.hud.effects.addChild(icon);
-         
-      };
-    }
+   
 });
 
 Hooks.once('diceSoNiceReady', (dice3d) => {
@@ -105,12 +75,12 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       "systems/vaesen/asset/dsn/dsn-d6-6.png",
     ],
     bumpMaps: [
-      "systems/vaesen/asset/dsn/dsn-d6-1.png",
-      "systems/vaesen/asset/dsn/dsn-d6-2.png",
-      "systems/vaesen/asset/dsn/dsn-d6-3.png",
-      "systems/vaesen/asset/dsn/dsn-d6-4.png",
-      "systems/vaesen/asset/dsn/dsn-d6-5.png",
-      "systems/vaesen/asset/dsn/dsn-d6-6.png",
+      "systems/vaesen/asset/dsn/dsn-d6-1-bump.png",
+      "systems/vaesen/asset/dsn/dsn-d6-2-bump.png",
+      "systems/vaesen/asset/dsn/dsn-d6-3-bump.png",
+      "systems/vaesen/asset/dsn/dsn-d6-4-bump.png",
+      "systems/vaesen/asset/dsn/dsn-d6-5-bump.png",
+      "systems/vaesen/asset/dsn/dsn-d6-6-bump.png",
     ],
     colorset: "vaesen",
     system: "vaesen"
@@ -128,12 +98,12 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       "systems/vaesen/asset/dsn/dsn-d6-6.png",
     ],
     bumpMaps: [
-      "systems/vaesen/asset/dsn/dsn-d6-1.png",
-      "systems/vaesen/asset/dsn/dsn-d6-2.png",
-      "systems/vaesen/asset/dsn/dsn-d6-3.png",
-      "systems/vaesen/asset/dsn/dsn-d6-4.png",
-      "systems/vaesen/asset/dsn/dsn-d6-5.png",
-      "systems/vaesen/asset/dsn/dsn-d6-6.png",
+      "systems/vaesen/asset/dsn/dsn-d6-1-bump.png",
+      "systems/vaesen/asset/dsn/dsn-d6-2-bump.png",
+      "systems/vaesen/asset/dsn/dsn-d6-3-bump.png",
+      "systems/vaesen/asset/dsn/dsn-d6-4-bump.png",
+      "systems/vaesen/asset/dsn/dsn-d6-5-bump.png",
+      "systems/vaesen/asset/dsn/dsn-d6-6-bump.png",
     ],
     colorset: "vaesen",
     system: "vaesen"
@@ -164,22 +134,22 @@ async function _onPush(event) {
 
 function preloadHandlebarsTemplates() {
     const templatePaths = [
-        "systems/vaesen/model/player.html",
-        "systems/vaesen/model/tab/player-main.html",
-        "systems/vaesen/model/tab/player-combat.html",
-        "systems/vaesen/model/tab/player-favorites.html",
-        "systems/vaesen/model/tab/player-talent.html",
-        "systems/vaesen/model/tab/player-gear.html",
-        "systems/vaesen/model/tab/player-note.html",
-        "systems/vaesen/model/npc.html",
-        "systems/vaesen/model/tab/npc-main.html",
-        "systems/vaesen/model/tab/npc-note.html",
-        "systems/vaesen/model/vaesen.html",
-        "systems/vaesen/model/tab/vaesen-main.html",
-        "systems/vaesen/model/tab/vaesen-note.html",
-        "systems/vaesen/model/headquarter.html",
-        "systems/vaesen/model/tab/headquarter-history.html",
-        "systems/vaesen/model/tab/headquarter-upgrades.html",
+        "systems/vaesen/model/player.hbs",
+        "systems/vaesen/model/tab/player-main.hbs",
+        "systems/vaesen/model/tab/player-combat.hbs",
+        "systems/vaesen/model/tab/player-favorites.hbs",
+        "systems/vaesen/model/tab/player-talent.hbs",
+        "systems/vaesen/model/tab/player-gear.hbs",
+        "systems/vaesen/model/tab/player-note.hbs",
+        "systems/vaesen/model/npc.hbs",
+        "systems/vaesen/model/tab/npc-main.hbs",
+        "systems/vaesen/model/tab/npc-note.hbs",
+        "systems/vaesen/model/vaesen.hbs",
+        "systems/vaesen/model/tab/vaesen-main.hbs",
+        "systems/vaesen/model/tab/vaesen-note.hbs",
+        "systems/vaesen/model/headquarter.hbs",
+        "systems/vaesen/model/tab/headquarter-history.hbs",
+        "systems/vaesen/model/tab/headquarter-upgrades.hbs",
         "systems/vaesen/model/items/criticalInjury.hbs",
         "systems/vaesen/model/items/weapon.hbs",
         "systems/vaesen/model/items/armor.hbs",
