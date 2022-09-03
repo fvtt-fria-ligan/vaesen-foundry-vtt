@@ -68,8 +68,18 @@
   "id": "vaesen",
   "authors": [
     {
-      "name": "Dr Ogres, fvtt-fria-ligan, perfectro"
+      "name": "Dr Ogres",
+      "url" : "http://github.com/DrOgres",
+      "discord": "Dr Ogres#8291"
+    },
+    {
+      "name": " fvtt-fria-ligan",
+      "url" : "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt"
+    },
+    {
+      "name": "perfectro"
     }
+
   ],
   "compatibility": {
     "minimum": "10",
