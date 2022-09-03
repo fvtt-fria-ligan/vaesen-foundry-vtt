@@ -144,6 +144,17 @@ h4 {
   border-radius: 5px;
 }
 
+.vaesen .title {
+  border: 7px solid transparent;
+  padding: 0px;
+  -o-border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
+     border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
+  border-image-slice: 58 fill;
+  background-color: transparent;
+  margin: 3px;
+  filter: drop-shadow(2px 2px hsl(13deg, 48%, 17%));
+}
+
 input.light {
   border: 7px solid transparent;
   -o-border-image: url(/systems/vaesen/asset/scooped_corners.svg) stretch;
