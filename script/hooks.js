@@ -49,37 +49,7 @@ Hooks.once("init", () => {
       'ROLL.tooltipTemplate': 'systems/vaesen/model/templates/dice/tooltip.hbs',
       'ROLL.infosTemplate': 'systems/vaesen/model/templates/dice/infos.hbs'
     });
-    // render cutstom effect icons
-    if(game.data.version == '0.8.9' || game.data.version == '0.8.8' || game.data.version == '0.8.7' || game.data.version == '0.8.6'){
-        Token.prototype._drawEffect = async function(src, i, bg, w, tint) {
-          const multiplier = 3;
-          const divisor = 3 * this.data.height;
-          w = (w / 2) * multiplier;
-          let tex = await loadTexture(src);
-          
-          let icon = this.effects.addChild(new PIXI.Sprite(tex));
-          icon.width = icon.height = w;
-          icon.y = Math.floor(i / divisor) * w;
-          icon.x = (i % divisor) * w;
-          if ( tint ) icon.tint = tint;
-          this.effects.addChild(icon);
-        };
-    } else {
-      Token.prototype._drawEffect = async function(src, i, bg, w, tint) {
-        const multiplier = 3;
-        const divisor = 3 * this.data.height;
-        w = (w / 2) * multiplier;
-        let tex = await loadTexture(src);
-        
-        let icon = this.hud.effects.addChild(new PIXI.Sprite(tex));
-        icon.width = icon.height = w;
-        icon.y = Math.floor(i / divisor) * w;
-        icon.x = (i % divisor) * w;
-        if ( tint ) icon.tint = tint;
-        this.hud.effects.addChild(icon);
-         
-      };
-    }
+   
 });
 
 Hooks.once('diceSoNiceReady', (dice3d) => {
