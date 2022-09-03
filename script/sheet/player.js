@@ -237,7 +237,9 @@ export class PlayerCharacterSheet extends ActorSheet {
     html.find(".attribute b").click((ev) => {
       const div = $(ev.currentTarget).parents(".attribute");
       const attributeName = div.data("key");
-      const attribute = this.actor.system.data.attribute[attributeName];
+      console.log(attributeName);
+      console.log(this.actor);
+      const attribute = this.actor.system.attribute[attributeName];
       const testName = game.i18n.localize(attribute.label + "_ROLL");
       let bonus = this.computeBonusFromConditions(attributeName);
       prepareRollDialog(
