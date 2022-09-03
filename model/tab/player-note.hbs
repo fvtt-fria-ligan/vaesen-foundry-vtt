@@ -11,8 +11,8 @@
                 {{#each items as |item|}}
                     {{#if item.isRelationship}}
 
-                        <div class="relationship item flex column center align-center" data-item-id="{{item._id}}">
-                            <div class="flex row space-between" style="width: 100%;">
+                        <div class="relationship item center align-center" data-item-id="{{item._id}}">
+                            <div class="grid grid-3col-fr w-100" style="width: 100%;">
                             <div class="name">{{item.name}}</div>
                             <div class="description">{{item.system.description}}</div>
                             <div class="button">

@@ -239,8 +239,16 @@ input.dark {
   grid-template-columns: repeat(4, 1fr);
 }
 
+.grid-5col-fr {
+  grid-template-columns: repeat(5, 1fr);
+}
+
 .grid-6col-fr {
   grid-template-columns: repeat(6, 1fr);
+}
+
+.grid-7col-fr {
+  grid-template-columns: repeat(7, 1fr);
 }
 
 .grid-span-2 {
@@ -295,6 +303,10 @@ input.dark {
 
 .h-100 {
   height: 100%;
+}
+
+.w-25p {
+  width: 25px;
 }
 
 .center {
