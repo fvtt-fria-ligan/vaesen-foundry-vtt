@@ -36,7 +36,10 @@ This system provides character sheets and items for  your play, if you would lik
 
 ## Release Notes
 =======
-# 3.0.0
+v3.0.1 
+ - v10 release
+
+v3.0.0
  - v10-testing
 
 v2.3.6 
