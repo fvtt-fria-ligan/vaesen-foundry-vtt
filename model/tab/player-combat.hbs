@@ -13,7 +13,7 @@
                 {{#each items as |item|}}
                     {{#if item.isArmor}}
                         <div class="armor item grid grid-5col-fr gap center align-center" data-item-id="{{item._id}}">
-                            <div class="icon"><img class="icon" src="{{item.img}}" title="{{item.name}}" width="25px" height="auto"/></div>
+                            <div class="icon-box"><img class="icon" src="{{item.img}}" title="{{item.name}}" width="25px" height="auto"/></div>
                             <div class="name">{{item.name}}</div>
                             <div class="protection">{{item.system.protection}}</div>
                             <div class="agility">{{item.system.agility}}</div>
@@ -50,7 +50,7 @@
                     {{#if item.isWeapon}}
                         <div class="weapon item flex row center align-center" data-item-id="{{item._id}}">
 
-                            <div class="icon-box"><img class="icon" src="{{item.img}}" title="{{item.name}}"/></div>
+                            <div class="icon-box"><img class="icon" src="{{item.img}}" title="{{item.name}}" width="25px" height="auto"/></div>
 
                             <div class="name">{{item.name}}</div>
                             <div class="damage">{{item.system.damage}}</div>
@@ -89,7 +89,7 @@
                 {{#each items as |item|}}
                     {{#if item.isCriticalInjury}}
                         <div class="critical-injury item grid grid-7col-fr gap center align-center w-100" data-item-id="{{item._id}}">
-                            <div class="icon"><img class="icon" src="{{item.img}}" title="{{item.name}}" height="25" width="auto"/></div>
+                            <div class="icon-box"><img class="icon" src="{{item.img}}" title="{{item.name}}" width="25px" height="auto"/></div>
                             <div class="name">{{item.name}}</div>
                             <div class="fatal">{{item.system.fatal}}</div>
                             <div class="time-limit">{{item.system.timeLimit}}</div>
