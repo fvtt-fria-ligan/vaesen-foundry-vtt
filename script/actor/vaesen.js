@@ -78,32 +78,32 @@ export class VaesenActor extends Actor {
         }
     }
 
-    static async create(data, options={}) {
-        console.log("create actor", data.id, options);
+    // static async create(data, options={}) {
+    //     console.log("create actor", data.id, options);
        
         
-        if (!data.token) {
-            console.log("token is not defined");
-            const token = new TokenDocument( {
-            actorData: data,
-            vision: true,
-            dimSight: 30,
-            brightSight: 30,
-            actorLink: true,
-            disposition: 1
-        }, {overwrite: false});
+    //     if (!data.token) {
+    //         console.log("token is not defined");
+    //         const doc = new TokenDocument( {
+    //         actorData: data,
+    //         vision: true,
+    //         dimSight: 30,
+    //         brightSight: 30,
+    //         actorLink: true,
+    //         disposition: 1
+    //     }, {overwrite: false});
             
-            
-            console.log(token);
-        }
-        data.token = data.token || {};
-        mergeObject(data.token, {
-            vision: true,
-            dimSight: 30,
-            brightSight: 30,
-            actorLink: true,
-            disposition: 1
-        }, {overwrite: false});
-        return super.create(data, options);
-    }
+    //         const token = new Token(doc);
+    //         console.log(token);
+    //     }
+    //     data.token = data.token || {};
+    //     mergeObject(data.token, {
+    //         vision: true,
+    //         dimSight: 30,
+    //         brightSight: 30,
+    //         actorLink: true,
+    //         disposition: 1
+    //     }, {overwrite: false});
+    //     return super.create(data, options);
+    // }
 }
