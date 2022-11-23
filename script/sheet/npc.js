@@ -1,12 +1,9 @@
 import { prepareRollDialog, push } from "../util/roll.js";
-import { YearZeroRoll } from "../lib/yzur.js";
 import { buildChatCard } from "../util/chat.js";
+import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
 
-export class NpcCharacterSheet extends ActorSheet {
-  //TODO convert dices[] to a YZUR roll object to pass rolls and allow pushes
-  dices = new YearZeroRoll();
-  lastTestName = "";
-  lastDamage = 0;
+export class NpcCharacterSheet extends VaesenActorSheet {
+
 
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
@@ -24,35 +21,9 @@ export class NpcCharacterSheet extends ActorSheet {
       ],
     });
   }
-  // move this to a utility to share between sheets
-  //TODO localize labels and passed test value
-  _getHeaderButtons() {
-    let buttons = super._getHeaderButtons();
-    if (this.actor.isOwner) {
-      buttons = [
-        {
-          label: "Roll",
-          class: "custom-roll",
-          icon: "fas fa-dice",
-          onclick: (ev) => prepareRollDialog(this, "Roll", 0, 0, 0, 0),
-        },
-        {
-          label: "Push",
-          class: "push-roll",
-          icon: "fas fa-skull",
-          onclick: (ev) => push(this),
-        },
-      ].concat(buttons);
-    }
-    return buttons;
-  }
 
-  getData() {
-    const superData = super.getData();
-    this.computeSkills(superData.data);
-    this.computeItems(superData.data);
-    return superData;
-  }
+
+
 
   activateListeners(html) {
     super.activateListeners(html);
@@ -248,25 +219,7 @@ export class NpcCharacterSheet extends ActorSheet {
     div.toggleClass("expanded");
   }
 
-  computeSkills(data) {
-    for (let skill of Object.values(data.system.skill)) {
-      skill.hasPhysique = skill.attribute === "physique";
-      skill.hasPrecision = skill.attribute === "precision";
-      skill.hasLogic = skill.attribute === "logic";
-      skill.hasEmpathy = skill.attribute === "empathy";
-    }
-  }
 
-  computeItems(data) {
-    for (let item of Object.values(data.items)) {
-      item.isCriticalInjury = item.type === "criticalInjury";
-      item.isWeapon = item.type === "weapon";
-      item.isArmor = item.type === "armor";
-      item.isTalent = item.type === "talent";
-      item.isGear = item.type === "gear";
-      item.isMagic = item.type === "magic";
-    }
-  }
 
   onItemCreate(event) {
     event.preventDefault();

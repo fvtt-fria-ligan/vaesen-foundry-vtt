@@ -27,12 +27,28 @@ Hooks.on('renderChatLog', (app, html, data) => {
 });
 
 Hooks.once("init", () => {
+  console.log("Vaesen | Initializing Vaesen System");
     CONFIG.vaesen = vaesen;
     CONFIG.Combat.initiative = { formula: "1d10", decimals: 0 };
     CONFIG.Actor.documentClass = VaesenActor;
     CONFIG.anonymousSheet = {};
     CONFIG.roll = prepareRollDialog;
     CONFIG.push = push;
+   
+    CONFIG.TextEditor.enrichers = CONFIG.TextEditor.enrichers.concat([
+      {
+          pattern : /@RAW\[(.+?)\]/gm,
+          enricher : async (match, options) => {
+              const myData = await $.ajax({
+                  url: match[1],
+                  type: 'GET',
+              });
+              const doc = document.createElement("span");
+              doc.innerHTML = myData;
+              return doc;
+          }
+      }]);
+
     Actors.unregisterSheet("core", ActorSheet);
     Actors.registerSheet("vaesen", PlayerCharacterSheet, { types: ["player"], makeDefault: true });
     Actors.registerSheet("vaesen", NpcCharacterSheet, { types: ["npc"], makeDefault: true });
@@ -41,6 +57,12 @@ Hooks.once("init", () => {
     Items.unregisterSheet("core", ItemSheet);
     Items.registerSheet("vaesen", vaesenItemSheet, {makeDefault: true});
     preloadHandlebarsTemplates();
+
+    Handlebars.registerHelper('enrichHtmlHelper', function (rawText) {
+      return TextEditor.enrichHTML(rawText, { async: false })
+  })
+   
+
     // Register System Settings
     registerSystemSettings();
     YearZeroRollManager.register('vae', {

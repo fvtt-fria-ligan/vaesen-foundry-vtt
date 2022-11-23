@@ -7,11 +7,11 @@
             <div class="skills physique flex column">
 				<div class="attribute flex row" data-key="physique">
 					<b class="header">{{localize "ATTRIBUTE.PHYSIQUE"}}</b>			
-				<input name="system.attribute.physique.value" type="text" value="{{data.system.attribute.physique.value}}" data-dtype="Number"/>
+				<input name="system.attribute.physique.value" type="text" value="{{system.attribute.physique.value}}" data-dtype="Number"/>
                
 				</div>
 				<div class="skill-group">
-				{{#each data.system.skill as |skill key|}}
+				{{#each system.skill as |skill key|}}
                     {{#if skill.hasPhysique}}
                         <div class="skill flex row align-center" data-key="{{key}}">
                             <b>{{localize skill.label}}</b>
@@ -26,10 +26,10 @@
             <div class="skills logic flex column">
 				<div class="attribute flex row align-center" data-key="logic">
                 <b class="header">{{localize "ATTRIBUTE.LOGIC"}}</b>
-				<input name="system.attribute.logic.value" type="text" value="{{data.system.attribute.logic.value}}" data-dtype="Number"/>
+				<input name="system.attribute.logic.value" type="text" value="{{system.attribute.logic.value}}" data-dtype="Number"/>
                 </div>
 				<div class="skill-group">
-				{{#each data.system.skill as |skill key|}}
+				{{#each system.skill as |skill key|}}
                     {{#if skill.hasLogic}}
                         <div class="skill flex row align-center" data-key="{{key}}">
                             <b>{{localize skill.label}}</b>
@@ -45,10 +45,10 @@
                 
 				<div class="attribute flex row align-center" data-key="precision">
                 <b class="header">{{localize "ATTRIBUTE.PRECISION"}}</b>
-				<input name="system.attribute.precision.value" type="text" value="{{data.system.attribute.precision.value}}" data-dtype="Number"/>
+				<input name="system.attribute.precision.value" type="text" value="{{system.attribute.precision.value}}" data-dtype="Number"/>
                 </div>
 				<div class="skill-group">
-                {{#each data.system.skill as |skill key|}}
+                {{#each system.skill as |skill key|}}
                 {{#if skill.hasPrecision}}
 				
                 <div class="skill flex row align-center" data-key="{{key}}">
@@ -62,10 +62,10 @@
             <div class="skills empathy flex column">
 				<div class="attribute flex row align-center" data-key="empathy">
                 <b class="header">{{localize "ATTRIBUTE.EMPATHY"}}</b>
-				<input name="system.attribute.empathy.value" type="text" value="{{data.system.attribute.empathy.value}}" data-dtype="Number"/>
+				<input name="system.attribute.empathy.value" type="text" value="{{system.attribute.empathy.value}}" data-dtype="Number"/>
                 </div>
                 <div class="skill-group">
-                {{#each data.system.skill as |skill key|}}
+                {{#each system.skill as |skill key|}}
                     {{#if skill.hasEmpathy}}
                         <div class="skill flex row align-center" data-key="{{key}}">
                             <b>{{localize skill.label}}</b>
@@ -79,7 +79,7 @@
     </div>
 
     <div class="information flex column heavy-border wrapper grow" style="width: 99%;">
-        <b class="title"  style="width: 97%; margin: auto;">{{localize "HEADER.INFORMATION"}}</b>
-        {{editor data.system.information target="system.information" button=true owner=owner editable=true}}
+        <b class="title"  style="width: 97%; margin: 3px;">{{localize "HEADER.INFORMATION"}}</b>
+        {{editor informationHTML target="system.information" button=true owner=owner editable=true}}
     </div>
 </div>
