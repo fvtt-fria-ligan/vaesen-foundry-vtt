@@ -436,4 +436,8 @@ a.content-link i {
   height: 25px;
   border: none;
   border-radius: 0;
+}
+
+ol.dice-rolls li {
+  list-style-type: unset !important;
 }/*# sourceMappingURL=index.css.map */
