@@ -31,7 +31,6 @@ export class VaesenActorSheet extends ActorSheet {
     });
   }
 
-
   //TODO localize labels and passed test value
   _getHeaderButtons() {
     let buttons = super._getHeaderButtons();
@@ -106,32 +105,38 @@ export class VaesenActorSheet extends ActorSheet {
     context.effects = this.prepareActiveEffectCategories(this.actor.effects);
 
     console.log("context", context);
-    // enchich html for notes and description
-    context.informationHTML = await TextEditor.enrichHTML(
-      context.system.information,
-      {
-        secrets: this.actor.owner,
-        async: true,
-      }
-    );
 
-    context.noteHTML = await TextEditor.enrichHTML(context.system.note, {
+    if (context.isNpc) {
+      // enchich html for notes and description
+      context.informationHTML = await TextEditor.enrichHTML(
+        context.system.information,
+        {
+          secrets: this.actor.owner,
+          async: true,
+        }
+      );
+      context.noteHTML = await TextEditor.enrichHTML(context.system.note, {
         secrets: this.actor.owner,
         async: true,
-        }
-    );
+      });
+    }
+
+    if(context.isCharacter) {
+        context.noteHTML = await TextEditor.enrichHTML(context.system.note, {
+            secrets: this.actor.owner,
+            async: true,
+        });
+    }
 
     console.log(source);
 
-
-
     this.computeSkills(context);
     this.computeItems(context);
-
+    this.setSwag(context);
+    this.setPortrait(context);
 
     return context;
   }
-
 
   computeSkills(context) {
     for (let skill of Object.values(context.system.skill)) {
@@ -142,7 +147,6 @@ export class VaesenActorSheet extends ActorSheet {
     }
   }
 
-  
   computeItems(data) {
     for (let item of Object.values(data.items)) {
       item.isCriticalInjury = item.type === "criticalInjury";
@@ -154,7 +158,11 @@ export class VaesenActorSheet extends ActorSheet {
     }
   }
 
+  setSwag(data) {
+    data.swag = game.settings.get("vaesen", "swag") ? true : false;
+  }
 
-
-
+  setPortrait(data) {
+    data.portrait = game.settings.get("vaesen", "portrait");
+  }
 }

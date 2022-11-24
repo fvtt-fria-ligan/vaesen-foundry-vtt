@@ -2,8 +2,9 @@ import { prepareRollDialog, push } from "../util/roll.js";
 import { conditions } from "../util/conditions.js";
 import { YearZeroRoll } from "../lib/yzur.js";
 import { buildChatCard } from "../util/chat.js";
+import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
 
-export class PlayerCharacterSheet extends ActorSheet {
+export class PlayerCharacterSheet extends VaesenActorSheet {
   //TODO convert dices[] to a YZUR roll object to pass rolls and allow pushes
   dices = new YearZeroRoll();
   lastTestName = "";
@@ -53,17 +54,6 @@ export class PlayerCharacterSheet extends ActorSheet {
       ].concat(buttons);
     }
     return buttons;
-  }
-
-  getData() {
-    const superData = super.getData();
-
-    this.setSwag(superData);
-    this.setPortrait(superData);
-    this.computeSkills(superData.data);
-    this.computeItems(superData);
-
-    return superData;
   }
 
   async affirmConditions(actor) {
@@ -375,14 +365,7 @@ export class PlayerCharacterSheet extends ActorSheet {
     }
   }
 
-  setSwag(data) {
-    data.swag = game.settings.get("vaesen", "swag") ? true : false;
-  }
-
-  setPortrait(data) {
-    data.portrait = game.settings.get("vaesen", "portrait");
-  }
-
+ 
   /****** Toggle the roll-down of expanded item information.  */
   onItemSummary(event, type) {
     let div = $(event.currentTarget).parents(".item"),
