@@ -95,6 +95,7 @@ export class VaesenActorSheet extends ActorSheet {
       limited: this.actor.limited,
       options: this.options,
       editable: this.isEditable,
+      ritual: actorData.system.ritual,
       type: this.actor.type,
       isCharacter: this.actor.type === "player",
       isNpc: this.actor.type === "npc",
@@ -121,7 +122,7 @@ export class VaesenActorSheet extends ActorSheet {
       });
     }
 
-    if(context.isCharacter) {
+    if(context.isCharacter || context.isVaesen) {
         context.noteHTML = await TextEditor.enrichHTML(context.system.note, {
             secrets: this.actor.owner,
             async: true,
@@ -129,8 +130,9 @@ export class VaesenActorSheet extends ActorSheet {
     }
 
     console.log(source);
-
+    if(!context.isVaesen) {
     this.computeSkills(context);
+    }
     this.computeItems(context);
     this.setSwag(context);
     this.setPortrait(context);
@@ -150,13 +152,17 @@ export class VaesenActorSheet extends ActorSheet {
   computeItems(data) {
     for (let item of Object.values(data.items)) {
       item.isCriticalInjury = item.type === "criticalInjury";
-      item.isWeapon = item.type === "weapon";
-      item.isArmor = item.type === "armor";
       item.isTalent = item.type === "talent";
-      item.isGear = item.type === "gear";
+      item.isWeapon = item.type === "weapon";
+      item.isCondition = item.type === "condition";
       item.isMagic = item.type === "magic";
+      item.isCondition = item.type === "condition";
+      item.isArmor = item.type === "armor";
+      item.isAttack = item.type === "attack";
+      item.isGear = item.type === "gear";
     }
   }
+
 
   setSwag(data) {
     data.swag = game.settings.get("vaesen", "swag") ? true : false;

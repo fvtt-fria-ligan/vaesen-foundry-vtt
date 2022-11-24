@@ -1,8 +1,9 @@
 import { prepareRollDialog } from "../util/roll.js";
 import { YearZeroRoll } from "../lib/yzur.js";
 import { buildChatCard } from "../util/chat.js";
+import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
 
-export class VaesenCharacterSheet extends ActorSheet {
+export class VaesenCharacterSheet extends VaesenActorSheet {
   //TODO convert dices[] to a YZUR roll object to pass rolls and allow pushes
   dices = new YearZeroRoll();
   lastTestName = "";
@@ -39,13 +40,6 @@ export class VaesenCharacterSheet extends ActorSheet {
       ].concat(buttons);
     }
     return buttons;
-  }
-
-  getData() {
-    const superData = super.getData();
-    console.log(superData);
-    this.computeItems(superData.data);
-    return superData;
   }
 
   activateListeners(html) {
@@ -142,17 +136,7 @@ export class VaesenCharacterSheet extends ActorSheet {
     });
   }
 
-  computeItems(data) {
-    for (let item of Object.values(data.items)) {
-      item.isWeapon = item.type === "weapon";
-      item.isCondition = item.type === "condition";
-      item.isMagic = item.type === "magic";
-      item.isCondition = item.type === "condition";
-      item.isArmor = item.type === "armor";
-      item.isAttack = item.type === "attack";
-      item.isGear = item.type === "gear";
-    }
-  }
+  
 
   async onToggleActive(event) {
     let element = event.currentTarget;

@@ -25,7 +25,7 @@
               <input
                 name="system.fear.initial"
                 type="text"
-                value="{{data.system.fear.initial}}"
+                value="{{system.fear.initial}}"
                 data-dtype="Number"
               />
             </div>
@@ -34,7 +34,7 @@
               <input
                 name="system.fear.subsequent"
                 type="text"
-                value="{{data.system.fear.subsequent}}"
+                value="{{system.fear.subsequent}}"
                 data-dtype="Number"
               />
             </div>
@@ -217,7 +217,7 @@
             class="attributes flex row grow space-between"
             style="width: 99%"
           >
-            {{#each data.system.attribute as |attribute key|}}
+            {{#each system.attribute as |attribute key|}}
             <div class="attribute flex column center" data-key="{{key}}">
               <b>{{localize attribute.label}}</b>
               <div class="flex row align-center">
