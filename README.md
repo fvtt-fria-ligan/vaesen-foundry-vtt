@@ -37,6 +37,9 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+v3.0.4
+- Added text enrichment to the notes fields on the various actor sheets.
+
 v3.0.3
 - Bugfix: duplicate actor fails in v10 
 - Style Fix: Dice rolls in chat had li letters under the image and number in chat when premium modules were enabled this is now fixed
