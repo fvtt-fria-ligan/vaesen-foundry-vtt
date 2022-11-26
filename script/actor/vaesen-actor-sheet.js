@@ -122,16 +122,16 @@ export class VaesenActorSheet extends ActorSheet {
       });
     }
 
-    if(context.isCharacter || context.isVaesen) {
-        context.noteHTML = await TextEditor.enrichHTML(context.system.note, {
-            secrets: this.actor.owner,
-            async: true,
-        });
+    if (context.isCharacter || context.isVaesen || context.isHeadquarter) {
+      context.noteHTML = await TextEditor.enrichHTML(context.system.note, {
+        secrets: this.actor.owner,
+        async: true,
+      });
     }
 
     console.log(source);
-    if(!context.isVaesen) {
-    this.computeSkills(context);
+    if (!context.isVaesen && !context.isHeadquarter) {
+      this.computeSkills(context);
     }
     this.computeItems(context);
     this.setSwag(context);
@@ -160,9 +160,14 @@ export class VaesenActorSheet extends ActorSheet {
       item.isArmor = item.type === "armor";
       item.isAttack = item.type === "attack";
       item.isGear = item.type === "gear";
+      item.isFacility =
+        item.type === "upgrade" && item.system.category === "facility";
+      item.isContact =
+        item.type === "upgrade" && item.system.category === "contact";
+      item.isPersonnel =
+        item.type === "upgrade" && item.system.category === "personnel";
     }
   }
-
 
   setSwag(data) {
     data.swag = game.settings.get("vaesen", "swag") ? true : false;

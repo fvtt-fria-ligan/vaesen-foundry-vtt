@@ -1,6 +1,7 @@
 import { buildChatCard } from "../util/chat.js";
+import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
 
-export class HeadquarterCharacterSheet extends ActorSheet {
+export class HeadquarterCharacterSheet extends VaesenActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["vaesen", "sheet", "actor"],
@@ -18,11 +19,7 @@ export class HeadquarterCharacterSheet extends ActorSheet {
     });
   }
 
-  getData() {
-    const superData = super.getData();
-    this.computeItems(superData);
-    return superData;
-  }
+  
 
   activateListeners(html) {
     super.activateListeners(html);
@@ -54,17 +51,6 @@ export class HeadquarterCharacterSheet extends ActorSheet {
     });
   }
 
-  computeItems(data) {
-    console.log(data);
-    for (let item of Object.values(data.items)) {
-      item.isFacility =
-        item.type === "upgrade" && item.system.category === "facility";
-      item.isContact =
-        item.type === "upgrade" && item.system.category === "contact";
-      item.isPersonnel =
-        item.type === "upgrade" && item.system.category === "personnel";
-    }
-  }
 
   sendToChat(event) {
     const div = $(event.currentTarget).parents(".item");
