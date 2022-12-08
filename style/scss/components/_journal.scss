@@ -16,7 +16,7 @@
     }
 
     & nav{
-        background: url( /systems/vaesen/asset/denim075.png) repeat;
+        background: url( ../asset/denim075.png) repeat;
         border-bottom: 1px solid $brown-200;
     }
 }
@@ -76,7 +76,7 @@
 }
 
 .journal-entry-page ul {
-	list-style: url('/systems/vaesen/asset/bullet.svg');
+	list-style: url('../asset/bullet.svg');
 	margin: 2px;
 	
 }	

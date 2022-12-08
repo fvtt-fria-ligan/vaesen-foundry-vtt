@@ -3,39 +3,39 @@
 ******************************/
 @font-face {
   font-family: Eccentric;
-  src: url(/systems/vaesen/fonts/EccentricStd.otf);
+  src: url(../fonts/EccentricStd.otf);
 }
 @font-face {
   font-family: BethEllen;
-  src: url(/systems/vaesen/fonts/BethEllen-Regular.ttf);
+  src: url(../fonts/BethEllen-Regular.ttf);
 }
 @font-face {
   font-family: Albertus;
-  src: url(/systems/vaesen/fonts/AlbertusMediumRegular.ttf);
+  src: url(../fonts/AlbertusMediumRegular.ttf);
 }
 @font-face {
   font-family: Baskerville;
-  src: url(/systems/vaesen/fonts/LibreBaskerville-Regular.ttf);
+  src: url(../fonts/LibreBaskerville-Regular.ttf);
 }
 @font-face {
   font-family: Lin;
-  src: url(/systems/vaesen/fonts/LinLibertine_R.ttf);
+  src: url(../fonts/LinLibertine_R.ttf);
 }
 @font-face {
   font-family: IntervogueBlack;
-  src: url(/systems/vaesen/fonts/Intervogue_Black.otf);
+  src: url(../fonts/Intervogue_Black.otf);
 }
 @font-face {
   font-family: IntervogueReg;
-  src: url(/systems/vaesen/fonts/Intervogue_Reg.otf);
+  src: url(../fonts/Intervogue_Reg.otf);
 }
 @font-face {
   font-family: PicaItalic;
-  src: url(/systems/vaesen/fonts/IMFellDoublePica-Italic.ttf);
+  src: url(../fonts/IMFellDoublePica-Italic.ttf);
 }
 @font-face {
   font-family: Pica;
-  src: url(/systems/vaesen/fonts/IMFellDoublePica-Regular.ttf);
+  src: url(../fonts/IMFellDoublePica-Regular.ttf);
 }
 /* media query mixin */
 .tox {
@@ -119,8 +119,8 @@ h4 {
 
 .title.dark {
   border: 7px solid transparent;
-  -o-border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
-     border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
+  -o-border-image: url(../asset/scooped_corners_dark.svg) stretch;
+     border-image: url(../asset/scooped_corners_dark.svg) stretch;
   border-image-slice: 58 fill;
   margin-block: 3px;
   filter: drop-shadow(2px 2px hsl(13deg, 48%, 17%));
@@ -132,8 +132,8 @@ h4 {
 
 .dl-border {
   border: 10px solid transparent;
-  -o-border-image: url(/systems/vaesen/asset/ft_border.png) 15 stretch;
-     border-image: url(/systems/vaesen/asset/ft_border.png) 15 stretch;
+  -o-border-image: url(../asset/ft_border.png) 15 stretch;
+     border-image: url(../asset/ft_border.png) 15 stretch;
 }
 
 .border-none {
@@ -147,8 +147,8 @@ h4 {
 .vaesen .title {
   border: 7px solid transparent;
   padding: 0px;
-  -o-border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
-     border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
+  -o-border-image: url(../asset/scooped_corners_dark.svg) stretch;
+     border-image: url(../asset/scooped_corners_dark.svg) stretch;
   border-image-slice: 58 fill;
   background-color: transparent;
   margin: 3px;
@@ -157,8 +157,8 @@ h4 {
 
 input.light {
   border: 7px solid transparent;
-  -o-border-image: url(/systems/vaesen/asset/scooped_corners.svg) stretch;
-     border-image: url(/systems/vaesen/asset/scooped_corners.svg) stretch;
+  -o-border-image: url(../asset/scooped_corners.svg) stretch;
+     border-image: url(../asset/scooped_corners.svg) stretch;
   border-image-slice: 58 fill;
   margin-block: 3px;
   filter: drop-shadow(2px 2px hsl(13deg, 48%, 17%));
@@ -166,8 +166,8 @@ input.light {
 
 input.dark {
   border: 7px solid transparent;
-  -o-border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
-     border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
+  -o-border-image: url(../asset/scooped_corners_dark.svg) stretch;
+     border-image: url(../asset/scooped_corners_dark.svg) stretch;
   border-image-slice: 58 fill;
   margin-block: 3px;
   filter: drop-shadow(2px 2px hsl(13deg, 48%, 17%));
@@ -357,7 +357,7 @@ input.dark {
   border: none;
 }
 .journal-sheet nav {
-  background: url(/systems/vaesen/asset/denim075.png) repeat;
+  background: url(../asset/denim075.png) repeat;
   border-bottom: 1px solid hsl(21deg, 20%, 60%);
 }
 
@@ -409,7 +409,7 @@ input.dark {
 }
 
 .journal-entry-page ul {
-  list-style: url("/systems/vaesen/asset/bullet.svg");
+  list-style: url("../asset/bullet.svg");
   margin: 2px;
 }
 
