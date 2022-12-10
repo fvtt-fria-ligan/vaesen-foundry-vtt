@@ -46,7 +46,7 @@
 .title.dark{
   
     border: 7px solid transparent;
-    border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
+    border-image: url(../asset/scooped_corners_dark.svg) stretch;
     border-image-slice: 58 fill;
     margin-block: 3px;
     filter: drop-shadow(2px 2px $brown-700);
@@ -59,7 +59,7 @@
 
 .dl-border{
   border: 10px solid transparent;
-	border-image: url(/systems/vaesen/asset/ft_border.png) 15 stretch;
+	border-image: url(../asset/ft_border.png) 15 stretch;
 }
 
 .border-none{
@@ -73,7 +73,7 @@
 .vaesen .title{
 	border: 7px solid transparent;
 	padding: 0px;
-	border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
+	border-image: url(../asset/scooped_corners_dark.svg) stretch;
 	border-image-slice: 58 fill;
 	background-color: transparent;
 	margin: 3px;
@@ -82,7 +82,7 @@
 
 input.light{
   border: 7px solid transparent;
-  border-image: url(/systems/vaesen/asset/scooped_corners.svg) stretch;
+  border-image: url(../asset/scooped_corners.svg) stretch;
   border-image-slice: 58 fill;
   margin-block: 3px;
   filter: drop-shadow(2px 2px $brown-700);
@@ -90,7 +90,7 @@ input.light{
 
 input.dark{
   border: 7px solid transparent;
-  border-image: url(/systems/vaesen/asset/scooped_corners_dark.svg) stretch;
+  border-image: url(../asset/scooped_corners_dark.svg) stretch;
   border-image-slice: 58 fill;
   margin-block: 3px;
   filter: drop-shadow(2px 2px $brown-700);
