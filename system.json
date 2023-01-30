@@ -57,6 +57,12 @@
       "lang": "de",
       "name": "Deutsche",
       "path": "lang/de.json"
+    },
+    {
+      "lang": "uk",
+      "name": "Українська (Ukrainian)",
+      "path": "lang/uk.json",
+      "flags": {}
     }
   ],
   "gridDistance": 1,
