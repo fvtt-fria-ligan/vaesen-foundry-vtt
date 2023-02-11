@@ -9,6 +9,16 @@ export const registerSystemSettings = function () {
         type: Boolean 
     });
 
+    game.settings.register("vaesen", "initiativeDeck", {
+        
+        name: "SETTINGS.INITIATIVE_DECK",
+        hint: "SETTINGS.INITIATIVE_DECK_HINT",
+        scope: "world",
+        config: true,
+        type: String,
+        default: ""
+        });
+
     game.settings.register("vaesen", "portrait", {
         name: "SETTINGS.PORTRAIT",
         hint: "SETTINGS.PORTRAIT_HINT",

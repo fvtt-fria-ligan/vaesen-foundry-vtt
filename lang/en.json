@@ -199,6 +199,8 @@
   "SETTINGS.PORTRAIT_ROUND": "Round",
   "SETTINGS.PORTRAIT_PORTRAIT": "2:3 Portrait Orientation",
   "SETTINGS.PORTRAIT_LANDSCAPE": "3:2 Landscape Orientation",
+  "SETTINGS.InitiativeDeck": "Initiative Deck",
+  "SETTINGS.InitiativeDeckHint": "Select the deck you would like to use for your game",
 
   "CHAT.SUCCESS": "Successes",
   "ROLL.BASE.POOL": "Base Dice Pool",

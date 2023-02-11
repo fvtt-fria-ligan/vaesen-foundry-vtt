@@ -1,0 +1,261 @@
+{
+  "name": "Vaesen Inititive Deck",
+  "type": "deck",
+  "description": "A Deck of 10 Initiative Cards - Art by @AshesForAshe#6498",
+  "img": "systems/vaesen/asset/backing.png",
+  "data": {},
+  "cards": [
+    {
+      "name": "1",
+      "type": "base",
+      "_id": "eMyowPx8xA32Dist",
+      "description": "",
+      "system": {},
+      "suit": "",
+      "value": 1,
+      "back": { "name": "", "text": "", "img": null },
+      "faces": [
+        {
+          "name": "1",
+          "img": "systems/vaesen/asset/number%201.png",
+          "text": ""
+        }
+      ],
+      "face": 1,
+      "drawn": false,
+      "origin": "HT9Yh3dC4xpxARoJ",
+      "rotation": 0,
+      "sort": 0,
+      "flags": {}
+    },
+    {
+      "name": "2",
+      "type": "base",
+      "_id": "r8PKqYr8EvNEEPvn",
+      "description": "",
+      "system": {},
+      "suit": "",
+      "value": 2,
+      "back": { "name": "", "text": "", "img": null },
+      "faces": [
+        {
+          "name": "2",
+          "img": "systems/vaesen/asset/number%202.png",
+          "text": ""
+        }
+      ],
+      "face": 2,
+      "drawn": false,
+      "origin": "HT9Yh3dC4xpxARoJ",
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 0,
+      "flags": {}
+    },
+    {
+      "name": "3",
+      "type": "base",
+      "_id": "4CKl6S4BfBXwsPLe",
+      "description": "",
+      "system": {},
+      "suit": "",
+      "value": 3,
+      "back": { "name": "", "text": "", "img": null },
+      "faces": [
+        {
+          "name": "3",
+          "img": "systems/vaesen/asset/number%203.png",
+          "text": ""
+        }
+      ],
+      "face": 3,
+      "drawn": false,
+      "origin": "HT9Yh3dC4xpxARoJ",
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 0,
+      "flags": {}
+    },
+    {
+      "name": "4",
+      "type": "base",
+      "_id": "QQ0Uy2hYiQJsTFbM",
+      "description": "",
+      "system": {},
+      "suit": "",
+      "value": 4,
+      "back": { "name": "", "text": "", "img": null },
+      "faces": [
+        {
+          "name": "4",
+          "img": "systems/vaesen/asset/number%204.png",
+          "text": ""
+        }
+      ],
+      "face": 4,
+      "drawn": false,
+      "origin": "HT9Yh3dC4xpxARoJ",
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 0,
+      "flags": {}
+    },
+    {
+      "name": "5",
+      "type": "base",
+      "_id": "2pfa78ldfl0BxTXl",
+      "description": "",
+      "system": {},
+      "suit": "",
+      "value": 5,
+      "back": { "name": "", "text": "", "img": null },
+      "faces": [
+        {
+          "name": "5",
+          "img": "systems/vaesen/asset/number%205.png",
+          "text": ""
+        }
+      ],
+      "face": 5,
+      "drawn": false,
+      "origin": "HT9Yh3dC4xpxARoJ",
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 0,
+      "flags": {}
+    },
+    {
+      "name": "6",
+      "type": "base",
+      "_id": "GWoU09ct3Ki558vb",
+      "description": "",
+      "system": {},
+      "suit": "",
+      "value": 6,
+      "back": { "name": "", "text": "", "img": null },
+      "faces": [
+        {
+          "name": "6",
+          "img": "systems/vaesen/asset/number%206.png",
+          "text": ""
+        }
+      ],
+      "face": 6,
+      "drawn": false,
+      "origin": "HT9Yh3dC4xpxARoJ",
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 0,
+      "flags": {}
+    },
+    {
+      "name": "7",
+      "type": "base",
+      "_id": "NTpLKdcLaNuWlnUY",
+      "description": "",
+      "system": {},
+      "suit": "",
+      "value": 7,
+      "back": { "name": "", "text": "", "img": null },
+      "faces": [
+        {
+          "name": "7",
+          "img": "systems/vaesen/asset/number%207.png",
+          "text": ""
+        }
+      ],
+      "face": 7,
+      "drawn": false,
+      "origin": "HT9Yh3dC4xpxARoJ",
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 0,
+      "flags": {}
+    },
+    {
+      "name": "8",
+      "type": "base",
+      "_id": "k13ojmOsoHULtU4i",
+      "description": "",
+      "system": {},
+      "suit": "",
+      "value": 8,
+      "back": { "name": "", "text": "", "img": null },
+      "faces": [
+        {
+          "name": "8",
+          "img": "systems/vaesen/asset/number%208.png",
+          "text": ""
+        }
+      ],
+      "face": 8,
+      "drawn": false,
+      "origin": "HT9Yh3dC4xpxARoJ",
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 0,
+      "flags": {}
+    },
+    {
+      "name": "9",
+      "type": "base",
+      "_id": "ItXsJofEGVsNPHwr",
+      "description": "",
+      "system": {},
+      "suit": "",
+      "value": 9,
+      "back": { "name": "", "text": "", "img": null },
+      "faces": [
+        {
+          "name": "9",
+          "img": "systems/vaesen/asset/number%209.png",
+          "text": ""
+        }
+      ],
+      "face": 9,
+      "drawn": false,
+      "origin": "HT9Yh3dC4xpxARoJ",
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 0,
+      "flags": {}
+    },
+    {
+      "name": "10",
+      "type": "base",
+      "_id": "2abGPNSjPCkyYOqV",
+      "description": "",
+      "system": {},
+      "suit": "",
+      "value": 10,
+      "back": { "name": "", "text": "", "img": null },
+      "faces": [
+        {
+          "name": "10",
+          "img": "systems/vaesen/asset/number%2010.png",
+          "text": ""
+        }
+      ],
+      "face": 10,
+      "drawn": false,
+      "origin": "HT9Yh3dC4xpxARoJ",
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 0,
+      "flags": {}
+    }
+  ],
+  "width": null,
+  "height": null,
+  "rotation": 0,
+  "displayCount": false
+}
