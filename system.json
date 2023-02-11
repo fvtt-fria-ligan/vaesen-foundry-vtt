@@ -1,8 +1,6 @@
 {
-  "name": "vaesen",
   "title": "Vaesen",
   "description": "Nordic horror role-playing",
-
   "version": "3.0.4",
   "esmodules": [
     "script/hooks.js"
@@ -36,27 +34,32 @@
     {
       "lang": "fr",
       "name": "Français",
-      "path": "lang/fr.json"
+      "path": "lang/fr.json",
+      "flags": {}
     },
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json"
+      "path": "lang/en.json",
+      "flags": {}
     },
     {
       "lang": "sv",
       "name": "Svenska",
-      "path": "lang/sv.json"
+      "path": "lang/sv.json",
+      "flags": {}
     },
     {
       "lang": "es",
       "name": "Español",
-      "path": "lang/es.json"
+      "path": "lang/es.json",
+      "flags": {}
     },
     {
       "lang": "de",
       "name": "Deutsche",
-      "path": "lang/de.json"
+      "path": "lang/de.json",
+      "flags": {}
     },
     {
       "lang": "uk",
@@ -70,23 +73,25 @@
   "url": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt",
   "socket": true,
   "manifest": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/releases/latest/download/system.json",
-  "download": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/releases/latest/download/system.zip",
+  "download": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/releases/download/3.0.4/system.zip",
   "license": "LICENSE.txt",
   "id": "vaesen",
   "authors": [
     {
       "name": "Dr Ogres",
-      "url" : "http://github.com/DrOgres",
-      "discord": "Dr Ogres#8291"
+      "url": "http://github.com/DrOgres",
+      "discord": "Dr Ogres#8291",
+      "flags": {}
     },
     {
-      "name": " fvtt-fria-ligan",
-      "url" : "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt"
+      "name": "fvtt-fria-ligan",
+      "url": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt",
+      "flags": {}
     },
     {
-      "name": "perfectro"
+      "name": "perfectro",
+      "flags": {}
     }
-
   ],
   "compatibility": {
     "minimum": "10",
