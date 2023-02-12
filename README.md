@@ -37,6 +37,11 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+v3.0.5
+- Added Ukrainian Localization thanks [GMonlineua](https://github.com/GMonlineua)
+- Added an Initiative Deck to the system for use with [Year Zero Combat Engine](https://github.com/fvtt-fria-ligan/yearzero-combat-fvtt)
+   -- Special thanks to Ashes for Ashe from the Foundry Discord for the amazing art work for the cards!
+   
 v3.0.4
 - Added text enrichment to the notes fields on the various actor sheets.
 
