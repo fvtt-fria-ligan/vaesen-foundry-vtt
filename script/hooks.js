@@ -13,6 +13,7 @@ import { vaesenItemSheet } from "./sheet/itemSheet.js";
 
 Hooks.once("ready", function () {
   conditions.onReady();
+  setupCards();
 });
 
 Hooks.on("renderChatMessage", (app, html, data) => {
@@ -75,7 +76,7 @@ Hooks.once("init", () => {
   registerSystemSettings();
   preloadHandlebarsTemplates();
 
-  setupCards();
+  
 
   Handlebars.registerHelper("enrichHtmlHelper", function (rawText) {
     return TextEditor.enrichHTML(rawText, { async: false });
@@ -170,15 +171,18 @@ async function _onPush(event) {
 }
 
 async function setupCards() {
-  //creates new initi deck.
-
-  const cardsCls = getDocumentClass("Cards");
+  const initiativeDeckId = game.settings.get('vaesen', 'initiativeDeck');
+  const initiativeDeck = game.cards?.get(initiativeDeckId);
+  //return early if both the deck and the ID exist in the world
+  if (initiativeDeckId && initiativeDeck)
+      return;
+  ui.notifications.info('UI.NoInitiativeDeckFound', { localize: true });
   const preset = CONFIG.Cards.presets.initiative;
-  console.log(preset);
-  let data =  await foundry.utils.fetchJsonWithTimeout(preset.src);
-  console.log(data);
-  const newCardStack = await new Cards(data);
-  return newCardStack;
+  const data = await foundry.utils.fetchJsonWithTimeout(preset.src);
+  const cardsCls = getDocumentClass('Cards');
+  const newDeck = await cardsCls.create(data);
+  await game.settings.set('vaesen', 'initiativeDeck', newDeck?.id);
+  await newDeck?.shuffle({ chatNotification: false });
 }
 
 function preloadHandlebarsTemplates() {

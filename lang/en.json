@@ -191,6 +191,7 @@
   "UI.ADD" : "Create New",
   "UI.ROLL.PREC": "Roll Physical Recovery",
   "UI.ROLL.MREC": "Roll Mental Recovery",
+  "UI.NoInitiativeDeckFound": "No Initiative Deck Found, creating a new one",
 
   "SETTINGS.SWAG": "Use official Vaesen Logo as Header Image on Character Sheets",
   "SETTINGS.SWAG_NAME" : "Character Sheet Decoration",

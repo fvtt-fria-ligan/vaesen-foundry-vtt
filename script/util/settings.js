@@ -14,7 +14,7 @@ export const registerSystemSettings = function () {
         name: "SETTINGS.INITIATIVE_DECK",
         hint: "SETTINGS.INITIATIVE_DECK_HINT",
         scope: "world",
-        config: true,
+        config: false,
         type: String,
         default: ""
         });
