@@ -37,6 +37,12 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+v3.0.7
+- Fixed Resource Rolling on the Player Sheet
+
+v3.0.6
+- Fixed manifest for Forge compatibility
+
 v3.0.5
 - Added Ukrainian Localization thanks [GMonlineua](https://github.com/GMonlineua)
 - Added an Initiative Deck to the system for use with [Year Zero Combat Engine](https://github.com/fvtt-fria-ligan/yearzero-combat-fvtt)
