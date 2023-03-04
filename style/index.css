@@ -65,7 +65,7 @@ h4 {
 }
 
 .color-brown-700 {
-  color: hsl(13deg, 48%, 17%);
+  color: hsl(13, 48%, 17%);
 }
 
 .title-case {
@@ -77,7 +77,7 @@ h4 {
 }
 
 .list-item:nth-child(odd) {
-  background-color: hsl(21deg, 20%, 60%);
+  background-color: hsl(21, 20%, 60%);
 }
 
 :root {
@@ -105,16 +105,16 @@ h4 {
 }
 
 .window-app .window-content {
-  color: hsl(13deg, 48%, 17%);
-  background-color: hsl(40deg, 20%, 80%);
+  color: hsl(13, 48%, 17%);
+  background-color: hsl(40, 20%, 80%);
 }
 
 .bg-offwhite {
-  background-color: hsl(40deg, 20%, 80%);
+  background-color: hsl(40, 20%, 80%);
 }
 
 .bg-brown-100 {
-  background-color: hsl(0deg, 0%, 91%);
+  background-color: hsl(0, 0%, 91%);
 }
 
 .title.dark {
@@ -123,11 +123,11 @@ h4 {
      border-image: url(../asset/scooped_corners_dark.svg) stretch;
   border-image-slice: 58 fill;
   margin-block: 3px;
-  filter: drop-shadow(2px 2px hsl(13deg, 48%, 17%));
+  filter: drop-shadow(2px 2px hsl(13, 48%, 17%));
 }
 
 .heavy-border {
-  border: 2px solid hsl(21deg, 20%, 43%);
+  border: 2px solid hsl(21, 20%, 43%);
 }
 
 .dl-border {
@@ -152,7 +152,7 @@ h4 {
   border-image-slice: 58 fill;
   background-color: transparent;
   margin: 3px;
-  filter: drop-shadow(2px 2px hsl(13deg, 48%, 17%));
+  filter: drop-shadow(2px 2px hsl(13, 48%, 17%));
 }
 
 input.light {
@@ -161,7 +161,7 @@ input.light {
      border-image: url(../asset/scooped_corners.svg) stretch;
   border-image-slice: 58 fill;
   margin-block: 3px;
-  filter: drop-shadow(2px 2px hsl(13deg, 48%, 17%));
+  filter: drop-shadow(2px 2px hsl(13, 48%, 17%));
 }
 
 input.dark {
@@ -170,7 +170,7 @@ input.dark {
      border-image: url(../asset/scooped_corners_dark.svg) stretch;
   border-image-slice: 58 fill;
   margin-block: 3px;
-  filter: drop-shadow(2px 2px hsl(13deg, 48%, 17%));
+  filter: drop-shadow(2px 2px hsl(13, 48%, 17%));
 }
 
 .icon {
@@ -280,7 +280,6 @@ input.dark {
 }
 
 .w-fc {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
@@ -353,12 +352,12 @@ input.dark {
   height: 2rem;
   line-height: 2rem;
   background: none;
-  color: hsl(13deg, 48%, 17%);
+  color: hsl(13, 48%, 17%);
   border: none;
 }
 .journal-sheet nav {
   background: url(../asset/denim075.png) repeat;
-  border-bottom: 1px solid hsl(21deg, 20%, 60%);
+  border-bottom: 1px solid hsl(21, 20%, 60%);
 }
 
 .journal-entry-page {
@@ -419,7 +418,7 @@ input.dark {
 }
 
 a.content-link {
-  color: hsl(13deg, 48%, 17%);
+  color: hsl(13, 48%, 17%);
   text-decoration: none;
   background: none;
   padding: 0;
@@ -428,7 +427,7 @@ a.content-link {
   border: none;
 }
 a.content-link i {
-  color: hsl(13deg, 48%, 17%);
+  color: hsl(13, 48%, 17%);
 }
 
 .icon-img {

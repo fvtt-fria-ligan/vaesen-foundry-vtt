@@ -153,7 +153,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
         game.i18n.localize("RESOURCES"),
         0,
         0,
-        this.actor.system.data.resources,
+        this.actor.system.resources || 0,
         0
       );
     });
