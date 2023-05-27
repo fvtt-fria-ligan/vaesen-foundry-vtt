@@ -12,7 +12,7 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["vaesen", "sheet", "actor"],
-      width: 750,
+      width: 950,
       height: 800,
       resizable: true,
       tabs: [
@@ -25,21 +25,6 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
     });
   }
 
-  _getHeaderButtons() {
-    console.log(this.actor);
-    let buttons = super._getHeaderButtons();
-    if (this.actor.isOwner) {
-      buttons = [
-        {
-          label: "Roll",
-          class: "custom-roll",
-          icon: "fas fa-dice",
-          onclick: (ev) => prepareRollDialog(this, "Roll", 0, 0, 0, 0),
-        },
-      ].concat(buttons);
-    }
-    return buttons;
-  }
 
   activateListeners(html) {
     super.activateListeners(html);

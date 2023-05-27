@@ -23,35 +23,6 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     });
   }
 
-  _getHeaderButtons() {
-    let buttons = super._getHeaderButtons();
-    if (this.actor.isOwner) {
-      buttons = [
-        {
-          label: game.i18n.localize("ROLL.ROLL"),
-          class: "custom-roll",
-          icon: "fas fa-dice",
-          onclick: (ev) =>
-            prepareRollDialog(
-              this,
-              game.i18n.localize("ROLL.ROLL"),
-              0,
-              0,
-              0,
-              0
-            ),
-        },
-        {
-          label: game.i18n.localize("ROLL.PUSH"),
-          class: "push-roll",
-          icon: "fas fa-skull",
-          onclick: (ev) => push(this),
-        },
-      ].concat(buttons);
-    }
-    return buttons;
-  }
-
   async affirmConditions(actor) {
     let currentConditions = [];
     actor.effects.forEach(function (value, key) {

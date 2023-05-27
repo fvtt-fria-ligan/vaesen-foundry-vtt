@@ -35,19 +35,27 @@ export class VaesenActorSheet extends ActorSheet {
   }
 
 
-  //TODO localize labels and passed test value
+
   _getHeaderButtons() {
     let buttons = super._getHeaderButtons();
     if (this.actor.isOwner) {
       buttons = [
         {
-          label: "Roll",
+          label: game.i18n.localize("ROLL.ROLL"),
           class: "custom-roll",
           icon: "fas fa-dice",
-          onclick: (ev) => prepareRollDialog(this, "Roll", 0, 0, 0, 0),
+          onclick: (ev) =>
+            prepareRollDialog(
+              this,
+              game.i18n.localize("ROLL.ROLL"),
+              0,
+              0,
+              0,
+              0
+            ),
         },
         {
-          label: "Push",
+          label: game.i18n.localize("ROLL.PUSH"),
           class: "push-roll",
           icon: "fas fa-skull",
           onclick: (ev) => push(this),
