@@ -67,6 +67,12 @@
       "name": "Українська (Ukrainian)",
       "path": "lang/uk.json",
       "flags": {}
+    },
+    {
+      "lang": "pt-BR",
+      "name": "Português (Brasil)",
+      "path": "lang/pt-br.json",
+      "flags": {}
     }
   ],
   "gridDistance": 1,
