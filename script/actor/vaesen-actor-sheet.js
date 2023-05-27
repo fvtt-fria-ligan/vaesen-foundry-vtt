@@ -17,7 +17,6 @@ export class VaesenActorSheet extends ActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["vaesen", "sheet", "actor"],
-      template: "systems/vaesen/model/npc.hbs",
       width: 750,
       height: 800,
       resizable: true,
@@ -30,6 +29,11 @@ export class VaesenActorSheet extends ActorSheet {
       ],
     });
   }
+
+  get template() {
+    return `systems/vaesen/model/${this.actor.type}.hbs`;
+  }
+
 
   //TODO localize labels and passed test value
   _getHeaderButtons() {

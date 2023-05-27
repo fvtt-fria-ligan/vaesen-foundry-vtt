@@ -55,6 +55,7 @@ Hooks.once("init", () => {
   ]);
 
   Actors.unregisterSheet("core", ActorSheet);
+
   Actors.registerSheet("vaesen", PlayerCharacterSheet, {
     types: ["player"],
     makeDefault: true,

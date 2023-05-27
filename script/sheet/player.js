@@ -5,15 +5,11 @@ import { buildChatCard } from "../util/chat.js";
 import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
 
 export class PlayerCharacterSheet extends VaesenActorSheet {
-  //TODO convert dices[] to a YZUR roll object to pass rolls and allow pushes
-  dices = new YearZeroRoll();
-  lastTestName = "";
-  lastDamage = 0;
+
 
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["vaesen", "sheet", "actor"],
-      template: "systems/vaesen/model/player.hbs",
       width: 750,
       height: 930,
       resizable: true,

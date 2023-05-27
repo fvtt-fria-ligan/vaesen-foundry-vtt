@@ -12,7 +12,6 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["vaesen", "sheet", "actor"],
-      template: "systems/vaesen/model/vaesen.hbs",
       width: 750,
       height: 800,
       resizable: true,

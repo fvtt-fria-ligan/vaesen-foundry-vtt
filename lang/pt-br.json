@@ -1,15 +1,18 @@
 {
-    "ACTOR.TypePlayer": "Personagem do Jogador",
-    "ACTOR.TypeHeadquarter": "Sede",
-    "ITEM.TypeCriticalinjury": "Ferimento Crítico",
-    "ITEM.TypeWeapon": "Arma",
-    "ITEM.TypeArmor": "Armadura",
-    "ITEM.TypeTalent": "Talento",
-    "ITEM.TypeGear": "Equipamento",
-    "ITEM.TypeMagic": "Mágica",
-    "ITEM.TypeCondition": "Condição",
-    "ITEM.TypeAttack": "Ataque",
-    "ITEM.TypeRelationship": "Relacionamento",
+
+  "TYPES.Actor.player":  "Personagem do Jogador",
+  "TYPES.Actor.headquarter": "Sede",
+  "TYPES.Item.criticalinjury": "Ferimento Crítico",
+  "TYPES.Item.weapon": "Arma",
+  "TYPES.Item.armor": "Armadura",
+  "TYPES.Item.talent": "Talento",
+  "TYPES.Item.gear": "Equipamento",
+  "TYPES.Item.magic": "Mágica",
+  "TYPES.Item.condition": "Condição",
+  "TYPES.Item.attack": "Ataque",
+  "TYPES.Item.relationship": "Relacionamento",
+
+
   
     "ATTRIBUTE.PHYSIQUE": "FÍSICO",
     "ATTRIBUTE.PRECISION": "PRECISÃO",
