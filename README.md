@@ -39,7 +39,7 @@ This system provides character sheets and items for  your play, if you would lik
 
 v3.1.1
 - Updated and ready for v11 Foundry VTT
-- Added Portuguese Localization thanks [mikedsousa] Mike de Sousa | Adicionado localização em português obrigado [mikedsousa] Mike de Sousa
+- Added Portuguese Localization thanks [mikedsousa](https://github.com/mikedsousa) Mike de Sousa | Adicionado localização em português obrigado [mikedsousa](https://github.com/mikedsousa) Mike de Sousa
 - Fixed layout of the Vaesen sheet.
 
 v3.0.7
