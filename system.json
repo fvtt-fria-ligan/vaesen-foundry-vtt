@@ -106,6 +106,6 @@
     "maximum": "11"
   },
   "minimumCoreVersion": "10",
-  "compatibleCoreVersion": "10"
+  "compatibleCoreVersion": "11"
 
 }

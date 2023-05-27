@@ -37,6 +37,11 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+v3.1.1
+- Updated and ready for v11 Foundry VTT
+- Added Portuguese Localization thanks [mikedsousa] Mike de Sousa | Adicionado localização em português obrigado [mikedsousa] Mike de Sousa
+- Fixed layout of the Vaesen sheet.
+
 v3.0.7
 - Fixed Resource Rolling on the Player Sheet
 
