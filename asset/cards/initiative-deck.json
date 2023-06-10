@@ -6,14 +6,13 @@
   "data": {},
   "cards": [
     {
-      "name": "1",
-      "type": "base",
       "_id": "eMyowPx8xA32Dist",
+      "name": "1",
       "description": "",
-      "system": {},
-      "suit": "",
-      "value": 1,
-      "back": { "name": "", "text": "", "img": null },
+      "type": "base",
+      "data": {},
+      "suit": "initiative",
+      "back": { "name": "", "text": "" },
       "faces": [
         {
           "name": "1",
@@ -21,30 +20,31 @@
           "text": ""
         }
       ],
-      "face": 1,
+      "face": 0,
       "drawn": false,
       "origin": "HT9Yh3dC4xpxARoJ",
       "rotation": 0,
       "sort": 0,
-      "flags": {}
+      "flags": {},
+      "value": 1
     },
     {
-      "name": "2",
-      "type": "base",
       "_id": "r8PKqYr8EvNEEPvn",
+      "name": "2",
       "description": "",
-      "system": {},
-      "suit": "",
+      "type": "base",
+
+      "suit": "initiative",
       "value": 2,
-      "back": { "name": "", "text": "", "img": null },
+      "back": { "name": "", "text": "" },
       "faces": [
         {
           "name": "2",
           "img": "systems/vaesen/asset/number%202.png",
-          "text": ""
+          "text": "2"
         }
       ],
-      "face": 2,
+      "face": 0,
       "drawn": false,
       "origin": "HT9Yh3dC4xpxARoJ",
       "width": null,
@@ -58,10 +58,9 @@
       "type": "base",
       "_id": "4CKl6S4BfBXwsPLe",
       "description": "",
-      "system": {},
-      "suit": "",
+      "suit": "initiative",
       "value": 3,
-      "back": { "name": "", "text": "", "img": null },
+      "back": { "name": "", "text": "" },
       "faces": [
         {
           "name": "3",
@@ -69,7 +68,7 @@
           "text": ""
         }
       ],
-      "face": 3,
+      "face": 0,
       "drawn": false,
       "origin": "HT9Yh3dC4xpxARoJ",
       "width": null,
@@ -83,10 +82,9 @@
       "type": "base",
       "_id": "QQ0Uy2hYiQJsTFbM",
       "description": "",
-      "system": {},
-      "suit": "",
+      "suit": "initiative",
       "value": 4,
-      "back": { "name": "", "text": "", "img": null },
+      "back": { "name": "", "text": "" },
       "faces": [
         {
           "name": "4",
@@ -94,7 +92,7 @@
           "text": ""
         }
       ],
-      "face": 4,
+      "face": 0,
       "drawn": false,
       "origin": "HT9Yh3dC4xpxARoJ",
       "width": null,
@@ -108,10 +106,9 @@
       "type": "base",
       "_id": "2pfa78ldfl0BxTXl",
       "description": "",
-      "system": {},
-      "suit": "",
+      "suit": "initiative",
       "value": 5,
-      "back": { "name": "", "text": "", "img": null },
+      "back": { "name": "", "text": "" },
       "faces": [
         {
           "name": "5",
@@ -119,7 +116,7 @@
           "text": ""
         }
       ],
-      "face": 5,
+      "face": 0,
       "drawn": false,
       "origin": "HT9Yh3dC4xpxARoJ",
       "width": null,
@@ -134,9 +131,9 @@
       "_id": "GWoU09ct3Ki558vb",
       "description": "",
       "system": {},
-      "suit": "",
+      "suit": "initiative",
       "value": 6,
-      "back": { "name": "", "text": "", "img": null },
+      "back": { "name": "", "text": "" },
       "faces": [
         {
           "name": "6",
@@ -144,7 +141,7 @@
           "text": ""
         }
       ],
-      "face": 6,
+      "face": 0,
       "drawn": false,
       "origin": "HT9Yh3dC4xpxARoJ",
       "width": null,
@@ -159,9 +156,9 @@
       "_id": "NTpLKdcLaNuWlnUY",
       "description": "",
       "system": {},
-      "suit": "",
+      "suit": "initiative",
       "value": 7,
-      "back": { "name": "", "text": "", "img": null },
+      "back": { "name": "", "text": "" },
       "faces": [
         {
           "name": "7",
@@ -169,7 +166,7 @@
           "text": ""
         }
       ],
-      "face": 7,
+      "face": 0,
       "drawn": false,
       "origin": "HT9Yh3dC4xpxARoJ",
       "width": null,
@@ -184,9 +181,9 @@
       "_id": "k13ojmOsoHULtU4i",
       "description": "",
       "system": {},
-      "suit": "",
+      "suit": "initiative",
       "value": 8,
-      "back": { "name": "", "text": "", "img": null },
+      "back": { "name": "", "text": "" },
       "faces": [
         {
           "name": "8",
@@ -194,7 +191,7 @@
           "text": ""
         }
       ],
-      "face": 8,
+      "face": 0,
       "drawn": false,
       "origin": "HT9Yh3dC4xpxARoJ",
       "width": null,
@@ -209,9 +206,9 @@
       "_id": "ItXsJofEGVsNPHwr",
       "description": "",
       "system": {},
-      "suit": "",
+      "suit": "initiative",
       "value": 9,
-      "back": { "name": "", "text": "", "img": null },
+      "back": { "name": "", "text": "" },
       "faces": [
         {
           "name": "9",
@@ -219,7 +216,7 @@
           "text": ""
         }
       ],
-      "face": 9,
+      "face": 0,
       "drawn": false,
       "origin": "HT9Yh3dC4xpxARoJ",
       "width": null,
@@ -234,9 +231,9 @@
       "_id": "2abGPNSjPCkyYOqV",
       "description": "",
       "system": {},
-      "suit": "",
+      "suit": "initiative",
       "value": 10,
-      "back": { "name": "", "text": "", "img": null },
+      "back": { "name": "", "text": "" },
       "faces": [
         {
           "name": "10",
@@ -244,7 +241,7 @@
           "text": ""
         }
       ],
-      "face": 10,
+      "face": 0,
       "drawn": false,
       "origin": "HT9Yh3dC4xpxARoJ",
       "width": null,

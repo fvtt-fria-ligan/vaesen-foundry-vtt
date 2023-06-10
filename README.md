@@ -37,6 +37,10 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+
+v3.1.2
+- Fixed a bug with the inculded Initiative Deck that was breaking the name of the cards in v11
+
 v3.1.1
 - Updated and ready for v11 Foundry VTT
 - Added Portuguese Localization thanks [Mike de Sousa](https://github.com/mikedsousa)  | Adicionado localização em português obrigado [Mike de Sousa](https://github.com/mikedsousa)
