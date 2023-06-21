@@ -168,7 +168,6 @@ export class VaesenActorSheet extends ActorSheet {
       item.isWeapon = item.type === "weapon";
       item.isCondition = item.type === "condition";
       item.isMagic = item.type === "magic";
-      item.isCondition = item.type === "condition";
       item.isArmor = item.type === "armor";
       item.isAttack = item.type === "attack";
       item.isGear = item.type === "gear";
