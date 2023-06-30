@@ -476,7 +476,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
   onRecovery(event) {
     event.preventDefault();
     let actor = this.actor;
-    let data = actor.data.data;
+    let data = actor.system;
     let physique = data.attribute.physique.value;
     let precision = data.attribute.precision.value;
     let logic = data.attribute.logic.value;
