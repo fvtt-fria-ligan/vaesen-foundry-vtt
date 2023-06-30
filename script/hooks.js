@@ -161,7 +161,7 @@ async function _onPush(event) {
   let message = game.messages.get(messageId);
 
   // Copy the roll.
-  let roll = message.roll.duplicate();
+  let roll = message.rolls.duplicate();
 
   // Delete the previous message.
   await message.delete();

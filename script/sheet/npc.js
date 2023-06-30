@@ -43,7 +43,7 @@ export class NpcCharacterSheet extends VaesenActorSheet {
     html.find(".attribute b").click((ev) => {
       const div = $(ev.currentTarget).parents(".attribute");
       const attributeName = div.data("key");
-      const attribute = this.actor.data.data.attribute[attributeName];
+      const attribute = this.actor.system.attribute[attributeName];
       console.log(attribute);
       const testName = game.i18n.localize(attribute.label);
       console.log(testName);
@@ -53,8 +53,9 @@ export class NpcCharacterSheet extends VaesenActorSheet {
     html.find(".skill b").click((ev) => {
       const div = $(ev.currentTarget).parents(".skill");
       const skillName = div.data("key");
-      const skill = this.actor.data.data.skill[skillName];
-      const attribute = this.actor.data.data.attribute[skill.attribute];
+      console.log("actor", this.actor);
+      const skill = this.actor.system.skill[skillName];
+      const attribute = this.actor.system.attribute[skill.attribute];
       let bonusConditions = this.computeBonusFromConditions(skill.attribute);
       let bonusArmor = this.computeBonusFromArmor(skillName);
       const testName = game.i18n.localize(skill.label);
@@ -157,11 +158,11 @@ export class NpcCharacterSheet extends VaesenActorSheet {
           "<p class='item-desc'><b>" +
           game.i18n.localize("ARMOR.PROTECTION") +
           ":</b> " +
-          item.data.data.protection +
+          item.system.protection +
           " | <b>" +
           game.i18n.localize("ARMOR.AGILITY") +
           ":</b> " +
-          item.data.data.agility +
+          item.system.agility +
           "</br></p>";
         break;
       case "weapon":
@@ -169,11 +170,11 @@ export class NpcCharacterSheet extends VaesenActorSheet {
           "<p class='item-desc'><b>" +
           game.i18n.localize("WEAPON.DAMAGE") +
           ":</b> " +
-          item.data.data.damage +
+          item.system.damage +
           " | <b>" +
           game.i18n.localize("WEAPON.RANGE") +
           ":</b> " +
-          item.data.data.range +
+          item.system.range +
           "</br></p>";
         break;
       case "magic":
@@ -181,11 +182,11 @@ export class NpcCharacterSheet extends VaesenActorSheet {
           "<p class='item-desc'><b>" +
           game.i18n.localize("MAGIC.CATEGORY") +
           ":</b> " +
-          item.data.data.category +
+          item.system.category +
           " </br><b>" +
           game.i18n.localize("MAGIC.DESCRIPTION") +
           ":</b> " +
-          item.data.data.description +
+          item.system.description +
           "</br></p>";
         break;
       case "gear":
@@ -193,15 +194,15 @@ export class NpcCharacterSheet extends VaesenActorSheet {
           "<p class='item-desc'><b>" +
           game.i18n.localize("GEAR.BONUS") +
           ":</b> " +
-          item.data.data.bonus +
+          item.system.bonus +
           "</br><b>" +
           game.i18n.localize("GEAR.EFFECT") +
           ":</b> " +
-          item.data.data.effect +
+          item.system.effect +
           "</br><b>" +
           game.i18n.localize("GEAR.DESCRIPTION") +
           ":</b> " +
-          item.data.data.description +
+          item.system.description +
           "</br></p>";
     }
 
@@ -249,7 +250,7 @@ export class NpcCharacterSheet extends VaesenActorSheet {
     const div = $(event.currentTarget).parents(".armor");
     const item = this.actor.items.get(div.data("itemId"));
     const testName = item.name;
-    prepareRollDialog(this, testName, 0, 0, item.data.data.protection, 0);
+    prepareRollDialog(this, testName, 0, 0, item.system.protection, 0);
   }
 
   onWeaponRoll(event) {
@@ -258,35 +259,35 @@ export class NpcCharacterSheet extends VaesenActorSheet {
     const testName = item.name;
     let attribute = 0;
     let skill = 0;
-    if (item.data.data.skill === "force") {
-      attribute = this.actor.data.data.attribute.physique.value;
-      skill = this.actor.data.data.skill.force.value;
-    } else if (item.data.data.skill === "closeCombat") {
-      attribute = this.actor.data.data.attribute.physique.value;
-      skill = this.actor.data.data.skill.closeCombat.value;
-    } else if (item.data.data.skill === "rangedCombat") {
-      attribute = this.actor.data.data.attribute.precision.value;
-      skill = this.actor.data.data.skill.rangedCombat.value;
+    if (item.system.skill === "force") {
+      attribute = this.actor.system.attribute.physique.value;
+      skill = this.actor.system.skill.force.value;
+    } else if (item.system.skill === "closeCombat") {
+      attribute = this.actor.system.attribute.physique.value;
+      skill = this.actor.system.skill.closeCombat.value;
+    } else if (item.system.skill === "rangedCombat") {
+      attribute = this.actor.system.attribute.precision.value;
+      skill = this.actor.system.skill.rangedCombat.value;
     }
     prepareRollDialog(
       this,
       testName,
       attribute,
       skill,
-      item.data.data.bonus,
-      item.data.data.damage
+      item.system.bonus,
+      item.system.damage
     );
   }
 
   computeBonusFromConditions(attributeName) {
     let bonus;
     if (attributeName === "physique" || attributeName === "precision") {
-      let current = this.actor.data.data.condition.physical.value;
-      let max = this.actor.data.data.condition.physical.max;
+      let current = this.actor.system.condition.physical.value;
+      let max = this.actor.system.condition.physical.max;
       bonus = current - max;
     } else {
-      let current = this.actor.data.data.condition.mental.value;
-      let max = this.actor.data.data.condition.mental.max;
+      let current = this.actor.system.condition.mental.value;
+      let max = this.actor.system.condition.mental.max;
       bonus = current - max;
     }
     return parseInt(bonus, 10);
