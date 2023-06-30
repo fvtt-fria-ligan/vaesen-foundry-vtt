@@ -279,10 +279,10 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
 
   /****** determing current dice pool modifier from the last active condition */
   computeBonusFromConditions() {
-    let items = Array.from(this.actor.data.items);
+    let items = Array.from(this.actor.items);
     let lastBonus = 0;
     for (let i = 0; i < items.length; i++) {
-      if (items[i].data.type === "condition" && items[i].system.active) {
+      if (items[i].type === "condition" && items[i].system.active) {
         lastBonus = items[i].system.bonus;
       }
     }
