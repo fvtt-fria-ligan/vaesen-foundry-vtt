@@ -45,7 +45,7 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
     html.find(".attribute b").click((ev) => {
       const div = $(ev.currentTarget).parents(".attribute");
       const attributeName = div.data("key");
-      const attribute = this.actor.data.data.attribute[attributeName];
+      const attribute = this.actor.system.attribute[attributeName];
       const testName = game.i18n.localize(attribute.label);
       let bonus = this.computeBonusFromConditions();
       prepareRollDialog(this, testName, attribute.value, 0, bonus, 0);
@@ -126,7 +126,7 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
     let element = event.currentTarget;
     let itemID = element.closest(".item").dataset.itemId;
     let item = this.actor.items.get(itemID);
-    if (item.data.data.active) {
+    if (item.system.active) {
       await this.actor.updateEmbeddedDocuments("Item", [
         { _id: itemID, "data.active": false },
       ]);
@@ -154,7 +154,7 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
 
     switch (type) {
       case "condition":
-        let itemDesc = item.data.data.description;
+        let itemDesc = item.system.description;
         chatData =
           "<p class='item-desc'><b>" +
           game.i18n.localize("CONDITION.DESCRIPTION") +
@@ -167,11 +167,11 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
           "<p class='item-desc'><b>" +
           game.i18n.localize("WEAPON.DAMAGE") +
           ":</b> " +
-          item.data.data.damage +
+          item.system.damage +
           " | <b>" +
           game.i18n.localize("WEAPON.RANGE") +
           ":</b> " +
-          item.data.data.range +
+          item.system.range +
           "</br></p>";
         break;
       case "gear":
@@ -179,15 +179,15 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
           "<p class='item-desc'><b>" +
           game.i18n.localize("GEAR.BONUS") +
           ":</b> " +
-          item.data.data.bonus +
+          item.system.bonus +
           "</br><b>" +
           game.i18n.localize("GEAR.EFFECT") +
           ":</b> " +
-          item.data.data.effect +
+          item.system.effect +
           "</br><b>" +
           game.i18n.localize("GEAR.DESCRIPTION") +
           ":</b> " +
-          item.data.data.description +
+          item.system.description +
           "</br></p>";
         break;
       case "magic":
@@ -195,11 +195,11 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
           "<p class='item-desc'><b>" +
           game.i18n.localize("MAGIC.CATEGORY") +
           ":</b> " +
-          item.data.data.category +
+          item.system.category +
           " </br><b>" +
           game.i18n.localize("MAGIC.DESCRIPTION") +
           ":</b> " +
-          item.data.data.description +
+          item.system.description +
           "</br></p>";
         break;
       case "armor":
@@ -207,11 +207,11 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
           "<p class='item-desc'><b>" +
           game.i18n.localize("ARMOR.PROTECTION") +
           ":</b> " +
-          item.data.data.protection +
+          item.system.protection +
           " | <b>" +
           game.i18n.localize("ARMOR.AGILITY") +
           ":</b> " +
-          item.data.data.agility +
+          item.system.agility +
           "</br></p>";
         break;
     }
@@ -257,7 +257,7 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
     const div = $(event.currentTarget).parents(".armor");
     const item = this.actor.items.get(div.data("itemId"));
     const testName = item.name;
-    prepareRollDialog(this, testName, 0, 0, item.data.data.protection, 0);
+    prepareRollDialog(this, testName, 0, 0, item.system.protection, 0);
   }
 
   onWeaponRoll(event) {
@@ -266,14 +266,14 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
     const testName = item.name;
     let bonus = this.computeBonusFromConditions();
     let attribute =
-      this.actor.data.data.attribute[item.data.data.attribute].value;
+      this.actor.system.attribute[item.system.attribute].value;
     prepareRollDialog(
       this,
       testName,
       attribute,
       0,
       bonus,
-      item.data.data.damage
+      item.system.damage
     );
   }
 
@@ -282,8 +282,8 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
     let items = Array.from(this.actor.data.items);
     let lastBonus = 0;
     for (let i = 0; i < items.length; i++) {
-      if (items[i].data.type === "condition" && items[i].data.data.active) {
-        lastBonus = items[i].data.data.bonus;
+      if (items[i].data.type === "condition" && items[i].system.active) {
+        lastBonus = items[i].system.bonus;
       }
     }
     return lastBonus;

@@ -345,7 +345,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
           "<p class='item-desc'><b>" +
           game.i18n.localize("NOTES") +
           ":</b> " +
-          item.data.data.notes +
+          item.system.notes +
           "</br></p>";
         break;
       case "condition":
@@ -353,7 +353,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
           "<p class='item-desc'><b>" +
           game.i18n.localize("CONDITION.DESCRIPTION") +
           ":</b> " +
-          item.data.data.description +
+          item.system.description +
           "</br></p>";
         break;
       case "attack":
@@ -361,11 +361,11 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
           "<p class='item-desc'><b>" +
           game.i18n.localize("WEAPON.DAMAGE") +
           ":</b> " +
-          item.data.data.damage +
+          item.system.damage +
           " | <b>" +
           game.i18n.localize("WEAPON.RANGE") +
           ":</b> " +
-          item.data.data.range +
+          item.system.range +
           "</br></p>";
         break;
       case "gear":
@@ -373,15 +373,15 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
           "<p class='item-desc'><b>" +
           game.i18n.localize("GEAR.BONUS") +
           ":</b> " +
-          item.data.data.bonus +
+          item.system.bonus +
           "</br><b>" +
           game.i18n.localize("GEAR.EFFECT") +
           ":</b> " +
-          item.data.data.effect +
+          item.system.effect +
           "</br><b>" +
           game.i18n.localize("GEAR.DESCRIPTION") +
           ":</b> " +
-          item.data.data.description +
+          item.system.description +
           "</br></p>";
         break;
       case "magic":
@@ -389,11 +389,11 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
           "<p class='item-desc'><b>" +
           game.i18n.localize("MAGIC.CATEGORY") +
           ":</b> " +
-          item.data.data.category +
+          item.system.category +
           " </br><b>" +
           game.i18n.localize("MAGIC.DESCRIPTION") +
           ":</b> " +
-          item.data.data.description +
+          item.system.description +
           "</br></p>";
         break;
       case "armor":
@@ -401,11 +401,11 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
           "<p class='item-desc'><b>" +
           game.i18n.localize("ARMOR.PROTECTION") +
           ":</b> " +
-          item.data.data.protection +
+          item.system.protection +
           " | <b>" +
           game.i18n.localize("ARMOR.AGILITY") +
           ":</b> " +
-          item.data.data.agility +
+          item.system.agility +
           "</br></p>";
         break;
     }
@@ -452,12 +452,12 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     const div = $(event.currentTarget).parents(".item");
     const item = this.actor.items.get(div.data("itemId"));
 
-    let fav = item.data.data.isFav;
+    let fav = item.system.isFav;
     if (fav) {
-      item.data.data.isFav = false;
+      item.system.isFav = false;
       item.update({ "data.isFav": false });
     } else {
-      item.data.data.isFav = true;
+      item.system.isFav = true;
       item.update({ "data.isFav": true });
     }
 
@@ -517,7 +517,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     const div = $(event.currentTarget).parents(".armor");
     const item = this.actor.items.get(div.data("itemId"));
     const testName = item.name;
-    prepareRollDialog(this, testName, 0, 0, item.data.data.protection, 0);
+    prepareRollDialog(this, testName, 0, 0, item.system.protection, 0);
   }
 
   onWeaponRoll(event) {
