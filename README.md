@@ -37,6 +37,10 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+v3.1.4
+- Updated French Localization Thanks [Kirwiisp](https://github.com/Kirwiisp)
+- Chnaged SVG on status icons to be more freindly to non-chrome browsers
+
 v3.1.3
 -fixed a bug that hid the value of an NPC's magic attribute
 
