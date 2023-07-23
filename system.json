@@ -6,6 +6,15 @@
     "script/hooks.js"
   ],
   "initiative": "1d10",
+  "media": [
+    {
+      "type": "cover",
+      "url": "systems/vaesen/asset/welcome.jpg",
+      "loop": false,
+      "flags": {}
+    }
+  ],
+  "background": "systems/vaesen/asset/welcome.jpg",
   "styles": [
     "style/index.css",
     "style/common.css",
