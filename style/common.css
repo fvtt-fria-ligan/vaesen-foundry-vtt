@@ -407,6 +407,8 @@ margin: 0 0 3px;
   .chat-message .message-header .message-sender {
     flex: 1;
     padding-left: 50px;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
 .chat-message .message-header{

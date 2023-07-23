@@ -37,6 +37,9 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+v3.1.5
+- Updated rolls to use latest version of YZUR
+
 v3.1.4
 - Updated French Localization Thanks [Kirwiisp](https://github.com/Kirwiisp)
 - Chnaged SVG on status icons to be more freindly to non-chrome browsers

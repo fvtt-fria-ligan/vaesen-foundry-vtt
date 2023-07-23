@@ -156,12 +156,12 @@ async function _onPush(event) {
   event.preventDefault();
 
   // Get the message.
-  let chatCard = event.currentTarget.closest(".chat-message");
+  let chatCard = event.currentTarget.closest('.chat-message');
   let messageId = chatCard.dataset.messageId;
   let message = game.messages.get(messageId);
 
   // Copy the roll.
-  let roll = message.rolls.duplicate();
+  let roll = message.rolls[0].duplicate();
 
   // Delete the previous message.
   await message.delete();

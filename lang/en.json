@@ -217,6 +217,7 @@
 
   "YZUR.CHAT.ROLL.Push" : "Push",
   "YZUR.DIETYPES.SkillDie" : "Success Count",
+  "YZUR.DIETERMS.SkillDie" : "Success Count",
 
   "RELATIONSHIP.WITH": "Relationship With",
   "RELATIONSHIP.NATURE": "Nature of Relationship",

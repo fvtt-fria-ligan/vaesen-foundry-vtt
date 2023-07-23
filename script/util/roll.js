@@ -94,6 +94,7 @@ export function roll(sheet, testName, attribute, skill, bonus, damage) {
 }
 
 export async function push(sheet) {
+  console.log("push", sheet);
   await sheet.dices.push({ async: true });
   await sheet.dices.toMessage();
   // sendRollToChat(sheet, true);
@@ -101,20 +102,33 @@ export async function push(sheet) {
 
 async function rollDice(sheet, numberOfDice) {
   let actor = game.actors.get(sheet.object._id);
+  let token = actor.prototypeToken.texture.src;
+  console.log("actor", actor);
+  console.log("token", token);
+  console.log("sheet", sheet);
 
   if (numberOfDice <= 0) {
     numberOfDice = 1;
   }
 
   let dice = {
-    skill: numberOfDice,
+    term: 's',
+    number: numberOfDice,
   };
 
-  let r = YearZeroRoll.createFromDiceQuantities(dice, {
-    title: sheet.lastTestName,
+  let options = {
+    name: sheet.lastTestName,
+    token: token,
     damage: sheet.lastDamage,
-    owner: actor.id,
-  });
+  };
+
+  let r = YearZeroRoll.forge(dice, {owner: actor.id, token: token, name:sheet.lastTestName, damage: sheet.lastDamage}, options);
+  console.log(r);
+  // let r = YearZeroRoll.createFromDiceQuantities(dice, {
+  //   title: sheet.lastTestName,
+  //   damage: sheet.lastDamage,
+  //   owner: actor.id,
+  // });
 
   //async toMessage(messageData = {}, { rollMode = null, create = true } = {})
 
