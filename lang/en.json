@@ -3,7 +3,7 @@
   "TYPES.Actor.npc": "NPC",
   "TYPES.Actor.vaesen": "Vaesen",
   "TYPES.Actor.headquarter": "Headquarter",
-  "TYPES.Item.criticalinjury": "Critical Injury",
+  "TYPES.Item.criticalInjury": "Critical Injury",
   "TYPES.Item.weapon": "Weapon",
   "TYPES.Item.armor": "Armor",
   "TYPES.Item.talent": "Talent",
