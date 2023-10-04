@@ -37,6 +37,9 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+v3.1.6
+- Updated rolls to use latest version of YZUR
+  
 v3.1.5
 - Updated rolls to use latest version of YZUR
 
