@@ -38,7 +38,7 @@ This system provides character sheets and items for  your play, if you would lik
 =======
 
 v3.1.6
-- Updated rolls to use latest version of YZUR
+- updated Brazillian Portuguese Localization
   
 v3.1.5
 - Updated rolls to use latest version of YZUR
