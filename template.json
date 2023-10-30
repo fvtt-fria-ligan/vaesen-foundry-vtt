@@ -229,7 +229,8 @@
       "range": "",
       "bonus": 0,
       "availability": 0,
-      "skill": ""
+      "skill": "",
+      "healed": false
     },
     "armor": {
       "templates": ["itemFav"],
@@ -239,7 +240,7 @@
     },
     "talent": {
       "description": "",
-      "skill": "",
+      "skill": ["none"],
       "bonus": 0,
       "ignoreCondition": ""
     },
