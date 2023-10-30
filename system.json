@@ -1,5 +1,5 @@
 {
-  "title": "Vaesen-Cussa",
+  "title": "Vaesen",
   "description": "Nordic horror role-playing",
   "version": "3.1.6",
   "esmodules": [
@@ -87,10 +87,10 @@
   "gridUnits": "m",
   "url": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt",
   "socket": true,
-  "manifest": "https://raw.githubusercontent.com/Cussa/vaesen-foundry-vtt/features/ModelChange/system.json",
+  "manifest": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/releases/latest/download/system.json",
   "download": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/releases/download/3.1.6/system.zip",
   "license": "LICENSE.txt",
-  "id": "vaesen-cussa",
+  "id": "vaesen",
   "authors": [
     {
       "name": "Dr Ogres",
