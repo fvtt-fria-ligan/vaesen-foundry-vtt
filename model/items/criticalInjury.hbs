@@ -71,6 +71,50 @@
           <b>{{localize "CRITICAL_INJURY.EFFECT"}}</b>
           <input class="light" name="system.effect" type="text" value="{{data.system.effect}}" />
         </div>
+
+        <div class="flex-col center">
+          <b style="margin-right: 5px; margin-left:5px;">{{localize
+              "CRITICAL_INJURY.HEALED"
+            }}:
+          </b>
+          <select name="system.healed">
+            {{#select data.system.healed}}
+              <option value="No">{{localize "NO"}}</option>
+              <option value="Yes">{{localize "YES"}}</option>
+            {{/select}}
+          </select>
+        </div>
+        <div class="flex-col center">
+          <b style="margin-right: 5px; margin-left:5px;">{{localize
+              "CRITICAL_INJURY.SKILL"
+            }}:
+          </b>
+          <select name="system.skill">
+            {{#select data.system.skill}}
+              <option value="Agility">{{localize "SKILL.AGILITY"}}</option>
+              <option value="Close Combat">{{localize "SKILL.CLOSE_COMBAT"}}</option>
+              <option value="Force">{{localize "SKILL.FORCE"}}</option>
+              <option value="Medicine">{{localize "SKILL.MEDICINE"}}</option>
+              <option value="Ranged Combat">{{localize "SKILL.RANGED_COMBAT"}}</option>
+              <option value="Stealth">{{localize "SKILL.STEALTH"}}</option>
+              <option value="Investigation">{{localize "SKILL.INVESTIGATION"}}</option>
+              <option value="Learning">{{localize "SKILL.LEARNING"}}</option>
+              <option value="Vigilance">{{localize "SKILL.VIGILANCE"}}</option>
+              <option value="Inspiration">{{localize "SKILL.INSPIRATION"}}</option>
+              <option value="Manipulation">{{localize "SKILL.MANIPULATION"}}</option>
+              <option value="Observation">{{localize "SKILL.OBSERVATION"}}</option>
+            {{/select}}
+          </select>
+        </div>
+        <div class="grid-span-1 grid-align-end">
+          <b>{{localize "CRITICAL_INJURY.BONUS"}}</b>
+          <input
+            class="light"
+            name="system.bonus"
+            type="text"
+            value="{{data.system.bonus}}"
+          />
+        </div>
       </div>
     </div>
   </div>

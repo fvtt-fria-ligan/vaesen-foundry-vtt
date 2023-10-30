@@ -221,7 +221,8 @@
       "effect": "",
       "permanent": "No",
       "skill": "",
-      "bonus": 0
+      "bonus": 0,
+      "healed": "No"
     },
     "weapon": {
       "templates": ["itemFav"],
@@ -229,8 +230,7 @@
       "range": "",
       "bonus": 0,
       "availability": 0,
-      "skill": "",
-      "healed": false
+      "skill": ""
     },
     "armor": {
       "templates": ["itemFav"],
