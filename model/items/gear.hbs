@@ -30,19 +30,6 @@
             type="text"
             value="{{data.system.bonus}}"
           />
-        </div>
-        <div class="grid-align-end">
-          <h3>{{localize "GEAR.SKILL"}}:</h3>
-          <select name="system.skill">
-            {{#select data.system.skill}}
-            {{#each config.skills as |skill|}}
-            <option value="{{skill}}" {{#if (eq skill ../data.system.skill)}}selected{{/if}}>{{localize skill}}
-            </option>
-            {{/each}}
-            {{/select}}
-          </select>
-        </div>
-        <div class="grid-align-end" >
           <h3>{{localize "GEAR.AVAILABILITY"}}</h3>
           <input
             class="light"
@@ -50,8 +37,6 @@
             type="text"
             value="{{data.system.availability}}"
           />
-        </div>
-        <div class="grid-align-end" >
           <h3>{{localize "GEAR.EFFECT"}}</h3>
           <input
             class="light"
@@ -59,6 +44,17 @@
             type="text"
             value="{{data.system.effect}}"
           />
+        </div>
+        <div class="grid-align-start">
+          <h3>{{localize "GEAR.SKILL"}}</h3>
+          <select name="system.skill" multiple style="height:142px;">
+            {{#select data.system.skill}}
+            {{#each config.skills as |skill|}}
+            <option value="{{skill}}" {{#ifIn skill ../data.system.skill}}selected{{/ifIn}}>{{localize skill}}
+            </option>
+            {{/each}}
+            {{/select}}
+          </select>
         </div>
         <div class="grid-span-2 grid-align-end" >
           <h3>{{localize "GEAR.DESCRIPTION"}}</h3>

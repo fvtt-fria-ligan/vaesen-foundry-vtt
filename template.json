@@ -251,7 +251,7 @@
       "description": "",
       "risk": "",
       "quantity": "",
-      "skill": []
+      "skill": ["none"]
     },
     "magic": {
       "description": "",
