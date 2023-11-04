@@ -39,6 +39,8 @@ Hooks.once("init", () => {
     },
   };
 
+  console.log("Vaesen | CONFIG.vaesen: ", CONFIG.vaesen);
+
   CONFIG.TextEditor.enrichers = CONFIG.TextEditor.enrichers.concat([
     {
       pattern: /@RAW\[(.+?)\]/gm,
