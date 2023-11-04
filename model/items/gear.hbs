@@ -17,7 +17,7 @@
 
       <div class="grid grid-2col-fr center gap-sm h-100">
 
-        <div class="grid-align-end" >
+        <div class="grid-span-2 grid-align-end" >
           <h3>{{localize "NAME"}}:&nbsp;</h3>
           <input class="light"  name="name" type="text" value="{{item.name}}" />
         </div>
@@ -30,6 +30,17 @@
             type="text"
             value="{{data.system.bonus}}"
           />
+        </div>
+        <div class="grid-align-end">
+          <h3>{{localize "GEAR.SKILL"}}:</h3>
+          <select name="system.skill">
+            {{#select data.system.skill}}
+            {{#each config.skills as |skill|}}
+            <option value="{{skill}}" {{#if (eq skill ../data.system.skill)}}selected{{/if}}>{{localize skill}}
+            </option>
+            {{/each}}
+            {{/select}}
+          </select>
         </div>
         <div class="grid-align-end" >
           <h3>{{localize "GEAR.AVAILABILITY"}}</h3>

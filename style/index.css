@@ -275,6 +275,10 @@ input.dark {
   align-self: end;
 }
 
+.grid-align-start {
+  align-self: start;
+}
+
 .span-2 {
   grid-column: span 2;
 }

@@ -18,8 +18,8 @@
           class="border-none center w-90"
         />
       </div>
-      <div class="grid grid-2col-fr center gap-sm h-100">
-        <div class="grid-span-2 grid-align-end">
+      <div class="grid grid-5col-fr center gap-sm h-100">
+        <div class="grid-span-4 grid-align-end">
           <b>{{localize "NAME"}}:</b>
           <span >
             <input
@@ -32,11 +32,31 @@
           </span>
         </div>
 
-        <div class="grid-span-2">
+        <div class="grid-align-end">
+          <b>{{localize "TALENT.BONUS"}}:</b>
+          <input
+            class="light"
+            name="system.bonus"
+            type="text"
+            value="{{data.system.bonus}}"
+          />
+        </div>
+        <div class="grid-span-4">
           <b>{{localize "TALENT.DESCRIPTION"}}</b>
           <textarea
-            name="system.description"
+            name="system.description" rows="7"
           >{{data.system.description}}</textarea>
+        </div>
+        <div class="grid-align-start">
+          <b>{{localize "TALENT.SKILL"}}</b>
+          <select name="system.skill" multiple style="height:125px;">
+            {{#select data.system.skill}}
+            {{#each config.skills as |skill|}}
+            <option value="{{skill}}" {{#ifIn skill ../data.system.skill}}selected{{/ifIn}}>{{localize skill}}
+            </option>
+            {{/each}}
+            {{/select}}
+          </select>
         </div>
       </div>
     </div>

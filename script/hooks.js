@@ -82,6 +82,13 @@ Hooks.once("init", () => {
     return TextEditor.enrichHTML(rawText, { async: false });
   });
 
+  Handlebars.registerHelper('ifIn', function(elem, list, options) {
+    if(list.indexOf(elem) > -1) {
+      return options.fn(this);
+    }
+    return options.inverse(this);
+  });
+
   // Register System Settings
 
   YearZeroRollManager.register("vae", {
