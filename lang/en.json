@@ -109,6 +109,7 @@
   "GEAR.EFFECT": "Effect",
   "GEAR.DESCRIPTION": "Description",
   "GEAR.RISK": "Risk",
+  "GEAR.SKILL": "Skill",
 
   "HEADER.ATTRIBUTES": "ATTRIBUTES",
   "HEADER.ARMORS": "ARMORS",
@@ -169,6 +170,8 @@
   "TALENT.ICON": "Icon",
   "TALENT.NAME": "Talent",
   "TALENT.DESCRIPTION": "Description",
+  "TALENT.SKILL": "Skill",
+  "TALENT.BONUS": "Bonus",
 
   "UPGRADE.ICON": "Icon",
   "UPGRADE.NAME": "Upgrade",

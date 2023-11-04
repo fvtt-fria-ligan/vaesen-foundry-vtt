@@ -226,6 +226,10 @@
     border-color: hsl(21, 20%, 43%);
 }
 
+.vaesen select[multiple] option:checked, .vaesen select[multiple]:focus option:checked {
+    background-color: #b5b3a4;
+}
+
 .dialog{
     width: fit-content;
 }
