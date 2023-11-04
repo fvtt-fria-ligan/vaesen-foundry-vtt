@@ -29,6 +29,8 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       currentConditions.push(value.data.flags.core?.statusId);
     });
 
+    console.log("current conditions: ", currentConditions);
+
     // set state of sheet checks for set conditions
     if (currentConditions.indexOf("physical") === -1) {
       actor.update({ "system.condition.physical.isBroken": false });
@@ -136,8 +138,13 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       //console.log(conditionName);
       let conditionValue;
       if (conditionName === "physical") {
+        let brokenEffect = new ActiveEffectConfig();
+
+        //brokenEffect.label = game.i18n.localize("CONDITION.PHYSICALLYBROKEN");
+        console.log("brokenEffect: ", brokenEffect);
         conditionValue = data.condition.physical.isBroken;
         actor.update({ "system.condition.physical.isBroken": !conditionValue });
+        
       } else {
         conditionValue =
           data.condition.physical.states[conditionName].isChecked;

@@ -69,6 +69,8 @@
   "CONDITION.NAME": "Condition",
   "CONDITION.BONUS": "Bonus",
   "CONDITION.DESCRIPTION": "Description",
+  "CONDITION.PHYSICALLYBROKEN": "Physically Broken",
+  "CONDITION.MENTALLYBROKEN": "Mentally Broken",
 
   "CRITICAL_INJURY.ICON": "Icon",
   "CRITICAL_INJURY.TYPE": "Type",

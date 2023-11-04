@@ -65,31 +65,6 @@ export class VaesenActorSheet extends ActorSheet {
     return buttons;
   }
 
-  /**
-   * Prepare the data structure for Active Effects which are currently applied to an Actor or Item.
-   * @param {ActiveEffect[]} effects    The array of Active Effect instances to prepare sheet data for
-   * @return {object}                   Data for rendering
-   */
-  prepareActiveEffectCategories(effects) {
-    // Define effect header categories
-    const categories = {
-      temporary: {
-        type: "temporary",
-        label: "Temporary Effects",
-        effects: [],
-      },
-      passive: {
-        type: "passive",
-        label: "Passive Effects",
-        effects: [],
-      },
-      inactive: {
-        type: "inactive",
-        label: "Inactive Effects",
-        effects: [],
-      },
-    };
-  }
 
   async getData() {
     const source = this.actor.toObject();
@@ -115,7 +90,7 @@ export class VaesenActorSheet extends ActorSheet {
       isHeadquarter: this.actor.type === "headquarter",
       // rollData: this.actor.getRollData().bind(this.actor),
     };
-    context.effects = this.prepareActiveEffectCategories(this.actor.effects);
+    context.effects = this.actor.getEmbeddedCollection("ActiveEffect").contents;
 
     console.log("context", context);
 

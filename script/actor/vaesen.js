@@ -8,6 +8,7 @@ export class VaesenActor extends Actor {
 
    /* -------------------------------------------- */
    findStatusEffectById(id) {
+    console.log("find by id: " + id);
     return Array.from(this.effects?.values())
         .find(it => it.data.flags.core?.statusId === id);
     }

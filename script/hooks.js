@@ -11,10 +11,7 @@ import { YearZeroRollManager } from "./lib/yzur.js";
 import * as Chat from "./util/chat.js";
 import { vaesenItemSheet } from "./sheet/itemSheet.js";
 
-Hooks.once("ready", function () {
-  conditions.onReady();
-  setupCards();
-});
+
 
 Hooks.on("renderChatMessage", (app, html, data) => {
   Chat.hideChatActionButtons(app, html, data);
@@ -91,6 +88,15 @@ Hooks.once("init", () => {
     "ROLL.tooltipTemplate": "systems/vaesen/model/templates/dice/tooltip.hbs",
     "ROLL.infosTemplate": "systems/vaesen/model/templates/dice/infos.hbs",
   });
+
+  
+});
+
+Hooks.once("ready", function () {
+ 
+  setupCards();
+  conditions.onReady();
+  
 });
 
 Hooks.once("diceSoNiceReady", (dice3d) => {
