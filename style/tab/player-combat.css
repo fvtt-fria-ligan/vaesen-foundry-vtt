@@ -44,6 +44,10 @@
     flex-basis: 5%;
 }
 
+.vaesen .player .critical-injuries .critical-injury .healed {
+    flex-basis: 5%;
+}
+
 .vaesen .player .critical-injuries .critical-injury .button {
     flex-basis: 15%;
 }

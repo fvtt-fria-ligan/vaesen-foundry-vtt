@@ -71,6 +71,39 @@
           <b>{{localize "CRITICAL_INJURY.EFFECT"}}</b>
           <input class="light" name="system.effect" type="text" value="{{data.system.effect}}" />
         </div>
+
+        <div class="flex-col center">
+          <b style="margin-right: 5px; margin-left:5px;">{{localize
+              "CRITICAL_INJURY.HEALED"
+            }}:
+          </b>
+          <select name="system.healed">
+            {{#select data.system.healed}}
+              <option value="No">{{localize "NO"}}</option>
+              <option value="Yes">{{localize "YES"}}</option>
+            {{/select}}
+          </select>
+        </div>
+        <div class="grid-span-1 grid-align-end">
+          <b>{{localize "CRITICAL_INJURY.BONUS"}}</b>
+          <input
+            class="light"
+            name="system.bonus"
+            type="text"
+            value="{{data.system.bonus}}"
+          />
+        </div>
+        <div class="grid-span-2 grid-align-end">
+          <h3>{{localize "CRITICAL_INJURY.SKILL"}}:</h3>
+          <select name="system.skill">
+            {{#select data.system.skill}}
+            {{#each config.skills as |skill|}}
+            <option value="{{skill}}" {{#if (eq skill ../data.system.skill)}}selected{{/if}}>{{localize skill}}
+            </option>
+            {{/each}}
+            {{/select}}
+          </select>
+        </div>
       </div>
     </div>
   </div>

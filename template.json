@@ -219,7 +219,10 @@
       "fatal": "",
       "timeLimit": "",
       "effect": "",
-      "permanent": "No"
+      "permanent": "No",
+      "skill": "",
+      "bonus": 0,
+      "healed": "No"
     },
     "weapon": {
       "templates": ["itemFav"],
@@ -236,7 +239,10 @@
       "availability": 0
     },
     "talent": {
-      "description": ""
+      "description": "",
+      "skill": ["none"],
+      "bonus": 0,
+      "ignoreCondition": ""
     },
     "gear": {
       "bonus": 0,
@@ -244,7 +250,8 @@
       "effect": "",
       "description": "",
       "risk": "",
-      "quantity": ""
+      "quantity": "",
+      "skill": []
     },
     "magic": {
       "description": "",

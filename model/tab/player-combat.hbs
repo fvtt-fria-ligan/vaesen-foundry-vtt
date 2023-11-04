@@ -76,25 +76,27 @@
     <div class="flex column heavy-border wrapper" style="width: 99%;">
         <b class="title" style="width: 85%; margin: auto;">{{localize "HEADER.CRITICAL_INJURIES"}}</b>
         <div class="critical-injuries flex column margin grow">
-            <div class="critical-injury grid grid-7col-fr gap center light-border w-100">
+            <div class="critical-injury grid grid-8col-fr gap center light-border w-100">
                 <b class="icon">{{localize "CRITICAL_INJURY.ICON"}}</b>
                 <b class="name">{{localize "CRITICAL_INJURY.NAME"}}</b>
                 <b class="fatal">{{localize "CRITICAL_INJURY.FATAL"}}</b>
                 <b class="time-limit">{{localize "CRITICAL_INJURY.TIME_LIMIT"}}</b>
                 <b class="effect">{{localize "CRITICAL_INJURY.EFFECT"}}</b>
                 <b class="permanent">{{localize "CRITICAL_INJURY.PERMANENT_SHORT"}}</b>
+                <b class="healed">{{localize "CRITICAL_INJURY.HEALED"}}</b>
                 <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="criticalInjury"><i class="fas fa-plus"></i></a>
             </div>
             <div class="scrollable">
                 {{#each items as |item|}}
                     {{#if item.isCriticalInjury}}
-                        <div class="critical-injury item grid grid-7col-fr gap center align-center w-100" data-item-id="{{item._id}}">
+                        <div class="critical-injury item grid grid-8col-fr gap center align-center w-100" data-item-id="{{item._id}}">
                             <div class="icon-box"><img class="icon" src="{{item.img}}" title="{{item.name}}" width="25px" height="auto"/></div>
                             <div class="name">{{item.name}}</div>
                             <div class="fatal">{{item.system.fatal}}</div>
                             <div class="time-limit">{{item.system.timeLimit}}</div>
                             <div class="effect">{{item.system.effect}}</div>
                             <div class="permanent">{{item.system.permanent}}</div>
+                            <div class="healed">{{item.system.healed}}</div>
                             <div class="button">
                                 <a class="item-control to-chat" title='{{localize UI.CHAT}}'><i class="fas fa-comment"></i></a>
                                 <a class="item-control item-edit" title='{{localize  "UI.EDIT"}}'><i class="fas fa-edit"></i></a>

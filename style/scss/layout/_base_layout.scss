@@ -74,6 +74,10 @@
     grid-template-columns: repeat(7, 1fr);
 }
 
+.grid-8col-fr{
+    grid-template-columns: repeat(8, 1fr);
+}
+
 .grid-span-2{
     grid-column:  span 2;
 }

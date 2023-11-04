@@ -76,7 +76,10 @@
     "CRITICAL_INJURY.TIME_LIMIT": "Limite de tempo",
     "CRITICAL_INJURY.PERMANENT": "Permanente",
     "CRITICAL_INJURY.PERMANENT_SHORT": "Per.",
+    "CRITICAL_INJURY.HEALED": "Curado",
     "CRITICAL_INJURY.EFFECT": "Efeito",
+    "CRITICAL_INJURY.SKILL": "Habilidade",
+    "CRITICAL_INJURY.BONUS": "Bônus",
   
     "FEAR.INITIAL": "Medo inicial",
     "FEAR.SUBSEQUENT": "Medo posterior",

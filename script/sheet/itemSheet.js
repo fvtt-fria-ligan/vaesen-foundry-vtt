@@ -8,7 +8,7 @@ export class vaesenItemSheet extends ItemSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       width: 650,
-      height: 300,
+      height: 'auto',
       classes: ["vaesen", "sheet", "item"],
       resizable: true,
     });
@@ -16,6 +16,16 @@ export class vaesenItemSheet extends ItemSheet {
 
   get template() {
     return `systems/vaesen/model/items/${this.item.type}.hbs`;
+  }
+
+  async getData() {
+    const data = super.getData();
+    const source = this.item.toObject();
+    data.config = CONFIG.vaesen;
+    data.source = source;
+    console.log("Vaesen | data: ", data);
+
+    return data;
   }
 
   _getHeaderButtons() {
