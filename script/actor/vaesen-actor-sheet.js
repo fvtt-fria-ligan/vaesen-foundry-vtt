@@ -18,7 +18,7 @@ export class VaesenActorSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["vaesen", "sheet", "actor"],
       width: 750,
-      height: 800,
+      height: 'auto', // 'auto
       resizable: true,
       tabs: [
         {
@@ -31,6 +31,7 @@ export class VaesenActorSheet extends ActorSheet {
   }
 
   get template() {
+    if(!game.user.isGM && this.actor.limited) return `systems/vaesen/model/limited-sheet.hbs`;
     return `systems/vaesen/model/${this.actor.type}.hbs`;
   }
 

@@ -1,0 +1,184 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <div class="player flex column">
+        <div class="header flex row margin align-center">
+            <div class="flex column heavy-border portrait" style="height: 100%;">
+
+                <div class="name">
+                    <input name="name" type="text" value="{{actor.name}}" style="width: 97%; height: auto;" />
+                </div>
+
+                {{#if (eq portrait "round")}}
+                <div class="img-frame" style="width: 175px; height: 175px;">
+                    <img class="profile-frame" src="systems/vaesen/asset/token_border.png" />
+                    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+                </div>
+                {{/if}}
+                {{#if (eq portrait "portrait")}}
+                <div class="img-frame" style="width: 115px; height: 170px; margin-top: 3px;">
+                    <img class="profile-frame" src="systems/vaesen/asset/token_border_portrait.png" />
+                    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"
+                        style="border-radius: 2px; margin-left: 3px; margin-top: 3px; padding: 0px; height: 166px; width: 109px;""/>
+					</div>
+					{{/if}}
+					{{#if (eq portrait " landscape")}} <div class="img-frame" style="width: 175px; height: 117px;">
+                    <img class="profile-frame" src="systems/vaesen/asset/token_border_landscape.png" />
+                    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"
+                        style="border-radius: 2px; margin-left: 4px; margin-top: 4px; padding: 0px; width: 167px; height: 109px;" />
+                </div>
+                {{/if}}
+
+                <div class="archetype">
+                    <input name="system.bio.archetype" type="text" value="{{system.bio.archetype}}"
+                        style="width: 97%;" />
+                    <b>{{localize "BIO.ARCHETYPE"}}</b>
+                </div>
+            </div>
+            <div class="flex column second">
+                <div class="logo flex row">
+                    {{#if swag}}
+                    <img src="systems/vaesen/asset/sheet_header.png">
+                    {{/if}}
+                    {{#unless swag}}
+                    <img src="systems/vaesen/asset/sheet_header_b.png">
+                    {{/unless}}
+                </div>
+
+                <div class="flex column heavy-border" style="width: 98%;">
+
+                    <b class="title">{{localize "HEADER.ATTRIBUTES"}} & {{localize "HEADER.SKILLS"}}</b>
+
+                    <div class="flex row wrap">
+                        <div class="skills physique flex column">
+                            <div class="attribute flex row" data-key="physique">
+                                <b class="header">{{localize "ATTRIBUTE.PHYSIQUE"}}</b>
+                                <input name="system.attribute.physique.value" type="text"
+                                    value="{{system.attribute.physique.value}}" data-dtype="Number" />
+
+                            </div>
+                            <div class="skill-group">
+                                {{#each system.skill as |skill key|}}
+                                {{#if skill.hasPhysique}}
+                                <div class="skill flex row align-center" data-key="{{key}}">
+                                    <b>{{localize skill.label}}</b>
+
+                                    <input name="system.skill.{{key}}.value" type="text" value="{{skill.value}}"
+                                        data-dtype="Number" />
+
+                                </div>
+                                {{/if}}
+                                {{/each}}
+                            </div>
+                        </div>
+                        <div class="skills logic flex column">
+                            <div class="attribute flex row align-center" data-key="logic">
+                                <b class="header">{{localize "ATTRIBUTE.LOGIC"}}</b>
+                                <input name="system.attribute.logic.value" type="text"
+                                    value="{{system.attribute.logic.value}}" data-dtype="Number" />
+                            </div>
+                            <div class="skill-group">
+                                {{#each system.skill as |skill key|}}
+                                {{#if skill.hasLogic}}
+                                <div class="skill flex row align-center" data-key="{{key}}">
+                                    <b>{{localize skill.label}}</b>
+                                    <input name="system.skill.{{key}}.value" type="text" value="{{skill.value}}"
+                                        data-dtype="Number" />
+                                </div>
+                                {{/if}}
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex row wrap">
+                        <div class="skills precision flex column">
+
+                            <div class="attribute flex row align-center" data-key="precision">
+                                <b class="header">{{localize "ATTRIBUTE.PRECISION"}}</b>
+                                <input name="system.attribute.precision.value" type="text"
+                                    value="{{system.attribute.precision.value}}" data-dtype="Number" />
+                            </div>
+                            <div class="skill-group">
+                                {{#each system.skill as |skill key|}}
+                                {{#if skill.hasPrecision}}
+
+                                <div class="skill flex row align-center" data-key="{{key}}">
+                                    <b>{{localize skill.label}}</b>
+                                    <input name="system.skill.{{key}}.value" type="text" value="{{skill.value}}"
+                                        data-dtype="Number" />
+                                </div>
+                                {{/if}}
+                                {{/each}}
+                            </div>
+                        </div>
+                        <div class="skills empathy flex column">
+                            <div class="attribute flex row align-center" data-key="empathy">
+                                <b class="header">{{localize "ATTRIBUTE.EMPATHY"}}</b>
+                                <input name="system.attribute.empathy.value" type="text"
+                                    value="{{system.attribute.empathy.value}}" data-dtype="Number" />
+                            </div>
+                            <div class="skill-group">
+                                {{#each system.skill as |skill key|}}
+                                {{#if skill.hasEmpathy}}
+                                <div class="skill flex row align-center" data-key="{{key}}">
+                                    <b>{{localize skill.label}}</b>
+                                    <input name="system.skill.{{key}}.value" type="text" value="{{skill.value}}"
+                                        data-dtype="Number" />
+                                </div>
+                                {{/if}}
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+         <div class="flex column heavy-border" style="width: 98%;">
+        <b class="title">{{localize "HEADER.CONDITIONS"}}</b>
+        <div class="flex row grow margin">
+            <div class="conditions physical flex column" data-key="physical">
+                <b class="header">{{localize "CONDITION.PHYSICAL"}} <a class="roll-recovery" title='{{localize  "UI.ROLL.PREC"}}'><i class="fas fa-dice-d6"></i></a> </b>
+                <div class="flex column grow center wrap">
+                    {{#each system.condition.physical.states as |condition key|}}
+                    <div class="flex row grow">
+                        {{#if condition.isChecked}}
+                            <div class="condition active" data-key="{{key}}">{{localize condition.label}} <img src="systems/vaesen/asset/checked.png" width=15px style="border:none; float:right;"/></div>
+                        {{else}}
+                            <div class="condition" data-key="{{key}}">{{localize condition.label}} <img src="systems/vaesen/asset/not_checked.png" width=15px style="border:none; float:right;"/></div>
+                        {{/if}}
+                    </div>
+                    {{/each}}
+                    <div class="flex row grow">
+                    {{#if system.condition.physical.isBroken}}
+                        <div class="condition active" data-key="physical">{{localize "CONDITION.BROKEN"}} <img src="systems/vaesen/asset/checked.png" width=15px style="border:none; float:right;"/></div>
+                    {{else}}
+                        <div class="condition" data-key="physical">{{localize "CONDITION.BROKEN"}} <img src="systems/vaesen/asset/not_checked.png" width=15px style="border:none; float:right;"/></div>
+                    {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="conditions mental flex column" data-key="mental">
+                <b class="header">{{localize "CONDITION.MENTAL"}} <a class="roll-recovery" title='{{localize  "UI.ROLL.MREC"}}'><i class="fas fa-dice-d6"></i></a> </b>
+                <div class="flex column grow center wrap">
+                    {{#each system.condition.mental.states as |condition key|}}
+                    <div class="flex row grow">
+                        {{#if condition.isChecked}}
+                            <div class="condition active" data-key="{{key}}">{{localize condition.label}} <img src="systems/vaesen/asset/checked.png" width=15px style="border:none; float:right;"/></div>
+                        {{else}}
+                            <div class="condition" data-key="{{key}}">{{localize condition.label}} <img src="systems/vaesen/asset/not_checked.png" width=15px style="border:none; float:right;"/></div>
+                        {{/if}}
+                    </div>
+                    {{/each}}
+                    <div class="flex row grow">
+                    {{#if system.condition.mental.isBroken}}
+                        <div class="condition active" data-key="mental">{{localize "CONDITION.BROKEN"}}<img src="systems/vaesen/asset/checked.png" width=15px style="border:none; float:right;"/></div>
+                    {{else}}
+                        <div class="condition" data-key="mental">{{localize "CONDITION.BROKEN"}} <img src="systems/vaesen/asset/not_checked.png" width=15px style="border:none; float:right;"/></div>
+                    {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</form>
