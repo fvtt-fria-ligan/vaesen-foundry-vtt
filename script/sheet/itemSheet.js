@@ -8,7 +8,7 @@ export class vaesenItemSheet extends ItemSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       width: 650,
-      height: 300,
+      height: 'auto',
       classes: ["vaesen", "sheet", "item"],
       resizable: true,
     });
