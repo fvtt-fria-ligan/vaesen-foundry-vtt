@@ -8,7 +8,9 @@ export function prepareRollDialog(
   bonusDefault,
   damageDefault,
   attName = game.i18n.localize("ATTACK.ATTRIBUTE"),
-  skName = game.i18n.localize("ROLL.SKILL")
+  skName = game.i18n.localize("ROLL.SKILL"),
+  gearBonus = null,
+  talentBonus = null
 ) {
   let attributeHtml = buildHtmlDialog(attName, attributeDefault, "attribute");
   let skillHtml = buildHtmlDialog(skName, skillDefault, "skill");
@@ -22,6 +24,9 @@ export function prepareRollDialog(
     damageDefault,
     "damage"
   );
+
+  let gearHtml = buildSelectHtmlDialog(gearBonus, "GEAR.NAME", "gear");
+  let talentHtml = buildSelectHtmlDialog(talentBonus, "TALENT.NAME", "talent");
 
   let d = new Dialog(
     {
@@ -48,6 +53,8 @@ export function prepareRollDialog(
         </div><div class="flex column grow align-center light-border" style="width:200px; margin:auto; padding:5px; margin-bottom: 3px;">` +
           bonusHtml +
           damageHtml +
+          gearHtml +
+          talentHtml +
           `</div></div>`
       ),
       buttons: {
@@ -59,12 +66,20 @@ export function prepareRollDialog(
             let skill = html.find("#skill")[0].value;
             let bonus = html.find("#bonus")[0].value;
             let damage = html.find("#damage")[0].value;
+            let gear = 0;
+            var talent = 0;
+            let gearSelect = html.find("#gear")[0];
+            let talentSelect = html.find("#talent")[0];
+            if (gearSelect)
+              gear = gearSelect.value;
+            if (talentSelect)
+              talent = talentSelect.value;
             roll(
               sheet,
               testName,
               parseInt(attribute, 10),
               parseInt(skill, 10),
-              parseInt(bonus, 10),
+              parseInt(bonus, 10) + parseInt(gear, 10) + parseInt(talent, 10),
               parseInt(damage, 10)
             );
           },
@@ -168,7 +183,27 @@ function buildInputHtmlDialog(diceName, diceValue, type) {
   );
 }
 
+function buildSelectHtmlDialog(options, name, id) {
+  if (options == null || options.length == 0)
+    return "";
+
+  var html = [];
+  html.push(`<div class="flex row" style="flex-basis: 35%; justify-content: space-between;">`);
+  html.push(`<p style="text-transform: capitalize; white-space:nowrap; margin-top: 4px;">`+ game.i18n.localize(name) +`: </p></div>`);
+  html.push(`<div class="flex row" style="width: 100%;">`);
+  html.push(`<select id="`+id+`" style="width: 100%;">`);
+  html.push(`<option value="0">None (0)</option>`);
+  options.forEach(element => {
+    html.push(`<option value="`+element.bonus+`">`+element.name +` (`+element.bonus+`)`+`</option>`)
+  });
+  html.push(`</select></div>`);
+  return html.join("");
+}
+
 function buildHtmlDialog(diceName, diceValue, type) {
+  if (diceName === "")
+    return ``;
+
   return (
     `
     <div class="flex row" style="flex-basis: 35%; justify-content: space-between;">
