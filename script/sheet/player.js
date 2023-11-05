@@ -227,17 +227,23 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       const attribute = this.actor.system.attribute[skill.attribute];
 
       let bonusConditions = this.computeBonusFromConditions(skill.attribute);
+      let bonusCriticalInjury = this.computeBonusFromCriticalInjuries(skillName);
       let bonusArmor = this.computeBonusFromArmor(skillName);
+      let bonusGear = this.computePossibleBonusFromGear(skillName);
+      let bonusTalent = this.computePossibleBonusFromTalent(skillName);
+      
       const testName = game.i18n.localize(skill.label);
       prepareRollDialog(
         this,
         testName,
         attribute.value,
         skill.value,
-        bonusConditions + bonusArmor,
+        bonusConditions + bonusArmor + bonusCriticalInjury,
         0,
         game.i18n.localize(attribute.label + "_ROLL"),
-        testName
+        testName,
+        bonusGear,
+        bonusTalent
       );
       //prepareRollDialog(this, testName, attribute.value, skill.value, bonusConditions + bonusArmor, 0)
     });
@@ -585,5 +591,47 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       }
     }
     return parseInt(bonus, 10);
+  }
+
+  computePossibleBonusFromGear(skillName){
+    let gearArray = [];
+
+    for (let item of Object.values(this.actor.items.contents)) {
+      if (item.type === "gear" && item.system.bonus > 0 && item.system.skill.indexOf(skillName) > -1) {
+        let gear = { name: item.name, bonus: item.system.bonus};
+        gearArray.push(gear);
+      }
+    }
+    console.log(gearArray);
+
+    return gearArray;
+  }
+
+  computePossibleBonusFromTalent(skillName){
+    let talentArray = [];
+
+    for (let item of Object.values(this.actor.items.contents)) {
+      if (item.type === "talent" && item.system.bonus > 0 && item.system.skill.indexOf(skillName) > -1) {
+        let talent = { name: item.name, bonus: item.system.bonus};
+        talentArray.push(talent);
+      }
+    }
+    console.log(talentArray);
+
+    return talentArray;
+  }
+
+  computeBonusFromCriticalInjuries(skillName){
+    let bonus = 0;
+
+    for (let item of Object.values(this.actor.items.contents)) {
+      console.log(item);
+      if (item.type === "criticalInjury" && item.system.skill === skillName) {
+        console.log(item);
+        bonus += parseInt(item.system.bonus);
+      }
+    }
+
+    return bonus;
   }
 }
