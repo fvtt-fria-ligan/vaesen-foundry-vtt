@@ -97,8 +97,8 @@
           <h3>{{localize "CRITICAL_INJURY.SKILL"}}:</h3>
           <select name="system.skill">
             {{#select data.system.skill}}
-            {{#each config.skills as |skill|}}
-            <option value="{{skill}}" {{#if (eq skill ../data.system.skill)}}selected{{/if}}>{{localize skill}}
+            {{#each config.skills as |skill key|}}
+            <option value="{{key}}" {{#if (eq key ../data.system.skill)}}selected{{/if}}>{{localize skill}}
             </option>
             {{/each}}
             {{/select}}

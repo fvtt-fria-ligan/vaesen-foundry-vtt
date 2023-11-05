@@ -51,8 +51,8 @@
           <b>{{localize "TALENT.SKILL"}}</b>
           <select name="system.skill" multiple style="height:125px;">
             {{#select data.system.skill}}
-            {{#each config.skills as |skill|}}
-            <option value="{{skill}}" {{#ifIn skill ../data.system.skill}}selected{{/ifIn}}>{{localize skill}}
+            {{#each config.skills as |skill key|}}
+            <option value="{{key}}" {{#ifIn key ../data.system.skill}}selected{{/ifIn}}>{{localize skill}}
             </option>
             {{/each}}
             {{/select}}
