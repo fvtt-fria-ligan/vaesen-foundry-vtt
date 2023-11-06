@@ -201,51 +201,13 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     html.find(".attribute b").click((ev) => {
       const div = $(ev.currentTarget).parents(".attribute");
       const attributeName = div.data("key");
-      console.log(attributeName);
-      console.log(this.actor);
-      const attribute = this.actor.system.attribute[attributeName];
-      const testName = game.i18n.localize(attribute.label + "_ROLL");
-      let bonus = this.computeBonusFromConditions(attributeName);
-      prepareRollDialog(
-        this,
-        testName,
-        attribute.value,
-        0,
-        bonus,
-        0,
-        testName,
-        ""
-      );
+      this.rollAttribute(attributeName);
     });
 
     html.find(".skill b").click((ev) => {
       const div = $(ev.currentTarget).parents(".skill");
       const skillName = div.data("key");
-      console.log("skill: ", this.actor);
-      const skill = this.actor.system.skill[skillName];
-
-      const attribute = this.actor.system.attribute[skill.attribute];
-
-      let bonusConditions = this.computeBonusFromConditions(skill.attribute);
-      let bonusCriticalInjury = this.computeBonusFromCriticalInjuries(skillName);
-      let bonusArmor = this.computeBonusFromArmor(skillName);
-      let bonusGear = this.computePossibleBonusFromGear(skillName);
-      let bonusTalent = this.computePossibleBonusFromTalent(skillName);
-      
-      const testName = game.i18n.localize(skill.label);
-      prepareRollDialog(
-        this,
-        testName,
-        attribute.value,
-        skill.value,
-        bonusConditions + bonusArmor + bonusCriticalInjury,
-        0,
-        game.i18n.localize(attribute.label + "_ROLL"),
-        testName,
-        bonusGear,
-        bonusTalent
-      );
-      //prepareRollDialog(this, testName, attribute.value, skill.value, bonusConditions + bonusArmor, 0)
+      this.rollSkill(skillName);
     });
 
     html.find(".armor .icon").click((ev) => {
@@ -323,6 +285,48 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     html.find(".gear .effect").click((ev) => {
       this.onItemUpdate(ev);
     });
+  }
+
+  rollAttribute(attributeName) {
+    const attribute = this.actor.system.attribute[attributeName];
+    const testName = game.i18n.localize(attribute.label + "_ROLL");
+    let bonus = this.computeBonusFromConditions(attributeName);
+    prepareRollDialog(
+      this,
+      testName,
+      attribute.value,
+      0,
+      bonus,
+      0,
+      testName,
+      ""
+    );
+  }
+
+  rollSkill(skillName) {
+    const skill = this.actor.system.skill[skillName];
+    const attribute = this.actor.system.attribute[skill.attribute];
+
+    let bonusConditions = this.computeBonusFromConditions(skill.attribute);
+    let bonusCriticalInjury = this.computeBonusFromCriticalInjuries(skillName);
+    let bonusArmor = this.computeBonusFromArmor(skillName);
+    let bonusGear = this.computePossibleBonusFromGear(skillName);
+    let bonusTalent = this.computePossibleBonusFromTalent(skillName);
+    
+    const testName = game.i18n.localize(skill.label);
+    prepareRollDialog(
+      this,
+      testName,
+      attribute.value,
+      skill.value,
+      bonusConditions + bonusArmor + bonusCriticalInjury,
+      0,
+      game.i18n.localize(attribute.label + "_ROLL"),
+      testName,
+      bonusGear,
+      bonusTalent
+    );
+    //prepareRollDialog(this, testName, attribute.value, skill.value, bonusConditions + bonusArmor, 0)
   }
 
   computeSkills(data) {
