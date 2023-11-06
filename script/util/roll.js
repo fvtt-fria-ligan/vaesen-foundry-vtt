@@ -63,13 +63,16 @@ export function prepareRollDialog(
           label: game.i18n.localize("ROLL.ROLL"),
           callback: (html) => {
             let attribute = html.find("#attribute")[0].value;
-            let skill = html.find("#skill")[0].value;
             let bonus = html.find("#bonus")[0].value;
             let damage = html.find("#damage")[0].value;
+            let skill = 0;
             let gear = 0;
             var talent = 0;
+            let skillImput = html.find("#skill")[0];
             let gearSelect = html.find("#gear")[0];
             let talentSelect = html.find("#talent")[0];
+            if (skillImput)
+              skill = skillImput.value;
             if (gearSelect)
               gear = gearSelect.value;
             if (talentSelect)
