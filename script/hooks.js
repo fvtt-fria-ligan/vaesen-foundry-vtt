@@ -243,14 +243,14 @@ function preloadHandlebarsTemplates() {
 async function createRollMacro(data, slot) {
 
   let command = "";
-  if (data.skillKey !== null) {
+  if (data.type === "skill") {
     command = `
 if (actor == null || actor.type !== "player")
   return;
    
 actor.sheet.rollSkill("${data.skillKey}");`;
   }
-  if (data.attributeKey !== null) {
+  else if (data.type === "attribute") {
     command = `
 if (actor == null || actor.type !== "player")
   return;
