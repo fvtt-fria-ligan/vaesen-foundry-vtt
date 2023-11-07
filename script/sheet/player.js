@@ -285,6 +285,43 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     html.find(".gear .effect").click((ev) => {
       this.onItemUpdate(ev);
     });
+
+    // DRAG TO MACRO HANDLERS
+    html.find('.skill b').each((i, item) => {
+      const div = $(item).parents(".skill");
+      const skillKey = div.data("key");
+      const skillName = $(item).text();
+      const data = {
+        type: "skill",
+        skillKey: skillKey,
+        text: `${game.i18n.localize("ROLL.ROLL")} ${skillName}`
+      };
+
+      item.setAttribute("data-item-id", this.actor.id);
+      item.setAttribute("draggable", true);
+      item.addEventListener("dragstart", ev => {
+        ev.dataTransfer.setData("text/plain", JSON.stringify(data));
+      }, false);
+    });
+
+    html.find('.attribute b').each((i, item) => {
+      const div = $(item).parents(".attribute");
+      console.log(div);
+      const attributeKey = div.data("key");
+      const attributeName = $(item).text();
+      const data = {
+        type: "attribute",
+        attributeKey: attributeKey,
+        text: `${game.i18n.localize("ROLL.ROLL")} ${attributeName}`
+      };
+
+      item.setAttribute("data-item-id", this.actor.id);
+      item.setAttribute("draggable", true);
+      item.addEventListener("dragstart", ev => {
+        console.log(data);
+        ev.dataTransfer.setData("text/plain", JSON.stringify(data));
+      }, false);
+    });
   }
 
   rollAttribute(attributeName) {
