@@ -100,6 +100,7 @@
   "DESCRIPTION": "Description",
   "TYPE" : "Type",
   "NAME" : "Name",
+  "BONUS_PENALTY" : "Bonus/Penalty",
   
 
   "GEAR.ICON": "Icon",

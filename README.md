@@ -19,12 +19,14 @@ This system provides character sheets and items for  your play, if you would lik
 
 * Dialogs
     * line up ux and design to match overall look and feel
-    * potentially move roll dialog to a FormApp to allow for more robust dice pool builiding 
 
 * Link conditions on sheet and status icons on the character sheet (adding a status from the token toggels it on the sheet and visa versa)
 
 * CSS optimization - convert current CSS structure to SASS based pre-processor for future ease of adjustment
     - underway
+
+* Refactor Actor sheets to clean up code and make it easier to maintain/add features
+   
 
 ## Related Website
 - https://foundryvtt.com/
@@ -36,6 +38,15 @@ This system provides character sheets and items for  your play, if you would lik
 
 ## Release Notes
 =======
+
+v3.2.0
+- Added Limited Character Sheet, Limited permisions show player a sheet with reduced visibility, allowing secrets, traumas and other information to be hidden from non-owners. (issue [#62](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/62))
+- Added Stat and Skill fields to items as needed in the rules set. (issue [#31](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/31))  EXISTING ITEMS WILL NEED TO BE UPDATED TO USE THIS FEATURE. Premium Modules will be updated soon(tm)
+- Added PC skills and Attributes can now be dragged to the Macro Bar this covers part of issue [#55](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/55)
+- Updated Roll Dialog to show applicable items and talents for the current roll. selecting one will apply the bonus to the dice pool of the roll.
+- Fixed: localization for status icons on the Token HUD (fixed issue [#67](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/67))
+- Fixed: escaped HTML in Talent Description (issue [#57](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/57))
+
 
 v3.1.6
 - updated Brazillian Portuguese Localization
