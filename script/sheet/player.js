@@ -1,8 +1,8 @@
 import { prepareRollDialog, push } from "../util/roll.js";
 import { conditions } from "../util/conditions.js";
-import { YearZeroRoll } from "../lib/yzur.js";
 import { buildChatCard } from "../util/chat.js";
 import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
+import { onItemCreate } from "../util/sheetListeners.js";
 
 export class PlayerCharacterSheet extends VaesenActorSheet {
 
@@ -97,7 +97,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
     html.find(".item-create").click((ev) => {
-      this.onItemCreate(ev);
+      onItemCreate(ev, this.actor);
     });
     html.find(".item-edit").click((ev) => {
       this.onItemUpdate(ev);
@@ -477,14 +477,14 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     div.toggleClass("expanded");
   }
 
-  onItemCreate(event) {
-    event.preventDefault();
-    let header = event.currentTarget;
-    let data = duplicate(header.dataset);
+  // onItemCreate(event) {
+  //   event.preventDefault();
+  //   let header = event.currentTarget;
+  //   let data = duplicate(header.dataset);
 
-    data["name"] = `New ${data.type.capitalize()}`;
-    this.actor.createEmbeddedDocuments("Item", [data]);
-  }
+  //   data["name"] = `New ${data.type.capitalize()}`;
+  //   this.actor.createEmbeddedDocuments("Item", [data]);
+  // }
 
   onItemUpdate(event) {
     const div = $(event.currentTarget).parents(".item");
