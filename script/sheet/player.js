@@ -2,7 +2,7 @@ import { prepareRollDialog, push } from "../util/roll.js";
 import { conditions } from "../util/conditions.js";
 import { buildChatCard } from "../util/chat.js";
 import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
-import { onItemCreate } from "../util/sheetListeners.js";
+import { commonListeners } from "../util/sheetListeners.js";
 
 export class PlayerCharacterSheet extends VaesenActorSheet {
 
@@ -97,10 +97,10 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
     html.find(".item-create").click((ev) => {
-      onItemCreate(ev, this.actor);
+      commonListeners.onItemCreate(ev, this.actor);
     });
     html.find(".item-edit").click((ev) => {
-      this.onItemUpdate(ev);
+      commonListeners.onItemUpdate(ev, this.actor);
     });
     html.find(".item-delete").click((ev) => {
       this.onItemDelete(ev);
@@ -486,11 +486,11 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
   //   this.actor.createEmbeddedDocuments("Item", [data]);
   // }
 
-  onItemUpdate(event) {
-    const div = $(event.currentTarget).parents(".item");
-    const item = this.actor.items.get(div.data("itemId"));
-    item.sheet.render(true);
-  }
+  // onItemUpdate(event) {
+  //   const div = $(event.currentTarget).parents(".item");
+  //   const item = this.actor.items.get(div.data("itemId"));
+  //   item.sheet.render(true);
+  // }
 
   onItemDelete(event) {
     const div = $(event.currentTarget).parents(".item");
