@@ -2,7 +2,7 @@ import { prepareRollDialog, push } from "../util/roll.js";
 import { conditions } from "../util/conditions.js";
 import { buildChatCard } from "../util/chat.js";
 import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
-import { commonListeners } from "../util/sheetListeners.js";
+import { commonListeners } from "../util/common.js";
 
 export class PlayerCharacterSheet extends VaesenActorSheet {
 
@@ -103,7 +103,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       commonListeners.onItemUpdate(ev, this.actor);
     });
     html.find(".item-delete").click((ev) => {
-      this.onItemDelete(ev);
+      commonListeners.onItemDelete(ev, this.actor);
     });
     html.find(".fav-togle").click((ev) => {
       this.onFavTogle(ev);
@@ -492,11 +492,11 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
   //   item.sheet.render(true);
   // }
 
-  onItemDelete(event) {
-    const div = $(event.currentTarget).parents(".item");
-    this.actor.deleteEmbeddedDocuments("Item", [div.data("itemId")]);
-    div.slideUp(200, () => this.render(false));
-  }
+  // onItemDelete(event) {
+  //   const div = $(event.currentTarget).parents(".item");
+  //   this.actor.deleteEmbeddedDocuments("Item", [div.data("itemId")]);
+  //   div.slideUp(200, () => this.render(false));
+  // }
 
   onFocusIn(event) {
     $(event.currentTarget).select();
