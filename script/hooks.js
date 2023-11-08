@@ -101,10 +101,11 @@ Hooks.once("init", () => {
   
 });
 
-Hooks.once("ready", function () {
+Hooks.once("ready", async function () {
  
   setupCards();
   conditions.onReady();
+  Hooks.on("hotbarDrop", (bar, data, slot) => createRollMacro(data, slot));
   
 });
 
@@ -230,4 +231,48 @@ function preloadHandlebarsTemplates() {
     "systems/vaesen/model/items/relationship.hbs",
   ];
   return loadTemplates(templatePaths);
+}
+
+/**
+ * Create a Macro from an Item drop.
+ * Get an existing item macro if one exists, otherwise create a new one.
+ * @param {Object} data     The dropped data
+ * @param {number} slot     The hotbar slot to use
+ * @returns {Promise}
+ */
+async function createRollMacro(data, slot) {
+
+  let command = "";
+  if (data.type === "skill") {
+    command = `
+if (actor == null || actor.type !== "player")
+  return;
+   
+actor.sheet.rollSkill("${data.skillKey}");`;
+  }
+  else if (data.type === "attribute") {
+    command = `
+if (actor == null || actor.type !== "player")
+  return;
+   
+actor.sheet.rollAttribute("${data.attributeKey}");`;
+  }
+
+  if (command === "")
+    return;
+
+  let macro = game.macros.find(m => (m.name === data.text));
+  console.log(macro);
+  if (!macro) {
+    macro = await Macro.create({
+      name: data.text,
+      type: "script",
+      //img: data.img,
+      command: command,
+      flags: { "vaesen.skillRoll": true }
+    });
+  }
+  
+  game.user.assignHotbarMacro(macro, slot);
+  return false;
 }
