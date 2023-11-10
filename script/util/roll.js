@@ -197,7 +197,8 @@ function buildSelectHtmlDialog(options, name, id) {
   html.push(`<select id="`+id+`" style="width: 100%;">`);
   html.push(`<option value="0">None (0)</option>`);
   options.forEach(element => {
-    html.push(`<option value="`+element.bonus+`">`+element.name +` (`+element.bonus+`)`+`</option>`)
+    var descriptionWithoutTags = $("<p>").html(element.description).text();
+    html.push(`<option value="`+element.bonus+`" title="`+ descriptionWithoutTags +`">`+element.name +` (`+element.bonus+`)`+`</option>`)
   });
   html.push(`</select></div>`);
   return html.join("");

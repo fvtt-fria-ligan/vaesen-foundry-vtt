@@ -639,7 +639,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
 
     for (let item of Object.values(this.actor.items.contents)) {
       if (item.type === "gear" && item.system.bonus > 0 && item.system.skill.indexOf(skillName) > -1) {
-        let gear = { name: item.name, bonus: item.system.bonus};
+        let gear = { name: item.name, bonus: item.system.bonus, description: item.system.effect};
         gearArray.push(gear);
       }
     }
@@ -653,7 +653,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
 
     for (let item of Object.values(this.actor.items.contents)) {
       if (item.type === "talent" && item.system.bonus > 0 && item.system.skill.indexOf(skillName) > -1) {
-        let talent = { name: item.name, bonus: item.system.bonus};
+        let talent = { name: item.name, bonus: item.system.bonus, description: item.system.description};
         talentArray.push(talent);
       }
     }
