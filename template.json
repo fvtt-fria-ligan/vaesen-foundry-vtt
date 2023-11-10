@@ -240,9 +240,9 @@
     },
     "talent": {
       "description": "",
+      "bonusType": "none",
       "skill": ["none"],
-      "bonus": 0,
-      "ignoreCondition": ""
+      "bonus": 0
     },
     "gear": {
       "bonus": 0,
