@@ -118,4 +118,20 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
     }
     return lastBonus;
   }
+
+  computeInfoFromConditions() {
+    let items = Array.from(this.actor.items);
+    let lastBonus = 0;
+    let lastCondition = null;
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].type === "condition" && items[i].system.active) {
+        lastBonus = items[i].system.bonus;
+        lastCondition = items[i].name;
+      }
+    }
+    if (lastBonus == 0)
+      return null;
+    const conditionLabel = game.i18n.localize("HEADER.CONDITIONS").toLowerCase().replace(/\b(\w)/g, x => x.toUpperCase());
+    return { name: conditionLabel, value: lastBonus, tooltip: lastCondition };
+  }
 }

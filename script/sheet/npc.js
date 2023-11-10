@@ -45,4 +45,8 @@ export class NpcCharacterSheet extends VaesenActorSheet {
     }
     return parseInt(bonus, 10);
   }
+
+  computeInfoFromConditions(attributeName) {
+    return null;
+  }
 }

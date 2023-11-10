@@ -28,6 +28,9 @@ export function prepareRollDialog(
   let gearHtml = buildSelectHtmlDialog(gearBonus, "GEAR.NAME", "gear");
   let talentHtml = buildSelectHtmlDialog(talentBonus, "TALENT.NAME", "talent");
 
+  attributeDefault = parseInt(attributeDefault, 10);
+  skillDefault = parseInt(skillDefault, 10);
+
   let d = new Dialog(
     {
       title: "Test : " + testName,
@@ -84,6 +87,104 @@ export function prepareRollDialog(
               parseInt(skill, 10),
               parseInt(bonus, 10) + parseInt(gear, 10) + parseInt(talent, 10),
               parseInt(damage, 10)
+            );
+          },
+        },
+        cancel: {
+          icon: '<i class="fas fa-times"></i>',
+          label: game.i18n.localize("ROLL.CANCEL"),
+          callback: () => {},
+        },
+      },
+      default: "roll",
+      close: () => {},
+    },
+    { width: "230" }
+  );
+  d.render(true);
+}
+
+export function prepareRollNewDialog(
+  sheet,
+  testName,
+  baseDiceLines = [],
+  damageDefault = null,
+  gearBonus = null,
+  talentBonus = null
+) {
+
+  let baseLines = [];
+  let baseLinesDice = 0;
+
+  baseDiceLines.forEach(element => {
+    
+    if (element == null)
+      return;
+
+    let tooltip = element.tooltip ?? "";
+    console.log(tooltip);
+    baseLines.push(`
+<div class="flex row" style="flex-basis: 35%; justify-content: space-between;">
+<p style="text-transform: capitalize; white-space:nowrap;">` +
+element.name +
+`: </p>
+<input style="text-align: center" type="text" value="` +
+element.value +
+`" readonly title="` + tooltip + `"/></div>`);
+    baseLinesDice += parseInt(element.value, 10);
+  });
+
+  let bonusHtml = buildInputHtmlDialog(
+    game.i18n.localize("ROLL.BONUS"),
+    0,
+    "bonus"
+  );
+  let damageHtml = damageDefault === null ? "" : buildInputHtmlDialog(
+    game.i18n.localize("ROLL.DAMAGE"),
+    damageDefault,
+    "damage"
+  );
+
+  let gearHtml = buildSelectHtmlDialog(gearBonus, "GEAR.NAME", "gear");
+  let talentHtml = buildSelectHtmlDialog(talentBonus, "TALENT.NAME", "talent");
+
+  let extraLines = [];
+  extraLines.push(gearHtml);
+  extraLines.push(talentHtml);
+  extraLines.push(bonusHtml);
+  extraLines.push(damageHtml);
+  const extraLinesHtml = extraLines.join("");
+  const baseLinesHtml = baseLines.join("");
+
+  let d = new Dialog(
+    {
+      title: "Test : " + testName,
+      content: buildDivHtmlNewDialog(testName, baseLinesHtml, baseLinesDice, extraLinesHtml),
+      buttons: {
+        roll: {
+          icon: '<i class="fas fa-check"></i>',
+          label: game.i18n.localize("ROLL.ROLL"),
+          callback: (html) => {
+            let bonus = parseInt(html.find("#bonus")[0].value, 10);
+            let gear = 0;
+            var talent = 0;
+            var damage = 0;
+            let gearSelect = html.find("#gear")[0];
+            let talentSelect = html.find("#talent")[0];
+            let damageInput = html.find("#damage")[0];
+            if (gearSelect)
+              gear = parseInt(gearSelect.value, 10);
+            if (talentSelect)
+              talent = parseInt(talentSelect.value, 10);
+            if (damageInput)
+              damage = parseInt(damageInput.value, 10);
+            roll(
+              sheet,
+              testName,
+              baseLinesDice,
+              0,
+              bonus + gear + talent,
+              damage
             );
           },
         },
@@ -224,4 +325,18 @@ function buildHtmlDialog(diceName, diceValue, type) {
 
 function buildDivHtmlDialog(divContent) {
   return "<div class='vaesen roll-dialog '>" + divContent + "</div>";
+}
+
+function buildDivHtmlNewDialog(testName, baseDiceHtml, baseDiceValue, extraLinesHtml) {
+  let dialogHtmlContent = [];
+  dialogHtmlContent.push("<div class='vaesen roll-dialog'>");
+  dialogHtmlContent.push(`<div class="roll-fields">`);
+  dialogHtmlContent.push(`<h2 class="title" style="width: 97%; margin: auto;"> ` + game.i18n.localize("ROLL.TEST") + `: ` +
+  testName +`</h2>`);
+  dialogHtmlContent.push(`<div class="flex column grow align-center heavy-border" style="width:200px;">` + baseDiceHtml + ` 
+<div align-center style="flex-basis:33%;"> <strong>` + game.i18n.localize("ROLL.BASE.POOL") + `:</strong> ` + baseDiceValue + `</div></div>`);
+  dialogHtmlContent.push(`<div class="flex column grow align-center light-border" style="width:200px; margin:auto; padding:5px; margin-bottom: 3px;">` +
+extraLinesHtml +`</div></div>`);
+  dialogHtmlContent.push("</div></div>");
+  return dialogHtmlContent.join("");
 }

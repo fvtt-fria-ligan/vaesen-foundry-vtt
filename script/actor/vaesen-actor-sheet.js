@@ -1,4 +1,4 @@
-import { prepareRollDialog, push } from "../util/roll.js";
+import { prepareRollDialog, prepareRollNewDialog, push } from "../util/roll.js";
 import { YearZeroRoll } from "../lib/yzur.js";
 import { buildChatCard } from "../util/chat.js";
 
@@ -382,38 +382,37 @@ export class VaesenActorSheet extends ActorSheet {
     const div = $(event.currentTarget).parents(".armor");
     const item = this.actor.items.get(div.data("itemId"));
     const testName = item.name;
-    prepareRollDialog(this, testName, item.system.protection, 0, 0, 0, testName, "");
+
+    let info = [
+      { name: testName, value: item.system.protection }
+    ];
+
+    prepareRollNewDialog(this, testName, info);
   }
 
   onWeaponRoll(event) {
     const div = $(event.currentTarget).parents(".weapon");
     const item = this.actor.items.get(div.data("itemId"));
     const testName = item.name;
-    let attribute = 0;
-    let skill = 0;
-    let bonusFromCondition = 0;
-    let bonusFromWeapon = parseInt(item.system.bonus, 10);
-    if (item.system.skill === "force") {
-      attribute = this.actor.system.attribute.physique.value;
-      skill = this.actor.system.skill.force.value;
-      bonusFromCondition = this.computeBonusFromConditions("physique");
-    } else if (item.system.skill === "closeCombat") {
-      attribute = this.actor.system.attribute.physique.value;
-      skill = this.actor.system.skill.closeCombat.value;
-      bonusFromCondition = this.computeBonusFromConditions("physique");
-    } else if (item.system.skill === "rangedCombat") {
-      attribute = this.actor.system.attribute.precision.value;
-      skill = this.actor.system.skill.rangedCombat.value;
-      bonusFromCondition = this.computeBonusFromConditions("precision");
-    }
-    prepareRollDialog(
-      this,
-      testName,
-      attribute,
-      skill,
-      bonusFromWeapon + bonusFromCondition,
-      item.system.damage
-    );
+    const skill = this.actor.system.skill[item.system.skill];
+    const attribute = this.actor.system.attribute[skill.attribute];
+    const bonusFromWeapon = parseInt(item.system.bonus, 10);
+
+    console.log(skill);
+    console.log(attribute);
+
+    let bonusGear = this.computePossibleBonusFromGear(item.system.skill);
+    let bonusTalent = this.computePossibleBonusFromTalent(item.system.skill);
+
+    let info = [
+      { name: game.i18n.localize(attribute.label + "_ROLL"), value: attribute.value },
+      { name: game.i18n.localize(skill.label), value: skill.value },
+      { name: item.name, value: bonusFromWeapon },
+      this.computeInfoFromConditions(item.system.skill),
+      this.computeInfoFromCriticalInjuries(item.system.skill)
+    ];
+
+    prepareRollNewDialog(this, testName, info, item.system.damage, bonusGear, bonusTalent);
   }
 
   sendToChat(event) {
@@ -480,45 +479,70 @@ export class VaesenActorSheet extends ActorSheet {
     return bonus;
   }
 
+  computeInfoFromCriticalInjuries(skillName) {
+    let bonus = 0;
+    let tooltip = [];
+    for (let item of Object.values(this.actor.items.contents)) {
+      console.log(item);
+      if (item.type === "criticalInjury" && item.system.skill === skillName) {
+        tooltip.push(item.name);
+        bonus += parseInt(item.system.bonus);
+      }
+    }
+
+    if (bonus == 0)
+      return null;
+    const label = game.i18n.localize("HEADER.CRITICAL_INJURIES").toLowerCase().replace(/\b(\w)/g, x => x.toUpperCase());
+    return { name: label, value: bonus, tooltip: tooltip.join("\n")};
+  }
+
+  computeInfoFromArmor(skillName) {
+    let bonus = 0;
+    let armor = null;
+    if (skillName === "agility") {
+      for (let item of Object.values(this.actor.items.contents)) {
+        console.log("item", item);
+        if (item.type === "armor" && bonus >= item.system.agility) {
+          bonus = item.system.agility;
+          armor = item.name;
+        }
+      }
+    }
+    if (bonus == 0)
+      return null;
+    const label = game.i18n.localize("ARMOR.NAME");
+    return { name: label, value: bonus};
+  }
+
   rollAttribute(attributeName) {
     const attribute = this.actor.system.attribute[attributeName];
     const testName = game.i18n.localize(attribute.label + "_ROLL");
-    let bonus = this.computeBonusFromConditions(attributeName);
-    prepareRollDialog(
-      this,
-      testName,
-      attribute.value,
-      0,
-      bonus,
-      0,
-      testName,
-      ""
-    );
+    let info = [
+      { name:testName, value: attribute.value},
+      this.computeInfoFromConditions(attributeName)
+    ];
+    prepareRollNewDialog(this, testName, info, null, null, null);
   }
 
   rollSkill(skillName) {
     const skill = this.actor.system.skill[skillName];
     const attribute = this.actor.system.attribute[skill.attribute];
 
-    let bonusConditions = this.computeBonusFromConditions(skill.attribute);
-    let bonusCriticalInjury = this.computeBonusFromCriticalInjuries(skillName);
-    let bonusArmor = this.computeBonusFromArmor(skillName);
     let bonusGear = this.computePossibleBonusFromGear(skillName);
     let bonusTalent = this.computePossibleBonusFromTalent(skillName);
     
     const testName = game.i18n.localize(skill.label);
-    prepareRollDialog(
-      this,
-      testName,
-      attribute.value,
-      skill.value,
-      bonusConditions + bonusArmor + bonusCriticalInjury,
-      0,
-      game.i18n.localize(attribute.label + "_ROLL"),
-      testName,
-      bonusGear,
-      bonusTalent
-    );
-    //prepareRollDialog(this, testName, attribute.value, skill.value, bonusConditions + bonusArmor, 0)
+
+    let info = [
+      { name: game.i18n.localize(attribute.label + "_ROLL"), value: attribute.value },
+      { name: testName, value: skill.value },
+      this.computeInfoFromConditions(skill.attribute),
+      this.computeInfoFromCriticalInjuries(skillName),
+      this.computeInfoFromArmor(skillName)
+    ];
+
+    var damage = skillName == "force" ? 1 : null;
+
+    prepareRollNewDialog(this, testName, info, damage, bonusGear, bonusTalent);
   }
 }

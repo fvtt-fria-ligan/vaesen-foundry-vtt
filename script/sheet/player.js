@@ -331,4 +331,26 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     }
     return parseInt(bonus, 10);
   }
+
+  computeInfoFromConditions(attributeName) {
+    let datas;
+    let info = [];
+    let bonus = 0;
+    if (attributeName === "physique" || attributeName === "precision") {
+      datas = this.actor.system.condition.physical.states;
+    } else {
+      datas = this.actor.system.condition.mental.states;
+    }
+    for (let condition of Object.values(datas)) {
+      if (condition.isChecked) {
+        bonus = bonus - 1;
+        console.log(condition);
+        info.push(game.i18n.localize(condition.label));
+      }
+    }
+    if (bonus === 0)
+      return null;
+    const conditionLabel = game.i18n.localize("HEADER.CONDITIONS").toLowerCase().replace(/\b(\w)/g, x => x.toUpperCase());
+    return { name:conditionLabel, value: bonus, tooltip: info.join("\n")};
+  }
 }
