@@ -1,11 +1,8 @@
-import { prepareRollDialog, push } from "../util/roll.js";
-import { conditions } from "../util/conditions.js";
-import { buildChatCard } from "../util/chat.js";
+import { prepareRollDialog } from "../util/roll.js";
 import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
 import { commonListeners } from "../util/common.js";
 
 export class PlayerCharacterSheet extends VaesenActorSheet {
-
 
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
@@ -96,25 +93,13 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
 
   activateListeners(html) {
     super.activateListeners(html);
-    html.find(".item-create").click((ev) => {
-      commonListeners.onItemCreate(ev, this.actor);
-    });
-    html.find(".item-edit").click((ev) => {
-      commonListeners.onItemUpdate(ev, this.actor);
-    });
-    html.find(".item-delete").click((ev) => {
-      commonListeners.onItemDelete(ev, this.actor);
-    });
+    
     html.find(".fav-togle").click((ev) => {
       this.onFavTogle(ev);
-    });
-    html.find(".to-chat").click((ev) => {
-      this.sendToChat(ev);
     });
     html.find(".roll-recovery").click((ev) => {
       this.onRecovery(ev);
     });
-    html.find("input").focusin((ev) => this.onFocusIn(ev));
 
     html.find(".resources b").click((ev) => {
       prepareRollDialog(
@@ -126,7 +111,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
         0
       );
     });
-    //html.find(".physical .condition").click(conditions.eventsProcessing.onToggleEffect.bind(this));
+
     html.find(".physical .condition").click((ev) => {
       let actor = this.actor;
       let data = actor.system;
@@ -168,7 +153,6 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       this._render();
     });
 
-    //html.find(".mental .condition").click(conditions.eventsProcessing.onToggleEffect.bind(this));
     html.find(".mental .condition").click((ev) => {
       let actor = this.actor;
       let data = actor.system;
@@ -198,61 +182,12 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       this._render();
     });
 
-    html.find(".attribute b").click((ev) => {
-      const div = $(ev.currentTarget).parents(".attribute");
-      const attributeName = div.data("key");
-      this.rollAttribute(attributeName);
-    });
-
-    html.find(".skill b").click((ev) => {
-      const div = $(ev.currentTarget).parents(".skill");
-      const skillName = div.data("key");
-      this.rollSkill(skillName);
-    });
-
-    html.find(".armor .icon").click((ev) => {
-      this.onArmorRoll(ev);
-    });
     html.find(".armor .name").click((ev) => {
       this.onArmorRoll(ev);
     });
-    html.find(".armor .protection").click((ev) => {
-      this.onArmorRoll(ev);
-    });
-    html.find(".armor .agility").click((ev) => {
-      this.onArmorRoll(ev);
-    });
 
-    html.find(".weapon .icon").click((ev) => {
-      this.onWeaponRoll(ev);
-    });
     html.find(".weapon .name").click((ev) => {
       this.onWeaponRoll(ev);
-    });
-    html.find(".weapon .damage").click((ev) => {
-      this.onWeaponRoll(ev);
-    });
-    html.find(".weapon .range").click((ev) => {
-      this.onWeaponRoll(ev);
-    });
-    html.find(".weapon .bonus").click((ev) => {
-      this.onWeaponRoll(ev);
-    });
-
-    html.find(".critical-injury .icon").click((ev) => {
-      this.onItemUpdate(ev);
-    });
-    html.find(".critical-injury .name").click((ev) => {
-      this.onItemUpdate(ev);
-    });
-    html.find(".critical-injury .fatal").click((ev) => {
-      this.onItemUpdate(ev);
-    });
-    html.find(".critical-injury .time-limit").click((ev) => {
-      this.onItemUpdate(ev);
-    });
-    html.find(".critical-injury .effect").click((ev) => {
-      this.onItemUpdate(ev);
     });
 
     html.find(".talent .icon").click((ev) => {
@@ -265,7 +200,6 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       this.onItemUpdate(ev);
     });
 
-    //html.find('.relationship .name').click(ev => { this.onItemUpdate(ev); });
     html.find(".relationship .name").click((ev) => {
       this.onItemSummary(ev, "relationship");
     });
@@ -273,16 +207,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       this.onItemSummary(ev, "relationship");
     });
 
-    html.find(".gear .icon").click((ev) => {
-      this.onItemUpdate(ev);
-    });
     html.find(".gear .name").click((ev) => {
-      this.onItemUpdate(ev);
-    });
-    html.find(".gear .bonus").click((ev) => {
-      this.onItemUpdate(ev);
-    });
-    html.find(".gear .effect").click((ev) => {
       this.onItemUpdate(ev);
     });
 
@@ -324,57 +249,6 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     });
   }
 
-  rollAttribute(attributeName) {
-    const attribute = this.actor.system.attribute[attributeName];
-    const testName = game.i18n.localize(attribute.label + "_ROLL");
-    let bonus = this.computeBonusFromConditions(attributeName);
-    prepareRollDialog(
-      this,
-      testName,
-      attribute.value,
-      0,
-      bonus,
-      0,
-      testName,
-      ""
-    );
-  }
-
-  rollSkill(skillName) {
-    const skill = this.actor.system.skill[skillName];
-    const attribute = this.actor.system.attribute[skill.attribute];
-
-    let bonusConditions = this.computeBonusFromConditions(skill.attribute);
-    let bonusCriticalInjury = this.computeBonusFromCriticalInjuries(skillName);
-    let bonusArmor = this.computeBonusFromArmor(skillName);
-    let bonusGear = this.computePossibleBonusFromGear(skillName);
-    let bonusTalent = this.computePossibleBonusFromTalent(skillName);
-    
-    const testName = game.i18n.localize(skill.label);
-    prepareRollDialog(
-      this,
-      testName,
-      attribute.value,
-      skill.value,
-      bonusConditions + bonusArmor + bonusCriticalInjury,
-      0,
-      game.i18n.localize(attribute.label + "_ROLL"),
-      testName,
-      bonusGear,
-      bonusTalent
-    );
-    //prepareRollDialog(this, testName, attribute.value, skill.value, bonusConditions + bonusArmor, 0)
-  }
-
-  computeSkills(data) {
-    for (let skill of Object.values(data.system.skill)) {
-      skill.hasPhysique = skill.attribute === "physique";
-      skill.hasPrecision = skill.attribute === "precision";
-      skill.hasLogic = skill.attribute === "logic";
-      skill.hasEmpathy = skill.attribute === "empathy";
-    }
-  }
-
   computeItems(data) {
     for (let item of Object.values(data.items)) {
       item.isCriticalInjury = item.type === "criticalInjury";
@@ -384,122 +258,6 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       item.isGear = item.type === "gear";
       item.isRelationship = item.type === "relationship";
     }
-  }
-
- 
-  /****** Toggle the roll-down of expanded item information.  */
-  onItemSummary(event, type) {
-    let div = $(event.currentTarget).parents(".item"),
-      item = this.actor.items.get(div.data("itemId")),
-      chatData = "";
-
-    switch (type) {
-      case "relationship":
-        chatData =
-          "<p class='item-desc'><b>" +
-          game.i18n.localize("NOTES") +
-          ":</b> " +
-          item.system.notes +
-          "</br></p>";
-        break;
-      case "condition":
-        chatData =
-          "<p class='item-desc'><b>" +
-          game.i18n.localize("CONDITION.DESCRIPTION") +
-          ":</b> " +
-          item.system.description +
-          "</br></p>";
-        break;
-      case "attack":
-        chatData =
-          "<p class='item-desc'><b>" +
-          game.i18n.localize("WEAPON.DAMAGE") +
-          ":</b> " +
-          item.system.damage +
-          " | <b>" +
-          game.i18n.localize("WEAPON.RANGE") +
-          ":</b> " +
-          item.system.range +
-          "</br></p>";
-        break;
-      case "gear":
-        chatData =
-          "<p class='item-desc'><b>" +
-          game.i18n.localize("GEAR.BONUS") +
-          ":</b> " +
-          item.system.bonus +
-          "</br><b>" +
-          game.i18n.localize("GEAR.EFFECT") +
-          ":</b> " +
-          item.system.effect +
-          "</br><b>" +
-          game.i18n.localize("GEAR.DESCRIPTION") +
-          ":</b> " +
-          item.system.description +
-          "</br></p>";
-        break;
-      case "magic":
-        chatData =
-          "<p class='item-desc'><b>" +
-          game.i18n.localize("MAGIC.CATEGORY") +
-          ":</b> " +
-          item.system.category +
-          " </br><b>" +
-          game.i18n.localize("MAGIC.DESCRIPTION") +
-          ":</b> " +
-          item.system.description +
-          "</br></p>";
-        break;
-      case "armor":
-        chatData =
-          "<p class='item-desc'><b>" +
-          game.i18n.localize("ARMOR.PROTECTION") +
-          ":</b> " +
-          item.system.protection +
-          " | <b>" +
-          game.i18n.localize("ARMOR.AGILITY") +
-          ":</b> " +
-          item.system.agility +
-          "</br></p>";
-        break;
-    }
-
-    if (chatData === null) {
-      return;
-    } else if (div.hasClass("expanded")) {
-      let sum = div.children(".item-summary");
-      sum.slideUp(200, () => sum.remove());
-    } else {
-      let sum = $(`<div class="item-summary">${chatData}</div>`);
-      div.append(sum.hide());
-      sum.slideDown(200);
-    }
-    div.toggleClass("expanded");
-  }
-
-  // onItemCreate(event) {
-  //   event.preventDefault();
-  //   let header = event.currentTarget;
-  //   let data = duplicate(header.dataset);
-
-  //   data["name"] = `New ${data.type.capitalize()}`;
-  //   this.actor.createEmbeddedDocuments("Item", [data]);
-  // }
-
-  // onItemUpdate(event) {
-  //   const div = $(event.currentTarget).parents(".item");
-  //   const item = this.actor.items.get(div.data("itemId"));
-  //   item.sheet.render(true);
-  // }
-
-  // onItemDelete(event) {
-  //   const div = $(event.currentTarget).parents(".item");
-  //   this.actor.deleteEmbeddedDocuments("Item", [div.data("itemId")]);
-  //   div.slideUp(200, () => this.render(false));
-  // }
-
-  onFocusIn(event) {
-    $(event.currentTarget).select();
   }
 
   onFavTogle(event) {
@@ -516,15 +274,6 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     }
 
     item.update();
-  }
-
-  sendToChat(event) {
-    const div = $(event.currentTarget).parents(".item");
-    const item = this.actor.items.get(div.data("itemId"));
-    const data = item.data;
-    let type = data.type;
-    let chatData = buildChatCard(type, data);
-    ChatMessage.create(chatData, {});
   }
 
   onRecovery(event) {
@@ -567,44 +316,6 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     }
   }
 
-  onArmorRoll(event) {
-    const div = $(event.currentTarget).parents(".armor");
-    const item = this.actor.items.get(div.data("itemId"));
-    const testName = item.name;
-    prepareRollDialog(this, testName, 0, 0, item.system.protection, 0);
-  }
-
-  onWeaponRoll(event) {
-    const div = $(event.currentTarget).parents(".weapon");
-    const item = this.actor.items.get(div.data("itemId"));
-    const testName = item.name;
-    let attribute = 0;
-    let skill = 0;
-    let bonusFromCondition = 0;
-    let bonusFromWeapon = parseInt(item.system.bonus, 10);
-    if (item.system.skill === "force") {
-      attribute = this.actor.system.attribute.physique.value;
-      skill = this.actor.system.skill.force.value;
-      bonusFromCondition = this.computeBonusFromConditions("physique");
-    } else if (item.system.skill === "closeCombat") {
-      attribute = this.actor.system.attribute.physique.value;
-      skill = this.actor.system.skill.closeCombat.value;
-      bonusFromCondition = this.computeBonusFromConditions("physique");
-    } else if (item.system.skill === "rangedCombat") {
-      attribute = this.actor.system.attribute.precision.value;
-      skill = this.actor.system.skill.rangedCombat.value;
-      bonusFromCondition = this.computeBonusFromConditions("precision");
-    }
-    prepareRollDialog(
-      this,
-      testName,
-      attribute,
-      skill,
-      bonusFromWeapon + bonusFromCondition,
-      item.system.damage
-    );
-  }
-
   computeBonusFromConditions(attributeName) {
     let bonus = 0;
     let datas;
@@ -619,60 +330,5 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       }
     }
     return parseInt(bonus, 10);
-  }
-
-  computeBonusFromArmor(skillName) {
-    let bonus = 0;
-    if (skillName === "agility") {
-      for (let item of Object.values(this.actor.items.contents)) {
-        console.log("item", item);
-        if (item.type === "armor" && bonus >= item.system.agility) {
-          bonus = item.system.agility;
-        }
-      }
-    }
-    return parseInt(bonus, 10);
-  }
-
-  computePossibleBonusFromGear(skillName){
-    let gearArray = [];
-
-    for (let item of Object.values(this.actor.items.contents)) {
-      if (item.type === "gear" && item.system.bonus > 0 && item.system.skill.indexOf(skillName) > -1) {
-        let gear = { name: item.name, bonus: item.system.bonus, description: item.system.effect};
-        gearArray.push(gear);
-      }
-    }
-    console.log(gearArray);
-
-    return gearArray;
-  }
-
-  computePossibleBonusFromTalent(skillName){
-    let talentArray = [];
-
-    for (let item of Object.values(this.actor.items.contents)) {
-      if (item.type === "talent" && item.system.bonus > 0 && item.system.skill.indexOf(skillName) > -1) {
-        let talent = { name: item.name, bonus: item.system.bonus, description: item.system.description};
-        talentArray.push(talent);
-      }
-    }
-    console.log(talentArray);
-
-    return talentArray;
-  }
-
-  computeBonusFromCriticalInjuries(skillName){
-    let bonus = 0;
-
-    for (let item of Object.values(this.actor.items.contents)) {
-      console.log(item);
-      if (item.type === "criticalInjury" && item.system.skill === skillName) {
-        console.log(item);
-        bonus += parseInt(item.system.bonus);
-      }
-    }
-
-    return bonus;
   }
 }
