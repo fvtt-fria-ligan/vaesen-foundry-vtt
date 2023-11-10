@@ -1,4 +1,4 @@
-import { prepareRollDialog } from "../util/roll.js";
+import { prepareRollNewDialog } from "../util/roll.js";
 import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
 import { commonListeners } from "../util/common.js";
 
@@ -102,14 +102,11 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     });
 
     html.find(".resources b").click((ev) => {
-      prepareRollDialog(
-        this,
-        game.i18n.localize("RESOURCES"),
-        0,
-        0,
-        this.actor.system.resources || 0,
-        0
-      );
+      var testName = game.i18n.localize("RESOURCES");
+      let info = [
+        { name: testName, value: this.actor.system.resources || 0 }
+      ];
+      prepareRollNewDialog(this, testName, info);
     });
 
     html.find(".physical .condition").click((ev) => {
@@ -277,59 +274,28 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
   }
 
   onRecovery(event) {
-    event.preventDefault();
-    let actor = this.actor;
-    let data = actor.system;
-    let physique = data.attribute.physique.value;
-    let precision = data.attribute.precision.value;
-    let logic = data.attribute.logic.value;
-    let empathy = data.attribute.empathy.value;
     const element = $(event.currentTarget).parents(".conditions");
     const type = element[0].dataset.key;
 
-    if (type === "physical") {
-      let pool = physique + precision;
-      prepareRollDialog(
-        this,
-        game.i18n.localize("ROLL.PREC"),
-        pool,
-        0,
-        0,
-        0,
-        game.i18n.localize("ATTRIBUTE.PHYSIQUE_ROLL") +
-          " + " +
-          game.i18n.localize("ATTRIBUTE.PRECISION_ROLL")
-      );
-    } else {
-      let pool = logic + empathy;
-      prepareRollDialog(
-        this,
-        game.i18n.localize("ROLL.MREC"),
-        pool,
-        0,
-        0,
-        0,
-        game.i18n.localize("ATTRIBUTE.LOGIC_ROLL") +
-          " + " +
-          game.i18n.localize("ATTRIBUTE.EMPATHY_ROLL")
-      );
-    }
-  }
+    let testName;
+    let info;
 
-  computeBonusFromConditions(attributeName) {
-    let bonus = 0;
-    let datas;
-    if (attributeName === "physique" || attributeName === "precision") {
-      datas = this.actor.system.condition.physical.states;
-    } else {
-      datas = this.actor.system.condition.mental.states;
+    if (type == "physical") {
+      testName = game.i18n.localize("ROLL.PREC");
+      info = [
+        { name: game.i18n.localize("ATTRIBUTE.PHYSIQUE_ROLL"), value: this.actor.system.attribute.physique.value },
+        { name: game.i18n.localize("ATTRIBUTE.PRECISION_ROLL"), value: this.actor.system.attribute.precision.value }
+      ];
     }
-    for (let condition of Object.values(datas)) {
-      if (condition.isChecked) {
-        bonus = bonus - 1;
-      }
+    else {
+      testName = game.i18n.localize("ROLL.MREC");
+      info = [
+        { name: game.i18n.localize("ATTRIBUTE.LOGIC_ROLL"), value: this.actor.system.attribute.logic.value },
+        { name: game.i18n.localize("ATTRIBUTE.EMPATHY_ROLL"), value: this.actor.system.attribute.empathy.value }
+      ];
     }
-    return parseInt(bonus, 10);
+
+    prepareRollNewDialog(this, testName, info);
   }
 
   computeInfoFromConditions(attributeName) {

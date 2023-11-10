@@ -1,4 +1,4 @@
-import { prepareRollDialog, prepareRollNewDialog, push } from "../util/roll.js";
+import { prepareRollNewDialog, push } from "../util/roll.js";
 import { YearZeroRoll } from "../lib/yzur.js";
 import { buildChatCard } from "../util/chat.js";
 
@@ -44,14 +44,7 @@ export class VaesenActorSheet extends ActorSheet {
           class: "custom-roll",
           icon: "fas fa-dice",
           onclick: (ev) =>
-            prepareRollDialog(
-              this,
-              game.i18n.localize("ROLL.ROLL"),
-              0,
-              0,
-              0,
-              0
-            ),
+            prepareRollNewDialog(this, game.i18n.localize("ROLL.ROLL")),
         },
         {
           label: game.i18n.localize("ROLL.PUSH"),
@@ -398,9 +391,6 @@ export class VaesenActorSheet extends ActorSheet {
     const attribute = this.actor.system.attribute[skill.attribute];
     const bonusFromWeapon = parseInt(item.system.bonus, 10);
 
-    console.log(skill);
-    console.log(attribute);
-
     let bonusGear = this.computePossibleBonusFromGear(item.system.skill);
     let bonusTalent = this.computePossibleBonusFromTalent(item.system.skill);
 
@@ -428,7 +418,6 @@ export class VaesenActorSheet extends ActorSheet {
     let bonus = 0;
     if (skillName === "agility") {
       for (let item of Object.values(this.actor.items.contents)) {
-        console.log("item", item);
         if (item.type === "armor" && bonus >= item.system.agility) {
           bonus = item.system.agility;
         }
@@ -446,7 +435,6 @@ export class VaesenActorSheet extends ActorSheet {
         gearArray.push(gear);
       }
     }
-    console.log(gearArray);
 
     return gearArray;
   }
@@ -460,30 +448,14 @@ export class VaesenActorSheet extends ActorSheet {
         talentArray.push(talent);
       }
     }
-    console.log(talentArray);
 
     return talentArray;
-  }
-
-  computeBonusFromCriticalInjuries(skillName){
-    let bonus = 0;
-
-    for (let item of Object.values(this.actor.items.contents)) {
-      console.log(item);
-      if (item.type === "criticalInjury" && item.system.skill === skillName) {
-        console.log(item);
-        bonus += parseInt(item.system.bonus);
-      }
-    }
-
-    return bonus;
   }
 
   computeInfoFromCriticalInjuries(skillName) {
     let bonus = 0;
     let tooltip = [];
     for (let item of Object.values(this.actor.items.contents)) {
-      console.log(item);
       if (item.type === "criticalInjury" && item.system.skill === skillName) {
         tooltip.push(item.name);
         bonus += parseInt(item.system.bonus);
@@ -501,7 +473,6 @@ export class VaesenActorSheet extends ActorSheet {
     let armor = null;
     if (skillName === "agility") {
       for (let item of Object.values(this.actor.items.contents)) {
-        console.log("item", item);
         if (item.type === "armor" && bonus >= item.system.agility) {
           bonus = item.system.agility;
           armor = item.name;

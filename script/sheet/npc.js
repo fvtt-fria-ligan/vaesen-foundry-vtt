@@ -32,21 +32,21 @@ export class NpcCharacterSheet extends VaesenActorSheet {
     });
   }
 
-  computeBonusFromConditions(attributeName) {
-    let bonus;
+  computeInfoFromConditions(attributeName) {
+    let bonus, current, max;
     if (attributeName === "physique" || attributeName === "precision") {
-      let current = this.actor.system.condition.physical.value;
-      let max = this.actor.system.condition.physical.max;
+      current = this.actor.system.condition.physical.value;
+      max = this.actor.system.condition.physical.max;
       bonus = current - max;
     } else {
-      let current = this.actor.system.condition.mental.value;
-      let max = this.actor.system.condition.mental.max;
+      current = this.actor.system.condition.mental.value;
+      max = this.actor.system.condition.mental.max;
       bonus = current - max;
     }
-    return parseInt(bonus, 10);
-  }
 
-  computeInfoFromConditions(attributeName) {
-    return null;
+    if (bonus === 0)
+      return null;
+    const conditionLabel = game.i18n.localize("HEADER.CONDITIONS").toLowerCase().replace(/\b(\w)/g, x => x.toUpperCase());
+    return { name:conditionLabel, value: bonus, tooltip: current + `/` + max};
   }
 }

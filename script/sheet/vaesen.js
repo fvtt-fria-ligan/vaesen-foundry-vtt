@@ -1,12 +1,7 @@
-import { prepareRollDialog } from "../util/roll.js";
-import { YearZeroRoll } from "../lib/yzur.js";
+import { prepareRollNewDialog } from "../util/roll.js";
 import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
 
 export class VaesenCharacterSheet extends VaesenActorSheet {
-  //TODO convert dices[] to a YZUR roll object to pass rolls and allow pushes
-  dices = new YearZeroRoll();
-  lastTestName = "";
-  lastDamage = 0;
 
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
@@ -92,33 +87,18 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
     const div = $(event.currentTarget).parents(".attack");
     const item = this.actor.items.get(div.data("itemId"));
     const testName = item.name;
-    let bonus = this.computeBonusFromConditions();
-    let attribute =
-      this.actor.system.attribute[item.system.attribute].value;
-    prepareRollDialog(
-      this,
-      testName,
-      attribute,
-      0,
-      bonus,
-      item.system.damage,
-      testName,
-      ""
-    );
+    let bonus = this.computeInfoFromConditions();
+    let attribute = this.actor.system.attribute[item.system.attribute];
+
+    let info = [
+      { name: game.i18n.localize(attribute.label + "_ROLL"), value: attribute.value },
+      this.computeInfoFromConditions()
+    ];
+
+    prepareRollNewDialog(this, testName, info, item.system.damage, null, null);
   }
 
   /****** determing current dice pool modifier from the last active condition */
-  computeBonusFromConditions() {
-    let items = Array.from(this.actor.items);
-    let lastBonus = 0;
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].type === "condition" && items[i].system.active) {
-        lastBonus = items[i].system.bonus;
-      }
-    }
-    return lastBonus;
-  }
-
   computeInfoFromConditions() {
     let items = Array.from(this.actor.items);
     let lastBonus = 0;
