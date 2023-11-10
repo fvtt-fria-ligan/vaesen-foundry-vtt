@@ -291,6 +291,11 @@
     padding-bottom: 4px;
 }
 
+.vaesen.roll-dialog p{
+    margin: 7px 0px;
+    padding-bottom: 0px;
+}
+
 
 .vaesen .dice-roll .dice-formula {
     border: none;

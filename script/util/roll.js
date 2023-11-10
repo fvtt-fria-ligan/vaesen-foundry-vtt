@@ -1,25 +1,41 @@
 import { YearZeroRoll } from "../lib/yzur.js";
 
-export function prepareRollDialog(
+export function prepareRollNewDialog(
   sheet,
   testName,
-  attributeDefault,
-  skillDefault,
-  bonusDefault,
-  damageDefault,
-  attName = game.i18n.localize("ATTACK.ATTRIBUTE"),
-  skName = game.i18n.localize("ROLL.SKILL"),
+  baseDiceLines = [],
+  damageDefault = null,
   gearBonus = null,
   talentBonus = null
 ) {
-  let attributeHtml = buildHtmlDialog(attName, attributeDefault, "attribute");
-  let skillHtml = buildHtmlDialog(skName, skillDefault, "skill");
+
+  let baseLines = [];
+  let baseLinesDice = 0;
+
+  baseDiceLines.forEach(element => {
+    
+    if (element == null)
+      return;
+
+    let tooltip = element.tooltip ?? "";
+    console.log(tooltip);
+    baseLines.push(`
+<div class="flex row" style="flex-basis: 35%; justify-content: space-between;">
+<p style="text-transform: capitalize; white-space:nowrap;">` +
+element.name +
+`: </p>
+<input style="text-align: center" type="text" value="` +
+element.value +
+`" readonly title="` + tooltip + `"/></div>`);
+    baseLinesDice += parseInt(element.value, 10);
+  });
+
   let bonusHtml = buildInputHtmlDialog(
     game.i18n.localize("ROLL.BONUS"),
-    bonusDefault,
+    0,
     "bonus"
   );
-  let damageHtml = buildInputHtmlDialog(
+  let damageHtml = damageDefault === null ? "" : buildInputHtmlDialog(
     game.i18n.localize("ROLL.DAMAGE"),
     damageDefault,
     "damage"
@@ -28,62 +44,43 @@ export function prepareRollDialog(
   let gearHtml = buildSelectHtmlDialog(gearBonus, "GEAR.NAME", "gear");
   let talentHtml = buildSelectHtmlDialog(talentBonus, "TALENT.NAME", "talent");
 
+  let extraLines = [];
+  extraLines.push(gearHtml);
+  extraLines.push(talentHtml);
+  extraLines.push(bonusHtml);
+  extraLines.push(damageHtml);
+  const extraLinesHtml = extraLines.join("");
+  const baseLinesHtml = baseLines.join("");
+
   let d = new Dialog(
     {
       title: "Test : " + testName,
-      content: buildDivHtmlDialog(
-        `
-            <div class="roll-fields">
-            <h2 class="title" style="width: 97%; margin: auto;"> ` +
-          game.i18n.localize("ROLL.TEST") +
-          `: ` +
-          testName +
-          `
-            </h2>
-            <div class="flex column grow align-center heavy-border" style="width:200px;">
-           ` +
-          attributeHtml +
-          skillHtml +
-          ` 
-        <div align-center style="flex-basis:33%;"> <strong>` +
-          game.i18n.localize("ROLL.BASE.POOL") +
-          `:</strong> ` +
-          (attributeDefault + skillDefault) +
-          `</div>
-        </div><div class="flex column grow align-center light-border" style="width:200px; margin:auto; padding:5px; margin-bottom: 3px;">` +
-          bonusHtml +
-          damageHtml +
-          gearHtml +
-          talentHtml +
-          `</div></div>`
-      ),
+      content: buildDivHtmlNewDialog(testName, baseLinesHtml, baseLinesDice, extraLinesHtml),
       buttons: {
         roll: {
           icon: '<i class="fas fa-check"></i>',
           label: game.i18n.localize("ROLL.ROLL"),
           callback: (html) => {
-            let attribute = html.find("#attribute")[0].value;
-            let bonus = html.find("#bonus")[0].value;
-            let damage = html.find("#damage")[0].value;
-            let skill = 0;
+            let bonus = parseInt(html.find("#bonus")[0].value, 10);
             let gear = 0;
             var talent = 0;
-            let skillImput = html.find("#skill")[0];
+            var damage = 0;
             let gearSelect = html.find("#gear")[0];
             let talentSelect = html.find("#talent")[0];
-            if (skillImput)
-              skill = skillImput.value;
+            let damageInput = html.find("#damage")[0];
             if (gearSelect)
-              gear = gearSelect.value;
+              gear = parseInt(gearSelect.value, 10);
             if (talentSelect)
-              talent = talentSelect.value;
+              talent = parseInt(talentSelect.value, 10);
+            if (damageInput)
+              damage = parseInt(damageInput.value, 10);
             roll(
               sheet,
               testName,
-              parseInt(attribute, 10),
-              parseInt(skill, 10),
-              parseInt(bonus, 10) + parseInt(gear, 10) + parseInt(talent, 10),
-              parseInt(damage, 10)
+              baseLinesDice,
+              0,
+              bonus + gear + talent,
+              damage
             );
           },
         },
@@ -197,7 +194,8 @@ function buildSelectHtmlDialog(options, name, id) {
   html.push(`<select id="`+id+`" style="width: 100%;">`);
   html.push(`<option value="0">None (0)</option>`);
   options.forEach(element => {
-    html.push(`<option value="`+element.bonus+`">`+element.name +` (`+element.bonus+`)`+`</option>`)
+    var descriptionWithoutTags = $("<p>").html(element.description).text();
+    html.push(`<option value="`+element.bonus+`" title="`+ descriptionWithoutTags +`">`+element.name +` (`+element.bonus+`)`+`</option>`)
   });
   html.push(`</select></div>`);
   return html.join("");
@@ -223,4 +221,18 @@ function buildHtmlDialog(diceName, diceValue, type) {
 
 function buildDivHtmlDialog(divContent) {
   return "<div class='vaesen roll-dialog '>" + divContent + "</div>";
+}
+
+function buildDivHtmlNewDialog(testName, baseDiceHtml, baseDiceValue, extraLinesHtml) {
+  let dialogHtmlContent = [];
+  dialogHtmlContent.push("<div class='vaesen roll-dialog'>");
+  dialogHtmlContent.push(`<div class="roll-fields">`);
+  dialogHtmlContent.push(`<h2 class="title" style="width: 97%; margin: auto;"> ` + game.i18n.localize("ROLL.TEST") + `: ` +
+  testName +`</h2>`);
+  dialogHtmlContent.push(`<div class="flex column grow align-center heavy-border" style="width:200px;">` + baseDiceHtml + ` 
+<div align-center style="flex-basis:33%;"> <strong>` + game.i18n.localize("ROLL.BASE.POOL") + `:</strong> ` + baseDiceValue + `</div></div>`);
+  dialogHtmlContent.push(`<div class="flex column grow align-center light-border" style="width:200px; margin:auto; padding:5px; margin-bottom: 3px;">` +
+extraLinesHtml +`</div></div>`);
+  dialogHtmlContent.push("</div></div>");
+  return dialogHtmlContent.join("");
 }

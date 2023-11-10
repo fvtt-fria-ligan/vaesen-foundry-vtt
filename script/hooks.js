@@ -3,7 +3,7 @@ import { PlayerCharacterSheet } from "./sheet/player.js";
 import { NpcCharacterSheet } from "./sheet/npc.js";
 import { VaesenCharacterSheet } from "./sheet/vaesen.js";
 import { HeadquarterCharacterSheet } from "./sheet/headquarter.js";
-import { prepareRollDialog, push } from "./util/roll.js";
+import { prepareRollNewDialog, push } from "./util/roll.js";
 import { registerSystemSettings } from "./util/settings.js";
 import { vaesen } from "./config.js";
 import { conditions } from "./util/conditions.js";
@@ -26,7 +26,7 @@ Hooks.once("init", () => {
   CONFIG.Combat.initiative = { formula: "1d10", decimals: 0 };
   CONFIG.Actor.documentClass = VaesenActor;
   CONFIG.anonymousSheet = {};
-  CONFIG.roll = prepareRollDialog;
+  CONFIG.roll = prepareRollNewDialog;
   CONFIG.push = push;
   CONFIG.Cards.presets = {
     initiative: {
