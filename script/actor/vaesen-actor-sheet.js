@@ -204,6 +204,9 @@ export class VaesenActorSheet extends ActorSheet {
     html.find(".gear .effect").click((ev) => {
       this.onItemUpdate(ev);
     });
+    html.find(".roll-fear").click((ev) => {
+      this.rollFear(ev);
+    });
   }
 
   computeSkills(context) {
@@ -241,6 +244,8 @@ export class VaesenActorSheet extends ActorSheet {
   setPortrait(data) {
     data.portrait = game.settings.get("vaesen", "portrait");
   }
+
+
 
   onItemCreate(event) {
     event.preventDefault();
@@ -449,7 +454,8 @@ export class VaesenActorSheet extends ActorSheet {
             (item.system.bonusType === "ignoreConditionSkill" && item.system.skill.indexOf(skillName) > -1) || 
             (item.system.bonusType === "ignoreConditionPhysical" && (attribute === "physique" || attribute === "precision")) ||
             (item.system.bonusType === "ignoreConditionMental" && (attribute === "logic" || attribute === "empathy")) ||
-            (item.system.bonusType === "damage" && item.system.skill.indexOf(skillName) > -1)
+            (item.system.bonusType === "damage" && item.system.skill.indexOf(skillName) > -1) ||
+            (item.system.bonusType === "fear") 
        )) {
         
         let talent = {
@@ -461,7 +467,6 @@ export class VaesenActorSheet extends ActorSheet {
         talentArray.push(talent);
       }
     }
-
     return talentArray;
   }
 
@@ -506,6 +511,21 @@ export class VaesenActorSheet extends ActorSheet {
       this.computeInfoFromConditions(attributeName)
     ];
     prepareRollNewDialog(this, testName, info, null, null, null);
+  }
+
+  rollFear(event) {
+    
+    const key = event.currentTarget.dataset.key;
+    const attribute = this.actor.system.attribute[key];
+    const testName = game.i18n.localize( attribute.label + "_ROLL") + " " + game.i18n.localize("FEAR_ROLL");
+    let bonusTalent = this.computePossibleBonusFromTalent("fear", key);
+
+    let info = [
+      { name:testName, value: attribute.value},
+      this.computeInfoFromConditions(attribute)
+    ];
+    prepareRollNewDialog(this, testName, info, null, null, bonusTalent);
+   
   }
 
   rollSkill(skillName) {

@@ -65,7 +65,7 @@ h4 {
 }
 
 .color-brown-700 {
-  color: hsl(13, 48%, 17%);
+  color: hsl(13, 47%, 17%);
 }
 
 .title-case {
@@ -105,7 +105,7 @@ h4 {
 }
 
 .window-app .window-content {
-  color: hsl(13, 48%, 17%);
+  color: hsl(13, 47%, 17%);
   background-color: hsl(40, 20%, 80%);
 }
 
@@ -123,7 +123,7 @@ h4 {
      border-image: url(../asset/scooped_corners_dark.svg) stretch;
   border-image-slice: 58 fill;
   margin-block: 3px;
-  filter: drop-shadow(2px 2px hsl(13, 48%, 17%));
+  filter: drop-shadow(2px 2px hsl(13, 47%, 17%));
 }
 
 .heavy-border {
@@ -152,7 +152,7 @@ h4 {
   border-image-slice: 58 fill;
   background-color: transparent;
   margin: 3px;
-  filter: drop-shadow(2px 2px hsl(13, 48%, 17%));
+  filter: drop-shadow(2px 2px hsl(13, 47%, 17%));
 }
 
 input.light {
@@ -161,7 +161,7 @@ input.light {
      border-image: url(../asset/scooped_corners.svg) stretch;
   border-image-slice: 58 fill;
   margin-block: 3px;
-  filter: drop-shadow(2px 2px hsl(13, 48%, 17%));
+  filter: drop-shadow(2px 2px hsl(13, 47%, 17%));
 }
 
 input.dark {
@@ -170,7 +170,7 @@ input.dark {
      border-image: url(../asset/scooped_corners_dark.svg) stretch;
   border-image-slice: 58 fill;
   margin-block: 3px;
-  filter: drop-shadow(2px 2px hsl(13, 48%, 17%));
+  filter: drop-shadow(2px 2px hsl(13, 47%, 17%));
 }
 
 .icon {
@@ -275,10 +275,6 @@ input.dark {
   align-self: end;
 }
 
-.grid-align-start {
-  align-self: start;
-}
-
 .span-2 {
   grid-column: span 2;
 }
@@ -360,7 +356,7 @@ input.dark {
   height: 2rem;
   line-height: 2rem;
   background: none;
-  color: hsl(13, 48%, 17%);
+  color: hsl(13, 47%, 17%);
   border: none;
 }
 .journal-sheet nav {
@@ -426,7 +422,7 @@ input.dark {
 }
 
 a.content-link {
-  color: hsl(13, 48%, 17%);
+  color: hsl(13, 47%, 17%);
   text-decoration: none;
   background: none;
   padding: 0;
@@ -435,7 +431,7 @@ a.content-link {
   border: none;
 }
 a.content-link i {
-  color: hsl(13, 48%, 17%);
+  color: hsl(13, 47%, 17%);
 }
 
 .icon-img {
@@ -443,6 +439,10 @@ a.content-link i {
   height: 25px;
   border: none;
   border-radius: 0;
+}
+
+.roll-fear {
+  cursor: pointer;
 }
 
 ol.dice-rolls li {

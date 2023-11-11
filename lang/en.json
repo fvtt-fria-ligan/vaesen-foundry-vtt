@@ -101,6 +101,7 @@
   "TYPE" : "Type",
   "NAME" : "Name",
   "BONUS_PENALTY" : "Bonus/Penalty",
+  "FEAR_ROLL" : "Fear Roll",
   
 
   "GEAR.ICON": "Icon",
