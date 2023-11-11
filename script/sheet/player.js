@@ -243,6 +243,27 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
         ev.dataTransfer.setData("text/plain", JSON.stringify(data));
       }, false);
     });
+
+    html.find('.roll-fear img').each((i, item) => {
+      const div = $(item).parents(".roll-fear");
+      const key = div.data("key");
+      const attribute = this.actor.system.attribute[key];
+      const testName = game.i18n.localize( attribute.label + "_ROLL") + " " + game.i18n.localize("FEAR_ROLL");
+      
+      const data = {
+        type: "fear",
+        attributeKey: key,
+        img: item.src.replace(".svg", "-white.svg"),
+        text: testName
+      };
+
+      item.setAttribute("data-item-id", this.actor.id);
+      item.setAttribute("draggable", true);
+      item.addEventListener("dragstart", ev => {
+        console.log(data);
+        ev.dataTransfer.setData("text/plain", JSON.stringify(data));
+      }, false);
+    });
   }
 
   computeItems(data) {

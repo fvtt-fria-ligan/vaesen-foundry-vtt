@@ -205,7 +205,8 @@ export class VaesenActorSheet extends ActorSheet {
       this.onItemUpdate(ev);
     });
     html.find(".roll-fear").click((ev) => {
-      this.rollFear(ev);
+      const key = ev.currentTarget.dataset.key;
+      this.rollFear(key);
     });
   }
 
@@ -513,9 +514,7 @@ export class VaesenActorSheet extends ActorSheet {
     prepareRollNewDialog(this, testName, info, null, null, null);
   }
 
-  rollFear(event) {
-    
-    const key = event.currentTarget.dataset.key;
+  rollFear(key) {
     const attribute = this.actor.system.attribute[key];
     const testName = game.i18n.localize( attribute.label + "_ROLL") + " " + game.i18n.localize("FEAR_ROLL");
     let bonusTalent = this.computePossibleBonusFromTalent("fear", key);
