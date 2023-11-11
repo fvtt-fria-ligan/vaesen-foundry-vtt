@@ -18,45 +18,70 @@
           class="border-none center w-90"
         />
       </div>
-      <div class="grid grid-5col-fr center gap-sm h-100">
-        <div class="grid-span-4 grid-align-end">
-          <b>{{localize "NAME"}}:</b>
-          <span >
+      <div class="grid grid-6col-fr center gap-sm h-100">
+        <div class="grid-span-3">
+          <div class="grid-align-end" style="margin-bottom: 5px;">
+            <b>{{localize "NAME"}}:</b>
+            <span >
+              <input
+                  class="light"
+                name="name"
+                type="text"
+                value="{{item.name}}"
+                style="width: 99%;"
+              />
+            </span>
+          </div>
+          <div class="grid-align-end" style="margin-bottom: 5px;">
+            <b>{{localize "BONUS_TYPE.HEADER"}}</b>
+            <select name="system.bonusType" style="margin-top:3px; width: 100%;">
+              {{#select data.system.bonusType}}
+              {{#each config.bonusType as |bonusType key|}}
+              <option value="{{key}}" {{#if (eq key ../data.system.bonusType)}}selected{{/if}}>{{localize bonusType}}
+              </option>
+              {{/each}}
+              {{/select}}
+            </select>
+          </div>
+          {{#ifIn data.system.bonusType config.bonusTypeRequiresBonus}}
+          <div class="grid-align-end" style="margin-bottom: 5px;">
+            <b>{{localize "TALENT.BONUS"}}:</b>
             <input
-                class="light"
-              name="name"
+              class="light"
+              name="system.bonus"
               type="text"
-              value="{{item.name}}"
-              style="width: 99%;"
+              value="{{data.system.bonus}}"
             />
-          </span>
+          </div>
+          {{/ifIn}}
+          {{#ifIn data.system.bonusType config.bonusTypeRequiresSkill}}
+          <div class="grid-align-end">
+            <b>{{localize "TALENT.SKILL"}}</b>
+            <select name="system.skill" multiple style="height:125px;width: 100%;">
+              {{#select data.system.skill}}
+              {{#if (eq data.system.bonusType "damage")}}
+                {{#each config.skills as |skill key|}}
+                {{#ifIn key ../config.bonusTypeDamageSkills}}
+                <option value="{{key}}" {{#ifIn key ../data.system.skill}}selected{{/ifIn}}>{{localize skill}}
+                </option>
+                {{/ifIn}}
+                {{/each}}
+              {{else}}
+                {{#each config.skills as |skill key|}}
+                <option value="{{key}}" {{#ifIn key ../data.system.skill}}selected{{/ifIn}}>{{localize skill}}
+                </option>
+                {{/each}}
+              {{/if}}
+              {{/select}}
+            </select>
+          </div>
+          {{/ifIn}}
         </div>
-
-        <div class="grid-align-end">
-          <b>{{localize "TALENT.BONUS"}}:</b>
-          <input
-            class="light"
-            name="system.bonus"
-            type="text"
-            value="{{data.system.bonus}}"
-          />
-        </div>
-        <div class="grid-span-4">
+        <div class="grid-span-3">
           <b>{{localize "TALENT.DESCRIPTION"}}</b>
           <textarea
-            name="system.description" rows="7"
+            name="system.description" rows="8"
           >{{data.system.description}}</textarea>
-        </div>
-        <div class="grid-align-start">
-          <b>{{localize "TALENT.SKILL"}}</b>
-          <select name="system.skill" multiple style="height:125px;">
-            {{#select data.system.skill}}
-            {{#each config.skills as |skill key|}}
-            <option value="{{key}}" {{#ifIn key ../data.system.skill}}selected{{/ifIn}}>{{localize skill}}
-            </option>
-            {{/each}}
-            {{/select}}
-          </select>
         </div>
       </div>
     </div>

@@ -231,6 +231,14 @@
   "RELATIONSHIP.WITH": "Relationship With",
   "RELATIONSHIP.NATURE": "Nature of Relationship",
   "RELATIONSHIP.WT": "With",
-  "RELATIONSHIP.NT": "Nature"
+  "RELATIONSHIP.NT": "Nature",
 
+  "BONUS_TYPE.HEADER": "Bonus Type",
+  "BONUS_TYPE.NONE": "None",
+  "BONUS_TYPE.SKILL": "Skill",
+  "BONUS_TYPE.IGNORE_CONDITIONS_SKILL": "Ignore Conditions for Skill",
+  "BONUS_TYPE.IGNORE_CONDITIONS_PHYSICAL": "Ignore Physical Conditions",
+  "BONUS_TYPE.IGNORE_CONDITIONS_MENTAL": "Ignore Mental Conditions",
+  "BONUS_TYPE.DAMAGE": "Damage",
+  "BONUS_TYPE.FEAR": "Fear"
 }

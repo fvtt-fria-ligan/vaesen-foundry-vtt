@@ -439,12 +439,25 @@ export class VaesenActorSheet extends ActorSheet {
     return gearArray;
   }
 
-  computePossibleBonusFromTalent(skillName){
+  computePossibleBonusFromTalent(skillName, attribute){
     let talentArray = [];
 
     for (let item of Object.values(this.actor.items.contents)) {
-      if (item.type === "talent" && item.system.bonus > 0 && item.system.skill.indexOf(skillName) > -1) {
-        let talent = { name: item.name, bonus: item.system.bonus, description: item.system.description};
+      if (item.type === "talent" &&
+          (
+            (item.system.bonusType === "skill" && item.system.skill.indexOf(skillName) > -1) ||
+            (item.system.bonusType === "ignoreConditionSkill" && item.system.skill.indexOf(skillName) > -1) || 
+            (item.system.bonusType === "ignoreConditionPhysical" && (attribute === "physique" || attribute === "precision")) ||
+            (item.system.bonusType === "ignoreConditionMental" && (attribute === "logic" || attribute === "empathy")) ||
+            (item.system.bonusType === "damage" && item.system.skill.indexOf(skillName) > -1)
+       )) {
+        
+        let talent = {
+          name: item.name,
+          bonus: item.system.bonus,
+          description: item.system.description, 
+          bonusType: item.system.bonusType
+        };
         talentArray.push(talent);
       }
     }
@@ -500,7 +513,7 @@ export class VaesenActorSheet extends ActorSheet {
     const attribute = this.actor.system.attribute[skill.attribute];
 
     let bonusGear = this.computePossibleBonusFromGear(skillName);
-    let bonusTalent = this.computePossibleBonusFromTalent(skillName);
+    let bonusTalent = this.computePossibleBonusFromTalent(skillName, skill.attribute);
     
     const testName = game.i18n.localize(skill.label);
 

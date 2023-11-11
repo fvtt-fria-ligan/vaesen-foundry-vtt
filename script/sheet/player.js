@@ -317,6 +317,6 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     if (bonus === 0)
       return null;
     const conditionLabel = game.i18n.localize("HEADER.CONDITIONS").toLowerCase().replace(/\b(\w)/g, x => x.toUpperCase());
-    return { name:conditionLabel, value: bonus, tooltip: info.join("\n")};
+    return { name:conditionLabel, value: bonus, tooltip: info.join("\n"), type:"conditions"};
   }
 }
