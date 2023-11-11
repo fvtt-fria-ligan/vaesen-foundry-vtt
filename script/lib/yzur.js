@@ -1908,6 +1908,7 @@ class YearZeroRoll extends Roll {
         ? [...Array(this.pushCount + 1).keys()].sort((a, b) => b - a)
         : undefined,
       config: CONFIG.YZUR ?? {},
+      breakdown: this.options.breakdown,
     });
     // <== END MODIFIED PART
   }

@@ -1,6 +1,5 @@
 import { prepareRollNewDialog } from "../util/roll.js";
 import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
-import { commonListeners } from "../util/common.js";
 
 export class PlayerCharacterSheet extends VaesenActorSheet {
 
@@ -244,6 +243,27 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
         ev.dataTransfer.setData("text/plain", JSON.stringify(data));
       }, false);
     });
+
+    html.find('.roll-fear img').each((i, item) => {
+      const div = $(item).parents(".roll-fear");
+      const key = div.data("key");
+      const attribute = this.actor.system.attribute[key];
+      const testName = game.i18n.localize( attribute.label + "_ROLL") + " " + game.i18n.localize("FEAR_ROLL");
+      
+      const data = {
+        type: "fear",
+        attributeKey: key,
+        img: item.src.replace(".svg", "-white.svg"),
+        text: testName
+      };
+
+      item.setAttribute("data-item-id", this.actor.id);
+      item.setAttribute("draggable", true);
+      item.addEventListener("dragstart", ev => {
+        console.log(data);
+        ev.dataTransfer.setData("text/plain", JSON.stringify(data));
+      }, false);
+    });
   }
 
   computeItems(data) {
@@ -311,7 +331,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       if (condition.isChecked) {
         bonus = bonus - 1;
         console.log(condition);
-        info.push(game.i18n.localize(condition.label));
+        info.push(`${game.i18n.localize(condition.label)} (-1)`);
       }
     }
     if (bonus === 0)

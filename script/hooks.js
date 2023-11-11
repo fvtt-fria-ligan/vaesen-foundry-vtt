@@ -257,6 +257,13 @@ if (actor == null || actor.type !== "player")
    
 actor.sheet.rollAttribute("${data.attributeKey}");`;
   }
+  else if (data.type === "fear") {
+    command = `
+if (actor == null || actor.type !== "player")
+  return;
+   
+actor.sheet.rollFear("${data.attributeKey}");`;
+  }
 
   if (command === "")
     return;
@@ -267,7 +274,7 @@ actor.sheet.rollAttribute("${data.attributeKey}");`;
     macro = await Macro.create({
       name: data.text,
       type: "script",
-      //img: data.img,
+      img: data.img,
       command: command,
       flags: { "vaesen.skillRoll": true }
     });

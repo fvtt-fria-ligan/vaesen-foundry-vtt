@@ -12,6 +12,7 @@ export function prepareRollNewDialog(
   let baseLines = [];
   let baseLinesDice = 0;
   let conditionsPenalties = 0;
+  let breakdown = [];
 
   baseDiceLines.forEach(element => {
     
@@ -19,7 +20,6 @@ export function prepareRollNewDialog(
       return;
 
     let tooltip = element.tooltip ?? "";
-    console.log(tooltip);
     baseLines.push(`
 <div class="flex row" style="flex-basis: 35%; justify-content: space-between; width: 100%;">
 <p style="text-transform: capitalize; white-space:nowrap;">` +
@@ -30,6 +30,8 @@ element.value +
 `" readonly title="` + tooltip + `"/></div>`);
     
     baseLinesDice += parseInt(element.value, 10);
+    var moreInfo = tooltip ? `<ul><li>${tooltip.replace("\n", "</li><li>")}</li></ul>` : "";
+    breakdown.push(`${element.name}: ${adjustBonusText(element.value)}${moreInfo}`);
     if (element.type === "conditions")
       conditionsPenalties = parseInt(element.value, 10);
   });
@@ -73,14 +75,20 @@ element.value +
             let talentSelect = html.find("#talent")[0];
             let damageInput = html.find("#damage")[0];
             if (gearSelect)
-              gear = parseInt(gearSelect.value, 10);
+            {
+              if (gearSelect.value != 0) {
+                breakdown.push(gearSelect.selectedOptions[0].text);
+                gear = parseInt(gearSelect.value, 10);
+              }
+            }
             if (talentSelect)
             {
               var conditionsIgnored = false;
               var options = talentSelect.selectedOptions;
-              Array.from(options).map(({ value }) => {
+              Array.from(options).map(({ text, value }) => {
                 let selectedTalent = talentBonus.find(x=> x.name == value);
-                if (selectedTalent.bonusType == "skill")
+                breakdown.push(text);
+                if (selectedTalent.bonusType == "skill" || selectedTalent.bonusType == "fear")
                   talent += parseInt(selectedTalent.bonus, 10);
                 else if (selectedTalent.bonusType === "damage")
                   damage += parseInt(selectedTalent.bonus, 10);
@@ -92,13 +100,16 @@ element.value +
             }
             if (damageInput)
               damage += parseInt(damageInput.value, 10);
+            if (bonus > 0)
+              breakdown.push(`${game.i18n.localize("ROLL.BONUS")}: ${adjustBonusText(bonus)}`);
             roll(
               sheet,
               testName,
               baseLinesDice,
               0,
               bonus + gear + talent,
-              damage
+              damage,
+              breakdown
             );
           },
         },
@@ -116,13 +127,13 @@ element.value +
   d.render(true);
 }
 
-export function roll(sheet, testName, attribute, skill, bonus, damage) {
+export function roll(sheet, testName, attribute, skill, bonus, damage, breakdown) {
   sheet.dices = new YearZeroRoll();
   sheet.lastTestName = testName;
   sheet.lastDamage = damage;
   let numberOfDice = attribute + skill + bonus;
 
-  rollDice(sheet, numberOfDice);
+  rollDice(sheet, numberOfDice, breakdown);
   //sendRollToChat(sheet, false);
 }
 
@@ -133,7 +144,7 @@ export async function push(sheet) {
   // sendRollToChat(sheet, true);
 }
 
-async function rollDice(sheet, numberOfDice) {
+async function rollDice(sheet, numberOfDice, breakdown) {
   let actor = game.actors.get(sheet.object._id);
   let token = actor.prototypeToken.texture.src;
   console.log("actor", actor);
@@ -153,6 +164,7 @@ async function rollDice(sheet, numberOfDice) {
     name: sheet.lastTestName,
     token: token,
     damage: sheet.lastDamage,
+    breakdown: breakdown
   };
 
   let r = YearZeroRoll.forge(dice, {owner: actor.id, token: token, name:sheet.lastTestName, damage: sheet.lastDamage}, options);
@@ -213,7 +225,7 @@ function buildGearSelectHtmlDialog(options) {
   html.push(`<option value="0">None (0)</option>`);
   options.forEach(element => {
 
-    let bonusValue = element.bonus > 0 ? "+" + element.bonus : element.bonus;
+    let bonusValue = adjustBonusText(element.bonus);
     var descriptionWithoutTags = $("<p>").html(element.description).text();
     html.push(`<option value="`+element.bonus+`" title="`+ descriptionWithoutTags +`">`+element.name +` (`+bonusValue+`)`+`</option>`)
   });
@@ -234,10 +246,9 @@ function buildTalentSelectHtmlDialog(options, name, id) {
   options.forEach(element => {
     let descriptionWithoutTags = $("<p>").html(element.description).text();
     let requiresBonus = CONFIG.vaesen.bonusTypeRequiresBonus.indexOf(element.bonusType) > -1;
-    console.log(requiresBonus);
     let bonusValue = requiresBonus ? parseInt(element.bonus, 10) : null;
     if (bonusValue)
-      bonusValue = `: ${bonusValue > 0 && requiresBonus ? "+" + bonusValue : bonusValue}`;
+      bonusValue = `: ${adjustBonusText(bonusValue)}`;
     let bonusInfo = (element.bonusType ? game.i18n.localize(CONFIG.vaesen.bonusType[element.bonusType]) : "") + (bonusValue ?? "");
     const fullDescription = `${element.name}\n${bonusInfo}\n${descriptionWithoutTags}`;
     html.push(`<option value="${element.name}" title="${fullDescription}">${element.name} (${bonusInfo})</option>`)
@@ -280,4 +291,9 @@ function buildDivHtmlNewDialog(testName, baseDiceHtml, baseDiceValue, extraLines
 extraLinesHtml +`</div></div>`);
   dialogHtmlContent.push("</div></div>");
   return dialogHtmlContent.join("");
+}
+
+export function adjustBonusText(bonus) {
+  bonus = parseInt(bonus, 10);
+  return bonus > 0 ? "+" + bonus : bonus;
 }
