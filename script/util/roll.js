@@ -88,7 +88,7 @@ element.value +
               Array.from(options).map(({ text, value }) => {
                 let selectedTalent = talentBonus.find(x=> x.name == value);
                 breakdown.push(text);
-                if (selectedTalent.bonusType == "skill")
+                if (selectedTalent.bonusType == "skill" || selectedTalent.bonusType == "fear")
                   talent += parseInt(selectedTalent.bonus, 10);
                 else if (selectedTalent.bonusType === "damage")
                   damage += parseInt(selectedTalent.bonus, 10);
