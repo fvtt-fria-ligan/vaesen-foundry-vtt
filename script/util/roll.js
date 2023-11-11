@@ -21,7 +21,7 @@ export function prepareRollNewDialog(
     let tooltip = element.tooltip ?? "";
     console.log(tooltip);
     baseLines.push(`
-<div class="flex row" style="flex-basis: 35%; justify-content: space-between;">
+<div class="flex row" style="flex-basis: 35%; justify-content: space-between; width: 100%;">
 <p style="text-transform: capitalize; white-space:nowrap;">` +
 element.name +
 `: </p>
@@ -76,13 +76,19 @@ element.value +
               gear = parseInt(gearSelect.value, 10);
             if (talentSelect)
             {
-              let selectedTalent = talentBonus.find(x=> x.name == talentSelect.value);
-              if (selectedTalent.bonusType == "skill")
-                talent = parseInt(selectedTalent.bonus, 10);
-              else if (selectedTalent.bonusType === "damage")
-                damage += parseInt(selectedTalent.bonus, 10);
-              else if (selectedTalent.bonusType.startsWith("ignoreCondition"))
-                talent = -conditionsPenalties;
+              var conditionsIgnored = false;
+              var options = talentSelect.selectedOptions;
+              Array.from(options).map(({ value }) => {
+                let selectedTalent = talentBonus.find(x=> x.name == value);
+                if (selectedTalent.bonusType == "skill")
+                  talent += parseInt(selectedTalent.bonus, 10);
+                else if (selectedTalent.bonusType === "damage")
+                  damage += parseInt(selectedTalent.bonus, 10);
+                else if (selectedTalent.bonusType.startsWith("ignoreCondition") && !conditionsIgnored) {
+                  talent += -conditionsPenalties;
+                  conditionsIgnored = true;
+                }
+              });
             }
             if (damageInput)
               damage += parseInt(damageInput.value, 10);
@@ -105,7 +111,7 @@ element.value +
       default: "roll",
       close: () => {},
     },
-    { width: "230" }
+    { width: "330" }
   );
   d.render(true);
 }
@@ -183,7 +189,7 @@ function printDices(sheet) {
 function buildInputHtmlDialog(diceName, diceValue, type) {
   return (
     `
-    <div class="flex row" style="flex-basis: 35%; justify-content: space-between;">
+    <div class="flex row" style="flex-basis: 35%; justify-content: space-between; width: 100%;">
     <p style="text-transform: capitalize; white-space:nowrap;">` +
     diceName +
     `: </p>
@@ -206,8 +212,10 @@ function buildGearSelectHtmlDialog(options) {
   html.push(`<select id="gear" style="width: 100%;">`);
   html.push(`<option value="0">None (0)</option>`);
   options.forEach(element => {
+
+    let bonusValue = element.bonus > 0 ? "+" + element.bonus : element.bonus;
     var descriptionWithoutTags = $("<p>").html(element.description).text();
-    html.push(`<option value="`+element.bonus+`" title="`+ descriptionWithoutTags +`">`+element.name +` (`+element.bonus+`)`+`</option>`)
+    html.push(`<option value="`+element.bonus+`" title="`+ descriptionWithoutTags +`">`+element.name +` (`+bonusValue+`)`+`</option>`)
   });
   html.push(`</select></div>`);
   return html.join("");
@@ -221,7 +229,7 @@ function buildTalentSelectHtmlDialog(options, name, id) {
   html.push(`<div class="flex row" style="flex-basis: 35%; justify-content: space-between;">`);
   html.push(`<p style="text-transform: capitalize; white-space:nowrap; margin-top: 4px;">${game.i18n.localize("TALENT.NAME")}: </p></div>`);
   html.push(`<div class="flex row" style="width: 100%;">`);
-  html.push(`<select id="talent" style="width: 100%;">`);
+  html.push(`<select id="talent" style="width: 100%;" multiple>`);
   html.push(`<option value="0">None (0)</option>`);
   options.forEach(element => {
     let descriptionWithoutTags = $("<p>").html(element.description).text();
@@ -231,7 +239,8 @@ function buildTalentSelectHtmlDialog(options, name, id) {
     if (bonusValue)
       bonusValue = `: ${bonusValue > 0 && requiresBonus ? "+" + bonusValue : bonusValue}`;
     let bonusInfo = (element.bonusType ? game.i18n.localize(CONFIG.vaesen.bonusType[element.bonusType]) : "") + (bonusValue ?? "");
-    html.push(`<option value="${element.name}" title="${descriptionWithoutTags}">${element.name} (${bonusInfo})</option>`)
+    const fullDescription = `${element.name}\n${bonusInfo}\n${descriptionWithoutTags}`;
+    html.push(`<option value="${element.name}" title="${fullDescription}">${element.name} (${bonusInfo})</option>`)
   });
   html.push(`</select></div>`);
   return html.join("");
@@ -265,9 +274,9 @@ function buildDivHtmlNewDialog(testName, baseDiceHtml, baseDiceValue, extraLines
   dialogHtmlContent.push(`<div class="roll-fields">`);
   dialogHtmlContent.push(`<h2 class="title" style="width: 97%; margin: auto;"> ` + game.i18n.localize("ROLL.TEST") + `: ` +
   testName +`</h2>`);
-  dialogHtmlContent.push(`<div class="flex column grow align-center heavy-border" style="width:200px;">` + baseDiceHtml + ` 
+  dialogHtmlContent.push(`<div class="flex column grow align-center heavy-border" style="width:300px;">` + baseDiceHtml + ` 
 <div align-center style="flex-basis:33%;"> <strong>` + game.i18n.localize("ROLL.BASE.POOL") + `:</strong> ` + baseDiceValue + `</div></div>`);
-  dialogHtmlContent.push(`<div class="flex column grow align-center light-border" style="width:200px; margin:auto; padding:5px; margin-bottom: 3px;">` +
+  dialogHtmlContent.push(`<div class="flex column grow align-center light-border" style="width:300px; margin:auto; padding:5px; margin-bottom: 3px;">` +
 extraLinesHtml +`</div></div>`);
   dialogHtmlContent.push("</div></div>");
   return dialogHtmlContent.join("");
