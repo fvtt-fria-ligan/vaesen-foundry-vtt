@@ -1,6 +1,5 @@
 import { prepareRollNewDialog } from "../util/roll.js";
 import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
-import { commonListeners } from "../util/common.js";
 
 export class PlayerCharacterSheet extends VaesenActorSheet {
 
@@ -311,7 +310,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       if (condition.isChecked) {
         bonus = bonus - 1;
         console.log(condition);
-        info.push(game.i18n.localize(condition.label));
+        info.push(`${game.i18n.localize(condition.label)} (-1)`);
       }
     }
     if (bonus === 0)

@@ -1,4 +1,4 @@
-import { prepareRollNewDialog, push } from "../util/roll.js";
+import { adjustBonusText, prepareRollNewDialog, push } from "../util/roll.js";
 import { YearZeroRoll } from "../lib/yzur.js";
 import { buildChatCard } from "../util/chat.js";
 
@@ -475,7 +475,7 @@ export class VaesenActorSheet extends ActorSheet {
     let tooltip = [];
     for (let item of Object.values(this.actor.items.contents)) {
       if (item.type === "criticalInjury" && item.system.skill === skillName) {
-        tooltip.push(item.name);
+        tooltip.push(`${item.name} (${adjustBonusText(item.system.bonus)})`);
         bonus += parseInt(item.system.bonus);
       }
     }
