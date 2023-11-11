@@ -11,6 +11,7 @@ export function prepareRollNewDialog(
 
   let baseLines = [];
   let baseLinesDice = 0;
+  let conditionsPenalties = 0;
 
   baseDiceLines.forEach(element => {
     
@@ -27,7 +28,10 @@ element.name +
 <input style="text-align: center" type="text" value="` +
 element.value +
 `" readonly title="` + tooltip + `"/></div>`);
+    
     baseLinesDice += parseInt(element.value, 10);
+    if (element.type === "conditions")
+      conditionsPenalties = parseInt(element.value, 10);
   });
 
   let bonusHtml = buildInputHtmlDialog(
@@ -41,8 +45,8 @@ element.value +
     "damage"
   );
 
-  let gearHtml = buildSelectHtmlDialog(gearBonus, "GEAR.NAME", "gear");
-  let talentHtml = buildSelectHtmlDialog(talentBonus, "TALENT.NAME", "talent");
+  let gearHtml = buildGearSelectHtmlDialog(gearBonus);
+  let talentHtml = buildTalentSelectHtmlDialog(talentBonus, "TALENT.NAME", "talent");
 
   let extraLines = [];
   extraLines.push(gearHtml);
@@ -71,9 +75,17 @@ element.value +
             if (gearSelect)
               gear = parseInt(gearSelect.value, 10);
             if (talentSelect)
-              talent = parseInt(talentSelect.value, 10);
+            {
+              let selectedTalent = talentBonus.find(x=> x.name == talentSelect.value);
+              if (selectedTalent.bonusType == "skill")
+                talent = parseInt(selectedTalent.bonus, 10);
+              else if (selectedTalent.bonusType === "damage")
+                damage += parseInt(selectedTalent.bonus, 10);
+              else if (selectedTalent.bonusType.startsWith("ignoreCondition"))
+                talent = -conditionsPenalties;
+            }
             if (damageInput)
-              damage = parseInt(damageInput.value, 10);
+              damage += parseInt(damageInput.value, 10);
             roll(
               sheet,
               testName,
@@ -183,19 +195,43 @@ function buildInputHtmlDialog(diceName, diceValue, type) {
   );
 }
 
-function buildSelectHtmlDialog(options, name, id) {
+function buildGearSelectHtmlDialog(options) {
   if (options == null || options.length == 0)
     return "";
 
   var html = [];
   html.push(`<div class="flex row" style="flex-basis: 35%; justify-content: space-between;">`);
-  html.push(`<p style="text-transform: capitalize; white-space:nowrap; margin-top: 4px;">`+ game.i18n.localize(name) +`: </p></div>`);
+  html.push(`<p style="text-transform: capitalize; white-space:nowrap; margin-top: 4px;">`+ game.i18n.localize("GEAR.NAME") +`: </p></div>`);
   html.push(`<div class="flex row" style="width: 100%;">`);
-  html.push(`<select id="`+id+`" style="width: 100%;">`);
+  html.push(`<select id="gear" style="width: 100%;">`);
   html.push(`<option value="0">None (0)</option>`);
   options.forEach(element => {
     var descriptionWithoutTags = $("<p>").html(element.description).text();
     html.push(`<option value="`+element.bonus+`" title="`+ descriptionWithoutTags +`">`+element.name +` (`+element.bonus+`)`+`</option>`)
+  });
+  html.push(`</select></div>`);
+  return html.join("");
+}
+
+function buildTalentSelectHtmlDialog(options, name, id) {
+  if (options == null || options.length == 0)
+    return "";
+
+  let html = [];
+  html.push(`<div class="flex row" style="flex-basis: 35%; justify-content: space-between;">`);
+  html.push(`<p style="text-transform: capitalize; white-space:nowrap; margin-top: 4px;">${game.i18n.localize("TALENT.NAME")}: </p></div>`);
+  html.push(`<div class="flex row" style="width: 100%;">`);
+  html.push(`<select id="talent" style="width: 100%;">`);
+  html.push(`<option value="0">None (0)</option>`);
+  options.forEach(element => {
+    let descriptionWithoutTags = $("<p>").html(element.description).text();
+    let requiresBonus = CONFIG.vaesen.bonusTypeRequiresBonus.indexOf(element.bonusType) > -1;
+    console.log(requiresBonus);
+    let bonusValue = requiresBonus ? parseInt(element.bonus, 10) : null;
+    if (bonusValue)
+      bonusValue = `: ${bonusValue > 0 && requiresBonus ? "+" + bonusValue : bonusValue}`;
+    let bonusInfo = (element.bonusType ? game.i18n.localize(CONFIG.vaesen.bonusType[element.bonusType]) : "") + (bonusValue ?? "");
+    html.push(`<option value="${element.name}" title="${descriptionWithoutTags}">${element.name} (${bonusInfo})</option>`)
   });
   html.push(`</select></div>`);
   return html.join("");
