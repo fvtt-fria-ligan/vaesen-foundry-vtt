@@ -453,7 +453,7 @@ export class VaesenActorSheet extends ActorSheet {
             (item.system.bonusType === "skill" && item.system.skill.indexOf(skillName) > -1) ||
             (item.system.bonusType === "ignoreConditionSkill" && item.system.skill.indexOf(skillName) > -1) || 
             (item.system.bonusType === "ignoreConditionPhysical" && (attribute === "physique" || attribute === "precision")) ||
-            (item.system.bonusType === "ignoreConditionMental" && (attribute === "logic" || attribute === "empathy")) ||
+            (item.system.bonusType === "ignoreConditionMental" && skillName !== "fear" && (attribute === "logic" || attribute === "empathy")) ||
             (item.system.bonusType === "damage" && item.system.skill.indexOf(skillName) > -1) ||
             (item.system.bonusType === "fear") 
        )) {
