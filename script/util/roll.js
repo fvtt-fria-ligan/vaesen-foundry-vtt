@@ -100,6 +100,8 @@ element.value +
             }
             if (damageInput)
               damage += parseInt(damageInput.value, 10);
+            if (bonus > 0)
+              breakdown.push(`${game.i18n.localize("ROLL.BONUS")}: ${adjustBonusText(bonus)}`);
             roll(
               sheet,
               testName,
