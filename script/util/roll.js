@@ -8,30 +8,35 @@ export function prepareRollNewDialog(
   gearBonus = null,
   talentBonus = null
 ) {
-
   let baseLines = [];
   let baseLinesDice = 0;
   let conditionsPenalties = 0;
   let breakdown = [];
 
-  baseDiceLines.forEach(element => {
-    
-    if (element == null)
-      return;
+  baseDiceLines.forEach((element) => {
+    if (element == null) return;
 
     let tooltip = element.tooltip ?? "";
-    baseLines.push(`
+    baseLines.push(
+      `
 <div class="flex row" style="flex-basis: 35%; justify-content: space-between; width: 100%;">
 <p style="text-transform: capitalize; white-space:nowrap;">` +
-element.name +
-`: </p>
+        element.name +
+        `: </p>
 <input style="text-align: center" type="text" value="` +
-element.value +
-`" readonly title="` + tooltip + `"/></div>`);
-    
+        element.value +
+        `" readonly title="` +
+        tooltip +
+        `"/></div>`
+    );
+
     baseLinesDice += parseInt(element.value, 10);
-    var moreInfo = tooltip ? `<ul><li>${tooltip.replace("\n", "</li><li>")}</li></ul>` : "";
-    breakdown.push(`${element.name}: ${adjustBonusText(element.value)}${moreInfo}`);
+    var moreInfo = tooltip
+      ? `<ul><li>${tooltip.replace("\n", "</li><li>")}</li></ul>`
+      : "";
+    breakdown.push(
+      `${element.name}: ${adjustBonusText(element.value)}${moreInfo}`
+    );
     if (element.type === "conditions")
       conditionsPenalties = parseInt(element.value, 10);
   });
@@ -41,14 +46,21 @@ element.value +
     0,
     "bonus"
   );
-  let damageHtml = damageDefault === null ? "" : buildInputHtmlDialog(
-    game.i18n.localize("ROLL.DAMAGE"),
-    damageDefault,
-    "damage"
-  );
+  let damageHtml =
+    damageDefault === null
+      ? ""
+      : buildInputHtmlDialog(
+          game.i18n.localize("ROLL.DAMAGE"),
+          damageDefault,
+          "damage"
+        );
 
   let gearHtml = buildGearSelectHtmlDialog(gearBonus);
-  let talentHtml = buildTalentSelectHtmlDialog(talentBonus, "TALENT.NAME", "talent");
+  let talentHtml = buildTalentSelectHtmlDialog(
+    talentBonus,
+    "TALENT.NAME",
+    "talent"
+  );
 
   let extraLines = [];
   extraLines.push(gearHtml);
@@ -61,7 +73,12 @@ element.value +
   let d = new Dialog(
     {
       title: "Test : " + testName,
-      content: buildDivHtmlNewDialog(testName, baseLinesHtml, baseLinesDice, extraLinesHtml),
+      content: buildDivHtmlNewDialog(
+        testName,
+        baseLinesHtml,
+        baseLinesDice,
+        extraLinesHtml
+      ),
       buttons: {
         roll: {
           icon: '<i class="fas fa-check"></i>',
@@ -74,34 +91,39 @@ element.value +
             let gearSelect = html.find("#gear")[0];
             let talentSelect = html.find("#talent")[0];
             let damageInput = html.find("#damage")[0];
-            if (gearSelect)
-            {
+            if (gearSelect) {
               if (gearSelect.value != 0) {
                 breakdown.push(gearSelect.selectedOptions[0].text);
                 gear = parseInt(gearSelect.value, 10);
               }
             }
-            if (talentSelect)
-            {
+            if (talentSelect) {
               var conditionsIgnored = false;
               var options = talentSelect.selectedOptions;
               Array.from(options).map(({ text, value }) => {
-                let selectedTalent = talentBonus.find(x=> x.name == value);
+                let selectedTalent = talentBonus.find((x) => x.name == value);
                 breakdown.push(text);
-                if (selectedTalent.bonusType == "skill" || selectedTalent.bonusType == "fear")
+                if (
+                  selectedTalent.bonusType == "skill" ||
+                  selectedTalent.bonusType == "fear"
+                )
                   talent += parseInt(selectedTalent.bonus, 10);
                 else if (selectedTalent.bonusType === "damage")
                   damage += parseInt(selectedTalent.bonus, 10);
-                else if (selectedTalent.bonusType.startsWith("ignoreCondition") && !conditionsIgnored) {
+                else if (
+                  selectedTalent.bonusType.startsWith("ignoreCondition") &&
+                  !conditionsIgnored
+                ) {
                   talent += -conditionsPenalties;
                   conditionsIgnored = true;
                 }
               });
             }
-            if (damageInput)
-              damage += parseInt(damageInput.value, 10);
+            if (damageInput) damage += parseInt(damageInput.value, 10);
             if (bonus > 0)
-              breakdown.push(`${game.i18n.localize("ROLL.BONUS")}: ${adjustBonusText(bonus)}`);
+              breakdown.push(
+                `${game.i18n.localize("ROLL.BONUS")}: ${adjustBonusText(bonus)}`
+              );
             roll(
               sheet,
               testName,
@@ -127,7 +149,15 @@ element.value +
   d.render(true);
 }
 
-export function roll(sheet, testName, attribute, skill, bonus, damage, breakdown) {
+export function roll(
+  sheet,
+  testName,
+  attribute,
+  skill,
+  bonus,
+  damage,
+  breakdown
+) {
   sheet.dices = new YearZeroRoll();
   sheet.lastTestName = testName;
   sheet.lastDamage = damage;
@@ -156,7 +186,7 @@ async function rollDice(sheet, numberOfDice, breakdown) {
   }
 
   let dice = {
-    term: 's',
+    term: "s",
     number: numberOfDice,
   };
 
@@ -164,10 +194,19 @@ async function rollDice(sheet, numberOfDice, breakdown) {
     name: sheet.lastTestName,
     token: token,
     damage: sheet.lastDamage,
-    breakdown: breakdown
+    breakdown: breakdown,
   };
 
-  let r = YearZeroRoll.forge(dice, {owner: actor.id, token: token, name:sheet.lastTestName, damage: sheet.lastDamage}, options);
+  let r = YearZeroRoll.forge(
+    dice,
+    {
+      owner: actor.id,
+      token: token,
+      name: sheet.lastTestName,
+      damage: sheet.lastDamage,
+    },
+    options
+  );
   console.log(r);
   // let r = YearZeroRoll.createFromDiceQuantities(dice, {
   //   title: sheet.lastTestName,
@@ -214,52 +253,76 @@ function buildInputHtmlDialog(diceName, diceValue, type) {
 }
 
 function buildGearSelectHtmlDialog(options) {
-  if (options == null || options.length == 0)
-    return "";
+  if (options == null || options.length == 0) return "";
 
   var html = [];
-  html.push(`<div class="flex row" style="flex-basis: 35%; justify-content: space-between;">`);
-  html.push(`<p style="text-transform: capitalize; white-space:nowrap; margin-top: 4px;">`+ game.i18n.localize("GEAR.NAME") +`: </p></div>`);
+  html.push(
+    `<div class="flex row" style="flex-basis: 35%; justify-content: space-between;">`
+  );
+  html.push(
+    `<p style="text-transform: capitalize; white-space:nowrap; margin-top: 4px;">` +
+      game.i18n.localize("GEAR.NAME") +
+      `: </p></div>`
+  );
   html.push(`<div class="flex row" style="width: 100%;">`);
   html.push(`<select id="gear" style="width: 100%;">`);
   html.push(`<option value="0">None (0)</option>`);
-  options.forEach(element => {
-
+  options.forEach((element) => {
     let bonusValue = adjustBonusText(element.bonus);
     var descriptionWithoutTags = $("<p>").html(element.description).text();
-    html.push(`<option value="`+element.bonus+`" title="`+ descriptionWithoutTags +`">`+element.name +` (`+bonusValue+`)`+`</option>`)
+    html.push(
+      `<option value="` +
+        element.bonus +
+        `" title="` +
+        descriptionWithoutTags +
+        `">` +
+        element.name +
+        ` (` +
+        bonusValue +
+        `)` +
+        `</option>`
+    );
   });
   html.push(`</select></div>`);
   return html.join("");
 }
 
 function buildTalentSelectHtmlDialog(options, name, id) {
-  if (options == null || options.length == 0)
-    return "";
+  if (options == null || options.length == 0) return "";
 
   let html = [];
-  html.push(`<div class="flex row" style="flex-basis: 35%; justify-content: space-between;">`);
-  html.push(`<p style="text-transform: capitalize; white-space:nowrap; margin-top: 4px;">${game.i18n.localize("TALENT.NAME")}: </p></div>`);
+  html.push(
+    `<div class="flex row" style="flex-basis: 35%; justify-content: space-between;">`
+  );
+  html.push(
+    `<p style="text-transform: capitalize; white-space:nowrap; margin-top: 4px;">${game.i18n.localize(
+      "TALENT.NAME"
+    )}: </p></div>`
+  );
   html.push(`<div class="flex row" style="width: 100%;">`);
   html.push(`<select id="talent" style="width: 100%;" multiple>`);
   html.push(`<option value="0">None (0)</option>`);
-  options.forEach(element => {
+  options.forEach((element) => {
     let descriptionWithoutTags = $("<p>").html(element.description).text();
-    let requiresBonus = CONFIG.vaesen.bonusTypeRequiresBonus.indexOf(element.bonusType) > -1;
+    let requiresBonus =
+      CONFIG.vaesen.bonusTypeRequiresBonus.indexOf(element.bonusType) > -1;
     let bonusValue = requiresBonus ? parseInt(element.bonus, 10) : null;
-    if (bonusValue)
-      bonusValue = `: ${adjustBonusText(bonusValue)}`;
-    let bonusInfo = (element.bonusType ? game.i18n.localize(CONFIG.vaesen.bonusType[element.bonusType]) : "") + (bonusValue ?? "");
+    if (bonusValue) bonusValue = `: ${adjustBonusText(bonusValue)}`;
+    let bonusInfo =
+      (element.bonusType
+        ? game.i18n.localize(CONFIG.vaesen.bonusType[element.bonusType])
+        : "") + (bonusValue ?? "");
     const fullDescription = `${element.name}\n${bonusInfo}\n${descriptionWithoutTags}`;
-    html.push(`<option value="${element.name}" title="${fullDescription}">${element.name} (${bonusInfo})</option>`)
+    html.push(
+      `<option value="${element.name}" title="${fullDescription}">${element.name} (${bonusInfo})</option>`
+    );
   });
   html.push(`</select></div>`);
   return html.join("");
 }
 
 function buildHtmlDialog(diceName, diceValue, type) {
-  if (diceName === "")
-    return ``;
+  if (diceName === "") return ``;
 
   return (
     `
@@ -279,16 +342,37 @@ function buildDivHtmlDialog(divContent) {
   return "<div class='vaesen roll-dialog '>" + divContent + "</div>";
 }
 
-function buildDivHtmlNewDialog(testName, baseDiceHtml, baseDiceValue, extraLinesHtml) {
+function buildDivHtmlNewDialog(
+  testName,
+  baseDiceHtml,
+  baseDiceValue,
+  extraLinesHtml
+) {
   let dialogHtmlContent = [];
   dialogHtmlContent.push("<div class='vaesen roll-dialog'>");
   dialogHtmlContent.push(`<div class="roll-fields">`);
-  dialogHtmlContent.push(`<h2 class="title" style="width: 97%; margin: auto;"> ` + game.i18n.localize("ROLL.TEST") + `: ` +
-  testName +`</h2>`);
-  dialogHtmlContent.push(`<div class="flex column grow align-center heavy-border" style="width:300px;">` + baseDiceHtml + ` 
-<div align-center style="flex-basis:33%;"> <strong>` + game.i18n.localize("ROLL.BASE.POOL") + `:</strong> ` + baseDiceValue + `</div></div>`);
-  dialogHtmlContent.push(`<div class="flex column grow align-center light-border" style="width:300px; margin:auto; padding:5px; margin-bottom: 3px;">` +
-extraLinesHtml +`</div></div>`);
+  dialogHtmlContent.push(
+    `<h2 class="title" style="width: 97%; margin: auto;"> ` +
+      game.i18n.localize("ROLL.TEST") +
+      `: ` +
+      testName +
+      `</h2>`
+  );
+  dialogHtmlContent.push(
+    `<div class="flex column grow align-center heavy-border" style="width:300px;">` +
+      baseDiceHtml +
+      ` 
+<div align-center style="flex-basis:33%;"> <strong>` +
+      game.i18n.localize("ROLL.BASE.POOL") +
+      `:</strong> ` +
+      baseDiceValue +
+      `</div></div>`
+  );
+  dialogHtmlContent.push(
+    `<div class="flex column grow align-center light-border" style="width:300px; margin:auto; padding:5px; margin-bottom: 3px;">` +
+      extraLinesHtml +
+      `</div></div>`
+  );
   dialogHtmlContent.push("</div></div>");
   return dialogHtmlContent.join("");
 }
