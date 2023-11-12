@@ -34,4 +34,11 @@ export const registerSystemSettings = function () {
         default: "round"
     });
 
+    game.settings.register("vaesen", "systemMigrationVersion", {
+        config: false,
+        scope: "world",
+        type: String,
+        default: ""
+    });
+
 }
