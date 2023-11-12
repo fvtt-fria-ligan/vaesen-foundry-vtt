@@ -39,6 +39,14 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+v3.3.0
+- Added fear rolls to the Character sheet [#74](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/74)
+- Refactored the Actors to use a common base class to reduce code duplication and make it easier to maintain. [#75](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/75)
+- Implemented drag and drop macros to fear rolls
+- Added selection of talents, gear and other items to the roll dialog
+- Added details to the chat card for rolls to break down the dice pool
+- Redesigned the Roll Dialog to more clearly show the components of the roll
+
 v3.2.0
 - Added Limited Character Sheet, Limited permisions show player a sheet with reduced visibility, allowing secrets, traumas and other information to be hidden from non-owners. (issue [#62](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/62))
 - Added Stat and Skill fields to items as needed in the rules set. (issue [#31](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/31))  EXISTING ITEMS WILL NEED TO BE UPDATED TO USE THIS FEATURE. Premium Modules will be updated soon(tm)
