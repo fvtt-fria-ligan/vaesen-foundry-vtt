@@ -4,6 +4,7 @@ export function migrate(){
     return;
   
   const currentVersion = game.settings.get("vaesen", "systemMigrationVersion");
+  console.log("Vaesen Data CurrentVersion", currentVersion);
   Object.keys(migrations).forEach(function(key) {
     if (!currentVersion || isNewerVersion(key, currentVersion))
       migrations[key]();
@@ -12,21 +13,26 @@ export function migrate(){
 }
 
 const migrations = {
-  3.9 : migrateTo3_9
+  4.0 : migrateTo4_0
 }
 
-async function migrateTo3_9() {
-  console.log("MIGRATING TO 3.9.0");
+async function migrateTo4_0() {
+  const options = {permanent: true};
+  ui.notifications.warn("Migrating your data to version 4.0.0. Please, wait until it finishes.", options);
+  console.log("MIGRATING TO 4.0.0");
   for (let actor of game.actors.contents) {
-    const updateData = migrateTo3_9_Actor(actor);
+    const updateData = migrateTo4_0_Actor(actor);
     if (!foundry.utils.isEmpty(updateData)) {
-      console.log(`Migrating Actor Entry "${actor.name}" to Version 3.9.0`);
+      console.log("Vaesen Migration",{actor: actor, changes: updateData});
       await actor.update(updateData);
     }
   }
+
+  await game.settings.set("vaesen", "systemMigrationVersion", game.system.data.version);
+  ui.notifications.info("Data migrated to version 4.0.0. If you have players' tokens, please, remove them from the scene and drag them to the scene back from the Actor's tab.", options);
 }
 
-function migrateTo3_9_Actor(actor){
+function migrateTo4_0_Actor(actor){
   let updateData = {};
 
   if (actor.type != "player")
@@ -61,7 +67,7 @@ function migrateTo3_9_Actor(actor){
   const actorLink = get(actor, "prototypeToken.actorLink");
   if (!actorLink) {
     updateData["prototypeToken.actorLink"] = true;
-    updateData["prototypeToken.disposition"] = 1;
+    updateData["prototypeToken.disposition"] = 0;
   }
   return updateData;
 }
