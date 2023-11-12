@@ -448,15 +448,16 @@ export class VaesenActorSheet extends ActorSheet {
   computePossibleBonusFromTalent(skillName, attribute){
     let talentArray = [];
 
+    console.log("computePossibleBonusFromTalent", skillName, attribute);
+
     for (let item of Object.values(this.actor.items.contents)) {
-      if (item.type === "talent" &&
+      if (item.type === "talent" && skillName !== "fear" &&
           (
-            (item.system.bonusType === "skill" && item.system.skill.indexOf(skillName) > -1) ||
+            (item.system.bonusType === "skill" && item.system.skill.indexOf(skillName) > -1) && skillName !== "fear" ||
             (item.system.bonusType === "ignoreConditionSkill" && item.system.skill.indexOf(skillName) > -1) || 
             (item.system.bonusType === "ignoreConditionPhysical" && (attribute === "physique" || attribute === "precision")) ||
             (item.system.bonusType === "ignoreConditionMental" && skillName !== "fear" && (attribute === "logic" || attribute === "empathy")) ||
-            (item.system.bonusType === "damage" && item.system.skill.indexOf(skillName) > -1) ||
-            (item.system.bonusType === "fear") 
+            (item.system.bonusType === "damage" && item.system.skill.indexOf(skillName) > -1) 
        )) {
         
         let talent = {
@@ -467,6 +468,18 @@ export class VaesenActorSheet extends ActorSheet {
         };
         talentArray.push(talent);
       }
+      // if the skillName is fear only allow fear talents
+      if (item.type === "talent" && skillName === "fear" && item.system.bonusType === "fear") {
+        let talent = {
+          name: item.name,
+          bonus: item.system.bonus,
+          description: item.system.description, 
+          bonusType: item.system.bonusType
+        };
+        talentArray.push(talent);
+      }
+
+
     }
     return talentArray;
   }
