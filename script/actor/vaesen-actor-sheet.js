@@ -18,7 +18,7 @@ export class VaesenActorSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["vaesen", "sheet", "actor"],
       width: 750,
-      height: 'auto', // 'auto
+      height: "auto", // 'auto
       resizable: true,
       tabs: [
         {
@@ -31,7 +31,8 @@ export class VaesenActorSheet extends ActorSheet {
   }
 
   get template() {
-    if(!game.user.isGM && this.actor.limited) return `systems/vaesen/model/limited-sheet.hbs`;
+    if (!game.user.isGM && this.actor.limited)
+      return `systems/vaesen/model/limited-sheet.hbs`;
     return `systems/vaesen/model/${this.actor.type}.hbs`;
   }
 
@@ -57,11 +58,10 @@ export class VaesenActorSheet extends ActorSheet {
     return buttons;
   }
 
-
   async getData() {
     const source = this.actor.toObject();
     const actorData = this.actor.toObject(false);
-    console.log("Vaesen | Actor data: ", actorData);
+    
 
     //"player", "npc", "vaesen", "headquarter"
     const context = {
@@ -84,7 +84,7 @@ export class VaesenActorSheet extends ActorSheet {
     };
     context.effects = this.actor.getEmbeddedCollection("ActiveEffect").contents;
 
-    console.log("context", context);
+    
 
     if (context.isNpc) {
       // enchich html for notes and description
@@ -108,7 +108,7 @@ export class VaesenActorSheet extends ActorSheet {
       });
     }
 
-    console.log(source);
+    
     if (!context.isVaesen && !context.isHeadquarter) {
       this.computeSkills(context);
     }
@@ -246,8 +246,6 @@ export class VaesenActorSheet extends ActorSheet {
     data.portrait = game.settings.get("vaesen", "portrait");
   }
 
-
-
   onItemCreate(event) {
     event.preventDefault();
     let header = event.currentTarget;
@@ -272,7 +270,7 @@ export class VaesenActorSheet extends ActorSheet {
   onFocusIn(event) {
     $(event.currentTarget).select();
   }
- 
+
   /****** Toggle the roll-down of expanded item information.  */
   onItemSummary(event, type) {
     let div = $(event.currentTarget).parents(".item"),
@@ -304,7 +302,7 @@ export class VaesenActorSheet extends ActorSheet {
           item.system.range +
           "</br></p>";
         break;
-      
+
       case "condition":
         chatData =
           "<p class='item-desc'><b>" +
@@ -313,7 +311,7 @@ export class VaesenActorSheet extends ActorSheet {
           item.system.description +
           "</br></p>";
         break;
-      
+
       case "gear":
         chatData =
           "<p class='item-desc'><b>" +
@@ -382,9 +380,7 @@ export class VaesenActorSheet extends ActorSheet {
     const item = this.actor.items.get(div.data("itemId"));
     const testName = item.name;
 
-    let info = [
-      { name: testName, value: item.system.protection }
-    ];
+    let info = [{ name: testName, value: item.system.protection }];
 
     prepareRollNewDialog(this, testName, info);
   }
@@ -401,14 +397,24 @@ export class VaesenActorSheet extends ActorSheet {
     let bonusTalent = this.computePossibleBonusFromTalent(item.system.skill);
 
     let info = [
-      { name: game.i18n.localize(attribute.label + "_ROLL"), value: attribute.value },
+      {
+        name: game.i18n.localize(attribute.label + "_ROLL"),
+        value: attribute.value,
+      },
       { name: game.i18n.localize(skill.label), value: skill.value },
       { name: item.name, value: bonusFromWeapon },
       this.computeInfoFromConditions(item.system.skill),
-      this.computeInfoFromCriticalInjuries(item.system.skill)
+      this.computeInfoFromCriticalInjuries(item.system.skill),
     ];
 
-    prepareRollNewDialog(this, testName, info, item.system.damage, bonusGear, bonusTalent);
+    prepareRollNewDialog(
+      this,
+      testName,
+      info,
+      item.system.damage,
+      bonusGear,
+      bonusTalent
+    );
   }
 
   sendToChat(event) {
@@ -432,12 +438,20 @@ export class VaesenActorSheet extends ActorSheet {
     return parseInt(bonus, 10);
   }
 
-  computePossibleBonusFromGear(skillName){
+  computePossibleBonusFromGear(skillName) {
     let gearArray = [];
 
     for (let item of Object.values(this.actor.items.contents)) {
-      if (item.type === "gear" && item.system.bonus > 0 && item.system.skill.indexOf(skillName) > -1) {
-        let gear = { name: item.name, bonus: item.system.bonus, description: item.system.effect};
+      if (
+        item.type === "gear" &&
+        item.system.bonus > 0 &&
+        item.system.skill.indexOf(skillName) > -1
+      ) {
+        let gear = {
+          name: item.name,
+          bonus: item.system.bonus,
+          description: item.system.effect,
+        };
         gearArray.push(gear);
       }
     }
@@ -445,41 +459,48 @@ export class VaesenActorSheet extends ActorSheet {
     return gearArray;
   }
 
-  computePossibleBonusFromTalent(skillName, attribute){
+  computePossibleBonusFromTalent(skillName, attribute) {
     let talentArray = [];
 
-    console.log("computePossibleBonusFromTalent", skillName, attribute);
-
     for (let item of Object.values(this.actor.items.contents)) {
-      if (item.type === "talent" && skillName !== "fear" &&
-          (
-            (item.system.bonusType === "skill" && item.system.skill.indexOf(skillName) > -1) && skillName !== "fear" ||
-            (item.system.bonusType === "ignoreConditionSkill" && item.system.skill.indexOf(skillName) > -1) || 
-            (item.system.bonusType === "ignoreConditionPhysical" && (attribute === "physique" || attribute === "precision")) ||
-            (item.system.bonusType === "ignoreConditionMental" && skillName !== "fear" && (attribute === "logic" || attribute === "empathy")) ||
-            (item.system.bonusType === "damage" && item.system.skill.indexOf(skillName) > -1) 
-       )) {
-        
+      if (
+        item.type === "talent" &&
+        skillName !== "fear" &&
+        ((item.system.bonusType === "skill" &&
+          item.system.skill.indexOf(skillName) > -1 &&
+          skillName !== "fear") ||
+          (item.system.bonusType === "ignoreConditionSkill" &&
+            item.system.skill.indexOf(skillName) > -1) ||
+          (item.system.bonusType === "ignoreConditionPhysical" &&
+            (attribute === "physique" || attribute === "precision")) ||
+          (item.system.bonusType === "ignoreConditionMental" &&
+            skillName !== "fear" &&
+            (attribute === "logic" || attribute === "empathy")) ||
+          (item.system.bonusType === "damage" &&
+            item.system.skill.indexOf(skillName) > -1))
+      ) {
         let talent = {
           name: item.name,
           bonus: item.system.bonus,
-          description: item.system.description, 
-          bonusType: item.system.bonusType
+          description: item.system.description,
+          bonusType: item.system.bonusType,
         };
         talentArray.push(talent);
       }
       // if the skillName is fear only allow fear talents
-      if (item.type === "talent" && skillName === "fear" && item.system.bonusType === "fear") {
+      if (
+        item.type === "talent" &&
+        skillName === "fear" &&
+        item.system.bonusType === "fear"
+      ) {
         let talent = {
           name: item.name,
           bonus: item.system.bonus,
-          description: item.system.description, 
-          bonusType: item.system.bonusType
+          description: item.system.description,
+          bonusType: item.system.bonusType,
         };
         talentArray.push(talent);
       }
-
-
     }
     return talentArray;
   }
@@ -494,10 +515,12 @@ export class VaesenActorSheet extends ActorSheet {
       }
     }
 
-    if (bonus == 0)
-      return null;
-    const label = game.i18n.localize("HEADER.CRITICAL_INJURIES").toLowerCase().replace(/\b(\w)/g, x => x.toUpperCase());
-    return { name: label, value: bonus, tooltip: tooltip.join("\n")};
+    if (bonus == 0) return null;
+    const label = game.i18n
+      .localize("HEADER.CRITICAL_INJURIES")
+      .toLowerCase()
+      .replace(/\b(\w)/g, (x) => x.toUpperCase());
+    return { name: label, value: bonus, tooltip: tooltip.join("\n") };
   }
 
   computeInfoFromArmor(skillName) {
@@ -511,33 +534,34 @@ export class VaesenActorSheet extends ActorSheet {
         }
       }
     }
-    if (bonus == 0)
-      return null;
+    if (bonus == 0) return null;
     const label = game.i18n.localize("ARMOR.NAME");
-    return { name: label, value: bonus};
+    return { name: label, value: bonus };
   }
 
   rollAttribute(attributeName) {
     const attribute = this.actor.system.attribute[attributeName];
     const testName = game.i18n.localize(attribute.label + "_ROLL");
     let info = [
-      { name:testName, value: attribute.value},
-      this.computeInfoFromConditions(attributeName)
+      { name: testName, value: attribute.value },
+      this.computeInfoFromConditions(attributeName),
     ];
     prepareRollNewDialog(this, testName, info, null, null, null);
   }
 
   rollFear(key) {
     const attribute = this.actor.system.attribute[key];
-    const testName = game.i18n.localize( attribute.label + "_ROLL") + " " + game.i18n.localize("FEAR_ROLL");
+    const testName =
+      game.i18n.localize(attribute.label + "_ROLL") +
+      " " +
+      game.i18n.localize("FEAR_ROLL");
     let bonusTalent = this.computePossibleBonusFromTalent("fear", key);
 
     let info = [
-      { name:testName, value: attribute.value},
-      this.computeInfoFromConditions(attribute)
+      { name: testName, value: attribute.value },
+      this.computeInfoFromConditions(attribute),
     ];
     prepareRollNewDialog(this, testName, info, null, null, bonusTalent);
-   
   }
 
   rollSkill(skillName) {
@@ -545,16 +569,22 @@ export class VaesenActorSheet extends ActorSheet {
     const attribute = this.actor.system.attribute[skill.attribute];
 
     let bonusGear = this.computePossibleBonusFromGear(skillName);
-    let bonusTalent = this.computePossibleBonusFromTalent(skillName, skill.attribute);
-    
+    let bonusTalent = this.computePossibleBonusFromTalent(
+      skillName,
+      skill.attribute
+    );
+
     const testName = game.i18n.localize(skill.label);
 
     let info = [
-      { name: game.i18n.localize(attribute.label + "_ROLL"), value: attribute.value },
+      {
+        name: game.i18n.localize(attribute.label + "_ROLL"),
+        value: attribute.value,
+      },
       { name: testName, value: skill.value },
       this.computeInfoFromConditions(skill.attribute),
       this.computeInfoFromCriticalInjuries(skillName),
-      this.computeInfoFromArmor(skillName)
+      this.computeInfoFromArmor(skillName),
     ];
 
     var damage = skillName == "force" ? 1 : null;
