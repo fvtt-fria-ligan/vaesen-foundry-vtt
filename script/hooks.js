@@ -275,6 +275,13 @@ if (actor == null || actor.type !== "player")
    
 actor.sheet.rollFear("${data.attributeKey}");`;
   }
+  else if (data.type === "weapon") {
+    command = `
+if (actor == null || actor.id != "${data.actorId}")
+  return;
+   
+actor.sheet.rollWeapon("${data.itemId}");`;
+  }
 
   if (command === "")
     return;

@@ -387,34 +387,8 @@ export class VaesenActorSheet extends ActorSheet {
 
   onWeaponRoll(event) {
     const div = $(event.currentTarget).parents(".weapon");
-    const item = this.actor.items.get(div.data("itemId"));
-    const testName = item.name;
-    const skill = this.actor.system.skill[item.system.skill];
-    const attribute = this.actor.system.attribute[skill.attribute];
-    const bonusFromWeapon = parseInt(item.system.bonus, 10);
-
-    let bonusGear = this.computePossibleBonusFromGear(item.system.skill);
-    let bonusTalent = this.computePossibleBonusFromTalent(item.system.skill);
-
-    let info = [
-      {
-        name: game.i18n.localize(attribute.label + "_ROLL"),
-        value: attribute.value,
-      },
-      { name: game.i18n.localize(skill.label), value: skill.value },
-      { name: item.name, value: bonusFromWeapon },
-      this.computeInfoFromConditions(item.system.skill),
-      this.computeInfoFromCriticalInjuries(item.system.skill),
-    ];
-
-    prepareRollNewDialog(
-      this,
-      testName,
-      info,
-      item.system.damage,
-      bonusGear,
-      bonusTalent
-    );
+    const itemId = div.data("itemId");
+    this.rollWeapon(itemId);
   }
 
   sendToChat(event) {
@@ -590,5 +564,36 @@ export class VaesenActorSheet extends ActorSheet {
     var damage = skillName == "force" ? 1 : null;
 
     prepareRollNewDialog(this, testName, info, damage, bonusGear, bonusTalent);
+  }
+
+  rollWeapon(itemId) {
+    const item = this.actor.items.get(itemId);
+    const testName = item.name;
+    const skill = this.actor.system.skill[item.system.skill];
+    const attribute = this.actor.system.attribute[skill.attribute];
+    const bonusFromWeapon = parseInt(item.system.bonus, 10);
+
+    let bonusGear = this.computePossibleBonusFromGear(item.system.skill);
+    let bonusTalent = this.computePossibleBonusFromTalent(item.system.skill);
+
+    let info = [
+      {
+        name: game.i18n.localize(attribute.label + "_ROLL"),
+        value: attribute.value,
+      },
+      { name: game.i18n.localize(skill.label), value: skill.value },
+      { name: item.name, value: bonusFromWeapon },
+      this.computeInfoFromConditions(item.system.skill),
+      this.computeInfoFromCriticalInjuries(item.system.skill),
+    ];
+
+    prepareRollNewDialog(
+      this,
+      testName,
+      info,
+      item.system.damage,
+      bonusGear,
+      bonusTalent
+    );
   }
 }

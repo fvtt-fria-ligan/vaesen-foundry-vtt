@@ -174,7 +174,6 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       item.setAttribute("data-item-id", this.actor.id);
       item.setAttribute("draggable", true);
       item.addEventListener("dragstart", ev => {
-        console.log(data);
         ev.dataTransfer.setData("text/plain", JSON.stringify(data));
       }, false);
     });
@@ -195,7 +194,28 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       item.setAttribute("data-item-id", this.actor.id);
       item.setAttribute("draggable", true);
       item.addEventListener("dragstart", ev => {
-        console.log(data);
+        ev.dataTransfer.setData("text/plain", JSON.stringify(data));
+      }, false);
+    });
+
+    html.find('.weapon .name').each((i, item) => {
+      const div = $(item).parents(".weapon");
+      const itemId = div.data("itemId");
+      const itemName = $(item).text();
+      const img = $(div).children(".icon").attr("src");
+      const testName = `${itemName} ${game.i18n.localize("ROLL.ROLL")}`;
+      
+      const data = {
+        type: "weapon",
+        itemId: itemId,
+        actorId: this.actor.id,
+        img: img,
+        text: testName
+      };
+
+      item.setAttribute("data-item-id", this.actor.id);
+      item.setAttribute("draggable", true);
+      item.addEventListener("dragstart", ev => {
         ev.dataTransfer.setData("text/plain", JSON.stringify(data));
       }, false);
     });
@@ -265,7 +285,6 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     for (let condition of Object.values(datas)) {
       if (condition.isChecked) {
         bonus = bonus - 1;
-        console.log(condition);
         info.push(`${game.i18n.localize(condition.label)} (-1)`);
       }
     }
