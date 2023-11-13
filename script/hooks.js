@@ -109,6 +109,17 @@ Hooks.once("ready", async function () {
   
 });
 
+Hooks.on("updateActor", (actor,changes,diff,userId) => {
+  game.scenes.current.tokens.forEach(x => {
+    if (x.actorId !== actor._id)
+      return;
+    if (changes.name !== undefined) {
+      actor.update({"token.name": actor.name});
+      x.update({"name": actor.name});
+    }
+  });
+});
+
 Hooks.once("diceSoNiceReady", (dice3d) => {
   dice3d.addSystem({ id: "vaesen", name: "Vaesen" }, "true");
   dice3d.addColorset({
