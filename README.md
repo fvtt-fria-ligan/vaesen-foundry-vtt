@@ -20,13 +20,8 @@ This system provides character sheets and items for  your play, if you would lik
 * Dialogs
     * line up ux and design to match overall look and feel
 
-* Link conditions on sheet and status icons on the character sheet (adding a status from the token toggels it on the sheet and visa versa)
-
 * CSS optimization - convert current CSS structure to SASS based pre-processor for future ease of adjustment
     - underway
-
-* Refactor Actor sheets to clean up code and make it easier to maintain/add features
-   
 
 ## Related Website
 - https://foundryvtt.com/
