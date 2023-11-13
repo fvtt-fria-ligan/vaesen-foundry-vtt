@@ -17,42 +17,106 @@ export class conditions{
           {
             id: "exhausted",
             label: "CONDITION.EXHAUSTED",
-            icon: `${this.conditionPath}oppression.svg`
+            icon: `${this.conditionPath}oppression.svg`,
+            changes: [
+              {
+                key: "system.condition.physical.states.exhausted.isChecked",
+                mode: 5,
+                value: true
+              }
+            ],
+            statuses: ["exhausted"]
           },
           {
             id: "battered",
             label: "CONDITION.BATTERED",
-            icon: `${this.conditionPath}pummeled.svg`
+            icon: `${this.conditionPath}pummeled.svg`,
+            changes: [
+              {
+                key: "system.condition.physical.states.battered.isChecked",
+                mode: 5,
+                value: true
+              }
+            ],
+            statuses: ["battered"]
           },
           {
             id: "wounded",
             label: "CONDITION.WOUNDED",
-            icon: `${this.conditionPath}arm-sling.svg`
+            icon: `${this.conditionPath}arm-sling.svg`,
+            changes: [
+              {
+                key: "system.condition.physical.states.wounded.isChecked",
+                mode: 5,
+                value: true
+              }
+            ],
+            statuses: ["wounded"]
           },
           {
             id: "physical",
             label: "CONDITION.PHYSICALLYBROKEN",
-            icon: `${this.conditionPath}broken-bone.svg`
+            icon: `${this.conditionPath}broken-bone.svg`,
+            changes: [
+              {
+                key: "system.condition.physical.isBroken",
+                mode: 5,
+                value: true
+              }
+            ],
+            statuses: ["physical"]
           },
           {
             id: "angry",
             label: "CONDITION.ANGRY",
-            icon: `${this.conditionPath}revolt.svg`
+            icon: `${this.conditionPath}revolt.svg`,
+            changes: [
+              {
+                key: "system.condition.mental.states.angry.isChecked",
+                mode: 5,
+                value: true
+              }
+            ],
+            statuses: ["angry"]
           },
           {
             id: "frightened",
             label: "CONDITION.FRIGHTENED",
-            icon: `${this.conditionPath}terror.svg`
+            icon: `${this.conditionPath}terror.svg`,
+            changes: [
+              {
+                key: "system.condition.mental.states.frightened.isChecked",
+                mode: 5,
+                value: true
+              }
+            ],
+            statuses: ["frightened"]
           },
           {
             id: "hopeless",
             label: "CONDITION.HOPELESS",
-            icon: `${this.conditionPath}despair.svg`
+            icon: `${this.conditionPath}despair.svg`,
+            changes: [
+              {
+                key: "system.condition.mental.states.hopeless.isChecked",
+                mode: 5,
+                value: true
+              }
+            ],
+            statuses: ["hopeless"]
           },
           {
             id: "mental",
             label: "CONDITION.MENTALLYBROKEN",
-            icon: `${this.conditionPath}shattered-heart.svg`
+            icon: `${this.conditionPath}shattered-heart.svg`,
+            changes: [
+              {
+                key: "system.condition.mental.isBroken",
+                mode: 5,
+                value: true
+              }
+            ],
+            statuses: ["mental"]
           }
     ];
       

@@ -108,74 +108,10 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       prepareRollNewDialog(this, testName, info);
     });
 
-    html.find(".physical .condition").click((ev) => {
-      let actor = this.actor;
-      let data = actor.system;
+    html.find(".condition").click((ev) => {
       ev.preventDefault();
       const conditionName = $(ev.currentTarget).data("key");
-      //let actor = this.actor;
-      //await actor.toggleStatusEffectByID(conditionName);
-
-      //console.log(conditionName);
-      let conditionValue;
-      if (conditionName === "physical") {
-        let brokenEffect = new ActiveEffectConfig();
-
-        //brokenEffect.label = game.i18n.localize("CONDITION.PHYSICALLYBROKEN");
-        console.log("brokenEffect: ", brokenEffect);
-        conditionValue = data.condition.physical.isBroken;
-        actor.update({ "system.condition.physical.isBroken": !conditionValue });
-        
-      } else {
-        conditionValue =
-          data.condition.physical.states[conditionName].isChecked;
-        if (conditionName === "exhausted") {
-          actor.update({
-            "system.condition.physical.states.exhausted.isChecked":
-              !conditionValue,
-          });
-        } else if (conditionName === "battered") {
-          actor.update({
-            "system.condition.physical.states.battered.isChecked":
-              !conditionValue,
-          });
-        } else if (conditionName === "wounded") {
-          actor.update({
-            "system.condition.physical.states.wounded.isChecked":
-              !conditionValue,
-          });
-        }
-      }
-      this._render();
-    });
-
-    html.find(".mental .condition").click((ev) => {
-      let actor = this.actor;
-      let data = actor.system;
-      const conditionName = $(ev.currentTarget).data("key");
-      let conditionValue;
-      if (conditionName === "mental") {
-        conditionValue = data.condition.mental.isBroken;
-        actor.update({ "system.condition.mental.isBroken": !conditionValue });
-      } else {
-        conditionValue = data.condition.mental.states[conditionName].isChecked;
-        if (conditionName === "angry") {
-          actor.update({
-            "system.condition.mental.states.angry.isChecked": !conditionValue,
-          });
-        } else if (conditionName === "frightened") {
-          actor.update({
-            "system.condition.mental.states.frightened.isChecked":
-              !conditionValue,
-          });
-        } else if (conditionName === "hopeless") {
-          actor.update({
-            "system.condition.mental.states.hopeless.isChecked":
-              !conditionValue,
-          });
-        }
-      }
-      this._render();
+      this.updateCondition(conditionName);
     });
 
     html.find(".armor .name").click((ev) => {
@@ -227,7 +163,6 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
 
     html.find('.attribute b').each((i, item) => {
       const div = $(item).parents(".attribute");
-      console.log(div);
       const attributeKey = div.data("key");
       const attributeName = $(item).text();
       const data = {
@@ -338,5 +273,23 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       return null;
     const conditionLabel = game.i18n.localize("HEADER.CONDITIONS").toLowerCase().replace(/\b(\w)/g, x => x.toUpperCase());
     return { name:conditionLabel, value: bonus, tooltip: info.join("\n"), type:"conditions"};
+  }
+
+  updateCondition(conditionName) {
+    let actor = this.actor;
+
+    const currentEffect = Array.from(actor.effects?.values()).find(it => it.statuses.has(conditionName));
+    if (currentEffect)
+      actor.deleteEmbeddedDocuments('ActiveEffect', [currentEffect.id]);
+    else {
+      const statusEffect = CONFIG.statusEffects.find(it => it.id === conditionName);
+      actor.createEmbeddedDocuments("ActiveEffect", [{
+        label: statusEffect.label,
+        icon: statusEffect.icon,
+        changes: statusEffect.changes,
+        id: this.uuid,
+        statuses: statusEffect.statuses
+      }]);
+    }
   }
 }

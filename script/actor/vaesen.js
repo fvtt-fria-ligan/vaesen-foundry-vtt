@@ -79,32 +79,20 @@ export class VaesenActor extends Actor {
         }
     }
 
-    // static async create(data, options={}) {
-    //     console.log("create actor", data.id, options);
-       
-        
-    //     if (!data.token) {
-    //         console.log("token is not defined");
-    //         const doc = new TokenDocument( {
-    //         actorData: data,
-    //         vision: true,
-    //         dimSight: 30,
-    //         brightSight: 30,
-    //         actorLink: true,
-    //         disposition: 1
-    //     }, {overwrite: false});
-            
-    //         const token = new Token(doc);
-    //         console.log(token);
-    //     }
-    //     data.token = data.token || {};
-    //     mergeObject(data.token, {
-    //         vision: true,
-    //         dimSight: 30,
-    //         brightSight: 30,
-    //         actorLink: true,
-    //         disposition: 1
-    //     }, {overwrite: false});
-    //     return super.create(data, options);
-    // }
+    async _preCreate(data, options, user) {
+      await super._preCreate(data, options, user);
+
+      const link = data.type == "player";
+      const displayName = link ? CONST.TOKEN_DISPLAY_MODES.HOVER : CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER;
+      let tokenProto = {
+          "prototypeToken.displayName": displayName,
+          "prototypeToken.displayBars": CONST.TOKEN_DISPLAY_MODES.NONE,
+          "prototypeToken.disposition": CONST.TOKEN_DISPOSITIONS.NEUTRAL,
+          "prototypeToken.name": `${data.name}`,
+          "prototypeToken.actorLink": link,
+          "prototypeToken.sight.enabled": "true",
+          "prototypeToken.sight.range": "30",
+      };
+      this.updateSource(tokenProto);
+    }
 }

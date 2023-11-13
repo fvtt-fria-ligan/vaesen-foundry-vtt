@@ -10,8 +10,7 @@ import { conditions } from "./util/conditions.js";
 import { YearZeroRollManager } from "./lib/yzur.js";
 import * as Chat from "./util/chat.js";
 import { vaesenItemSheet } from "./sheet/itemSheet.js";
-
-
+import { migrate } from "./util/migrator.js";
 
 Hooks.on("renderChatMessage", (app, html, data) => {
   Chat.hideChatActionButtons(app, html, data);
@@ -106,7 +105,19 @@ Hooks.once("ready", async function () {
   setupCards();
   conditions.onReady();
   Hooks.on("hotbarDrop", (bar, data, slot) => createRollMacro(data, slot));
+  migrate();
   
+});
+
+Hooks.on("updateActor", (actor,changes,diff,userId) => {
+  game.scenes.current.tokens.forEach(x => {
+    if (x.actorId !== actor._id)
+      return;
+    if (changes.name !== undefined) {
+      actor.update({"token.name": actor.name});
+      x.update({"name": actor.name});
+    }
+  });
 });
 
 Hooks.once("diceSoNiceReady", (dice3d) => {
