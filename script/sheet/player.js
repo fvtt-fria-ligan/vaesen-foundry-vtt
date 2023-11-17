@@ -297,12 +297,13 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
   updateCondition(conditionName) {
     let actor = this.actor;
 
-    const currentEffect = Array.from(actor.effects?.values()).find(it => it.statuses.has(conditionName));
+    const statusEffect = CONFIG.statusEffects.find(it => it.id === conditionName);
+
+    const currentEffect = Array.from(actor.effects?.values()).find(it => it.icon === statusEffect.icon);
     if (currentEffect) {
-      actor.updateEmbeddedDocuments("ActiveEffect", [{"_id": currentEffect.id, "disabled" : !currentEffect.disabled}]);
+      actor.deleteEmbeddedDocuments('ActiveEffect', [currentEffect.id]);
     }
     else {
-      const statusEffect = CONFIG.statusEffects.find(it => it.id === conditionName);
       actor.createEmbeddedDocuments("ActiveEffect", [{
         label: game.i18n.localize(statusEffect.label),
         icon: statusEffect.icon,
