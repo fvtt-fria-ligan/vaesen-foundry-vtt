@@ -1,12 +1,9 @@
+import { conditions } from "../util/conditions.js";
+
 export class VaesenTokenHUD extends TokenHUD {
   constructor(...args) {
     super(...args);
   }
-  // static get defaultOptions() {
-  //   return foundry.utils.mergeObject(super.defaultOptions, {
-  //     template: "systems/mysystem/src/extensions/templates/token-hud.html"
-  //   });
-  // }
 
   _getStatusEffectChoices(params) {
     var actor = this.object.document.actor;
@@ -51,7 +48,8 @@ export class VaesenTokenHUD extends TokenHUD {
           cssClass: item.system.active ? "active" : "",
           id: item.id,
           src: item.img,
-          title: `${item.name} (${item.system.bonus})`
+          title: `${item.name} (${item.system.bonus})`,
+          isActive: item.system.active
         };
       }
       vaesenActions["modules/yze-combat/assets/icons/fast-action.svg"] = yzurActions["modules/yze-combat/assets/icons/fast-action.svg"];
@@ -69,13 +67,9 @@ export class VaesenTokenHUD extends TokenHUD {
     effect.preventDefault();
     effect.stopPropagation();
     let img = effect.currentTarget;
-    let condition = Array.from(actor.items?.values()).find(x => x.type == "condition" && x.id == img.dataset.statusId);
-
-    await actor.updateEmbeddedDocuments("Item", [
-      { _id: condition.id, "data.active": !condition.system.active },
-    ]);
+    const result = await conditions.onVaesenCondition(actor, img.dataset.statusId);
 
     if ( this.hasActiveHUD ) canvas.tokens.hud.refreshStatusIcons();
-    return condition.system.active;
+    return result;
   }
 }
