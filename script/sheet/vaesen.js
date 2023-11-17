@@ -19,6 +19,10 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
     });
   }
 
+  async getData() {
+    this.actor.setFlag("vaesen", "isActorSheet", !this.actor.isToken);
+    return super.getData();
+  }
 
   activateListeners(html) {
     super.activateListeners(html);
