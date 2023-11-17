@@ -583,7 +583,7 @@ export class VaesenActorSheet extends ActorSheet {
       },
       { name: game.i18n.localize(skill.label), value: skill.value },
       { name: item.name, value: bonusFromWeapon },
-      this.computeInfoFromConditions(item.system.skill),
+      this.computeInfoFromConditions(skill.attribute),
       this.computeInfoFromCriticalInjuries(item.system.skill),
     ];
 
