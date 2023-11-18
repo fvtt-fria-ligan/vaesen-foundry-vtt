@@ -135,6 +135,32 @@ export class conditions{
         return this.allStatusEffects.find(effect => effect.id === id);
     }
 
+    static async onVaesenCondition(actor, conditionId) {
+      let condition = Array.from(actor.items?.values()).find(x => x.type == "condition" && x.id == conditionId);
+      console.log(condition);
+
+      await actor.updateEmbeddedDocuments("Item", [
+        { _id: condition.id, "data.active": !condition.system.active },
+      ]);
+  
+      const statusEffect = {
+        label: condition.name,
+        icon: condition.img,
+        id: condition.name,
+        statuses: [condition.name]
+      };
+  
+      const currentEffect = Array.from(actor.effects?.values()).find(it => it.icon === statusEffect.icon);
+      if (currentEffect) {
+        await actor.deleteEmbeddedDocuments('ActiveEffect', [currentEffect.id]);
+      }
+      else {
+        await actor.createEmbeddedDocuments("ActiveEffect", [statusEffect]);
+      }
+
+      return condition.system.active;
+    }
+
 }
 
 conditions.eventsProcessing = {

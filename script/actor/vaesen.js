@@ -84,14 +84,20 @@ export class VaesenActor extends Actor {
 
       const link = data.type == "player";
       const displayName = link ? CONST.TOKEN_DISPLAY_MODES.HOVER : CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER;
+      const isNpc = data.type == "npc";
+      const displayBars = isNpc ? CONST.TOKEN_DISPLAY_MODES.OWNER : CONST.TOKEN_DISPLAY_MODES.NONE;
+      const bar1 = isNpc ? "condition.physical" : null;
+      const bar2 = isNpc ? "condition.mental" : null;
       let tokenProto = {
           "prototypeToken.displayName": displayName,
-          "prototypeToken.displayBars": CONST.TOKEN_DISPLAY_MODES.NONE,
+          "prototypeToken.displayBars": displayBars,
           "prototypeToken.disposition": CONST.TOKEN_DISPOSITIONS.NEUTRAL,
           "prototypeToken.name": `${data.name}`,
           "prototypeToken.actorLink": link,
           "prototypeToken.sight.enabled": "true",
           "prototypeToken.sight.range": "30",
+          "prototypeToken.bar1.attribute": bar1,
+          "prototypeToken.bar2.attribute": bar2,
       };
       this.updateSource(tokenProto);
     }

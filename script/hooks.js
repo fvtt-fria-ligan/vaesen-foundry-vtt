@@ -11,6 +11,7 @@ import { YearZeroRollManager } from "./lib/yzur.js";
 import * as Chat from "./util/chat.js";
 import { vaesenItemSheet } from "./sheet/itemSheet.js";
 import { migrate } from "./util/migrator.js";
+import { VaesenTokenHUD } from "./util/token.js";
 
 Hooks.on("renderChatMessage", (app, html, data) => {
   Chat.hideChatActionButtons(app, html, data);
@@ -96,8 +97,6 @@ Hooks.once("init", () => {
     "ROLL.tooltipTemplate": "systems/vaesen/model/templates/dice/tooltip.hbs",
     "ROLL.infosTemplate": "systems/vaesen/model/templates/dice/infos.hbs",
   });
-
-  
 });
 
 Hooks.once("ready", async function () {
@@ -107,6 +106,10 @@ Hooks.once("ready", async function () {
   Hooks.on("hotbarDrop", (bar, data, slot) => createRollMacro(data, slot));
   migrate();
   
+});
+
+Hooks.on('canvasReady', () => {
+  canvas.hud.token = new VaesenTokenHUD();
 });
 
 Hooks.on("updateActor", (actor,changes,diff,userId) => {

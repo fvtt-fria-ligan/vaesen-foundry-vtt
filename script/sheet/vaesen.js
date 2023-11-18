@@ -1,5 +1,6 @@
 import { prepareRollNewDialog } from "../util/roll.js";
 import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
+import { conditions } from "../util/conditions.js";
 
 export class VaesenCharacterSheet extends VaesenActorSheet {
 
@@ -19,6 +20,10 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
     });
   }
 
+  async getData() {
+    this.actor.setFlag("vaesen", "isActorSheet", !this.actor.isToken);
+    return super.getData();
+  }
 
   activateListeners(html) {
     super.activateListeners(html);
@@ -71,16 +76,7 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
   async onToggleActive(event) {
     let element = event.currentTarget;
     let itemID = element.closest(".item").dataset.itemId;
-    let item = this.actor.items.get(itemID);
-    if (item.system.active) {
-      await this.actor.updateEmbeddedDocuments("Item", [
-        { _id: itemID, "data.active": false },
-      ]);
-    } else {
-      await this.actor.updateEmbeddedDocuments("Item", [
-        { _id: itemID, "data.active": true },
-      ]);
-    }
+    await conditions.onVaesenCondition(this.actor, itemID);
   }
 
   onWeaponRoll(event) {
