@@ -21,7 +21,7 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
   }
 
   async getData() {
-    this.actor.setFlag("vaesen", "isActorSheet", !this.actor.isToken);
+    this.actor.setFlag("vaesen", "blockCondition", !this.actor.prototypeToken.actorLink && !this.actor.isToken);
     return super.getData();
   }
 
