@@ -82,7 +82,10 @@ export class VaesenActor extends Actor {
     async _preCreate(data, options, user) {
       await super._preCreate(data, options, user);
 
-      const link = data.type == "player";
+      const link = data.type == "player" || 
+                    (data.type == "npc" && await game.settings.get("vaesen", "npcLink")) || 
+                    (data.type == "vaesen" && await game.settings.get("vaesen", "vaesenLink"));
+
       const displayName = link ? CONST.TOKEN_DISPLAY_MODES.HOVER : CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER;
       const isNpc = data.type == "npc";
       const displayBars = isNpc ? CONST.TOKEN_DISPLAY_MODES.OWNER : CONST.TOKEN_DISPLAY_MODES.NONE;
