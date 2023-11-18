@@ -275,7 +275,9 @@
       "cost": 0,
       "function": "",
       "asset": "",
-      "description": ""
+      "description": "",
+      "bonusType": "none",
+      "bonus": 0
     },
     "relationship": {
       "description": "",

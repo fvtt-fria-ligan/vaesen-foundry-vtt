@@ -187,6 +187,7 @@
   "UPGRADE.FACILITY": "Facility",
   "UPGRADE.CONTACT": "Contact",
   "UPGRADE.PERSONNEL": "Personnel",
+  "UPGRADE.BONUS": "Bonus",
 
   "WEAPON.ICON": "Icon",
   "WEAPON.NAME": "Weapon",
@@ -246,5 +247,7 @@
   "BONUS_TYPE.IGNORE_CONDITIONS_PHYSICAL": "Ignore Physical Conditions",
   "BONUS_TYPE.IGNORE_CONDITIONS_MENTAL": "Ignore Mental Conditions",
   "BONUS_TYPE.DAMAGE": "Damage",
-  "BONUS_TYPE.FEAR": "Fear"
+  "BONUS_TYPE.FEAR": "Fear",
+  "BONUS_TYPE.MENTAL_RECOVERY": "Mental Recovery",
+  "BONUS_TYPE.PHYSICAL_RECOVERY": "Physical Recovery"
 }

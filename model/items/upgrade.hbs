@@ -31,7 +31,7 @@
 
         <div>
           <h3>{{localize "UPGRADE.CATEGORY"}}</h3>
-          <select name="system.category">
+          <select name="system.category" style="margin-top: 3px; width: 100%;">
             {{#select data.system.category}}
               <option value="facility">{{localize "UPGRADE.FACILITY"}}</option>
               <option value="contact">{{localize "UPGRADE.CONTACT"}}</option>
@@ -42,6 +42,15 @@
           </select>
         </div>
 
+        <div class="flex-row flex-wrap grid-span-3">
+          <h3>{{localize "UPGRADE.PREREQUISITE"}}</h3>
+          <input
+            class="light"
+            name="system.prerequisite"
+            type="text"
+            value="{{data.system.prerequisite}}"
+          />
+        </div>
         <div class="flex-row flex-wrap center">
           <h3>{{localize "UPGRADE.COST"}}</h3>
           <input
@@ -51,18 +60,31 @@
             value="{{data.system.cost}}"
           />
         </div>
-        <div class="flex-row flex-wrap grid-span-2">
-          <h3>{{localize "UPGRADE.PREREQUISITE"}}</h3>
+        <div class="grid-span-2">
+          <h3>{{localize "BONUS_TYPE.HEADER"}}</h3>
+          <select name="system.bonusType" style="margin-top:3px; width: 100%;">
+            {{#select data.system.bonusType}}
+            {{#each config.upgradeBonusType as |bonusType key|}}
+            <option value="{{key}}" {{#if (eq key ../data.system.bonusType)}}selected{{/if}}>{{localize bonusType}}
+            </option>
+            {{/each}}
+            {{/select}}
+          </select>
+        </div>
+        {{#ifIn data.system.bonusType config.bonusTypeRequiresBonus}}
+        <div class="flex-row flex-wrap center">
+          <h3>{{localize "UPGRADE.BONUS"}}:</h3>
           <input
             class="light"
-            name="system.prerequisite"
+            name="system.bonus"
             type="text"
-            value="{{data.system.prerequisite}}"
+            value="{{data.system.bonus}}"
           />
         </div>
+        {{/ifIn}}
 
       </div>
-      <div class="item-notes">
+      <div class="item-notes" style="margin-top: 5px;">
 
         <div class="function flex-row flex-wrap">
           <b>{{localize "UPGRADE.FUNCTION"}}</b>
