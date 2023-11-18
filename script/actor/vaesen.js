@@ -83,6 +83,7 @@ export class VaesenActor extends Actor {
       await super._preCreate(data, options, user);
 
       const link = data.type == "player" || 
+                    data.type == "headquarter" ||
                     (data.type == "npc" && await game.settings.get("vaesen", "npcLink")) || 
                     (data.type == "vaesen" && await game.settings.get("vaesen", "vaesenLink"));
 

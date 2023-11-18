@@ -277,8 +277,9 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
         { name: game.i18n.localize("ATTRIBUTE.EMPATHY_ROLL"), value: this.actor.system.attribute.empathy.value }
       ];
     }
+    const upgrades = this.computePossibleBonusFromUpgrades(type);
 
-    prepareRollNewDialog(this, testName, info);
+    prepareRollNewDialog(this, testName, info, null, null, null, upgrades);
   }
 
   computeInfoFromConditions(attributeName) {
@@ -300,6 +301,31 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       return null;
     const conditionLabel = game.i18n.localize("HEADER.CONDITIONS").toLowerCase().replace(/\b(\w)/g, x => x.toUpperCase());
     return { name:conditionLabel, value: bonus, tooltip: info.join("\n"), type:"conditions"};
+  }
+
+  computePossibleBonusFromUpgrades(recoveryType) {
+    let upgradeArray = [];
+
+    var headquarter = game.actors.get(this.actor.system.headquarter);
+    if (!headquarter)
+      return upgradeArray;
+
+    for (let item of Object.values(headquarter.items.contents)) {
+      if (
+        item.type === "upgrade" &&
+        ((item.system.bonusType == "bonusPhysicalRecovery" && recoveryType == "physical") ||
+        (item.system.bonusType == "bonusMentalRecovery" && recoveryType == "mental"))
+      ) {
+        let upgrade = {
+          name: item.name,
+          bonus: item.system.bonus,
+          description: item.system.function,
+          bonusType: item.system.bonusType,
+        };
+        upgradeArray.push(upgrade);
+      }
+    }
+    return upgradeArray;
   }
 
   updateCondition(conditionName) {
