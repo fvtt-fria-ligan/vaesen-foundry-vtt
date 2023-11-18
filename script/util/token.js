@@ -10,7 +10,6 @@ export class VaesenTokenHUD extends TokenHUD {
 
     if (actor.type === "player") {
       let ret = super._getStatusEffectChoices();
-      console.log(ret);
       return ret;
     }
 
@@ -43,7 +42,6 @@ export class VaesenTokenHUD extends TokenHUD {
         if (item.type !== "condition") {
           continue;
         }
-        console.log(item);
         vaesenActions[item.img] = {
           cssClass: item.system.active ? "active" : "",
           id: item.id,
