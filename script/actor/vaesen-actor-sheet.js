@@ -252,6 +252,11 @@ export class VaesenActorSheet extends ActorSheet {
     let data = duplicate(header.dataset);
 
     data["name"] = `New ${data.type.capitalize()}`;
+    if (data.type == "condition")
+    {
+      var count = this.actor.items.filter(x => x.type == "condition").length;
+      data["img"] = `systems/vaesen/asset/counter_tokens/${count+1}.png`;
+    }
     this.actor.createEmbeddedDocuments("Item", [data]);
   }
 
