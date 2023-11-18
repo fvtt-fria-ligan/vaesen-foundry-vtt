@@ -19,6 +19,13 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     });
   }
 
+  async getData() {
+    const headquarter = game.actors.get(this.actor.system.headquarter);
+    if (headquarter)
+      this.actor.setFlag("vaesen", "headquarterName", headquarter.name);
+    return super.getData();
+  }
+
   async affirmConditions(actor) {
     let currentConditions = [];
     actor.effects.forEach(function (value, key) {
@@ -142,6 +149,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     html.find(".gear .name").click((ev) => {
       this.onItemUpdate(ev);
     });
+    html.find(".actor-edit").click(this._onShowActor.bind(this));
 
     // DRAG TO MACRO HANDLERS
     html.find('.skill b').each((i, item) => {
@@ -269,8 +277,9 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
         { name: game.i18n.localize("ATTRIBUTE.EMPATHY_ROLL"), value: this.actor.system.attribute.empathy.value }
       ];
     }
+    const upgrades = this.computePossibleBonusFromUpgrades(type);
 
-    prepareRollNewDialog(this, testName, info);
+    prepareRollNewDialog(this, testName, info, null, null, null, upgrades);
   }
 
   computeInfoFromConditions(attributeName) {
@@ -292,6 +301,31 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       return null;
     const conditionLabel = game.i18n.localize("HEADER.CONDITIONS").toLowerCase().replace(/\b(\w)/g, x => x.toUpperCase());
     return { name:conditionLabel, value: bonus, tooltip: info.join("\n"), type:"conditions"};
+  }
+
+  computePossibleBonusFromUpgrades(recoveryType) {
+    let upgradeArray = [];
+
+    var headquarter = game.actors.get(this.actor.system.headquarter);
+    if (!headquarter)
+      return upgradeArray;
+
+    for (let item of Object.values(headquarter.items.contents)) {
+      if (
+        item.type === "upgrade" &&
+        ((item.system.bonusType == "bonusPhysicalRecovery" && recoveryType == "physical") ||
+        (item.system.bonusType == "bonusMentalRecovery" && recoveryType == "mental"))
+      ) {
+        let upgrade = {
+          name: item.name,
+          bonus: item.system.bonus,
+          description: item.system.function,
+          bonusType: item.system.bonusType,
+        };
+        upgradeArray.push(upgrade);
+      }
+    }
+    return upgradeArray;
   }
 
   updateCondition(conditionName) {
@@ -317,5 +351,19 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
         },
       }]);
     }
+  }
+
+  _dropHeadquarter(headquarter) {
+    console.log("_dropHeadquarter", headquarter);
+    if (!headquarter) return;
+    this.actor.update({ "system.headquarter": headquarter.id });
+    return this.actor;
+  }
+
+  _onShowActor(event) {
+    event.preventDefault();
+    const actorID = event.currentTarget.dataset.actorId;
+    const actor = game.actors.get(actorID);
+    actor.sheet.render(true);
   }
 }

@@ -143,7 +143,8 @@
       "experience": 0,
       "resources": 0,
       "capital": 0,
-      "note": ""
+      "note": "",
+      "headquarter": null
     },
     "npc": {
       "templates": ["attributes", "skills"],
@@ -274,7 +275,9 @@
       "cost": 0,
       "function": "",
       "asset": "",
-      "description": ""
+      "description": "",
+      "bonusType": "none",
+      "bonus": 0
     },
     "relationship": {
       "description": "",

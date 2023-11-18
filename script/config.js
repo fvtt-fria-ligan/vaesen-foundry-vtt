@@ -22,9 +22,16 @@ vaesen.bonusType = {
     ignoreConditionPhysical: "BONUS_TYPE.IGNORE_CONDITIONS_PHYSICAL",
     ignoreConditionMental: "BONUS_TYPE.IGNORE_CONDITIONS_MENTAL",
     damage: "BONUS_TYPE.DAMAGE",
-    fear: "BONUS_TYPE.FEAR"
+    fear: "BONUS_TYPE.FEAR",
+    bonusMentalRecovery: "BONUS_TYPE.MENTAL_RECOVERY",
+    bonusPhysicalRecovery: "BONUS_TYPE.PHYSICAL_RECOVERY",
+};
+vaesen.upgradeBonusType = {
+    none: "BONUS_TYPE.NONE",
+    bonusMentalRecovery: "BONUS_TYPE.MENTAL_RECOVERY",
+    bonusPhysicalRecovery: "BONUS_TYPE.PHYSICAL_RECOVERY",
 };
 
 vaesen.bonusTypeRequiresSkill = ["skill", "ignoreConditionSkill", "damage"];
-vaesen.bonusTypeRequiresBonus = ["skill", "damage", "fear"];
+vaesen.bonusTypeRequiresBonus = ["skill", "damage", "fear", "bonusMentalRecovery", "bonusPhysicalRecovery"];
 vaesen.bonusTypeDamageSkills = ["closeCombat", "force", "rangedCombat"];

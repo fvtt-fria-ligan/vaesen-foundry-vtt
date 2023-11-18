@@ -1,3 +1,5 @@
+import { linkUnlinkActorData } from "./migrator.js";
+
 export const registerSystemSettings = function () {
     game.settings.register("vaesen", "swag", {
         name: "SETTINGS.SWAG_NAME",
@@ -48,7 +50,8 @@ export const registerSystemSettings = function () {
         config: true,
         restricted: true,
         default: false,
-        type: Boolean 
+        type: Boolean,
+        onChange: value => linkUnlinkActorData(value, "NPC")
     });
     
     game.settings.register("vaesen", "vaesenLink", {
@@ -58,6 +61,7 @@ export const registerSystemSettings = function () {
         config: true,
         restricted: true,
         default: false,
-        type: Boolean 
+        type: Boolean,
+        onChange: value => linkUnlinkActorData(value, "Vaesen")
     });
 }

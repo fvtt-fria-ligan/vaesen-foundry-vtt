@@ -6,7 +6,8 @@ export function prepareRollNewDialog(
   baseDiceLines = [],
   damageDefault = null,
   gearBonus = null,
-  talentBonus = null
+  talentBonus = null,
+  recoveryBonus = null
 ) {
   let baseLines = [];
   let baseLinesDice = 0;
@@ -56,15 +57,21 @@ export function prepareRollNewDialog(
         );
 
   let gearHtml = buildGearSelectHtmlDialog(gearBonus);
-  let talentHtml = buildTalentSelectHtmlDialog(
+  let talentHtml = buildSelectMultipleHtmlDialog(
     talentBonus,
     "TALENT.NAME",
     "talent"
+  );
+  let upgradeHtml = buildSelectMultipleHtmlDialog(
+    recoveryBonus,
+    "UPGRADE.NAME",
+    "upgrade"
   );
 
   let extraLines = [];
   extraLines.push(gearHtml);
   extraLines.push(talentHtml);
+  extraLines.push(upgradeHtml);
   extraLines.push(bonusHtml);
   extraLines.push(damageHtml);
   const extraLinesHtml = extraLines.join("");
@@ -87,9 +94,11 @@ export function prepareRollNewDialog(
             let bonus = parseInt(html.find("#bonus")[0].value, 10);
             let gear = 0;
             var talent = 0;
+            var upgrades = 0;
             var damage = 0;
             let gearSelect = html.find("#gear")[0];
             let talentSelect = html.find("#talent")[0];
+            let upgradeSelect = html.find("#upgrade")[0];
             let damageInput = html.find("#damage")[0];
             if (gearSelect) {
               if (gearSelect.value != 0) {
@@ -98,8 +107,8 @@ export function prepareRollNewDialog(
               }
             }
             if (talentSelect) {
-              var conditionsIgnored = false;
-              var options = talentSelect.selectedOptions;
+              let conditionsIgnored = false;
+              let options = talentSelect.selectedOptions;
               Array.from(options).map(({ text, value }) => {
                 let selectedTalent = talentBonus.find((x) => x.name == value);
                 breakdown.push(text);
@@ -119,6 +128,16 @@ export function prepareRollNewDialog(
                 }
               });
             }
+            if (upgradeSelect) {
+              let options = upgradeSelect.selectedOptions;
+              Array.from(options).map(({ text, value }) => {
+                let selectedUpgrade = recoveryBonus.find((x) => x.name == value);
+                if (!selectedUpgrade)
+                  return;
+                breakdown.push(text);
+                upgrades += parseInt(selectedUpgrade.bonus, 10);
+              });
+            }
             if (damageInput) damage += parseInt(damageInput.value, 10);
             if (bonus > 0)
               breakdown.push(
@@ -129,7 +148,7 @@ export function prepareRollNewDialog(
               testName,
               baseLinesDice,
               0,
-              bonus + gear + talent,
+              bonus + gear + talent + upgrades,
               damage,
               breakdown
             );
@@ -287,7 +306,8 @@ function buildGearSelectHtmlDialog(options) {
   return html.join("");
 }
 
-function buildTalentSelectHtmlDialog(options, name, id) {
+function buildSelectMultipleHtmlDialog(options, name, id) {
+  console.log(options);
   if (options == null || options.length == 0) return "";
 
   let html = [];
@@ -295,12 +315,10 @@ function buildTalentSelectHtmlDialog(options, name, id) {
     `<div class="flex row" style="flex-basis: 35%; justify-content: space-between;">`
   );
   html.push(
-    `<p style="text-transform: capitalize; white-space:nowrap; margin-top: 4px;">${game.i18n.localize(
-      "TALENT.NAME"
-    )}: </p></div>`
+    `<p style="text-transform: capitalize; white-space:nowrap; margin-top: 4px;">${game.i18n.localize(name)}: </p></div>`
   );
   html.push(`<div class="flex row" style="width: 100%;">`);
-  html.push(`<select id="talent" style="width: 100%;" multiple>`);
+  html.push(`<select id="${id}" style="width: 100%;" multiple>`);
   html.push(`<option value="0">None (0)</option>`);
   options.forEach((element) => {
     let descriptionWithoutTags = $("<p>").html(element.description).text();
