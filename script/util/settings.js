@@ -40,5 +40,24 @@ export const registerSystemSettings = function () {
         type: String,
         default: ""
     });
-
+    
+    game.settings.register("vaesen", "npcLink", {
+        name: "SETTINGS.NPC_LINK_NAME",
+        hint: "SETTINGS.NPC_LINK",
+        scope: "world",
+        config: true,
+        restricted: true,
+        default: false,
+        type: Boolean 
+    });
+    
+    game.settings.register("vaesen", "vaesenLink", {
+        name: "SETTINGS.VAESEN_LINK_NAME",
+        hint: "SETTINGS.VAESEN_LINK",
+        scope: "world",
+        config: true,
+        restricted: true,
+        default: false,
+        type: Boolean 
+    });
 }

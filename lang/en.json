@@ -212,6 +212,10 @@
   "SETTINGS.PORTRAIT_LANDSCAPE": "3:2 Landscape Orientation",
   "SETTINGS.InitiativeDeck": "Initiative Deck",
   "SETTINGS.InitiativeDeckHint": "Select the deck you would like to use for your game",
+  "SETTINGS.NPC_LINK_NAME": "Link NPC token to actor sheet",
+  "SETTINGS.NPC_LINK": "As NPCs can be reused in several mysteries, the token will not be linked to the actor data. If you select to link the data, please, remember to \"reset\" the actor conditions / statuses.",
+  "SETTINGS.VAESEN_LINK_NAME": "Link Vaesen's token to actor sheet",
+  "SETTINGS.VAESEN_LINK": "As Vaesen can be reused in several mysteries, the token will not be linked to the actor data. If you select to link the data, please, remember to \"reset\" the actor conditions / statuses.",
 
   "CHAT.SUCCESS": "Successes",
   "ROLL.BASE.POOL": "Base Dice Pool",
