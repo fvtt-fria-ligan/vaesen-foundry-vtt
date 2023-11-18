@@ -9,7 +9,30 @@ export function migrate(){
     if (!currentVersion || isNewerVersion(key, currentVersion))
       migrations[key]();
   });
+}
 
+export async function linkUnlinkActorData(link, type){
+  new Dialog({
+    title: `Link/Unlink ${type}`,
+    content: `<p>${game.i18n.localize(link ? "MIGRATOR.LINK_ACTOR" : "MIGRATOR.UNLINK_ACTOR")}<strong>${type}</strong></p><p>${game.i18n.localize("MIGRATOR.LINK_ACTOR_CONFIRMATION")}</p>`,
+    buttons: {
+      update: {
+       icon: '<i class="fas fa-check"></i>',
+       label: "Update",
+       callback: () => {
+        var actors = game.actors.contents.filter(x => x.type == type.toLowerCase());
+        for (let actor of actors) {
+          actor.update({"prototypeToken.actorLink": link});
+          console.log("Vaesen | Link/Unlink", actor);
+        }
+       }
+      },
+      cancel: {
+       icon: '<i class="fas fa-ban"></i>',
+       label: "Cancel"
+      }
+     },
+  }).render(true);
 }
 
 const migrations = {
