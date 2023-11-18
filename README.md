@@ -17,9 +17,6 @@ This system provides character sheets and items for  your play, if you would lik
 
 ## To be done in the nearest future
 
-* Dialogs
-    * line up ux and design to match overall look and feel
-
 * CSS optimization - convert current CSS structure to SASS based pre-processor for future ease of adjustment
     - underway
 
@@ -33,6 +30,15 @@ This system provides character sheets and items for  your play, if you would lik
 
 ## Release Notes
 =======
+
+
+v4.0.0
+- Major Release! BACK UP YOUR WORLDS BEFORE UPGRADING! 
+- Moved conditions to active effects, exisitng actors will be migrated to the new system. [[#78](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/78)]
+- Status Icons on tokens now relate to the conditions on the actor. You can toggle them from the HUD, or the sheet.  [#56](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/56)
+- Added settings to determine default behavior for NPC and Vaesen actors when they are dropped on a scene.
+-- Note: if a vaesen is not linked you MUST add conditions from the token HUD or the copy of the actor on the scene rather than the unlinked actor in the sidebar. 
+- Fixed: Weapon rolls where not using the correct conditions for the roll pool [[#83](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/83)]
 
 v3.3.0
 - Added fear rolls to the Character sheet [#74](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/74)
