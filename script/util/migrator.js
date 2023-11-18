@@ -19,7 +19,6 @@ const migrations = {
 async function migrateTo4_0() {
   const options = {permanent: true};
   ui.notifications.warn("Migrating your data to version 4.0.0. Please, wait until it finishes.", options);
-  console.log("MIGRATING TO 4.0.0");
   for (let actor of game.actors.contents) {
     const updateData = migrateTo4_0_Actor(actor);
     if (!foundry.utils.isEmpty(updateData)) {
@@ -49,7 +48,7 @@ function migrateTo4_0_Actor(actor){
     if (!checked)
       continue;
 
-    const currentEffect = Array.from(actor.effects?.values()).find(it => it.statuses.has(condition.id));
+    const currentEffect = Array.from(actor.effects?.values()).find(it => it.icon === condition.icon);
     if (currentEffect)
       continue;
 
@@ -61,7 +60,12 @@ function migrateTo4_0_Actor(actor){
       icon: statusEffect.icon,
       changes: statusEffect.changes,
       id: actor.uuid,
-      statuses: statusEffect.statuses
+      statuses: statusEffect.statuses,
+      flags: {
+        core: {
+          statusId: condition.id
+        }
+      }
     }]);
   }
   const actorLink = get(actor, "prototypeToken.actorLink");

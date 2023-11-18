@@ -137,7 +137,6 @@ export class conditions{
 
     static async onVaesenCondition(actor, conditionId) {
       let condition = Array.from(actor.items?.values()).find(x => x.type == "condition" && x.id == conditionId);
-      console.log(condition);
 
       await actor.updateEmbeddedDocuments("Item", [
         { _id: condition.id, "data.active": !condition.system.active },
@@ -147,7 +146,12 @@ export class conditions{
         label: condition.name,
         icon: condition.img,
         id: condition.name,
-        statuses: [condition.name]
+        statuses: [condition.name],
+        flags: {
+          core: {
+            statusId: condition.name
+          }
+        }
       };
   
       const currentEffect = Array.from(actor.effects?.values()).find(it => it.icon === statusEffect.icon);
