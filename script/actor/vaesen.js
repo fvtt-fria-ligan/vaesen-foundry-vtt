@@ -91,7 +91,7 @@ export class VaesenActor extends Actor {
       const displayBars = isNpc ? CONST.TOKEN_DISPLAY_MODES.OWNER : CONST.TOKEN_DISPLAY_MODES.NONE;
       const bar1 = isNpc ? "condition.physical" : null;
       const bar2 = isNpc ? "condition.mental" : null;
-      let tokenProto = {
+      let actorDefaults = {
           "prototypeToken.displayName": displayName,
           "prototypeToken.displayBars": displayBars,
           "prototypeToken.disposition": CONST.TOKEN_DISPOSITIONS.NEUTRAL,
@@ -102,6 +102,9 @@ export class VaesenActor extends Actor {
           "prototypeToken.bar1.attribute": bar1,
           "prototypeToken.bar2.attribute": bar2,
       };
-      this.updateSource(tokenProto);
+      var headquarters = game.actors.contents.filter(x => x.type === "headquarter");
+      if (headquarters.length === 1)
+        actorDefaults["system.headquarter"] = headquarters[0].id;
+      this.updateSource(actorDefaults);
     }
 }

@@ -123,6 +123,15 @@ Hooks.on("updateActor", (actor,changes,diff,userId) => {
   });
 });
 
+Hooks.on('dropActorSheetData', async (actor, sheet, data) => {
+  if (actor.type !== 'player' || data.type !== "Actor")
+    return;
+
+  let headquarter = await fromUuid(data.uuid);
+  if (headquarter.type === "headquarter")
+    sheet._dropHeadquarter(headquarter);
+});
+
 Hooks.once("diceSoNiceReady", (dice3d) => {
   dice3d.addSystem({ id: "vaesen", name: "Vaesen" }, "true");
   dice3d.addColorset({

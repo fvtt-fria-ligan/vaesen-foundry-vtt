@@ -143,7 +143,8 @@
       "experience": 0,
       "resources": 0,
       "capital": 0,
-      "note": ""
+      "note": "",
+      "headquarter": null
     },
     "npc": {
       "templates": ["attributes", "skills"],

@@ -19,6 +19,13 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     });
   }
 
+  async getData() {
+    const headquarter = game.actors.get(this.actor.system.headquarter);
+    if (headquarter)
+      this.actor.setFlag("vaesen", "headquarterName", headquarter.name);
+    return super.getData();
+  }
+
   async affirmConditions(actor) {
     let currentConditions = [];
     actor.effects.forEach(function (value, key) {
@@ -142,6 +149,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     html.find(".gear .name").click((ev) => {
       this.onItemUpdate(ev);
     });
+    html.find(".actor-edit").click(this._onShowActor.bind(this));
 
     // DRAG TO MACRO HANDLERS
     html.find('.skill b').each((i, item) => {
@@ -317,5 +325,19 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
         },
       }]);
     }
+  }
+
+  _dropHeadquarter(headquarter) {
+    console.log("_dropHeadquarter", headquarter);
+    if (!headquarter) return;
+    this.actor.update({ "system.headquarter": headquarter.id });
+    return this.actor;
+  }
+
+  _onShowActor(event) {
+    event.preventDefault();
+    const actorID = event.currentTarget.dataset.actorId;
+    const actor = game.actors.get(actorID);
+    actor.sheet.render(true);
   }
 }
