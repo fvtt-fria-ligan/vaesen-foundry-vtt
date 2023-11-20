@@ -22,20 +22,7 @@ export class HeadquarterCharacterSheet extends VaesenActorSheet {
 
   activateListeners(html) {
     super.activateListeners(html);
-    html.find(".item-create").click((ev) => {
-      this.onItemCreate(ev);
-    });
-    html.find(".item-edit").click((ev) => {
-      this.onItemUpdate(ev);
-    });
-    html.find(".item-delete").click((ev) => {
-      this.onItemDelete(ev);
-    });
-    html.find(".to-chat").click((ev) => {
-      this.sendToChat(ev);
-    });
-    html.find("input").focusin((ev) => this.onFocusIn(ev));
-
+    
     html.find(".upgrade .icon").click((ev) => {
       this.onItemUpdate(ev);
     });
