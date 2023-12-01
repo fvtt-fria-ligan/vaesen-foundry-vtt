@@ -31,6 +31,9 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+v4.1.0
+- Added a 'headquarters' item to the player sheet.  Selecting a headquarter actor will give the player access to the upgrades at the HQ for dice pools
+
 
 v4.0.0
 - Major Release! BACK UP YOUR WORLDS BEFORE UPGRADING! 
