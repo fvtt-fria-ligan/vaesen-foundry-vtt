@@ -36,11 +36,11 @@ export async function linkUnlinkActorData(link, type){
 }
 
 const migrations = {
-  4.0 : migrateTo4_0,
-  4.1 : migrateTo4_1
+  "4.0.0" : migrateTo4_0_0,
+  "4.1.0" : migrateTo4_1_0
 }
 
-async function migrateTo4_0() {
+async function migrateTo4_0_0() {
   const options = {permanent: true};
   ui.notifications.warn("Migrating your data to version 4.0.0. Please, wait until it finishes.", options);
   for (let actor of game.actors.contents) {
@@ -100,7 +100,7 @@ function migrateTo4_0_Actor(actor){
   return updateData;
 }
 
-async function migrateTo4_1() {
+async function migrateTo4_1_0() {
   const options = {permanent: true};
   ui.notifications.warn("Migrating your data to version 4.1.0. Please, wait until it finishes.", options);
 
