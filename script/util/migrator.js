@@ -107,12 +107,13 @@ async function migrateTo4_1_0() {
   var headquarters = game.actors.contents.filter(x => x.type === "headquarter");
   if (headquarters.length !== 1) {
     ui.notifications.warn(`You have ${headquarters.length} headquarter${headquarters.length > 1 ? "s" : "" } on the world. In this case, you will need to configure the headquarte manually for each player character.`, options);
-    return;
   }
-  var actors = game.actors.contents.filter(x => x.type === "player");
-  for (let actor of actors) {
-    console.log("Vaesen Migration", actor);
-    await actor.update({ "system.headquarter": headquarters[0].id });
+  else {
+    var actors = game.actors.contents.filter(x => x.type === "player");
+    for (let actor of actors) {
+      console.log("Vaesen Migration", actor);
+      await actor.update({ "system.headquarter": headquarters[0].id });
+    }
   }
 
   await game.settings.set("vaesen", "systemMigrationVersion", game.system.data.version);
