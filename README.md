@@ -31,6 +31,9 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+v4.1.2
+- Fast and Slow action not working properly for NPCs and Vaesen.
+
 v4.1.1
 - Fix the migration, as it's running every login.
 

@@ -8,32 +8,19 @@ export class VaesenTokenHUD extends TokenHUD {
   _getStatusEffectChoices(params) {
     var actor = this.object.document.actor;
 
-    if (actor.type === "player") {
-      let ret = super._getStatusEffectChoices();
+    let ret = super._getStatusEffectChoices();
+
+    if (actor.type === "player") {  
       return ret;
     }
 
-    let yzurActions = {
-      "modules/yze-combat/assets/icons/fast-action.svg" : {
-        cssClass: "",
-        id: "fastAction",
-        isActive: false,
-        isOverlay: false,
-        src: "modules/yze-combat/assets/icons/fast-action.svg",
-        title: "Fast Action"
-      },
-      "modules/yze-combat/assets/icons/slow-action.svg" : {
-        cssClass: "",
-        id: "slowAction",
-        isActive: false,
-        isOverlay: false,
-        src: "modules/yze-combat/assets/icons/slow-action.svg",
-        title: "Slow Action"
-      }
-    };
+    for (const [key] of Object.entries(ret)) {
+      if (key.startsWith("system"))
+      delete ret[key];
+    }
 
     if (actor.type === "npc") {
-      return yzurActions;
+      return ret;
     }
 
     if (actor.type === "vaesen") {
@@ -50,21 +37,21 @@ export class VaesenTokenHUD extends TokenHUD {
           isActive: item.system.active
         };
       }
-      vaesenActions["modules/yze-combat/assets/icons/fast-action.svg"] = yzurActions["modules/yze-combat/assets/icons/fast-action.svg"];
-      vaesenActions["modules/yze-combat/assets/icons/slow-action.svg"] = yzurActions["modules/yze-combat/assets/icons/slow-action.svg"];
+      vaesenActions["modules/yze-combat/assets/icons/fast-action.svg"] = ret["modules/yze-combat/assets/icons/fast-action.svg"];
+      vaesenActions["modules/yze-combat/assets/icons/slow-action.svg"] = ret["modules/yze-combat/assets/icons/slow-action.svg"];
       return vaesenActions;
     }
   }
 
   async _onToggleEffect(effect, {active, overlay=false}={}) {
     var actor = this.object.document.actor;
-    if (actor.type !== "vaesen") {
+    let img = effect.currentTarget;
+    if (actor.type !== "vaesen" || img.dataset.statusId == "fastAction" || img.dataset.statusId == "slowAction") {
       return super._onToggleEffect(effect, {active, overlay});
     }
     
     effect.preventDefault();
     effect.stopPropagation();
-    let img = effect.currentTarget;
     const result = await conditions.onVaesenCondition(actor, img.dataset.statusId);
 
     if ( this.hasActiveHUD ) canvas.tokens.hud.refreshStatusIcons();
