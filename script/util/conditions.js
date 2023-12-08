@@ -135,6 +135,60 @@ export class conditions{
         return this.allStatusEffects.find(effect => effect.id === id);
     }
 
+    static async onActionCondition(data) {
+      const condition = await CONFIG.statusEffects.find(it => it.id == data.property);
+      if (!condition) return;
+
+      const token = await Array.from(game.scenes.current.tokens).find(it => it._id == data.combatant.tokenId);
+      const tokenCondition = token.actor.effects.find(it => it.icon == condition.icon);
+      const conditionStatus = data.combatant.flags["yze-combat"][data.property];
+
+      if (conditionStatus && tokenCondition) return;
+      
+      await token.toggleActiveEffect(condition);
+    }
+
+    static async onActionUpdate(tokenId, combatant, turn, preparation) {
+      if (!preparation && this.combatPreparation) return;
+
+      const token = await Array.from(game.scenes.current.tokens).find(it => it._id == tokenId);
+
+      const fastCondition = await CONFIG.statusEffects.find(it => it.id =="fastAction");
+      const slowCondition = await CONFIG.statusEffects.find(it => it.id =="slowAction");
+
+      const slowAction = await token.actor.effects.find(it => it.icon == slowCondition.icon);
+      const fastAction = await token.actor.effects.find(it => it.icon == fastCondition.icon);
+
+      console.log("CUSSA _ UPDATE", token, slowAction, fastAction);
+
+      if (turn == 0) {
+        if (slowAction) await token.toggleActiveEffect(slowCondition);
+        if (fastAction) await token.toggleActiveEffect(fastCondition);
+        return;
+      }
+      
+      if ((combatant.flags["yze-combat"].fastAction && !fastAction) || 
+          (!combatant.flags["yze-combat"].fastAction && fastAction)) {
+        await token.toggleActiveEffect(fastCondition);
+      }
+
+      if ((combatant.flags["yze-combat"].slowAction && !slowAction) || 
+          (!combatant.flags["yze-combat"].slowAction && slowAction)) {
+        await token.toggleActiveEffect(slowCondition);
+      }
+
+    }
+
+    static combatPreparation = false;
+    static async onCombatStartEnd(data) {
+      this.combatPreparation = true;
+      for (const turn of data.turns) {
+        console.log("CUSSA _ COMBAT", turn);
+        await this.onActionUpdate(turn.tokenId, null, 0, true);
+      }
+      this.combatPreparation = false;
+    }
+
     static async onVaesenCondition(actor, conditionId) {
       let condition = Array.from(actor.items?.values()).find(x => x.type == "condition" && x.id == conditionId);
 

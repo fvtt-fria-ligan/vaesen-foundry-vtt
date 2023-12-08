@@ -8,19 +8,12 @@ export class VaesenTokenHUD extends TokenHUD {
   _getStatusEffectChoices(params) {
     var actor = this.object.document.actor;
 
-    let ret = super._getStatusEffectChoices();
-
     if (actor.type === "player") {  
-      return ret;
-    }
-
-    for (const [key] of Object.entries(ret)) {
-      if (key.startsWith("system"))
-      delete ret[key];
+      return super._getStatusEffectChoices();;
     }
 
     if (actor.type === "npc") {
-      return ret;
+      return [];
     }
 
     if (actor.type === "vaesen") {
@@ -37,8 +30,6 @@ export class VaesenTokenHUD extends TokenHUD {
           isActive: item.system.active
         };
       }
-      vaesenActions["modules/yze-combat/assets/icons/fast-action.svg"] = ret["modules/yze-combat/assets/icons/fast-action.svg"];
-      vaesenActions["modules/yze-combat/assets/icons/slow-action.svg"] = ret["modules/yze-combat/assets/icons/slow-action.svg"];
       return vaesenActions;
     }
   }
