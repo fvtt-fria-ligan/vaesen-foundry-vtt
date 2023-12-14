@@ -132,6 +132,34 @@ Hooks.on('dropActorSheetData', async (actor, sheet, data) => {
     sheet._dropHeadquarter(headquarter);
 });
 
+Hooks.on("yze-combat.fast-action-button-clicked", async function(data) {
+  await conditions.onActionCondition(data);
+});
+
+Hooks.on("yze-combat.slow-action-button-clicked", async function(data) {
+  await conditions.onActionCondition(data);
+});
+
+Hooks.on('updateCombat', async function (e) {
+  if (!game.user.isGM) return;
+  await conditions.onActionUpdate(e.current.tokenId, e.combatant, e.turn);
+});
+
+Hooks.on('deleteCombat', async function (e) {
+  if (!game.user.isGM) return;
+  await conditions.onCombatStartEnd(e);
+});
+
+Hooks.on('combatStart', async function (e) {
+  if (!game.user.isGM) return;
+  await conditions.onCombatStartEnd(e);
+});
+
+Hooks.on('combatRound', async function (e) {
+  if (!game.user.isGM) return;
+  await conditions.onCombatStartEnd(e);
+});
+
 Hooks.once("diceSoNiceReady", (dice3d) => {
   dice3d.addSystem({ id: "vaesen", name: "Vaesen" }, "true");
   dice3d.addColorset({
