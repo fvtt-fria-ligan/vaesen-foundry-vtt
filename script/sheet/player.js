@@ -1,5 +1,6 @@
 import { prepareRollNewDialog } from "../util/roll.js";
 import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
+import { generator } from "../util/generator.js";
 
 export class PlayerCharacterSheet extends VaesenActorSheet {
 
@@ -97,9 +98,25 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     }
   }
 
+  _getHeaderButtons() {
+    let buttons = super._getHeaderButtons();
+    if (this.actor.isOwner) {
+      buttons = [
+        {
+          label: "Chargen",
+          class: "char-gen",
+          icon: "fas fa-leaf",
+          onclick: async (_) =>
+            await generator.generateCharacter(this.actor)
+        },
+      ].concat(buttons);
+    }
+    return buttons;
+  }
+
   activateListeners(html) {
     super.activateListeners(html);
-    
+
     html.find(".fav-togle").click((ev) => {
       this.onFavTogle(ev);
     });
@@ -190,8 +207,8 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       const div = $(item).parents(".roll-fear");
       const key = div.data("key");
       const attribute = this.actor.system.attribute[key];
-      const testName = game.i18n.localize( attribute.label + "_ROLL") + " " + game.i18n.localize("FEAR_ROLL");
-      
+      const testName = game.i18n.localize(attribute.label + "_ROLL") + " " + game.i18n.localize("FEAR_ROLL");
+
       const data = {
         type: "fear",
         attributeKey: key,
@@ -212,7 +229,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       const itemName = $(item).text();
       const img = $(div).children(".icon").attr("src");
       const testName = `${itemName} ${game.i18n.localize("ROLL.ROLL")}`;
-      
+
       const data = {
         type: "weapon",
         itemId: itemId,
@@ -300,7 +317,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     if (bonus === 0)
       return null;
     const conditionLabel = game.i18n.localize("HEADER.CONDITIONS").toLowerCase().replace(/\b(\w)/g, x => x.toUpperCase());
-    return { name:conditionLabel, value: bonus, tooltip: info.join("\n"), type:"conditions"};
+    return { name: conditionLabel, value: bonus, tooltip: info.join("\n"), type: "conditions" };
   }
 
   computePossibleBonusFromUpgrades(recoveryType) {
@@ -314,7 +331,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       if (
         item.type === "upgrade" &&
         ((item.system.bonusType == "bonusPhysicalRecovery" && recoveryType == "physical") ||
-        (item.system.bonusType == "bonusMentalRecovery" && recoveryType == "mental"))
+          (item.system.bonusType == "bonusMentalRecovery" && recoveryType == "mental"))
       ) {
         let upgrade = {
           name: item.name,
@@ -345,7 +362,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
         id: this.uuid,
         statuses: statusEffect.statuses,
         flags: {
-          core:{
+          core: {
             statusId: statusEffect.id
           }
         },
