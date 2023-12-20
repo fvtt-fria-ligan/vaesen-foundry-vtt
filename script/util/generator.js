@@ -100,50 +100,50 @@ export class generator {
     changes["system.bio.motivation"] = motivation;
     changes["system.bio.trauma"] = trauma;
     changes["system.note"] = `<ul>
-        <li>Class: ${classSelected}</li>
-        <li>Upbringing: ${upbringingSelected}</li>
-        <li>Profession: ${professionName}</li>
-        <li>Archetype: ${professionSelected.archetype}</li>
-        <li>Resources: ${resources}</li>
-        <li>Age: ${age} (${ageInfo.name})</li>
-        <li>Motivation: ${motivation}</li>
-        <li>Trauma: ${trauma}</li>
-        <li>Dark Secret: ${darkSecret}</li>
-        <li>Talent: ${talent}</li>
-        <li>Events:
+        <li>${game.i18n.localize("GENERATOR.CLASS")}: ${classSelected}</li>
+        <li>${game.i18n.localize("GENERATOR.UPBRINGING")}: ${upbringingSelected}</li>
+        <li>${game.i18n.localize("BIO.ARCHETYPE")}: ${professionSelected.archetype}</li>
+        <li>${game.i18n.localize("GENERATOR.PROFESSION")}: ${professionName}</li>
+        <li>${game.i18n.localize("RESOURCES")}: ${resources}</li>
+        <li>${game.i18n.localize("BIO.AGE")}: ${age} (${ageInfo.name})</li>
+        <li>${game.i18n.localize("BIO.MOTIVATION")}: ${motivation}</li>
+        <li>${game.i18n.localize("BIO.TRAUMA")}: ${trauma}</li>
+        <li>${game.i18n.localize("BIO.DARK_SECRET")}: ${darkSecret}</li>
+        <li>${game.i18n.localize("HEADER.TALENTS").toLowerCase().replace(/\b(\w)/g, x => x.toUpperCase())}: ${talent}</li>
+        <li>${game.i18n.localize("GENERATOR.LIFE_TIME_EVENTS")}:
           <ul>${eventsHtml}
           </ul>
         </li>
-        <li>Equipments:
+        <li>${game.i18n.localize("GENERATOR.EQUIPMENTS")}:
           <ul>${equipmentsHtml}
           </ul>
         </li>
         </ul>`;
 
     let dialogHtml = [];
-    dialogHtml.push(`<p>This is a destructive operation, that will clean the current character to replace by the default values. Would you like to proceed?</p>`);
+    dialogHtml.push(`<p>${game.i18n.localize("GENERATOR.MESSAGE")}</p>`);
     dialogHtml.push(changes["system.note"]);
     dialogHtml.push(`
         <table>
         <tr>
         <td>
         <ul>
-        <li>PHYSIQUE: ${changes["system.attribute.physique.value"]}
+        <li>${game.i18n.localize("ATTRIBUTE.PHYSIQUE")}: ${changes["system.attribute.physique.value"]}
           <ul>
-            <li>AGILITY: ${changes["system.skill.agility.value"]}</li>
-            <li>CLOSE COMBAT: ${changes["system.skill.closeCombat.value"]}</li>
-            <li>FORCE: ${changes["system.skill.force.value"]}</li>
+            <li>${game.i18n.localize("SKILL.AGILITY")}: ${changes["system.skill.agility.value"]}</li>
+            <li>${game.i18n.localize("SKILL.CLOSE_COMBAT")}: ${changes["system.skill.closeCombat.value"]}</li>
+            <li>${game.i18n.localize("SKILL.FORCE")}: ${changes["system.skill.force.value"]}</li>
           </ul>
         </li>
         </ul>
         </td>
         <td>
         <ul>
-        <li>LOGIC: ${changes["system.attribute.logic.value"]}
+        <li>${game.i18n.localize("ATTRIBUTE.LOGIC")}: ${changes["system.attribute.logic.value"]}
           <ul>
-            <li>INVESTIGATION: ${changes["system.skill.investigation.value"]}</li>
-            <li>LEARNING: ${changes["system.skill.learning.value"]}</li>
-            <li>VIGILANCE: ${changes["system.skill.vigilance.value"]}</li>
+            <li>${game.i18n.localize("SKILL.INVESTIGATION")}: ${changes["system.skill.investigation.value"]}</li>
+            <li>${game.i18n.localize("SKILL.LEARNING")}: ${changes["system.skill.learning.value"]}</li>
+            <li>${game.i18n.localize("SKILL.VIGILANCE")}: ${changes["system.skill.vigilance.value"]}</li>
           </ul>
         </li>
         </ul>
@@ -152,22 +152,22 @@ export class generator {
         <tr>
         <td>
         <ul>
-        <li>PRECISION: ${changes["system.attribute.precision.value"]}
+        <li>${game.i18n.localize("ATTRIBUTE.PRECISION")}: ${changes["system.attribute.precision.value"]}
           <ul>
-            <li>MEDICINE: ${changes["system.skill.medicine.value"]}</li>
-            <li>RANDGED COMBAT: ${changes["system.skill.rangedCombat.value"]}</li>
-            <li>STEALTH: ${changes["system.skill.stealth.value"]}</li>
+            <li>${game.i18n.localize("SKILL.MEDICINE")}: ${changes["system.skill.medicine.value"]}</li>
+            <li>${game.i18n.localize("SKILL.RANGED_COMBAT")}: ${changes["system.skill.rangedCombat.value"]}</li>
+            <li>${game.i18n.localize("SKILL.STEALTH")}: ${changes["system.skill.stealth.value"]}</li>
           </ul>
         </li>
         </ul>
         </td>
         <td>
         <ul>
-        <li>EMPATHY: ${changes["system.attribute.empathy.value"]}
+        <li>${game.i18n.localize("ATTRIBUTE.EMPATHY")}: ${changes["system.attribute.empathy.value"]}
           <ul>
-            <li>INSPIRATION: ${changes["system.skill.inspiration.value"]}</li>
-            <li>MANIPULATION: ${changes["system.skill.manipulation.value"]}</li>
-            <li>OBSERVATION: ${changes["system.skill.observation.value"]}</li>
+            <li>${game.i18n.localize("SKILL.INSPIRATION")}: ${changes["system.skill.inspiration.value"]}</li>
+            <li>${game.i18n.localize("SKILL.MANIPULATION")}: ${changes["system.skill.manipulation.value"]}</li>
+            <li>${game.i18n.localize("SKILL.OBSERVATION")}: ${changes["system.skill.observation.value"]}</li>
           </ul>
         </li>
         </ul>
@@ -179,12 +179,12 @@ export class generator {
     console.log("Vaesen | Generator | Changes After mod", changes);
 
     new Dialog({
-      title: `Generate character`,
+      title: game.i18n.localize("GENERATOR.TITLE"),
       content: dialogHtmlRender,
       buttons: {
         update: {
           icon: '<i class="fas fa-check"></i>',
-          label: "Yes",
+          label: game.i18n.localize("YES"),
           callback: async () => {
             console.log("Vaesen | Generate", classSelected, upbringingSelected, changes);
             await actor.deleteEmbeddedDocuments("Item", actor.items.map(function (item) { return item.id; }));
@@ -218,7 +218,7 @@ export class generator {
             actor.createEmbeddedDocuments("Item", itemsToCreate);
 
             ChatMessage.create({
-              content: `<h3>Character GENERATION applied  :</h3><br>${dialogHtml[1]}<br>${dialogHtml[2]}`,
+              content: `<h3>${game.i18n.localize("GENERATOR.GENERATION")} ${game.i18n.localize("GENERATOR.APPLIED")}:</h3><br>${dialogHtml[1]}<br>${dialogHtml[2]}`,
               blind: true,
               type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
               whisper: $(game.users.find(it => it.role === 4)).map(function () { return this._id; })
@@ -227,10 +227,10 @@ export class generator {
         },
         cancel: {
           icon: '<i class="fas fa-ban"></i>',
-          label: "No",
+          label: game.i18n.localize("NO"),
           callback: async () => {
             ChatMessage.create({
-              content: `<h3>Character GENERATION discarded:</h3><br>${dialogHtml[1]}<br>${dialogHtml[2]}`,
+              content: `<h3>${game.i18n.localize("GENERATOR.GENERATION")} ${game.i18n.localize("GENERATOR.DISCARDED")}:</h3><br>${dialogHtml[1]}<br>${dialogHtml[2]}`,
               blind: true,
               type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
               whisper: $(game.users.find(it => it.role === 4)).map(function () { return this._id; })
@@ -240,7 +240,7 @@ export class generator {
       },
       close: async () => {
         ChatMessage.create({
-          content: `<h3>Character GENERATION discarded:</h3><br>${dialogHtml[1]}<br>${dialogHtml[2]}`,
+          content: `<h3>${game.i18n.localize("GENERATOR.GENERATION")} ${game.i18n.localize("GENERATOR.DISCARDED")}:</h3><br>${dialogHtml[1]}<br>${dialogHtml[2]}`,
           blind: true,
           type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
           whisper: $(game.users.find(it => it.role === 4)).map(function () { return this._id; })
