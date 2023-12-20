@@ -1548,4 +1548,33 @@ export class generator_data {
       ]
     },
   };
+
+  static weaponList = [
+    "kick or punch",
+    "knuckle duster",
+    "chair",
+    "sledgehammer",
+    "flail",
+    "rifle butt",
+    "knife",
+    "dagger",
+    "rapier",
+    "sword",
+    "saber",
+    "crowbar",
+    "axe",
+    "quarterstaff",
+    "halberd",
+    "bayonet",
+    "whip",
+    "spear",
+    "bow",
+    "longbow",
+    "crossbow",
+    "pistol",
+    "revolver",
+    "musket",
+    "rifle",
+    "canon"
+  ];
 };

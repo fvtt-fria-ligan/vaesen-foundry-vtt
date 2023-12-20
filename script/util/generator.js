@@ -198,10 +198,19 @@ export class generator {
             }
             itemsToCreate.push(talentItem);
 
+            if (equipmentsList.includes("Crowbar")) {
+              equipmentsList.push("Crowbar - Gear");
+            }
+
             for (const gear of equipmentsList) {
               let gearItem = game.items.find(it => it.name.toLowerCase() === gear.toLowerCase());
               if (gearItem == undefined) {
-                gearItem = { type: "gear", name: gear };
+                let gearType = "gear";
+                if (generator_data.weaponList.includes(gear.toLowerCase())) {
+                  gearType = "weapon";
+                }
+
+                gearItem = { type: gearType, name: gear };
               }
               itemsToCreate.push(gearItem);
             }
