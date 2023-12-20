@@ -93,7 +93,7 @@ export class generator {
       attributeReduced = attributeReducedRoll;
     }
 
-    changes["system.bio.archetype"] = `${professionName} (${professionSelected.archetype})`;
+    changes["system.bio.archetype"] = `${professionSelected.archetype} (${professionName}))`;
     changes["system.resources"] = resources;
     changes["system.bio.age"] = age;
     changes["system.bio.darkSecret"] = darkSecret;
