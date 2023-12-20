@@ -192,14 +192,14 @@ export class generator {
 
             let itemsToCreate = [];
 
-            let talentItem = game.items.getName(talent);
+            let talentItem = game.items.find(it => it.name.toLowerCase() === talent.toLowerCase());
             if (talentItem == undefined) {
               talentItem = { type: "talent", name: talent };
             }
             itemsToCreate.push(talentItem);
 
             for (const gear of equipmentsList) {
-              let gearItem = game.items.getName(gear);
+              let gearItem = game.items.find(it => it.name.toLowerCase() === gear.toLowerCase());
               if (gearItem == undefined) {
                 gearItem = { type: "gear", name: gear };
               }
