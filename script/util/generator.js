@@ -32,9 +32,9 @@ export class generator {
 
     resources += professionSelected.resources;
 
-    const age = await this._getRoll(50) + 16;
+    const age = await this._getRoll(50) + 17;
     const ageInfo = generator_data.ageInfo.find(it => it.min <= age && it.max >= age);
-    console.log("Vaesen | Generator | Age Info", ageInfo);
+    console.log("Vaesen | Generator | Age Info", age, ageInfo);
 
     const archetypeInfo = generator_data.archetypeInfo[professionSelected.archetype];
     console.log("Vaesen | Generator | Archetype", archetypeInfo);
@@ -178,7 +178,10 @@ export class generator {
 
     console.log("Vaesen | Generator | Changes After mod", changes);
 
-    new Dialog({
+    $(".char-gen").hide();
+
+    let reroll = false;
+    let generatorDialog = new Dialog({
       title: game.i18n.localize("GENERATOR.TITLE"),
       content: dialogHtmlRender,
       buttons: {
@@ -228,13 +231,13 @@ export class generator {
         cancel: {
           icon: '<i class="fas fa-ban"></i>',
           label: game.i18n.localize("NO"),
+        },
+        reroll: {
+          icon: '<i class="fas fa-dice"></i>',
+          label: game.i18n.localize("GENERATOR.REROLL"),
           callback: async () => {
-            ChatMessage.create({
-              content: `<h3>${game.i18n.localize("GENERATOR.GENERATION")} ${game.i18n.localize("GENERATOR.DISCARDED")}:</h3><br>${dialogHtml[1]}<br>${dialogHtml[2]}`,
-              blind: true,
-              type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
-              whisper: $(game.users.find(it => it.role === 4)).map(function () { return this._id; })
-            });
+            reroll = true;
+            await generator.generateCharacter();
           }
         }
       },
@@ -245,8 +248,16 @@ export class generator {
           type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
           whisper: $(game.users.find(it => it.role === 4)).map(function () { return this._id; })
         });
+        if (reroll) {
+          generatorDialog.render(true);
+          reroll = false;
+        }
+        else {
+          $(".char-gen").show();
+        }
       }
     }, {
+      id: "generator-dialog",
       width: 600
     }).render(true);
   }
