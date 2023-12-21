@@ -782,7 +782,7 @@ export class generator_data {
       ],
       equipment: [
         "Walking stick",
-        "Knife",
+        "Knife or Dagger",
         "Crowbar",
         "Liquor",
         "Pet dog"
@@ -940,7 +940,7 @@ export class generator_data {
       ],
       equipment: [
         "Rifle",
-        "Hunting knife",
+        "knife or Dagger",
         "Hunting dog",
         "Hunting trap",
         "Hunting equipment",
@@ -1021,7 +1021,7 @@ export class generator_data {
         "Crystal ball",
         "Powdered stag's horn",
         "Tinder box",
-        "Dagger",
+        "Knife or Dagger",
         "Cooking pot",
       ],
       events: [
@@ -1098,7 +1098,7 @@ export class generator_data {
       ],
       equipment: [
         "Rifle",
-        "Pistol",
+        "Pistol or Revolver",
         "Compass",
         "Bayonet",
         "Map book",
@@ -1151,7 +1151,7 @@ export class generator_data {
             "system.skill.force.value": 1,
             "system.skill.rangedCombat.value": 1,
           },
-          item: "Pistol"
+          item: "Pistol or Revolver"
         }
       ]
     },
@@ -1198,7 +1198,7 @@ export class generator_data {
             "system.skill.stealth.value": 1,
             "system.skill.manipulation.value": 1,
           },
-          item: "Pistol"
+          item: "Pistol or Revolver"
         },
         {
           eventName: "Rival",
@@ -1285,7 +1285,7 @@ export class generator_data {
             "system.skill.closeCombat.value": 1,
             "system.skill.vigilance.value": 1,
           },
-          item: "Pistol"
+          item: "Pistol or Revolver"
         },
         {
           eventName: "Unexpected success",
@@ -1548,4 +1548,32 @@ export class generator_data {
       ]
     },
   };
+
+  static weaponList = [
+    "kick or punch",
+    "knuckle duster",
+    "chair",
+    "sledgehammer",
+    "flail",
+    "rifle butt",
+    "knife or dagger",
+    "rapier",
+    "sword",
+    "saber",
+    "crowbar",
+    "axe",
+    "quarterstaff",
+    "halberd",
+    "bayonet",
+    "whip",
+    "spear",
+    "bow",
+    "longbow",
+    "crossbow",
+    "pistol or revolver",
+    "revolver",
+    "musket",
+    "rifle",
+    "canon"
+  ];
 };
