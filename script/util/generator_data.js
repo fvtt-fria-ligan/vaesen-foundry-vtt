@@ -1143,7 +1143,7 @@ export class generator_data {
             "system.skill.inspiration.value": 1,
             "system.skill.manipulation.value": 1,
           },
-          item: "Field glasses"
+          item: "Binoculars"
         },
         {
           eventName: "Valor",

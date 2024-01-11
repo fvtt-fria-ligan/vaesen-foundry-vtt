@@ -117,6 +117,10 @@ h4 {
   background-color: hsl(0, 0%, 91%);
 }
 
+.bg-brown-200 {
+  background-color: hsl(21, 20%, 60%);
+}
+
 .title.dark {
   border: 7px solid transparent;
   -o-border-image: url(../asset/scooped_corners_dark.svg) stretch;
@@ -124,6 +128,12 @@ h4 {
   border-image-slice: 58 fill;
   margin-block: 3px;
   filter: drop-shadow(2px 2px hsl(13, 47%, 17%));
+}
+
+.fancy-border {
+  border: 30px solid transparent;
+  -o-border-image: url(../asset/bq_border.png) 35 stretch;
+     border-image: url(../asset/bq_border.png) 35 stretch;
 }
 
 .heavy-border {
@@ -336,12 +346,64 @@ input.dark {
   gap: 0.25rem;
 }
 
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.m-1 {
+  margin: 0.25rem;
+}
+
+.m-2 {
+  margin: 0.5rem;
+}
+
+.m-3 {
+  margin: 0.75rem;
+}
+
+.m-4 {
+  margin: 1rem;
+}
+
+.m-5 {
+  margin: 1.25rem;
+}
+
+.pi-1 {
+  padding-inline: 0.25rem;
+}
+
+.pi-2 {
+  padding-inline: 0.5rem;
+}
+
+.pi-3 {
+  padding-inline: 0.75rem;
+}
+
+.pbk-1 {
+  padding-block: 0.25rem;
+}
+
 .padding-sm {
   padding: 0.25rem;
 }
 
 .margin-b-sm {
   margin-bottom: 0.25rem;
+}
+
+.margin-b-lg {
+  margin-bottom: 1rem !important;
 }
 
 .gap-sm {

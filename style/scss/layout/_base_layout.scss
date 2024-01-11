@@ -158,3 +158,17 @@
 .gap-sm{
     gap: .25rem;
 }
+
+// flexbox layout stuff
+
+.flex{
+    display: flex;
+}
+
+.column{
+    flex-direction: column;
+}
+
+.row{
+    flex-direction: row;
+}

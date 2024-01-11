@@ -37,6 +37,10 @@
     background-color: $brown-100;
 }
 
+.bg-brown-200{
+    background-color: $brown-200;
+}
+
 
 //borders
 
@@ -53,9 +57,19 @@
   
 }
 
+.fancy-border{
+    border: 30px solid transparent;
+    border-image: url(../asset/bq_border.png) 35 stretch;
+    
+}
+
+//TODO the margin and padding should be removed but legacy css is using it for now
 .heavy-border{
     border: 2px solid $brown-300;
+   
 }
+
+
 
 .dl-border{
   border: 10px solid transparent;

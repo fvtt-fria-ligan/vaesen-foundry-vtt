@@ -93,87 +93,89 @@ export class generator {
       attributeReduced = attributeReducedRoll;
     }
 
-    changes["system.bio.archetype"] = `${professionSelected.archetype} (${professionName}))`;
+    changes["system.bio.archetype"] = `${professionSelected.archetype} (${professionName})`;
     changes["system.resources"] = resources;
     changes["system.bio.age"] = age;
     changes["system.bio.darkSecret"] = darkSecret;
     changes["system.bio.motivation"] = motivation;
     changes["system.bio.trauma"] = trauma;
-    changes["system.note"] = `<ul>
-        <li>${game.i18n.localize("GENERATOR.CLASS")}: ${classSelected}</li>
-        <li>${game.i18n.localize("GENERATOR.UPBRINGING")}: ${upbringingSelected}</li>
-        <li>${game.i18n.localize("BIO.ARCHETYPE")}: ${professionSelected.archetype}</li>
-        <li>${game.i18n.localize("GENERATOR.PROFESSION")}: ${professionName}</li>
-        <li>${game.i18n.localize("RESOURCES")}: ${resources}</li>
-        <li>${game.i18n.localize("BIO.AGE")}: ${age} (${ageInfo.name})</li>
-        <li>${game.i18n.localize("BIO.MOTIVATION")}: ${motivation}</li>
-        <li>${game.i18n.localize("BIO.TRAUMA")}: ${trauma}</li>
-        <li>${game.i18n.localize("BIO.DARK_SECRET")}: ${darkSecret}</li>
-        <li>${game.i18n.localize("HEADER.TALENTS").toLowerCase().replace(/\b(\w)/g, x => x.toUpperCase())}: ${talent}</li>
-        <li>${game.i18n.localize("GENERATOR.LIFE_TIME_EVENTS")}:
+    changes["system.note"] = `
+    <div class="flex-col heavy-border m-3 margin-b-lg">
+    <b class="title">${game.i18n.localize("GENERATOR.LIFE")}</b>
+    <ul>
+        <li><b>${game.i18n.localize("GENERATOR.CLASS")}:</b> ${classSelected}</li>
+        <li><b>${game.i18n.localize("GENERATOR.UPBRINGING")}:</b> ${upbringingSelected}</li>
+        <li><b>${game.i18n.localize("BIO.ARCHETYPE")}:</b> ${professionSelected.archetype}</li>
+        <li><b>${game.i18n.localize("GENERATOR.PROFESSION")}:</b> ${professionName}</li>
+        <li><b>${game.i18n.localize("RESOURCES")}:</b> ${resources}</li>
+        <li><b>${game.i18n.localize("BIO.AGE")}:</b> ${age} (${ageInfo.name})</li>
+        <li><b>${game.i18n.localize("BIO.MOTIVATION")}:</b> ${motivation}</li>
+        <li><b>${game.i18n.localize("BIO.TRAUMA")}:</b> ${trauma}</li>
+        <li><b>${game.i18n.localize("BIO.DARK_SECRET")}:</b> ${darkSecret}</li>
+        <li><b>${game.i18n.localize("HEADER.TALENTS").toLowerCase().replace(/\b(\w)/g, x => x.toUpperCase())}:</b> ${talent}</li>
+        <li><b>${game.i18n.localize("GENERATOR.LIFE_TIME_EVENTS")}:</b>
           <ul>${eventsHtml}
           </ul>
         </li>
-        <li>${game.i18n.localize("GENERATOR.EQUIPMENTS")}:
+        <li><b>${game.i18n.localize("GENERATOR.EQUIPMENTS")}:</b>
           <ul>${equipmentsHtml}
           </ul>
         </li>
-        </ul>`;
+    </ul>
+    </div>`;
 
     let dialogHtml = [];
-    dialogHtml.push(`<p>${game.i18n.localize("GENERATOR.MESSAGE")}</p>`);
+    dialogHtml.push(' <div class="vaesen char-gen m-1 pi-1 flex-col">');
+    dialogHtml.push(`<div class="info-box flex row fancy-border"><img class="icon pi-1" src="systems/vaesen/asset/hazard-sign.svg" width=64> <p>${game.i18n.localize("GENERATOR.MESSAGE")}</p></div>`);
     dialogHtml.push(changes["system.note"]);
     dialogHtml.push(`
-        <table>
-        <tr>
-        <td>
-        <ul>
-        <li>${game.i18n.localize("ATTRIBUTE.PHYSIQUE")}: ${changes["system.attribute.physique.value"]}
-          <ul>
-            <li>${game.i18n.localize("SKILL.AGILITY")}: ${changes["system.skill.agility.value"]}</li>
-            <li>${game.i18n.localize("SKILL.CLOSE_COMBAT")}: ${changes["system.skill.closeCombat.value"]}</li>
-            <li>${game.i18n.localize("SKILL.FORCE")}: ${changes["system.skill.force.value"]}</li>
-          </ul>
-        </li>
-        </ul>
-        </td>
-        <td>
-        <ul>
-        <li>${game.i18n.localize("ATTRIBUTE.LOGIC")}: ${changes["system.attribute.logic.value"]}
-          <ul>
-            <li>${game.i18n.localize("SKILL.INVESTIGATION")}: ${changes["system.skill.investigation.value"]}</li>
-            <li>${game.i18n.localize("SKILL.LEARNING")}: ${changes["system.skill.learning.value"]}</li>
-            <li>${game.i18n.localize("SKILL.VIGILANCE")}: ${changes["system.skill.vigilance.value"]}</li>
-          </ul>
-        </li>
-        </ul>
-        </td>
-        </tr>
-        <tr>
-        <td>
-        <ul>
-        <li>${game.i18n.localize("ATTRIBUTE.PRECISION")}: ${changes["system.attribute.precision.value"]}
-          <ul>
-            <li>${game.i18n.localize("SKILL.MEDICINE")}: ${changes["system.skill.medicine.value"]}</li>
-            <li>${game.i18n.localize("SKILL.RANGED_COMBAT")}: ${changes["system.skill.rangedCombat.value"]}</li>
-            <li>${game.i18n.localize("SKILL.STEALTH")}: ${changes["system.skill.stealth.value"]}</li>
-          </ul>
-        </li>
-        </ul>
-        </td>
-        <td>
-        <ul>
-        <li>${game.i18n.localize("ATTRIBUTE.EMPATHY")}: ${changes["system.attribute.empathy.value"]}
-          <ul>
-            <li>${game.i18n.localize("SKILL.INSPIRATION")}: ${changes["system.skill.inspiration.value"]}</li>
-            <li>${game.i18n.localize("SKILL.MANIPULATION")}: ${changes["system.skill.manipulation.value"]}</li>
-            <li>${game.i18n.localize("SKILL.OBSERVATION")}: ${changes["system.skill.observation.value"]}</li>
-          </ul>
-        </li>
-        </ul>
-        </td>
-        </tr>
-        </table>`);
+        <div class="flex column player">
+        <b class="title">${game.i18n.localize("HEADER.ATTRIBUTES")} & ${game.i18n.localize("HEADER.SKILLS")}</b>
+        <div class="flex row wrap">
+        
+        <div class="skills flex column physique">
+        <b class="header"> ${game.i18n.localize("ATTRIBUTE.PHYSIQUE")}: ${changes["system.attribute.physique.value"]}</b>
+          <div class="skill-group">
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.AGILITY")}:</b><p class="pi-3">${changes["system.skill.agility.value"]}</p></div>
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.CLOSE_COMBAT")}:</b> <p class="pi-3">${changes["system.skill.closeCombat.value"]}</p></div>
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.FORCE")}:</b> <p class="pi-3">${changes["system.skill.force.value"]}</p></div>
+          </div>
+        </div>
+        
+        <div class="skills flex column logic">
+        <b class="header"> ${game.i18n.localize("ATTRIBUTE.LOGIC")}: ${changes["system.attribute.logic.value"]}</b>
+          <div class="skill-group">
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.INVESTIGATION")}:</b><p class="pi-3">${changes["system.skill.investigation.value"]}</p></div>
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.LEARNING")}:</b> <p class="pi-3">${changes["system.skill.learning.value"]}</p></div>
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.VIGILANCE")}:</b> <p class="pi-3">${changes["system.skill.vigilance.value"]}</p></div>
+          </div>
+        </div>
+       </div>
+
+       <div class="flex row wrap">
+
+       <div class="skills flex column precision">
+        <b class="header"> ${game.i18n.localize("ATTRIBUTE.PRECISION")}: ${changes["system.attribute.precision.value"]}</b>
+          <div class="skill-group">
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.MEDICINE")}:</b><p class="pi-3">${changes["system.skill.medicine.value"]}</p></div>
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.RANGED_COMBAT")}:</b> <p class="pi-3">${changes["system.skill.rangedCombat.value"]}</p></div>
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.STEALTH")}:</b> <p class="pi-3">${changes["system.skill.stealth.value"]}</p></div>
+          </div>
+        </div>
+
+        <div class="skills flex column empathy">
+        <b class="header"> ${game.i18n.localize("ATTRIBUTE.EMPATHY")}: ${changes["system.attribute.empathy.value"]}</b>
+          <div class="skill-group">
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.INSPIRATION")}:</b><p class="pi-3">${changes["system.skill.inspiration.value"]}</p></div>
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.MANIPULATION")}:</b> <p class="pi-3">${changes["system.skill.manipulation.value"]}</p></div>
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.OBSERVATION")}:</b> <p class="pi-3">${changes["system.skill.observation.value"]}</p></div>
+          </div>
+        </div>
+
+        </div>
+        </div>
+        `);
+    dialogHtml.push("</div>");
     const dialogHtmlRender = dialogHtml.join("");
 
     console.log("Vaesen | Generator | Changes After mod", changes);
@@ -221,7 +223,7 @@ export class generator {
             actor.createEmbeddedDocuments("Item", itemsToCreate);
 
             ChatMessage.create({
-              content: `<h3>${game.i18n.localize("GENERATOR.GENERATION")} ${game.i18n.localize("GENERATOR.APPLIED")}:</h3><br>${dialogHtml[1]}<br>${dialogHtml[2]}`,
+              content: `<h3>${game.i18n.localize("GENERATOR.GENERATION")} ${game.i18n.localize("GENERATOR.APPLIED")}:</h3><br>${dialogHtml[2]}<br>${dialogHtml[3]}`,
               blind: true,
               type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
               whisper: $(game.users.find(it => it.role === 4)).map(function () { return this._id; })

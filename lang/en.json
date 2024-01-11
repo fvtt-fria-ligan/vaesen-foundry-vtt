@@ -258,12 +258,13 @@
   "GENERATOR.CLASS": "Class",
   "GENERATOR.UPBRINGING": "Upbringing",
   "GENERATOR.PROFESSION": "Profession",
-  "GENERATOR.LIFE_TIME_EVENTS": "Life Time Events",
-  "GENERATOR.EQUIPMENTS": "Equipments",
-  "GENERATOR.MESSAGE": "This is a destructive operation, that will clean the current character to replace by the default values. Would you like to proceed?",
+  "GENERATOR.LIFE_TIME_EVENTS": "Life Events",
+  "GENERATOR.EQUIPMENTS": "Equipment",
+  "GENERATOR.MESSAGE": "This is a destructive operation that will overwrite the current character. YOU CAN NEVER GO BACK! Would you like to proceed?",
   "GENERATOR.TITLE": "Generate character",
   "GENERATOR.GENERATION": "Character Generation",
   "GENERATOR.APPLIED": "APPLIED",
   "GENERATOR.DISCARDED": "DISCARDED",
-  "GENERATOR.REROLL": "Reroll"
+  "GENERATOR.REROLL": "Reroll",
+  "GENERATOR.LIFE": "LIfe Path"
 }
