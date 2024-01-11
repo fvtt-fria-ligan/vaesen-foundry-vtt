@@ -183,6 +183,7 @@ export class generator {
     $(".char-gen").hide();
 
     let reroll = false;
+    let accepted = false;
     let generatorDialog = new Dialog({
       title: game.i18n.localize("GENERATOR.TITLE"),
       content: dialogHtmlRender,
@@ -191,6 +192,7 @@ export class generator {
           icon: '<i class="fas fa-check"></i>',
           label: game.i18n.localize("YES"),
           callback: async () => {
+            accepted = true;
             console.log("Vaesen | Generate", classSelected, upbringingSelected, changes);
             await actor.deleteEmbeddedDocuments("Item", actor.items.map(function (item) { return item.id; }));
             await actor.update(changes);
@@ -244,12 +246,14 @@ export class generator {
         }
       },
       close: async () => {
-        ChatMessage.create({
-          content: `<h3>${game.i18n.localize("GENERATOR.GENERATION")} ${game.i18n.localize("GENERATOR.DISCARDED")}:</h3><br>${dialogHtml[1]}<br>${dialogHtml[2]}`,
-          blind: true,
-          type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
-          whisper: $(game.users.find(it => it.role === 4)).map(function () { return this._id; })
-        });
+        if (!accepted) {
+          ChatMessage.create({
+            content: `<h3>${game.i18n.localize("GENERATOR.GENERATION")} ${game.i18n.localize("GENERATOR.DISCARDED")}:</h3><br>${dialogHtml[1]}<br>${dialogHtml[2]}`,
+            blind: true,
+            type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
+            whisper: $(game.users.find(it => it.role === 4)).map(function () { return this._id; })
+          });
+        }
         if (reroll) {
           generatorDialog.render(true);
           reroll = false;
