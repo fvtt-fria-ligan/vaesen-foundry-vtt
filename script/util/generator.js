@@ -124,15 +124,15 @@ export class generator {
     </ul>
     </div>`;
 
+
     let dialogHtml = [];
     dialogHtml.push(' <div class="vaesen char-gen m-1 pi-1 flex-col">');
     dialogHtml.push(`<div class="info-box flex row fancy-border"><img class="icon pi-1" src="systems/vaesen/asset/hazard-sign.svg" width=64> <p>${game.i18n.localize("GENERATOR.MESSAGE")}</p></div>`);
     dialogHtml.push(changes["system.note"]);
     dialogHtml.push(`
-        <div class="flex column player">
+        <div class="flex column player" style="margin: 0">
         <b class="title">${game.i18n.localize("HEADER.ATTRIBUTES")} & ${game.i18n.localize("HEADER.SKILLS")}</b>
         <div class="flex row wrap">
-        
         <div class="skills flex column physique">
         <b class="header"> ${game.i18n.localize("ATTRIBUTE.PHYSIQUE")}: ${changes["system.attribute.physique.value"]}</b>
           <div class="skill-group">
@@ -153,7 +153,6 @@ export class generator {
        </div>
 
        <div class="flex row wrap">
-
        <div class="skills flex column precision">
         <b class="header"> ${game.i18n.localize("ATTRIBUTE.PRECISION")}: ${changes["system.attribute.precision.value"]}</b>
           <div class="skill-group">
@@ -177,6 +176,56 @@ export class generator {
         `);
     dialogHtml.push("</div>");
     const dialogHtmlRender = dialogHtml.join("");
+
+    let chatHTML = [];
+    chatHTML.push(changes["system.note"]);
+    chatHTML.push(`
+        <div class="flex column player" style="margin: 0">
+        <b class="title">${game.i18n.localize("HEADER.ATTRIBUTES")} & ${game.i18n.localize("HEADER.SKILLS")}</b>
+        <div class="grid">
+        
+        <div class="skills flex column physique">
+        <b class="header"> ${game.i18n.localize("ATTRIBUTE.PHYSIQUE")}: ${changes["system.attribute.physique.value"]}</b>
+          <div class="skill-group">
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.AGILITY")}:</b><p class="pi-3">${changes["system.skill.agility.value"]}</p></div>
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.CLOSE_COMBAT")}:</b> <p class="pi-3">${changes["system.skill.closeCombat.value"]}</p></div>
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.FORCE")}:</b> <p class="pi-3">${changes["system.skill.force.value"]}</p></div>
+          </div>
+        </div>
+        
+        <div class="skills flex column logic">
+        <b class="header"> ${game.i18n.localize("ATTRIBUTE.LOGIC")}: ${changes["system.attribute.logic.value"]}</b>
+          <div class="skill-group">
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.INVESTIGATION")}:</b><p class="pi-3">${changes["system.skill.investigation.value"]}</p></div>
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.LEARNING")}:</b> <p class="pi-3">${changes["system.skill.learning.value"]}</p></div>
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.VIGILANCE")}:</b> <p class="pi-3">${changes["system.skill.vigilance.value"]}</p></div>
+          </div>
+        </div>
+       </div>
+
+       <div class="grid">
+       <div class="skills flex column precision">
+        <b class="header"> ${game.i18n.localize("ATTRIBUTE.PRECISION")}: ${changes["system.attribute.precision.value"]}</b>
+          <div class="skill-group">
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.MEDICINE")}:</b><p class="pi-3">${changes["system.skill.medicine.value"]}</p></div>
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.RANGED_COMBAT")}:</b> <p class="pi-3">${changes["system.skill.rangedCombat.value"]}</p></div>
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.STEALTH")}:</b> <p class="pi-3">${changes["system.skill.stealth.value"]}</p></div>
+          </div>
+        </div>
+
+        <div class="skills flex column empathy">
+        <b class="header"> ${game.i18n.localize("ATTRIBUTE.EMPATHY")}: ${changes["system.attribute.empathy.value"]}</b>
+          <div class="skill-group">
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.INSPIRATION")}:</b><p class="pi-3">${changes["system.skill.inspiration.value"]}</p></div>
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.MANIPULATION")}:</b> <p class="pi-3">${changes["system.skill.manipulation.value"]}</p></div>
+            <div class="skill flex row align-center"><b>${game.i18n.localize("SKILL.OBSERVATION")}:</b> <p class="pi-3">${changes["system.skill.observation.value"]}</p></div>
+          </div>
+        </div>
+
+        </div>
+        </div>
+        `);
+        chatHTML.push("</div>");
 
     console.log("Vaesen | Generator | Changes After mod", changes);
 
@@ -225,7 +274,7 @@ export class generator {
             actor.createEmbeddedDocuments("Item", itemsToCreate);
 
             ChatMessage.create({
-              content: `<h3>${game.i18n.localize("GENERATOR.GENERATION")} ${game.i18n.localize("GENERATOR.APPLIED")}:</h3><br>${dialogHtml[2]}<br>${dialogHtml[3]}`,
+              content: `<h3>${game.i18n.localize("GENERATOR.GENERATION")} ${game.i18n.localize("GENERATOR.APPLIED")}:</h3><div class="vaesen" >${chatHTML[0]} ${chatHTML[1]}</div>`,
               blind: true,
               type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
               whisper: $(game.users.find(it => it.role === 4)).map(function () { return this._id; })
@@ -248,7 +297,7 @@ export class generator {
       close: async () => {
         if (!accepted) {
           ChatMessage.create({
-            content: `<h3>${game.i18n.localize("GENERATOR.GENERATION")} ${game.i18n.localize("GENERATOR.DISCARDED")}:</h3><br>${dialogHtml[1]}<br>${dialogHtml[2]}`,
+            content: `<h3>${game.i18n.localize("GENERATOR.GENERATION")} ${game.i18n.localize("GENERATOR.DISCARDED")}:</h3><div class="vaesen">${chatHTML[0]} ${chatHTML[1]}</div>`,
             blind: true,
             type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
             whisper: $(game.users.find(it => it.role === 4)).map(function () { return this._id; })
