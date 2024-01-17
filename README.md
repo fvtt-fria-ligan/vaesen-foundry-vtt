@@ -31,6 +31,10 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+v4.2.1
+- Fixed: css heights on inputs sometimes cut off tails of letters
+
+
 v4.2.0
 - Feature: Added random Character Generator!
   ![Character Generation](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/blob/master/asset/chargen.png?raw=true)  
