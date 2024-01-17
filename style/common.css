@@ -571,6 +571,11 @@ border: none;
 	background-color: transparent;
 	margin-top: 3px;
     filter: drop-shadow(2px 2px hsl(13, 48%, 17%));
+    height: 2rem;
+}
+
+.vaesen .left-block input {
+    height: var(--form-field-height);
 }
 
 .vaesen .player .header input,
