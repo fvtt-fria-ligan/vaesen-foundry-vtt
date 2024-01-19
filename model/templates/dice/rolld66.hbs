@@ -1,0 +1,20 @@
+<div class="card-holder" style="position: relative;">
+
+  {{#if roll.token}}
+  <img src="{{roll.token}}" width="45" height="45" class="roll-token" />
+  {{/if}}
+  {{#unless roll.token}}
+  <img src="systems/vaesen/asset/unkown_roller.svg" width="45" height="45" class="roll-token" />
+  {{/unless}}
+  <div class="vaesen chat-card" data-owner-id="{{roll.owner}}">
+    <div class="card-content borderimg">
+      <div class="dice-roll">
+        <div class="dice-flavor">{{flavor}}</div>
+        <div class="dice-result">
+          {{{tooltip}}}
+          <h4 class="dice-total">{{total}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

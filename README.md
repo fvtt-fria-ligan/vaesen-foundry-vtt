@@ -31,9 +31,12 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+v4.3.0
+- Improvement: D66 rolls now show the result of the roll directly
+  ![D66 Roll](asset/d66roll.png?raw=true)  
+
 v4.2.1
 - Fixed: css heights on inputs sometimes cut off tails of letters
-
 
 v4.2.0
 - Feature: Added random Character Generator!

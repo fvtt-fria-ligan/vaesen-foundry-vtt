@@ -399,3 +399,42 @@ export function adjustBonusText(bonus) {
   bonus = parseInt(bonus, 10);
   return bonus > 0 ? "+" + bonus : bonus;
 }
+
+export function rollD66(messageText, chatData) {
+  const pattern = /^\/r (\d)?d66$/g;
+  const matches = [...messageText.toLowerCase().matchAll(pattern)];
+  console.log("Checking", matches);
+  if (matches.length == 0)
+    return true;
+    
+  let actor = undefined;
+  if (chatData.speaker.actor)
+    actor = game.actors.get(chatData.speaker.actor);
+
+  let max = parseInt(matches[0][1] ?? "1");
+  
+  for (let index = 0; index < max; index++) {
+    createD66Roll(actor);
+  }
+  return false;
+}
+
+async function createD66Roll(actor) {
+  let options = { 
+    token: actor?.img
+  };
+  
+  let templateData = { 
+    template: "systems/vaesen/model/templates/dice/rolld66.hbs",
+    flavor: `D66 ${game.i18n.localize("ROLL.ROLL")}`
+  };
+  
+  const roll = Roll.create("1d6*10+1d6", options);
+  
+  let messageData = {
+    content: await roll.render(templateData),
+  };
+  let rollMode = game.settings.get("core", "rollMode");
+  
+  await roll.toMessage(messageData, { rollMode });
+}
