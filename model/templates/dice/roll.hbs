@@ -19,12 +19,17 @@
           <div class="dice-formula">{{formula}}</div>
           {{{tooltip}}}
 
+          {{#if (eq options.type "total")}}
+          <h4 class="dice-total">{{total}}</h4>
+          {{/if}}
+          {{#unless (eq options.type "total")}}
           {{#if (gt success 0)}}
           <h4 class="dice-total success">{{localize "CHAT.SUCCESS"}} : {{success}}</h4>
           {{/if}}
           {{#if (eq success 0)}}
           <h4 class="dice-total failure"> {{localize "CHAT.SUCCESS"}} : {{success}}</h4>
           {{/if}}
+          {{/unless}}
         </div>
       </div>
       {{!-- Extra info added for Year Zero rolls --}}

@@ -401,9 +401,13 @@ export function adjustBonusText(bonus) {
 }
 
 export function rollD66(messageText, chatData) {
-  const pattern = /^\/r (\d)?d66$/g;
+  const pattern = /^\/r ((\d*)d(\d+).*$)/g;
   const matches = [...messageText.toLowerCase().matchAll(pattern)];
-  console.log("Checking", matches);
+  const customRolls = {
+    "66" : "1d6*10+1d6", 
+    "666": "1d6*100+1d6*10+1d6",
+    "6666": "1d6*1000+1d6*100+1d6*10+1d6"
+  };
   if (matches.length == 0)
     return true;
     
@@ -411,25 +415,33 @@ export function rollD66(messageText, chatData) {
   if (chatData.speaker.actor)
     actor = game.actors.get(chatData.speaker.actor);
 
-  let max = parseInt(matches[0][1] ?? "1");
-  
-  for (let index = 0; index < max; index++) {
-    createD66Roll(actor);
+  const diceSide = matches[0][3];
+  const formula = matches[0][1];
+  const numberDice = parseInt(matches[0][2] ? matches[0][2] : "1");
+
+  if (Object.keys(customRolls).indexOf(diceSide) == -1)
+  {
+    createCustomRoll(actor, formula, formula);
+    return false;
+  }
+
+  for (let index = 0; index < numberDice; index++) {
+    createCustomRoll(actor, customRolls[diceSide], `D${diceSide}`);
   }
   return false;
 }
 
-async function createD66Roll(actor) {
+async function createCustomRoll(actor, formula, name) {
   let options = { 
     token: actor?.img
   };
   
   let templateData = { 
-    template: "systems/vaesen/model/templates/dice/rolld66.hbs",
-    flavor: `D66 ${game.i18n.localize("ROLL.ROLL")}`
+    flavor: `${name} ${game.i18n.localize("ROLL.ROLL")}`,
+    type: "total"
   };
   
-  const roll = Roll.create("1d6*10+1d6", options);
+  const roll = Roll.create(formula, options);
   
   let messageData = {
     content: await roll.render(templateData),
