@@ -3,7 +3,7 @@ import { PlayerCharacterSheet } from "./sheet/player.js";
 import { NpcCharacterSheet } from "./sheet/npc.js";
 import { VaesenCharacterSheet } from "./sheet/vaesen.js";
 import { HeadquarterCharacterSheet } from "./sheet/headquarter.js";
-import { prepareRollNewDialog, push, rollD66 } from "./util/roll.js";
+import { prepareRollNewDialog, push, totalRoll as totalRoll } from "./util/roll.js";
 import { registerSystemSettings } from "./util/settings.js";
 import { vaesen } from "./config.js";
 import { conditions } from "./util/conditions.js";
@@ -104,7 +104,7 @@ Hooks.once("ready", async function () {
   setupCards();
   conditions.onReady();
   Hooks.on("hotbarDrop", (bar, data, slot) => createRollMacro(data, slot));
-  Hooks.on("chatMessage", (_, messageText, chatData) => rollD66(messageText, chatData));
+  Hooks.on("chatMessage", (_, messageText, chatData) => totalRoll(messageText, chatData));
   migrate();
   
 });

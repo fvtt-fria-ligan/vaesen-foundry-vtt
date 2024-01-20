@@ -400,7 +400,7 @@ export function adjustBonusText(bonus) {
   return bonus > 0 ? "+" + bonus : bonus;
 }
 
-export function rollD66(messageText, chatData) {
+export function totalRoll(messageText, chatData) {
   const pattern = /^\/r ((\d*)d(\d+).*$)/g;
   const matches = [...messageText.toLowerCase().matchAll(pattern)];
   const customRolls = {
