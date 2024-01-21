@@ -31,9 +31,13 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+v4.3.0
+- Improvement: any roll using the `/r` chat command now shows the result of the roll directly
+  ![D66 Roll](asset/d66roll.png?raw=true)
+- Deployment Feature: automatically reports to Foundry when a new release is created
+
 v4.2.1
 - Fixed: css heights on inputs sometimes cut off tails of letters
-
 
 v4.2.0
 - Feature: Added random Character Generator!

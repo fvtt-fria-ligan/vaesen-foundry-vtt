@@ -399,3 +399,54 @@ export function adjustBonusText(bonus) {
   bonus = parseInt(bonus, 10);
   return bonus > 0 ? "+" + bonus : bonus;
 }
+
+export function totalRoll(messageText, chatData) {
+  const pattern = /^\/r ((\d*)d(\d+).*$)/g;
+  const matches = [...messageText.toLowerCase().matchAll(pattern)];
+  const customRolls = {
+    "66" : "1d6*10+1d6", 
+    "666": "1d6*100+1d6*10+1d6",
+    "6666": "1d6*1000+1d6*100+1d6*10+1d6"
+  };
+  if (matches.length == 0)
+    return true;
+    
+  let actor = undefined;
+  if (chatData.speaker.actor)
+    actor = game.actors.get(chatData.speaker.actor);
+
+  const diceSide = matches[0][3];
+  const formula = matches[0][1];
+  const numberDice = parseInt(matches[0][2] ? matches[0][2] : "1");
+
+  if (Object.keys(customRolls).indexOf(diceSide) == -1)
+  {
+    createCustomRoll(actor, formula, formula);
+    return false;
+  }
+
+  for (let index = 0; index < numberDice; index++) {
+    createCustomRoll(actor, customRolls[diceSide], `D${diceSide}`);
+  }
+  return false;
+}
+
+async function createCustomRoll(actor, formula, name) {
+  let options = { 
+    token: actor?.img
+  };
+  
+  let templateData = { 
+    flavor: `${name} ${game.i18n.localize("ROLL.ROLL")}`,
+    type: "total"
+  };
+  
+  const roll = Roll.create(formula, options);
+  
+  let messageData = {
+    content: await roll.render(templateData),
+  };
+  let rollMode = game.settings.get("core", "rollMode");
+  
+  await roll.toMessage(messageData, { rollMode });
+}

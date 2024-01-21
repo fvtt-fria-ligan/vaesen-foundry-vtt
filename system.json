@@ -1,7 +1,7 @@
 {
   "title": "Vaesen",
   "description": "Nordic horror role-playing",
-  "version": "4.2.1",
+  "version": "4.3.0",
   "esmodules": [
     "script/hooks.js"
   ],
@@ -101,6 +101,7 @@
     {
       "name": "Cussa Mitre",
       "url": "https://github.com/Cussa",
+      "discord": "CussaMitre",
       "flags": {}
     },
     {
