@@ -31,6 +31,12 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+v4.3.1
+- 🐛 Fix: get weapon icon when dragging to macro bar
+- 🐛 Fix: Vagabond start equipment should be "Quarterstaff" (fix #104)
+- 🐛 Fix: removes "None" from Talent selection
+- 💄🐛 UI/Fix: corrects the player character sheet cut on the bottom
+
 v4.3.0
 - Improvement: any roll using the `/r` chat command now shows the result of the roll directly
   ![D66 Roll](asset/d66roll.png?raw=true)
