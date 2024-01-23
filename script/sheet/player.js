@@ -117,6 +117,9 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
+    if (this.actor.limited)
+      return;
+
     html.find(".fav-togle").click((ev) => {
       this.onFavTogle(ev);
     });
