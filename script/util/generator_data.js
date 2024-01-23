@@ -781,7 +781,7 @@ export class generator_data {
         "Well-traveled"
       ],
       equipment: [
-        "Walking stick",
+        "Quarterstaff",
         "Knife or Dagger",
         "Crowbar",
         "Liquor",
