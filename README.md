@@ -36,6 +36,7 @@ v4.3.1
 - 🐛 Fix: Vagabond start equipment should be "Quarterstaff" (fix #104)
 - 🐛 Fix: removes "None" from Talent selection
 - 💄🐛 UI/Fix: corrects the player character sheet cut on the bottom
+- 🐛 Fix: Chargen issue when re-roll character
 
 v4.3.0
 - Improvement: any roll using the `/r` chat command now shows the result of the roll directly

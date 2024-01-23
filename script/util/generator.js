@@ -290,7 +290,7 @@ export class generator {
           label: game.i18n.localize("GENERATOR.REROLL"),
           callback: async () => {
             reroll = true;
-            await generator.generateCharacter();
+            await generator.generateCharacter(actor);
           }
         }
       },
