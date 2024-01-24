@@ -319,7 +319,6 @@ function buildSelectMultipleHtmlDialog(options, name, id) {
   );
   html.push(`<div class="flex row" style="width: 100%;">`);
   html.push(`<select id="${id}" style="width: 100%;" multiple>`);
-  html.push(`<option value="0">None (0)</option>`);
   options.forEach((element) => {
     let descriptionWithoutTags = $("<p>").html(element.description).text();
     let requiresBonus =

@@ -121,6 +121,9 @@ export class VaesenActorSheet extends ActorSheet {
 
   activateListeners(html) {
     super.activateListeners(html);
+    if (this.actor.limited)
+      return;
+
     html.find(".item-create").click((ev) => {
       this.onItemCreate(ev);
     });

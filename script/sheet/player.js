@@ -117,6 +117,9 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
+    if (this.actor.limited)
+      return;
+
     html.find(".fav-togle").click((ev) => {
       this.onFavTogle(ev);
     });
@@ -227,7 +230,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       const div = $(item).parents(".weapon");
       const itemId = div.data("itemId");
       const itemName = $(item).text();
-      const img = $(div).children(".icon").attr("src");
+      const img = $(div).find(".icon").attr("src");
       const testName = `${itemName} ${game.i18n.localize("ROLL.ROLL")}`;
 
       const data = {
