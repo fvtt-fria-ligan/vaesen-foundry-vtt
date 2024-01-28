@@ -28,6 +28,7 @@ export class generator {
     const professionRoll = await this._getRoll(professionKeys.length);
     const professionName = generator_data.professionTable[classSelected][professionRoll];
     const professionSelected = generator_data.professionsList[professionName];
+    const archetytpePageLink = game.journal.getName("Chapter 2 - Your Player Character")?.pages.getName(professionSelected.archetype)?.uuid;
     console.log("Vaesen | Generator | Profession", professionRoll, professionSelected);
 
     resources += professionSelected.resources;
@@ -48,14 +49,20 @@ export class generator {
     const darkSecretRoll = await this._getRoll(archetypeInfo.darkSecret.length);
     const darkSecret = archetypeInfo.darkSecret[darkSecretRoll];
 
+    let itemsToCreate = [];
+
     const talentRoll = await this._getRoll(archetypeInfo.talents.length);
     const talent = archetypeInfo.talents[talentRoll];
+    let talentItem = getItemInfo(talent, "talent");
+    itemsToCreate.push(talentItem);
 
     const equipmentRoll = await this._getRoll(archetypeInfo.equipment.length);
-    const equipment = archetypeInfo.equipment[equipmentRoll];
+    const equipment = "Crowbar"; // archetypeInfo.equipment[equipmentRoll];
 
-    let equipmentsHtml = `<li>${equipment}</li>`;
-    let equipmentsList = [equipment];
+    let gearItem = getItemInfo(equipment, "gear");
+    itemsToCreate.push(gearItem);
+
+    let equipmentsHtml = `<li>@UUID[Item.${gearItem.id}]{${equipment}}</li>`;
 
     let eventsHtml = "";
     let eventsIndex = [];
@@ -68,8 +75,11 @@ export class generator {
       eventsIndex.push(currentEventIndex);
       const currentEvent = archetypeInfo.events[currentEventIndex];
       eventsHtml += `<li>${currentEvent.eventName}</li>`;
-      equipmentsHtml += `<li>${currentEvent.item}</li>`;
-      equipmentsList.push(currentEvent.item);
+
+      gearItem = getItemInfo(currentEvent.item, "gear");
+      itemsToCreate.push(gearItem);
+
+      equipmentsHtml += `<li>@UUID[Item.${gearItem.id}]{${gearItem.name}}</li>`;
 
       console.log("Vaesen | Generator | Adding Life Event", currentEvent);
 
@@ -78,6 +88,9 @@ export class generator {
         changes[key] += element;
         console.log("Vaesen | Generator | Upgrading skill", key);
       }
+    }
+    if (itemsToCreate.filter(it => it.name.toLowerCase() == "crowbar").length == 1) {
+      itemsToCreate.push(getItemInfo("Crowbar - Gear", "gear"));
     }
 
     let attributeReduced = -1;
@@ -105,14 +118,14 @@ export class generator {
     <ul>
         <li><b>${game.i18n.localize("GENERATOR.CLASS")}:</b> ${classSelected}</li>
         <li><b>${game.i18n.localize("GENERATOR.UPBRINGING")}:</b> ${upbringingSelected}</li>
-        <li><b>${game.i18n.localize("BIO.ARCHETYPE")}:</b> ${professionSelected.archetype}</li>
+        <li><b>${game.i18n.localize("BIO.ARCHETYPE")}:</b> @UUID[${archetytpePageLink}]{${professionSelected.archetype}}</li>
         <li><b>${game.i18n.localize("GENERATOR.PROFESSION")}:</b> ${professionName}</li>
         <li><b>${game.i18n.localize("RESOURCES")}:</b> ${resources}</li>
         <li><b>${game.i18n.localize("BIO.AGE")}:</b> ${age} (${ageInfo.name})</li>
         <li><b>${game.i18n.localize("BIO.MOTIVATION")}:</b> ${motivation}</li>
         <li><b>${game.i18n.localize("BIO.TRAUMA")}:</b> ${trauma}</li>
         <li><b>${game.i18n.localize("BIO.DARK_SECRET")}:</b> ${darkSecret}</li>
-        <li><b>${game.i18n.localize("HEADER.TALENTS").toLowerCase().replace(/\b(\w)/g, x => x.toUpperCase())}:</b> ${talent}</li>
+        <li><b>${game.i18n.localize("HEADER.TALENTS").toLowerCase().replace(/\b(\w)/g, x => x.toUpperCase())}:</b> @UUID[Item.${talentItem.id}]{${talent}}</li>
         <li><b>${game.i18n.localize("GENERATOR.LIFE_TIME_EVENTS")}:</b>
           <ul>${eventsHtml}
           </ul>
@@ -175,7 +188,7 @@ export class generator {
         </div>
         `);
     dialogHtml.push("</div>");
-    const dialogHtmlRender = dialogHtml.join("");
+    const dialogHtmlRender = await TextEditor.enrichHTML(dialogHtml.join(""));
 
     let chatHTML = [];
     chatHTML.push(changes["system.note"]);
@@ -246,31 +259,6 @@ export class generator {
             await actor.deleteEmbeddedDocuments("Item", actor.items.map(function (item) { return item.id; }));
             await actor.update(changes);
 
-            let itemsToCreate = [];
-
-            let talentItem = game.items.find(it => it.name.toLowerCase() === talent.toLowerCase());
-            if (talentItem == undefined) {
-              talentItem = { type: "talent", name: talent };
-            }
-            itemsToCreate.push(talentItem);
-
-            if (equipmentsList.includes("Crowbar")) {
-              equipmentsList.push("Crowbar - Gear");
-            }
-
-            for (const gear of equipmentsList) {
-              let gearItem = game.items.find(it => it.name.toLowerCase() === gear.toLowerCase());
-              if (gearItem == undefined) {
-                let gearType = "gear";
-                if (generator_data.weaponList.includes(gear.toLowerCase())) {
-                  gearType = "weapon";
-                }
-
-                gearItem = { type: gearType, name: gear };
-              }
-              itemsToCreate.push(gearItem);
-            }
-
             actor.createEmbeddedDocuments("Item", itemsToCreate);
 
             ChatMessage.create({
@@ -316,4 +304,13 @@ export class generator {
       width: 600
     }).render(true);
   }
+}
+
+function getItemInfo(itemName, type){
+  let item = game.items.find(it => it.name.toLowerCase() === itemName.toLowerCase());
+  if (item == undefined) {
+    let itemType = generator_data.weaponList.includes(itemName.toLowerCase()) ? "weapon" : type;
+    item = { type: itemType, name: itemName };
+  } 
+  return item;
 }
