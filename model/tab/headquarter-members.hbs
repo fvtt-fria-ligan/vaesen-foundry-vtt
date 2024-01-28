@@ -1,0 +1,162 @@
+<div class="flex-col w-100 min-w-600">
+  <div class="flex-col heavy-border margin-b-sm padding-sm min-h-500">
+    <b class="title dark" style="width: 100%; margin-left: 0px;">{{localize "HEADQUARTER.MEMBER_RANKING"}}</b>
+    <div class="info-box flex row fancy-border">
+      <p>{{ localize "HEADQUARTER.MEMBER_RANKING_EXPLANATION" }}</p>
+    </div>
+    <div class="vaesen char-gen m-1 pi-1 flex-col">
+      <div class="flex column player headquarter">
+        <div>
+          <div class="skills flex column physique">
+            <b class="header"> {{ localize "ATTRIBUTE.PHYSIQUE"}}:
+              <ul>
+                {{#each actor.flags.vaesen.bestPlayers.physique as | value | }}
+                <li>{{value}}</li>
+                {{/each}}
+              </ul>
+            </b>
+            <div class="skill-group">
+              <div class="skill flex row align-center"><b>{{ localize "SKILL.AGILITY"}}:</b>
+                <ul>
+                  {{#each actor.flags.vaesen.bestPlayers.agility as | value | }}
+                  <li>{{value}}</li>
+                  {{/each}}
+                </ul>
+              </div>
+              <div class="skill flex row align-center"><b>{{ localize "SKILL.CLOSE_COMBAT"}}:</b>
+                <ul>
+                  {{#each actor.flags.vaesen.bestPlayers.closeCombat as | value | }}
+                  <li>{{value}}</li>
+                  {{/each}}
+                </ul>
+              </div>
+              <div class="skill flex row align-center"><b>{{ localize "SKILL.FORCE"}}:</b>
+                <ul>
+                  {{#each actor.flags.vaesen.bestPlayers.force as | value | }}
+                  <li>{{value}}</li>
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="skills flex column logic">
+            <b class="header"> {{ localize "ATTRIBUTE.LOGIC"}}:
+              <ul>
+                {{#each actor.flags.vaesen.bestPlayers.logic as | value | }}
+                <li>{{value}}</li>
+                {{/each}}
+              </ul>
+            </b>
+            <div class="skill-group">
+              <div class="skill flex row align-center"><b>{{ localize "SKILL.INVESTIGATION"}}:</b>
+                <ul>
+                  {{#each actor.flags.vaesen.bestPlayers.investigation as | value | }}
+                  <li>{{value}}</li>
+                  {{/each}}
+                </ul>
+              </div>
+              <div class="skill flex row align-center"><b>{{ localize "SKILL.LEARNING"}}:</b>
+                <ul>
+                  {{#each actor.flags.vaesen.bestPlayers.learning as | value | }}
+                  <li>{{value}}</li>
+                  {{/each}}
+                </ul>
+              </div>
+              <div class="skill flex row align-center"><b>{{ localize "SKILL.VIGILANCE"}}:</b>
+                <ul>
+                  {{#each actor.flags.vaesen.bestPlayers.vigilance as | value | }}
+                  <li>{{value}}</li>
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="skills flex column precision">
+            <b class="header"> {{ localize "ATTRIBUTE.PRECISION"}}:
+              <ul>
+                {{#each actor.flags.vaesen.bestPlayers.precision as | value | }}
+                <li>{{value}}</li>
+                {{/each}}
+              </ul>
+            </b>
+            <div class="skill-group">
+              <div class="skill flex row align-center"><b>{{ localize "SKILL.MEDICINE"}}:</b>
+
+                <ul>
+                  {{#each actor.flags.vaesen.bestPlayers.medicine as | value | }}
+                  <li>{{value}}</li>
+                  {{/each}}
+                </ul>
+
+              </div>
+              <div class="skill flex row align-center"><b>{{ localize "SKILL.RANGED_COMBAT"}}:</b>
+
+                <ul>
+                  {{#each actor.flags.vaesen.bestPlayers.rangedCombat as | value | }}
+                  <li>{{value}}</li>
+                  {{/each}}
+                </ul>
+
+              </div>
+              <div class="skill flex row align-center"><b>{{ localize "SKILL.STEALTH"}}:</b>
+
+                <ul>
+                  {{#each actor.flags.vaesen.bestPlayers.stealth as | value | }}
+                  <li>{{value}}</li>
+                  {{/each}}
+                </ul>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="skills flex column empathy">
+
+            <b class="header"> {{ localize "ATTRIBUTE.EMPATHY"}}:
+            <ul>
+              {{#each actor.flags.vaesen.bestPlayers.empathy as | value | }}
+              <li>{{value}}</li>
+              {{/each}}
+            </ul>
+            </b>
+            <div class="skill-group">
+              <div class="skill flex row align-center"><b>{{ localize "SKILL.INSPIRATION"}}:</b>
+
+                <ul>
+                  {{#each actor.flags.vaesen.bestPlayers.inspiration as | value | }}
+                  <li>{{value}}</li>
+                  {{/each}}
+                </ul>
+
+              </div>
+              <div class="skill flex row align-center"><b>{{ localize "SKILL.MANIPULATION"}}:</b>
+
+                <ul>
+                  {{#each actor.flags.vaesen.bestPlayers.manipulation as | value | }}
+                  <li>{{value}}</li>
+                  {{/each}}
+                </ul>
+
+              </div>
+              <div class="skill flex row align-center"><b>{{ localize "SKILL.OBSERVATION"}}:</b>
+
+                <ul>
+                  {{#each actor.flags.vaesen.bestPlayers.observation as | value | }}
+                  <li>{{value}}</li>
+                  {{/each}}
+                </ul>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

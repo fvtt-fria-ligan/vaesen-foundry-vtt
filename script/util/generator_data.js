@@ -860,7 +860,7 @@ export class generator_data {
         "Tough as Nails"
       ],
       equipment: [
-        "Revolver",
+        "Pistol or Revolver",
         "Hurricane lamp",
         "Make-up",
         "Field kitchen",
@@ -881,7 +881,7 @@ export class generator_data {
             "system.skill.stealth.value": 1,
             "system.skill.manipulation.value": 1,
           },
-          item: "Fancy disguise"
+          item: "Disguise"
         },
         {
           eventName: "Rival",
@@ -913,7 +913,7 @@ export class generator_data {
             "system.skill.inspiration.value": 1,
             "system.skill.observation.value": 1,
           },
-          item: "Slipstick"
+          item: "Slide Rule"
         }
       ]
     },
@@ -940,7 +940,7 @@ export class generator_data {
       ],
       equipment: [
         "Rifle",
-        "knife or Dagger",
+        "Knife or Dagger",
         "Hunting dog",
         "Hunting trap",
         "Hunting equipment",
@@ -1015,12 +1015,12 @@ export class generator_data {
       talents: [
         "Magic tricks",
         "Medium",
-        "Striking Fear"
+        "Strike Fear"
       ],
       equipment: [
         "Crystal ball",
         "Powdered stag's horn",
-        "Tinder box",
+        "Tinderbox",
         "Knife or Dagger",
         "Cooking pot",
       ],
@@ -1031,7 +1031,7 @@ export class generator_data {
             "system.skill.learning.value": 1,
             "system.skill.vigilance.value": 1,
           },
-          item: "Hurricane lantern"
+          item: "Hurricane lamp"
         },
         {
           eventName: "Distinguish employer",
@@ -1039,7 +1039,7 @@ export class generator_data {
             "system.skill.manipulation.value": 1,
             "system.skill.observation.value": 1,
           },
-          item: "Fancy disguise"
+          item: "Disguise"
         },
         {
           eventName: "Rival",
@@ -1071,7 +1071,7 @@ export class generator_data {
             "system.skill.inspiration.value": 1,
             "system.skill.manipulation.value": 1,
           },
-          item: "Fancy disguise"
+          item: "Disguise"
         }
       ]
     },
@@ -1102,7 +1102,7 @@ export class generator_data {
         "Compass",
         "Bayonet",
         "Map book",
-        "Saber",
+        "Sword or Saber",
       ],
       events: [
         {
@@ -1179,7 +1179,7 @@ export class generator_data {
       equipment: [
         "Magnifying glass",
         "Lockpicks",
-        "Revolver",
+        "Pistol or Revolver",
         "Knuckle duster",
         "Binoculars",
       ],
@@ -1211,7 +1211,7 @@ export class generator_data {
         {
           eventName: "High-profile Case",
           skills: {
-            "system.skill.invetigation.value": 1,
+            "system.skill.investigation.value": 1,
             "system.skill.inspiration.value": 1,
           },
           item: "Book collection"
@@ -1415,7 +1415,7 @@ export class generator_data {
       equipment: [
         "Medical equipment",
         "Liquor",
-        "Fine wine",
+        "Fine wines",
         "Weak horse",
         "Strong poison",
       ],
@@ -1496,7 +1496,7 @@ export class generator_data {
         "Fine wines",
         "Writing utensils and paper",
         "Holy water",
-        "Old bible",
+        "Bible",
       ],
       events: [
         {
@@ -1520,7 +1520,7 @@ export class generator_data {
             "system.skill.stealth.value": 1,
             "system.skill.vigilance.value": 1,
           },
-          item: "Fancy disguise"
+          item: "Disguise"
         },
         {
           eventName: "Theological discovery",
@@ -1571,7 +1571,6 @@ export class generator_data {
     "longbow",
     "crossbow",
     "pistol or revolver",
-    "revolver",
     "musket",
     "rifle",
     "canon"

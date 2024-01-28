@@ -39,7 +39,7 @@
             <div class="sheet-tabs tabs flex row" data-group="primary">
                 <b class="item" data-tab="upgrades">{{localize "TAB.UPGRADES"}}</b>
                 <b class="item" data-tab="history">{{localize "TAB.NOTES"}}</b>
-                
+                <b class="item" data-tab="members">{{localize "TAB.MEMBERS"}}</b>
             </div>
 
             <div class="sheet-body flex row">
@@ -49,8 +49,9 @@
                 <div class="tab history" data-group="primary" data-tab="history">
                     {{> systems/vaesen/model/tab/headquarter-history.hbs}}
                 </div>
-                
-                
+                <div class="tab members" data-group="primary" data-tab="members">
+                    {{> systems/vaesen/model/tab/headquarter-members.hbs}}
+                </div>
             </div>
         </div>
     </div>

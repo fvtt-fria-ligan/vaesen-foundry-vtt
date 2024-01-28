@@ -272,6 +272,7 @@ function preloadHandlebarsTemplates() {
     "systems/vaesen/model/headquarter.hbs",
     "systems/vaesen/model/tab/headquarter-history.hbs",
     "systems/vaesen/model/tab/headquarter-upgrades.hbs",
+    "systems/vaesen/model/tab/headquarter-members.hbs",
     "systems/vaesen/model/items/criticalInjury.hbs",
     "systems/vaesen/model/items/weapon.hbs",
     "systems/vaesen/model/items/armor.hbs",

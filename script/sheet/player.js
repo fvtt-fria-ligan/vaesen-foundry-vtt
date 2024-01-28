@@ -3,23 +3,6 @@ import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
 import { generator } from "../util/generator.js";
 
 export class PlayerCharacterSheet extends VaesenActorSheet {
-
-  static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
-      classes: ["vaesen", "sheet", "actor"],
-      width: 750,
-      height: 930,
-      resizable: true,
-      tabs: [
-        {
-          navSelector: ".sheet-tabs",
-          contentSelector: ".sheet-body",
-          initial: "main",
-        },
-      ],
-    });
-  }
-
   async getData() {
     const headquarter = game.actors.get(this.actor.system.headquarter);
     if (headquarter)
