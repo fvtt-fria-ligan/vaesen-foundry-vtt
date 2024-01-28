@@ -1211,7 +1211,7 @@ export class generator_data {
         {
           eventName: "High-profile Case",
           skills: {
-            "system.skill.invetigation.value": 1,
+            "system.skill.investigation.value": 1,
             "system.skill.inspiration.value": 1,
           },
           item: "Book collection"

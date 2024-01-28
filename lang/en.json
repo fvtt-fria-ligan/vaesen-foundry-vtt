@@ -169,6 +169,7 @@
   "TAB.CONTACT": "CONTACT",
   "TAB.PERSONNEL": "PERSONNEL",
   "TAB.UPGRADES" : "UPGRADES",
+  "TAB.MEMBERS" : "MEMBER STATISTICS",
 
   "TALENT.ICON": "Icon",
   "TALENT.NAME": "Talent",
@@ -266,5 +267,8 @@
   "GENERATOR.APPLIED": "APPLIED",
   "GENERATOR.DISCARDED": "DISCARDED",
   "GENERATOR.REROLL": "Reroll",
-  "GENERATOR.LIFE": "LIfe Path"
+  "GENERATOR.LIFE": "LIfe Path",
+
+  "HEADQUARTER.MEMBER_RANKING": "MEMBER RANKINGS",
+  "HEADQUARTER.MEMBER_RANKING_EXPLANATION": "When determining who is best suited for a particular attribute or skill roll, this allows you to take a non-meta-gaming approach. Rather than relying on specific numbers, you consider who is the most skilled in that area. For skills, this is determined by the combined value of the relevant attribute and the skill itself. If multiple characters are listed, it means they roll the same number of dice for that task."
 }

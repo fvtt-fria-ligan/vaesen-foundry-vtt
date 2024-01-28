@@ -18,7 +18,57 @@ export class HeadquarterCharacterSheet extends VaesenActorSheet {
     });
   }
 
-  
+  async getData() {
+    const actors = game.actors.filter(it => it.type == "player" && it.system.headquarter == this.actor.id);
+    let best = {};
+    let bestPlayers = {};
+    let members = {};
+
+    actors.forEach(player => {
+      members[player.name] = player.id;
+
+      Object.keys(player.system.attribute).forEach(element => {
+        if (element == "magic")
+          return;
+        if (best[element] == undefined) {
+          best[element] = 0;
+          bestPlayers[element] = [];
+        }
+
+        if (best[element] < player.system.attribute[element].value){
+          best[element] = player.system.attribute[element].value;
+          bestPlayers[element] = [player.name];
+        }
+        else if (best[element] == player.system.attribute[element].value) {
+          bestPlayers[element].push(player.name);
+        }
+      });
+
+      Object.keys(player.system.skill).forEach(element => {
+        const skillItem = player.system.skill[element];
+        if (skillItem.value == null)
+          return;
+
+        if (best[element] == undefined) {
+          best[element] = 0;
+          bestPlayers[element] = [];
+        }
+        const currentValue = skillItem.value + player.system.attribute[skillItem.attribute].value;
+
+        if (best[element] < currentValue) {
+          best[element] = currentValue ;
+          bestPlayers[element] = [player.name];
+        }
+        else if (best[element] == currentValue) {
+          bestPlayers[element].push(player.name);
+        }
+      });
+    });
+
+    this.actor.setFlag("vaesen", "bestPlayers", bestPlayers);
+
+    return super.getData();
+  }
 
   activateListeners(html) {
     super.activateListeners(html);

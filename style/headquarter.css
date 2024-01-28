@@ -63,3 +63,18 @@
 .vaesen .headquarter .header .location {
     flex-basis: 50%
 }
+
+.vaesen .flex.headquarter {
+    width: auto;
+	background: none;
+	margin: -10px;
+}
+.vaesen .flex.headquarter b ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.vaesen .headquarter .skills .skill {
+    justify-content: normal;
+}
