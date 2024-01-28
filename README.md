@@ -33,10 +33,10 @@ This system provides character sheets and items for  your play, if you would lik
 
 v4.4.0
 - ✨ link archetypes, talents and items in Chargen to their journal pages and items
-  ![Chargen improvements](assets/chargen_links.png?raw=true)
+  ![Chargen improvements](asset/chargen_links.png?raw=true)
 - 💄 use default UI settings for player sheet
 - ✨ Headquater members' statistics: a non-meta-gaming way to check who is the best to do some roll
-  ![Member Statistics](assets/member_statistics.png?raw=true)
+  ![Member Statistics](asset/member_statistics.png?raw=true)
 
 v4.3.1
 - 🐛 Fix: get weapon icon when dragging to macro bar
