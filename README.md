@@ -1,7 +1,7 @@
 # Vaesen
 The **OFFICIAL** system for playing Vaesen on Foundry VTT.  
 This system provides character sheets and items for  your play, if you would like to have tables and other pre-made official contnent check out the offical core ruleset Module
-    - https://freeleaguepublishing.com/en/store/?product_id=7092046200981
+    - https://freeleaguepublishing.com/shop/vaesen-2/foundry-vtt-module-vaesen-rpg
 
 ## Install
 1. Go to the setup page and choose **Game Systems**.
