@@ -69,6 +69,8 @@
   "CONDITION.NAME": "Zustände",
   "CONDITION.BONUS": "Bonus",
   "CONDITION.DESCRIPTION": "Beschreibung",
+  "CONDITION.PHYSICALLYBROKEN": "Physikalisch Gebrochen",
+  "CONDITION.MENTALLYBROKEN": "Geistig Gebrochen",
 
   "CRITICAL_INJURY.ICON": "Bild",
   "CRITICAL_INJURY.TYPE": "Typ",
@@ -76,8 +78,11 @@
   "CRITICAL_INJURY.FATAL": "Tödlich",
   "CRITICAL_INJURY.TIME_LIMIT": "Zeitraum",
   "CRITICAL_INJURY.PERMANENT": "Permanent",
-  "CRITICAL_INJURY.PERMANENT_SHORT": "Permanent",
+  "CRITICAL_INJURY.PERMANENT_SHORT": "Perm.",
+  "CRITICAL_INJURY.HEALED": "Geheilt",
   "CRITICAL_INJURY.EFFECT": "Effekt",
+  "CRITICAL_INJURY.SKILL": "Fertigkeit",
+  "CRITICAL_INJURY.BONUS": "Bonus",
 
   "FEAR.INITIAL": "Furcht",
   "FEAR.SUBSEQUENT": "Angsterfüllt",
@@ -95,6 +100,8 @@
   "DESCRIPTION": "Beschreibung",
   "TYPE" : "Typ",
   "NAME" : "Name",
+  "BONUS_PENALTY" : "Bonus/Abzug",
+  "FEAR_ROLL" : "Furchtwurf",
   
 
   "GEAR.ICON": "Bild",
@@ -104,6 +111,7 @@
   "GEAR.EFFECT": "Effekt",
   "GEAR.DESCRIPTION": "Beschreibung",
   "GEAR.RISK": "Risiko",
+  "GEAR.SKILL": "Fertigkeit",
 
   "HEADER.ATTRIBUTES": "ATTRIBUTE",
   "HEADER.ARMORS": "RÜSTUNG",
@@ -126,6 +134,7 @@
   "HEADER.PERSONNEL": "PERSONAL",
   "HEADER.FAVORITES": "VORZUG",
   "HEADER.RELATIONSHIPS": "BEZIEHUNGEN",
+  "HEADER.HEADQUARTER": "HAUPTQUARTIER",
 
   "MAGIC.ICON": "Bild",
   "MAGIC.NAME": "Magie",
@@ -160,10 +169,13 @@
   "TAB.CONTACT": "KONTAKT",
   "TAB.PERSONNEL": "PERSONAL",
   "TAB.UPGRADES" : "VERBESSERUNGEN",
+  "TAB.MEMBERS" : "MITGLIEDER STATISTIK",
 
   "TALENT.ICON": "Bild",
   "TALENT.NAME": "Talente",
   "TALENT.DESCRIPTION": "Beschreibung",
+  "TALENT.SKILL": "Fertigkeit",
+  "TALENT.BONUS": "Bonus",
 
   "UPGRADE.ICON": "Bild",
   "UPGRADE.NAME": "Verbesserung",
@@ -176,6 +188,7 @@
   "UPGRADE.FACILITY": "Ausbauten",
   "UPGRADE.CONTACT": "Kontakt",
   "UPGRADE.PERSONNEL": "Personal",
+  "UPGRADE.BONUS": "Bonus",
 
   "WEAPON.ICON": "Bild",
   "WEAPON.NAME": "Waffe",
@@ -202,6 +215,10 @@
   "SETTINGS.PORTRAIT_LANDSCAPE": "3:2 Querformat Ausrichtung",
   "SETTINGS.InitiativeDeck": "Initiative-Deck",
   "SETTINGS.InitiativeDeckHint": "Wähle das Deck, das du für dein Spiel verwenden möchtest",
+  "SETTINGS.NPC_LINK_NAME": "Verbinde NSC Token mit Charakterbögen",
+  "SETTINGS.NPC_LINK": "Da NSCs in mehreren Mysterien wiederverwendet werden können, wird der Token nicht mit dem Charakterbogen verknüpft. Wenn du dich dafür entscheidest, die Daten zu verbinden, denke bitte daran, die Zustände / Status des Akteurs \"zurückzusetzen\".",
+  "SETTINGS.VAESEN_LINK_NAME": "Verbinde Vaesen Token mit Charakterbögen",
+  "SETTINGS.VAESEN_LINK": "Da Vaesen in mehreren Mysterien wiederverwendet werden können, wird der Token nicht mit dem Charakterbogen verknüpft. Wenn du dich dafür entscheidest, die Daten zu verbinden, denke bitte daran, die Zustände / Status des Akteurs \"zurückzusetzen\".",
 
   "CHAT.SUCCESS": "Erfolge",
   "ROLL.BASE.POOL": "Basis Würfelpool",
@@ -222,6 +239,36 @@
   "RELATIONSHIP.WITH": "Beziehung zu",
   "RELATIONSHIP.NATURE": "Art der Beziehung",
   "RELATIONSHIP.WT": "zu",
-  "RELATIONSHIP.NT": "Art"
+  "RELATIONSHIP.NT": "Art",
 
+  "BONUS_TYPE.HEADER": "Bonus Typ",
+  "BONUS_TYPE.NONE": "Kein",
+  "BONUS_TYPE.SKILL": "Fertigkeit",
+  "BONUS_TYPE.IGNORE_CONDITIONS_SKILL": "Ignoriere Zustände für Fertigkeit",
+  "BONUS_TYPE.IGNORE_CONDITIONS_PHYSICAL": "Ignoriere physische Zustände",
+  "BONUS_TYPE.IGNORE_CONDITIONS_MENTAL": "Ignoriere mentale Zustände",
+  "BONUS_TYPE.DAMAGE": "Schaden",
+  "BONUS_TYPE.FEAR": "Furcht",
+  "BONUS_TYPE.MENTAL_RECOVERY": "Mentale Heilung",
+  "BONUS_TYPE.PHYSICAL_RECOVERY": "Physische Heilung",
+
+  "MIGRATOR.LINK_ACTOR": "Du hast die Konfiguration geändert, um die folgenden Arten von Akteuren zu verbinden: ",
+  "MIGRATOR.UNLINK_ACTOR": "Du hast die Konfiguration geändert, um die Verbindung zu den folgenden Arten von Akteuren aufzuheben: ",
+  "MIGRATOR.LINK_ACTOR_CONFIRMATION": "Möchtest du die Konfiguration für die bestehenden Akteure dieses Typs ändern? Vorhandene Token werden nicht geändert, nur die Akteure.",
+
+  "GENERATOR.CLASS": "Archetyp",
+  "GENERATOR.UPBRINGING": "Persönlichkeit",
+  "GENERATOR.PROFESSION": "Beruf",
+  "GENERATOR.LIFE_TIME_EVENTS": "Lebensereignisse",
+  "GENERATOR.EQUIPMENTS": "Ausrüstung",
+  "GENERATOR.MESSAGE": "Dies ist ein destruktiver Vorgang, der den aktuellen Charakter überschreibt. DU KANNST DIES NICHT MEHR RÜCKGÄNGIG MACHEN! Möchtest du fortfahren?",
+  "GENERATOR.TITLE": "Charaktergenerierung",
+  "GENERATOR.GENERATION": "Charaktergenerierung",
+  "GENERATOR.APPLIED": "ANGEWENDET",
+  "GENERATOR.DISCARDED": "ABGELEHNT",
+  "GENERATOR.REROLL": "Reroll",
+  "GENERATOR.LIFE": "Steckbrief",
+
+  "HEADQUARTER.MEMBER_RANKING": "MITGLIEDER RANGLISTE",
+  "HEADQUARTER.MEMBER_RANKING_EXPLANATION": "Bei der Bestimmung, wer für ein bestimmtes Attribut- oder Fertigkeitswurf am besten geeignet ist, kannst du auf diese Weise einen nicht-metaspielerischen Ansatz wählen. Anstatt sich auf bestimmte Zahlen zu verlassen, überlegt man sich, wer in diesem Bereich am fähigsten ist. Bei Fertigkeiten wird dies durch den kombinierten Wert des jeweiligen Attributs und der Fertigkeit selbst bestimmt. Wenn mehrere Charaktere in der Liste aufgeführt sind, bedeutet dies, dass sie die gleiche Anzahl von Würfeln für diese Aufgabe verwenden."
 }
