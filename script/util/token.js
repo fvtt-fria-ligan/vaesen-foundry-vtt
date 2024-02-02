@@ -9,11 +9,16 @@ export class VaesenTokenHUD extends TokenHUD {
     var actor = this.object.document.actor;
 
     if (actor.type === "player") {  
-      return super._getStatusEffectChoices();;
+      return super._getStatusEffectChoices();
     }
 
     if (actor.type === "npc") {
-      return [];
+      let statuses = super._getStatusEffectChoices();
+      for (const key of Object.keys(statuses)) {
+        if (key.startsWith("systems/vaesen/asset/status/"))
+          delete statuses[key];
+      }
+      return statuses;
     }
 
     if (actor.type === "vaesen") {
