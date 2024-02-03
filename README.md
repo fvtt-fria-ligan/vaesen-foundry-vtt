@@ -22,7 +22,7 @@ This system provides character sheets and items for  your play, if you would lik
 
 ## Related Website
 - https://foundryvtt.com/
-- https://frialigan.se/en/store/?collection_id=205381763221
+- https://freeleaguepublishing.com/shop/vaesen-2/
 
 ## Licence
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
