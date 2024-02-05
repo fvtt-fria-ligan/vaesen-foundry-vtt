@@ -31,6 +31,15 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+v4.5.0
+- ✨ Add changelog for Players and Headerquater by @Cussa in https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/pull/114
+
+v4.4.1
+- Update german localization by @Tarubain in https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/pull/107
+- Update README.md by @sanderdatema in https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/pull/108
+- Update README.md by @Cussa in https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/pull/109
+- 🐛 Allow NPCs to have some statuses by @Cussa in https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/pull/111
+
 v4.4.0
 - ✨ link archetypes, talents and items in Chargen to their journal pages and items
   ![Chargen improvements](asset/chargen_links.png?raw=true)
