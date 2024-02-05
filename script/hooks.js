@@ -261,7 +261,6 @@ function preloadHandlebarsTemplates() {
     "systems/vaesen/model/tab/player-combat.hbs",
     "systems/vaesen/model/tab/player-favorites.hbs",
     "systems/vaesen/model/tab/player-talent.hbs",
-    "systems/vaesen/model/tab/player-changelog.hbs",
     "systems/vaesen/model/tab/player-gear.hbs",
     "systems/vaesen/model/tab/player-note.hbs",
     "systems/vaesen/model/npc.hbs",
@@ -274,7 +273,6 @@ function preloadHandlebarsTemplates() {
     "systems/vaesen/model/tab/headquarter-history.hbs",
     "systems/vaesen/model/tab/headquarter-upgrades.hbs",
     "systems/vaesen/model/tab/headquarter-members.hbs",
-    "systems/vaesen/model/tab/headquarter-changelog.hbs",
     "systems/vaesen/model/items/criticalInjury.hbs",
     "systems/vaesen/model/items/weapon.hbs",
     "systems/vaesen/model/items/armor.hbs",
@@ -284,6 +282,7 @@ function preloadHandlebarsTemplates() {
     "systems/vaesen/model/items/condition.hbs",
     "systems/vaesen/model/items/attack.hbs",
     "systems/vaesen/model/items/relationship.hbs",
+    "systems/vaesen/model/tab/changelog.hbs",
   ];
   return loadTemplates(templatePaths);
 }

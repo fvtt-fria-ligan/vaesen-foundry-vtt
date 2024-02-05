@@ -37,7 +37,8 @@
     "style/tab/vaesen-note.css",
     "style/headquarter.css",
     "style/tab/headquarter-upgrade.css",
-    "style/dialog/roll.css"
+    "style/dialog/roll.css",
+    "style/tab/changelog.css"
   ],
   "languages": [
     {

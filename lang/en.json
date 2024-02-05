@@ -274,10 +274,11 @@
   "HEADQUARTER.MEMBER_RANKING_EXPLANATION": "When determining who is best suited for a particular attribute or skill roll, this allows you to take a non-meta-gaming approach. Rather than relying on specific numbers, you consider who is the most skilled in that area. For skills, this is determined by the combined value of the relevant attribute and the skill itself. If multiple characters are listed, it means they roll the same number of dice for that task.",
 
   "CHANGELOG.HEADER": "CHANGELOG",
-  "CHANGELOG.CHANGED": "changed from",
-  "CHANGELOG.TO": "to",
-  "CHANGELOG.BY": "by",
-  "CHANGELOG.AT": "at",
+  "CHANGELOG.WHAT": "What",
+  "CHANGELOG.TYPE": "Type",
+  "CHANGELOG.CHANGE": "Change",
+  "CHANGELOG.BY": "By",
+  "CHANGELOG.WHEN": "When",
   "CHANGELOG.ADDED": "added",
   "CHANGELOG.REMOVED": "removed"
 }

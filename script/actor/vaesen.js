@@ -144,13 +144,17 @@ export class VaesenActor extends Actor {
             if (originalValue == newValue)
                 return;
 
-            const logText = `<b>"${itemChanged}"</b> ${changedText} <b>"${originalValue}"</b> ${toText} <b>"${newValue}"</b> ${byText} <b>"${user.name}"</b> ${atText} <i>"${dateChanged}"</i>`;
-            changelogArray.push(logText);
+            const log = {
+                name: itemChanged,
+                change: `${originalValue} => ${newValue}`,
+                by: user.name,
+                at: dateChanged
+            };
+            changelogArray.push(log);
         });
 
         foundry.utils.setProperty(changed, "system.changelog", changelogArray);
         
-        console.log("CUSSA", actor, changed);
         super._preUpdate(changed,options,user);
     }
 
@@ -160,9 +164,15 @@ export class VaesenActor extends Actor {
         const dateChanged = new Date().toLocaleString();
         const userName = game.users.get(userId)?.name;
         let changelogArray = this.system.changelog;
-        
-        const logText = `"${document.name}" ${textType} ${byText} "${userName}" ${atText} "${dateChanged}"`;
-        changelogArray.push(logText);
+
+        const log = {
+            name: document.name,
+            change: `${document.type} ${textType}`,
+            by: userName,
+            at: dateChanged
+        };
+
+        changelogArray.push(log);
 
         await this.update({"system.changelog": changelogArray});
     }
