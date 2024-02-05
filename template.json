@@ -144,7 +144,8 @@
       "resources": 0,
       "capital": 0,
       "note": "",
-      "headquarter": null
+      "headquarter": null,
+      "changelog": []
     },
     "npc": {
       "templates": ["attributes", "skills"],
@@ -194,7 +195,8 @@
       "building": "",
       "location": "",
       "points": 0,
-      "note": ""
+      "note": "",
+      "changelog": []
     }
   },
   "Item": {

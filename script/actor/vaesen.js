@@ -108,4 +108,78 @@ export class VaesenActor extends Actor {
         actorDefaults["system.headquarter"] = headquarters[0].id;
       this.updateSource(actorDefaults);
     }
+
+    async _preUpdate(changed, options, user) {
+        const actor = this;
+        if (actor.type != "player" && actor.type != "headquarter")
+            return true;
+
+        const flattenChanges = flattenObject(changed);
+        const changedText = game.i18n.localize("CHANGELOG.CHANGED");
+        const toText = game.i18n.localize("CHANGELOG.TO");
+        const byText = game.i18n.localize("CHANGELOG.BY");
+        const atText = game.i18n.localize("CHANGELOG.AT");
+        const dateChanged = new Date().toLocaleString();
+
+        let changelogArray = actor.system.changelog ?? [];
+        
+        Object.keys(flattenChanges).forEach(current => {
+            if (current == "_id" || current.startsWith("flags"))
+                return;
+
+            if (current == "system.changelog")
+            {
+                changelogArray = current.split('.').reduce((p, c) => p && p[c] || null, changed);
+                return;
+            }
+
+            const originalValue = current.split('.').reduce((p, c) => p && p[c] || null, actor) ?? 0;
+            const newValue = current.split('.').reduce((p, c) => p && p[c] || null, changed) ?? 0;
+            const itemChanged = game.i18n.localize(current
+                .replace("system.", "").replace(".value", "").toUpperCase()
+                .replace("COMBAT", "_COMBAT")
+                .replace("POINT", "POINTS")
+                .replace("DARKSECRET", "DARK_SECRET"));
+
+            if (originalValue == newValue)
+                return;
+
+            const logText = `<b>"${itemChanged}"</b> ${changedText} <b>"${originalValue}"</b> ${toText} <b>"${newValue}"</b> ${byText} <b>"${user.name}"</b> ${atText} <i>"${dateChanged}"</i>`;
+            changelogArray.push(logText);
+        });
+
+        foundry.utils.setProperty(changed, "system.changelog", changelogArray);
+        
+        console.log("CUSSA", actor, changed);
+        super._preUpdate(changed,options,user);
+    }
+
+    async _handleItem(document, userId, textType){
+        const byText = game.i18n.localize("CHANGELOG.BY");
+        const atText = game.i18n.localize("CHANGELOG.AT");
+        const dateChanged = new Date().toLocaleString();
+        const userName = game.users.get(userId)?.name;
+        let changelogArray = this.system.changelog;
+        
+        const logText = `"${document.name}" ${textType} ${byText} "${userName}" ${atText} "${dateChanged}"`;
+        changelogArray.push(logText);
+
+        await this.update({"system.changelog": changelogArray});
+    }
+
+    async _onCreateDescendantDocuments(parent, collection, documents, data, options, userId) {
+        
+        const addedText = game.i18n.localize("CHANGELOG.ADDED");
+        await this._handleItem(documents[0], userId, addedText);
+        
+        super._onCreateDescendantDocuments(parent, collection, documents, data, options, userId);
+    }
+
+    async _onDeleteDescendantDocuments(parent, collection, documents, data, options, userId) {
+        
+        const removedText = game.i18n.localize("CHANGELOG.REMOVED");
+        await this._handleItem(documents[0], userId, removedText);
+        
+        super._onCreateDescendantDocuments(parent, collection, documents, data, options, userId);
+    }
 }

@@ -1,0 +1,14 @@
+<div class="flex column full">
+    <div class="flex column heavy-border wrapper" style="width: 99%;">
+        <b class="title" style="width: 85%; margin: auto;">{{localize "CHANGELOG.HEADER"}}</b>
+        <div class="talents flex column margin grow">
+            <div class="scrollable">
+                <ul>
+                {{#each system.changelog as |item|}}
+                    <li>{{{item}}}</li>
+                {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -164,6 +164,7 @@
   "TAB.GEAR": "GEAR",
   "TAB.NOTE": "NOTE",
   "TAB.NOTES": "NOTES",
+  "TAB.LOG" : "LOG",
   "TAB.HISTORY": "HISTORY",
   "TAB.FACILITY": "FACILITY",
   "TAB.CONTACT": "CONTACT",
@@ -267,8 +268,16 @@
   "GENERATOR.APPLIED": "APPLIED",
   "GENERATOR.DISCARDED": "DISCARDED",
   "GENERATOR.REROLL": "Reroll",
-  "GENERATOR.LIFE": "LIfe Path",
+  "GENERATOR.LIFE": "Life Path",
 
   "HEADQUARTER.MEMBER_RANKING": "MEMBER RANKINGS",
-  "HEADQUARTER.MEMBER_RANKING_EXPLANATION": "When determining who is best suited for a particular attribute or skill roll, this allows you to take a non-meta-gaming approach. Rather than relying on specific numbers, you consider who is the most skilled in that area. For skills, this is determined by the combined value of the relevant attribute and the skill itself. If multiple characters are listed, it means they roll the same number of dice for that task."
+  "HEADQUARTER.MEMBER_RANKING_EXPLANATION": "When determining who is best suited for a particular attribute or skill roll, this allows you to take a non-meta-gaming approach. Rather than relying on specific numbers, you consider who is the most skilled in that area. For skills, this is determined by the combined value of the relevant attribute and the skill itself. If multiple characters are listed, it means they roll the same number of dice for that task.",
+
+  "CHANGELOG.HEADER": "CHANGELOG",
+  "CHANGELOG.CHANGED": "changed from",
+  "CHANGELOG.TO": "to",
+  "CHANGELOG.BY": "by",
+  "CHANGELOG.AT": "at",
+  "CHANGELOG.ADDED": "added",
+  "CHANGELOG.REMOVED": "removed"
 }

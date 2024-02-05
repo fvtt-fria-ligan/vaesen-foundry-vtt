@@ -136,6 +136,7 @@ export class generator {
         </li>
     </ul>
     </div>`;
+    changes["system.changelog"] = [];
 
 
     let dialogHtml = [];
@@ -257,9 +258,8 @@ export class generator {
             accepted = true;
             console.log("Vaesen | Generate", classSelected, upbringingSelected, changes);
             await actor.deleteEmbeddedDocuments("Item", actor.items.map(function (item) { return item.id; }));
+            await actor.createEmbeddedDocuments("Item", itemsToCreate);
             await actor.update(changes);
-
-            actor.createEmbeddedDocuments("Item", itemsToCreate);
 
             ChatMessage.create({
               content: `<h3>${game.i18n.localize("GENERATOR.GENERATION")} ${game.i18n.localize("GENERATOR.APPLIED")}:</h3><div class="vaesen" >${chatHTML[0]} ${chatHTML[1]}</div>`,
