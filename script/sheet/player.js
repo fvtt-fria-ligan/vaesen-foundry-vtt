@@ -236,6 +236,29 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     });
   }
 
+  onItemCreate(event) {
+    event.preventDefault();
+    let header = event.currentTarget;
+    let data = duplicate(header.dataset);
+
+    if (data.type != "gear" && data.type != "weapon")
+    {
+      super.onItemCreate(event);
+      return;
+    }
+
+    data["name"] = `New ${data.type.capitalize()}`;
+    if (data.type == "weapon") {
+      data["system.starting"] = this.actor.system.starting;
+    }
+    else if (data.type == "gear") {
+      data["system.starting"] = data.starting ? true : false;
+      delete data.starting;
+    }
+    console.log("CUSSA", data);
+    this.actor.createEmbeddedDocuments("Item", [data]);
+  }
+
   computeItems(data) {
     for (let item of Object.values(data.items)) {
       item.isCriticalInjury = item.type === "criticalInjury";
