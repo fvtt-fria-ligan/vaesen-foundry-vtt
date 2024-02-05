@@ -123,6 +123,7 @@
   "HEADER.CRITICAL_INJURIES": "CRITICAL INJURIES",
   "HEADER.WEAPONS": "WEAPONS",
   "HEADER.TALENTS": "TALENTS",
+  "HEADER.STARTING_GEAR": "STARTING GEAR",
   "HEADER.GEAR": "GEAR",
   "HEADER.INFORMATION": "INFORMATION",
   "HEADER.MAGIC": "MAGIC",
@@ -198,6 +199,8 @@
   "WEAPON.BONUS": "Bonus",
   "WEAPON.AVAILABILITY": "Availability",
   "WEAPON.SKILL": "Skill",
+  "WEAPON.STARTING": "SE",
+  "WEAPON.STARTING_TOOLTIP": "Starting Equipment",
 
   "UI.FAVORITE" : "Toggle Favorite",
   "UI.EDIT" : "Edit",
@@ -280,5 +283,8 @@
   "CHANGELOG.BY": "By",
   "CHANGELOG.WHEN": "When",
   "CHANGELOG.ADDED": "added",
-  "CHANGELOG.REMOVED": "removed"
+  "CHANGELOG.REMOVED": "removed",
+
+  "STARTING_EQUIP.TITLE": "Delete Starting Equipment?",
+  "STARTING_EQUIP.CONTENT": "This is a equipment that is marked as part of the Starting Equipment for this actor. Are you sure you want to delete it?"
 }

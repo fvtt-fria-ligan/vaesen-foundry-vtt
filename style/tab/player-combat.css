@@ -94,6 +94,10 @@
     flex-basis: 20%;
 }
 
+.vaesen .player .weapons .weapon .starting {
+    flex-basis: 15%;
+}
+
 .vaesen .player .weapons .weapon .button {
     flex-basis: 15%;
 }

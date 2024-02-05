@@ -33,6 +33,7 @@ This system provides character sheets and items for  your play, if you would lik
 
 v4.5.0
 - ✨ Add changelog for Players and Headerquater by @Cussa in https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/pull/114
+- ✨ Separate Starting Equipment from the normal ones by @Cussa in https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/pull/114
 
 v4.4.1
 - Update german localization by @Tarubain in https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/pull/107

@@ -60,7 +60,7 @@ export class generator {
     const equipment = "Crowbar"; // archetypeInfo.equipment[equipmentRoll];
 
     let gearItem = getItemInfo(equipment, "gear");
-    itemsToCreate.push(gearItem);
+    itemsToCreate.push(toStartingObject(gearItem));
 
     let equipmentsHtml = `<li>@UUID[Item.${gearItem.id}]{${equipment}}</li>`;
 
@@ -77,7 +77,7 @@ export class generator {
       eventsHtml += `<li>${currentEvent.eventName}</li>`;
 
       gearItem = getItemInfo(currentEvent.item, "gear");
-      itemsToCreate.push(gearItem);
+      itemsToCreate.push(toStartingObject(gearItem));
 
       equipmentsHtml += `<li>@UUID[Item.${gearItem.id}]{${gearItem.name}}</li>`;
 
@@ -90,7 +90,7 @@ export class generator {
       }
     }
     if (itemsToCreate.filter(it => it.name.toLowerCase() == "crowbar").length == 1) {
-      itemsToCreate.push(getItemInfo("Crowbar - Gear", "gear"));
+      itemsToCreate.push(toStartingObject(getItemInfo("Crowbar - Gear", "gear")));
     }
 
     let attributeReduced = -1;
@@ -137,7 +137,7 @@ export class generator {
     </ul>
     </div>`;
     changes["system.changelog"] = [];
-
+    changes["system.starting"] = false;
 
     let dialogHtml = [];
     dialogHtml.push(' <div class="vaesen char-gen m-1 pi-1 flex-col">');
@@ -311,6 +311,12 @@ function getItemInfo(itemName, type){
   if (item == undefined) {
     let itemType = generator_data.weaponList.includes(itemName.toLowerCase()) ? "weapon" : type;
     item = { type: itemType, name: itemName };
-  } 
+  }
   return item;
+}
+
+function toStartingObject(item) {
+  let changedItem = item.toObject();
+  foundry.utils.setProperty(changedItem, "system.starting", true);
+  return changedItem;
 }

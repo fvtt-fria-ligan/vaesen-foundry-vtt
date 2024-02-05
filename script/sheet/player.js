@@ -4,6 +4,7 @@ import { generator } from "../util/generator.js";
 
 export class PlayerCharacterSheet extends VaesenActorSheet {
   async getData() {
+    this.actor.system.startingEquipClass = this.actor.system.starting ? "fa-unlock" : "fa-lock";
     const headquarter = game.actors.get(this.actor.system.headquarter);
     if (headquarter)
       this.actor.setFlag("vaesen", "headquarterName", headquarter.name);
@@ -105,6 +106,9 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
 
     html.find(".fav-togle").click((ev) => {
       this.onFavTogle(ev);
+    });
+    html.find(".starting-equip-toggle").click((ev) =>  {
+      this.onStartingEquipToggle();
     });
     html.find(".roll-recovery").click((ev) => {
       this.onRecovery(ev);
@@ -240,6 +244,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       item.isTalent = item.type === "talent";
       item.isGear = item.type === "gear";
       item.isRelationship = item.type === "relationship";
+      item.cssClass = item.isWeapon && item.system.starting ? "fa-check-square" : "fa-square";
     }
   }
 
@@ -368,5 +373,14 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     const actorID = event.currentTarget.dataset.actorId;
     const actor = game.actors.get(actorID);
     actor.sheet.render(true);
+  }
+
+  onStartingEquipToggle() {
+    this.actor.update({"system.starting": !this.actor.system.starting});
+  }
+
+  _onDropItemCreate(item) {
+    item.system.starting = this.actor.system.starting;
+    super._onDropItemCreate(item);
   }
 }

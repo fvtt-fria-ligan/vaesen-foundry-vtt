@@ -1,5 +1,36 @@
 <div class="flex column full">
     <div class="flex column heavy-border wrapper" style="width: 99%;">
+        <b class="title" style="width: 85%; margin: auto;">{{localize "HEADER.STARTING_GEAR"}} <i class="fa {{system.startingEquipClass}} starting-equip-toggle"></i></b>
+        <div class="gears flex column margin grow">
+            <div class="gear grid grid-5col-fr center light-border w-100">
+                <b class="icon">{{localize "GEAR.ICON"}}</b>
+                <b class="name">{{localize "GEAR.NAME"}}</b>
+                <b class="bonus">{{localize "GEAR.BONUS"}}</b>
+                <b class="effect">{{localize "GEAR.EFFECT"}}</b>
+                <a class="button item-create" title='{{localize  "UI.ADD"}}' data-type="gear"><i class="fas fa-plus"></i></a>
+            </div>
+            <div class="scrollable">
+                {{#each items as |item|}}
+                    {{#if item.isGear}}
+                    {{#if item.system.starting}}
+                        <div class="gear item grid grid-5col-fr center align-center w-100" data-item-id="{{item._id}}">
+                            <div class="icon"><img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/></div>
+                            <div class="name">{{item.name}}</div>
+                            <div class="bonus">{{item.system.bonus}}</div>
+                            <div class="effect">{{{item.system.effect}}}</div>
+                            <div class="button">
+                                <a class="item-control to-chat" title='{{localize UI.CHAT}}'><i class="fas fa-comment"></i></a>
+                                <a class="item-control item-edit" title='{{localize  "UI.EDIT"}}'><i class="fas fa-edit"></i></a>
+                                <a class="item-control item-delete" title='{{localize  "UI.DELETE"}}'><i class="fas fa-trash"></i></a>
+                            </div>
+                        </div>
+                    {{/if}}
+                    {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="flex column heavy-border wrapper" style="width: 99%;">
         <b class="title" style="width: 85%; margin: auto;">{{localize "HEADER.GEAR"}}</b>
         <div class="gears flex column margin grow">
             <div class="gear grid grid-5col-fr center light-border w-100">
@@ -12,6 +43,7 @@
             <div class="scrollable">
                 {{#each items as |item|}}
                     {{#if item.isGear}}
+                    {{#unless item.system.starting}}
                         <div class="gear item grid grid-5col-fr center align-center w-100" data-item-id="{{item._id}}">
                             <div class="icon"><img class="icon" src="{{item.img}}" title="{{item.name}}" height="50" width="50"/></div>
                             <div class="name">{{item.name}}</div>
@@ -23,6 +55,7 @@
                                 <a class="item-control item-delete" title='{{localize  "UI.DELETE"}}'><i class="fas fa-trash"></i></a>
                             </div>
                         </div>
+                    {{/unless}}
                     {{/if}}
                 {{/each}}
             </div>

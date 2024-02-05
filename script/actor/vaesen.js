@@ -102,6 +102,7 @@ export class VaesenActor extends Actor {
           "prototypeToken.sight.range": "30",
           "prototypeToken.bar1.attribute": bar1,
           "prototypeToken.bar2.attribute": bar2,
+          "system.starting": true
       };
       var headquarters = game.actors.contents.filter(x => x.type === "headquarter");
       if (headquarters.length === 1)

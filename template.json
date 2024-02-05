@@ -145,7 +145,8 @@
       "capital": 0,
       "note": "",
       "headquarter": null,
-      "changelog": []
+      "changelog": [],
+      "starting": false
     },
     "npc": {
       "templates": ["attributes", "skills"],
@@ -233,7 +234,8 @@
       "range": "",
       "bonus": 0,
       "availability": 0,
-      "skill": ""
+      "skill": "",
+      "starting": false
     },
     "armor": {
       "templates": ["itemFav"],
@@ -254,7 +256,8 @@
       "description": "",
       "risk": "",
       "quantity": "",
-      "skill": ["none"]
+      "skill": ["none"],
+      "starting": false
     },
     "magic": {
       "description": "",
