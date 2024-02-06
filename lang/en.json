@@ -123,6 +123,7 @@
   "HEADER.CRITICAL_INJURIES": "CRITICAL INJURIES",
   "HEADER.WEAPONS": "WEAPONS",
   "HEADER.TALENTS": "TALENTS",
+  "HEADER.STARTING_GEAR": "STARTING GEAR",
   "HEADER.GEAR": "GEAR",
   "HEADER.INFORMATION": "INFORMATION",
   "HEADER.MAGIC": "MAGIC",
@@ -164,6 +165,7 @@
   "TAB.GEAR": "GEAR",
   "TAB.NOTE": "NOTE",
   "TAB.NOTES": "NOTES",
+  "TAB.LOG" : "LOG",
   "TAB.HISTORY": "HISTORY",
   "TAB.FACILITY": "FACILITY",
   "TAB.CONTACT": "CONTACT",
@@ -197,6 +199,8 @@
   "WEAPON.BONUS": "Bonus",
   "WEAPON.AVAILABILITY": "Availability",
   "WEAPON.SKILL": "Skill",
+  "WEAPON.STARTING": "SE",
+  "WEAPON.STARTING_TOOLTIP": "Starting Equipment",
 
   "UI.FAVORITE" : "Toggle Favorite",
   "UI.EDIT" : "Edit",
@@ -267,8 +271,20 @@
   "GENERATOR.APPLIED": "APPLIED",
   "GENERATOR.DISCARDED": "DISCARDED",
   "GENERATOR.REROLL": "Reroll",
-  "GENERATOR.LIFE": "LIfe Path",
+  "GENERATOR.LIFE": "Life Path",
 
   "HEADQUARTER.MEMBER_RANKING": "MEMBER RANKINGS",
-  "HEADQUARTER.MEMBER_RANKING_EXPLANATION": "When determining who is best suited for a particular attribute or skill roll, this allows you to take a non-meta-gaming approach. Rather than relying on specific numbers, you consider who is the most skilled in that area. For skills, this is determined by the combined value of the relevant attribute and the skill itself. If multiple characters are listed, it means they roll the same number of dice for that task."
+  "HEADQUARTER.MEMBER_RANKING_EXPLANATION": "When determining who is best suited for a particular attribute or skill roll, this allows you to take a non-meta-gaming approach. Rather than relying on specific numbers, you consider who is the most skilled in that area. For skills, this is determined by the combined value of the relevant attribute and the skill itself. If multiple characters are listed, it means they roll the same number of dice for that task.",
+
+  "CHANGELOG.HEADER": "CHANGELOG",
+  "CHANGELOG.WHAT": "What",
+  "CHANGELOG.TYPE": "Type",
+  "CHANGELOG.CHANGE": "Change",
+  "CHANGELOG.BY": "By",
+  "CHANGELOG.WHEN": "When",
+  "CHANGELOG.ADDED": "added",
+  "CHANGELOG.REMOVED": "removed",
+
+  "STARTING_EQUIP.TITLE": "Delete Starting Equipment?",
+  "STARTING_EQUIP.CONTENT": "This is a equipment that is marked as part of the Starting Equipment for this actor. Are you sure you want to delete it?"
 }

@@ -271,7 +271,23 @@ export class VaesenActorSheet extends ActorSheet {
 
   onItemDelete(event) {
     const div = $(event.currentTarget).parents(".item");
-    this.actor.deleteEmbeddedDocuments("Item", [div.data("itemId")]);
+    let item = this.actor.items.get(div.data("itemId"));
+
+    if (!item.system.starting) {
+      this.onItemDeleteAction(div, item.id);
+      return;
+    }
+
+    Dialog.confirm({
+      title: game.i18n.localize("STARTING_EQUIP.TITLE"),
+      content: game.i18n.localize("STARTING_EQUIP.CONTENT"),
+      yes: () => this.onItemDeleteAction(div, item.id),
+      defaultYes: false
+    });
+  }
+
+  onItemDeleteAction(div, item){
+    this.actor.deleteEmbeddedDocuments("Item", [item]);
     div.slideUp(200, () => this.render(false));
   }
 

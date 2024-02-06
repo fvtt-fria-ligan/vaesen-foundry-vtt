@@ -106,6 +106,7 @@
             <b class="item" data-tab="talent">{{localize "TAB.TALENT"}}</b>
             <b class="item" data-tab="gear">{{localize "TAB.GEAR"}}</b>
             <b class="item" data-tab="note">{{localize "TAB.NOTE"}}</b>
+			<b class="item" data-tab="changelog">{{localize "TAB.LOG"}}</b>
         </div>
 
         <div class="sheet-body flex row">
@@ -123,6 +124,9 @@
             </div>
             <div class="tab note" data-group="primary" data-tab="note">
                 {{> systems/vaesen/model/tab/player-note.hbs}}
+            </div>
+			<div class="tab changelog" data-group="primary" data-tab="changelog">
+                {{> systems/vaesen/model/tab/changelog.hbs}}
             </div>
         </div>
     </div>

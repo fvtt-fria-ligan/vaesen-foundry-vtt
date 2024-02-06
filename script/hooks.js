@@ -282,6 +282,7 @@ function preloadHandlebarsTemplates() {
     "systems/vaesen/model/items/condition.hbs",
     "systems/vaesen/model/items/attack.hbs",
     "systems/vaesen/model/items/relationship.hbs",
+    "systems/vaesen/model/tab/changelog.hbs",
   ];
   return loadTemplates(templatePaths);
 }

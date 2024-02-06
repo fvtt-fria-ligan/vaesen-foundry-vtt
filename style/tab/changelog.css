@@ -1,0 +1,19 @@
+.vaesen .player .changelog .scrollable,
+.vaesen .headquarter .changelog .scrollable {
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+.vaesen .player .changelog .changelogTable.item:nth-child(odd),
+.vaesen .headquarter .changelog .changelogTable.item:nth-child(odd) {
+    background-color: #ebe4e0;
+}
+.vaesen .player .changelog .changelogTable.item:nth-child(even),
+.vaesen .headquarter .changelog .changelogTable.item:nth-child(even) {
+    background-color: #d6c9c2;
+}
+
+.vaesen .player .changelog .changelogTable .column,
+.vaesen .headquarter .changelog .changelogTable .column {
+    flex-basis: 25%;
+}

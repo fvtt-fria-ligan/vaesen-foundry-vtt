@@ -1,0 +1,23 @@
+<div class="flex column full">
+    <div class="flex column heavy-border wrapper" style="width: 99%;">
+        <b class="title" style="width: 85%; margin: auto;">{{localize "CHANGELOG.HEADER"}}</b>
+        <div class="changelog flex column margin grow">
+            <div class="changelogTable grid grid-4col-fr center light-border w-100">
+                <b class="column">{{localize "CHANGELOG.WHAT"}}</b>
+                <b class="column">{{localize "CHANGELOG.CHANGE"}}</b>
+                <b class="column">{{localize "CHANGELOG.BY"}}</b>
+                <b class="column">{{localize "CHANGELOG.WHEN"}}</b>
+            </div>
+            <div class="scrollable">
+                {{#each system.changelog as |item|}}
+                    <div class="changelogTable item grid grid-4col-fr center align-center w-100" data-item-id="{{item._id}}">
+                        <div class="column">{{item.name}}</div>
+                        <div class="column">{{{item.change}}}</div>
+                        <div class="column">{{{item.by}}}</div>
+                        <div class="column">{{{item.at}}}</div>
+                    </div> 
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
