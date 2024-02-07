@@ -193,10 +193,13 @@ export class VaesenActor extends Actor {
     const dateChanged = new Date().toLocaleString();
     const userName = game.users.get(userId)?.name;
     let changelogArray = this.system.changelog;
+    let documentType = document.type;
+    if (document.statuses)
+        documentType = "condition";
 
     const log = {
       name: document.name,
-      change: `${document.type} ${textType}`,
+      change: `${documentType} ${textType}`,
       by: userName,
       at: dateChanged,
     };
