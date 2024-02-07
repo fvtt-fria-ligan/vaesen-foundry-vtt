@@ -76,5 +76,5 @@
 }
 
 .vaesen .headquarter .skills .skill {
-    justify-content: normal;
+    justify-content: space-between;
 }
