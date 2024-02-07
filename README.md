@@ -31,6 +31,9 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+4.5.1
+- 🐛 Fix: HQ was losing data when updating ownership, editor for notes was hidden.  
+
 v4.5.0
 - ✨ Add changelog for Players and Headerquater by @Cussa in https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/pull/114
 - ✨ Separate Starting Equipment from the normal ones by @Cussa in https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/pull/114
