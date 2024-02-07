@@ -518,7 +518,7 @@ export class VaesenActorSheet extends ActorSheet {
       .localize("HEADER.CRITICAL_INJURIES")
       .toLowerCase()
       .replace(/\b(\w)/g, (x) => x.toUpperCase());
-    return { name: label, value: bonus, tooltip: tooltip.join("\n") };
+    return { name: label, value: bonus, tooltip: tooltip.join("<br>") };
   }
 
   computeInfoFromArmor(skillName) {

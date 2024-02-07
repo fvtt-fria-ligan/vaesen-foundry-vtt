@@ -29,15 +29,18 @@ This system provides character sheets and items for  your play, if you would lik
 
 
 ## Release Notes
-=======
 
-4.5.3
+v4.6.0
+- ✨ Use Foundry's tooltip instead of browser `title`
+- 🐛 Conditions was showing as `undefined` in changelog
+
+v4.5.3
 - 🐛 Fix: Fixed CSS on member data tab for lists to populate correctly  
 
-4.5.2
+v4.5.2
 - 🐛 Fix: Removed rollable tag from skills on member data tab of headquarter sheet  
 
-4.5.1
+v4.5.1
 - 🐛 Fix: HQ was losing data when updating ownership, editor for notes was hidden.  
 
 v4.5.0
