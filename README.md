@@ -31,6 +31,9 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+4.5.3
+- 🐛 Fix: Fixed CSS on member data tab for lists to populate correctly  
+
 4.5.2
 - 🐛 Fix: Removed rollable tag from skills on member data tab of headquarter sheet  
 
