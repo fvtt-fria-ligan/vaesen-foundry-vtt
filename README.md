@@ -31,6 +31,9 @@ This system provides character sheets and items for  your play, if you would lik
 ## Release Notes
 =======
 
+4.5.2
+- 🐛 Fix: Removed rollable tag from skills on member data tab of headquarter sheet  
+
 4.5.1
 - 🐛 Fix: HQ was losing data when updating ownership, editor for notes was hidden.  
 
