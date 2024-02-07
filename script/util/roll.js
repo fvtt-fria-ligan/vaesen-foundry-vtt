@@ -26,14 +26,14 @@ export function prepareRollNewDialog(
         `: </p>
 <input style="text-align: center" type="text" value="` +
         element.value +
-        `" readonly title="` +
+        `" readonly data-tooltip="` +
         tooltip +
-        `"/></div>`
+        `" data-tooltip-direction="RIGHT" data-tooltip-class="vaesen-tooltip"/></div>`
     );
 
     baseLinesDice += parseInt(element.value, 10);
     var moreInfo = tooltip
-      ? `<ul><li>${tooltip.replace("\n", "</li><li>")}</li></ul>`
+      ? `<ul><li>${tooltip.replaceAll("<br>", "</li><li>")}</li></ul>`
       : "";
     breakdown.push(
       `${element.name}: ${adjustBonusText(element.value)}${moreInfo}`
@@ -284,7 +284,7 @@ function buildGearSelectHtmlDialog(options) {
       `: </p></div>`
   );
   html.push(`<div class="flex row" style="width: 100%;">`);
-  html.push(`<select id="gear" style="width: 100%;">`);
+  html.push(`<select id="gear" style="width: 100%;" data-tooltip-direction="RIGHT" data-tooltip-class="vaesen-tooltip">`);
   html.push(`<option value="0">None (0)</option>`);
   options.forEach((element) => {
     let bonusValue = adjustBonusText(element.bonus);
@@ -292,7 +292,7 @@ function buildGearSelectHtmlDialog(options) {
     html.push(
       `<option value="` +
         element.bonus +
-        `" title="` +
+        `" data-tooltip="` +
         descriptionWithoutTags +
         `">` +
         element.name +
@@ -318,7 +318,7 @@ function buildSelectMultipleHtmlDialog(options, name, id) {
     `<p style="text-transform: capitalize; white-space:nowrap; margin-top: 4px;">${game.i18n.localize(name)}: </p></div>`
   );
   html.push(`<div class="flex row" style="width: 100%;">`);
-  html.push(`<select id="${id}" style="width: 100%;" multiple>`);
+  html.push(`<select id="${id}" style="width: 100%;" multiple data-tooltip-direction="RIGHT" data-tooltip-class="vaesen-tooltip">`);
   options.forEach((element) => {
     let descriptionWithoutTags = $("<p>").html(element.description).text();
     let requiresBonus =
@@ -329,9 +329,9 @@ function buildSelectMultipleHtmlDialog(options, name, id) {
       (element.bonusType
         ? game.i18n.localize(CONFIG.vaesen.bonusType[element.bonusType])
         : "") + (bonusValue ?? "");
-    const fullDescription = `${element.name}\n${bonusInfo}\n${descriptionWithoutTags}`;
+    const fullDescription = `${element.name}<br>${bonusInfo}<br>${element.description}`;
     html.push(
-      `<option value="${element.name}" title="${fullDescription}">${element.name} (${bonusInfo})</option>`
+      `<option value="${element.name}" data-tooltip="${fullDescription}">${element.name} (${bonusInfo})</option>`
     );
   });
   html.push(`</select></div>`);
@@ -448,4 +448,12 @@ async function createCustomRoll(actor, formula, name) {
   let rollMode = game.settings.get("core", "rollMode");
   
   await roll.toMessage(messageData, { rollMode });
+}
+
+export function registerGearSelectTooltip() {
+  $("body").on("change", "#gear", function(e) {
+    var optionSelected = $("option:selected", this);
+    var tooltip = optionSelected.attr("data-tooltip") ?? "";
+    $(this).attr("data-tooltip", tooltip);
+  });
 }
