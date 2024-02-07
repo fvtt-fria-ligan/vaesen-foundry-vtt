@@ -115,6 +115,12 @@ export class VaesenActor extends Actor {
         if (actor.type != "player" && actor.type != "headquarter")
             return true;
 
+           
+
+        if (changed.ownership){  
+            return true;
+        }    
+
         const flattenChanges = flattenObject(changed);
         const changedText = game.i18n.localize("CHANGELOG.CHANGED");
         const toText = game.i18n.localize("CHANGELOG.TO");
