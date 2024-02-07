@@ -19,6 +19,8 @@
     @each $screen-size, $value in $breakpoints {
       --bp-#{$screen-size}: #{$value};
     }
+
+    scrollbar-color: $brown-300 $off-white;
   }
   
 .window-app .window-content{

@@ -91,6 +91,7 @@ h4 {
   --bp-small: 40em;
   --bp-medium: 55em;
   --bp-large: 100em;
+  scrollbar-color: hsl(21, 20%, 43%) hsl(40, 20%, 80%);
 }
 @media only screen and (min-width: 40em) {
   :root {
