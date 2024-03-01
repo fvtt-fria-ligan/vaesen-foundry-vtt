@@ -188,6 +188,9 @@ export class VaesenActor extends Actor {
   }
 
   async _handleItem(document, userId, textType) {
+    const actorChanged = this;
+    // if we are not dealing with a player or headquarter, we don't want to log the changes
+    if (actorChanged.type != "player" && actorChanged.type != "headquarter") return;
     const byText = game.i18n.localize("CHANGELOG.BY");
     const atText = game.i18n.localize("CHANGELOG.AT");
     const dateChanged = new Date().toLocaleString();

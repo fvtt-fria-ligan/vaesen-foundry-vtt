@@ -114,6 +114,9 @@ Hooks.on('canvasReady', () => {
 });
 
 Hooks.on("updateActor", (actor,changes,diff,userId) => {
+  // if we don't have an active scene, don't do anything
+  if (!game.scenes.current) return;
+  console.log("updateActor", actor, changes, diff, userId);
   game.scenes.current.tokens.forEach(x => {
     if (x.actorId !== actor._id)
       return;

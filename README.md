@@ -29,6 +29,9 @@ This system provides character sheets and items for  your play, if you would lik
 
 
 ## Release Notes
+v4.6.1
+- 🐛 system was attempting to update the change log for actors without one which caused changes to fail on NPC and Vaesen actor type [#117](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/117)
+- 🐛 error when updating actors when no scene was active
 
 v4.6.0
 - ✨ Use Foundry's tooltip instead of browser `title`
