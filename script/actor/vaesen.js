@@ -220,6 +220,8 @@ export class VaesenActor extends Actor {
     options,
     userId
   ) {
+    if (!this.isOwner) return;
+
     const addedText = game.i18n.localize("CHANGELOG.ADDED");
     await this._handleItem(documents[0], userId, addedText);
 
@@ -241,6 +243,8 @@ export class VaesenActor extends Actor {
     options,
     userId
   ) {
+    if (!this.isOwner) return;
+
     const removedText = game.i18n.localize("CHANGELOG.REMOVED");
     await this._handleItem(documents[0], userId, removedText);
 
