@@ -76,14 +76,12 @@ Hooks.once("init", () => {
   registerSystemSettings();
   preloadHandlebarsTemplates();
 
-  
-
   Handlebars.registerHelper("enrichHtmlHelper", function (rawText) {
     return TextEditor.enrichHTML(rawText, { async: false });
   });
 
-  Handlebars.registerHelper('ifIn', function(elem, list, options) {
-    if(list && list.indexOf(elem) > -1) {
+  Handlebars.registerHelper('ifIn', function (elem, list, options) {
+    if (list && list.indexOf(elem) > -1) {
       return options.fn(this);
     }
     return options.inverse(this);
@@ -100,7 +98,7 @@ Hooks.once("init", () => {
 });
 
 Hooks.once("ready", async function () {
- 
+
   setupCards();
   conditions.onReady();
   Hooks.on("hotbarDrop", (bar, data, slot) => createRollMacro(data, slot));
@@ -113,17 +111,16 @@ Hooks.on('canvasReady', () => {
   canvas.hud.token = new VaesenTokenHUD();
 });
 
-Hooks.on("updateActor", (actor,changes,diff,userId) => {
+Hooks.on("updateActor", (actor, changes, diff, userId) => {
   // if we don't have an active scene, don't do anything
-  if (!game.scenes.current) return;
+  if (!game.scenes.current || !actor.isOwner || changes.name == undefined) return;
   console.log("updateActor", actor, changes, diff, userId);
   game.scenes.current.tokens.forEach(x => {
     if (x.actorId !== actor._id)
       return;
-    if (changes.name !== undefined) {
-      actor.update({"token.name": actor.name});
-      x.update({"name": actor.name});
-    }
+
+    actor.update({ "token.name": actor.name });
+    x.update({ "name": actor.name });
   });
 });
 
@@ -136,11 +133,11 @@ Hooks.on('dropActorSheetData', async (actor, sheet, data) => {
     sheet._dropHeadquarter(headquarter);
 });
 
-Hooks.on("yze-combat.fast-action-button-clicked", async function(data) {
+Hooks.on("yze-combat.fast-action-button-clicked", async function (data) {
   await conditions.onActionCondition(data);
 });
 
-Hooks.on("yze-combat.slow-action-button-clicked", async function(data) {
+Hooks.on("yze-combat.slow-action-button-clicked", async function (data) {
   await conditions.onActionCondition(data);
 });
 
@@ -247,7 +244,7 @@ async function setupCards() {
   const initiativeDeck = game.cards?.get(initiativeDeckId);
   //return early if both the deck and the ID exist in the world
   if (initiativeDeckId && initiativeDeck)
-      return;
+    return;
   ui.notifications.info('UI.NoInitiativeDeckFound', { localize: true });
   const preset = CONFIG.Cards.presets.initiative;
   const data = await foundry.utils.fetchJsonWithTimeout(preset.src);
@@ -343,7 +340,7 @@ actor.sheet.rollWeapon("${data.itemId}");`;
       flags: { "vaesen.skillRoll": true }
     });
   }
-  
+
   game.user.assignHotbarMacro(macro, slot);
   return false;
 }
