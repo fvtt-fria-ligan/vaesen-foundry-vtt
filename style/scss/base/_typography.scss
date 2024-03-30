@@ -1,5 +1,46 @@
 @use "../abstracts" as *;
 
+//journal headers
+
+.editor-content h1, .journal-entry-content h1{
+	font-family: Albertus;
+	font-size: 3em;
+	text-align: center;
+	color: #412017;
+	border-bottom: none;
+}
+
+.editor-content h2, .journal-entry-content h2{
+	
+	font-family: Eccentric;
+	font-size: 2.5em;
+	text-align: center;
+	color: #412017;
+	font-weight: 700;
+	border-bottom: none;
+}
+
+.editor-content h3, .journal-entry-content h3{
+	font-family: Lin;
+	font-size: 1em;
+	text-transform: uppercase;
+	color: #412017;
+	font-weight: 600;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.editor-content h4, .journal-entry-content h4{
+	font-family: Lin;
+	font-size: 1.2em;
+	text-transform: uppercase;
+	color: #412017;
+	font-weight: 800;
+	text-align: center;
+	margin-top: 5px;
+    letter-spacing: 2px;
+}
+
 h1, h2, h3, h4 {
    
     font-family: Albertus, serif;
