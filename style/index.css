@@ -80,6 +80,12 @@
   letter-spacing: 2px;
 }
 
+.journal-entry-content .caption {
+  font-family: BethEllen, cursive;
+  font-size: 0.8em;
+  text-align: center;
+}
+
 h1, h2, h3, h4 {
   font-family: Albertus, serif;
   border-bottom: none;
