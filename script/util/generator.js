@@ -312,12 +312,13 @@ function getItemInfo(itemName, type){
     let itemType = generator_data.weaponList.includes(itemName.toLowerCase()) ? "weapon" : type;
     item = { type: itemType, name: itemName };
   }
+  else
+    item = item.toObject();
   return item;
 }
 
 function toStartingObject(item) {
   console.log("Vaesen | Generator | Starting Item", item);
-  let changedItem = item.toObject();
-  foundry.utils.setProperty(changedItem, "system.starting", true);
-  return changedItem;
+  foundry.utils.setProperty(item, "system.starting", true);
+  return item;
 }
