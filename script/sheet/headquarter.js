@@ -91,9 +91,10 @@ export class HeadquarterCharacterSheet extends VaesenActorSheet {
   sendToChat(event) {
     const div = $(event.currentTarget).parents(".item");
     const item = this.actor.items.get(div.data("itemId"));
-    const data = item.data;
-    let type = data.type;
-    let chatData = buildChatCard(type, data);
+    console.log(item);
+    
+    let type = item.type;
+    let chatData = buildChatCard(type, item);
     ChatMessage.create(chatData, {});
   }
 

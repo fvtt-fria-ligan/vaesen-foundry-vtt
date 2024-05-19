@@ -14,6 +14,7 @@ export const hideChatActionButtons = function (message, html, data) {
 };
 
 export const buildChatCard = function (type, data) {
+  console.log("Building chat card", type, data);
   let message = "";
   let chatData = {};
   let token = "";
@@ -33,10 +34,10 @@ export const buildChatCard = function (type, data) {
                 <div class='chat-flavor'>` +
         data.name.toUpperCase() +
         "</div>" +
-        "<div class='flex row center'><img src='" +
+        "<div class='row center'><img src='" +
         data.img +
         "' width=50 height=50/></div>" +
-        "<div class='chat-item-info flex column'>" +
+        "<div class='chat-item-info column'>" +
         "<div><b>" +
         game.i18n.localize("ARMOR.PROTECTION") +
         ": </b>" +
@@ -87,10 +88,10 @@ export const buildChatCard = function (type, data) {
             <div class='chat-flavor'>` +
         data.name.toUpperCase() +
         "</div>" +
-        "<div class='flex row center'><img src='" +
+        "<div class='row center'><img src='" +
         data.img +
         "' width=50 height=50/></div>" +
-        "<div class='chat-item-info flex column'>" +
+        "<div class='chat-item-info column'>" +
         "<b>" +
         game.i18n.localize("ATTACK.ATTRIBUTE") +
         ": </b>" +
@@ -124,10 +125,10 @@ export const buildChatCard = function (type, data) {
             <div class='chat-flavor'>` +
         data.name.toUpperCase() +
         "</div>" +
-        "<div class='flex row center'><img src='" +
+        "<div class='row center'><img src='" +
         data.img +
         "' width=50 height=50/></div>" +
-        "<div class='chat-item-info flex column'>" +
+        "<div class='chat-item-info column'>" +
         "<b>" +
         game.i18n.localize("CONDITION.BONUS") +
         ": </b>" +
@@ -167,10 +168,10 @@ export const buildChatCard = function (type, data) {
         ": " +
         data.name.toUpperCase() +
         "</div>" +
-        "<div class='flex row center'><img src='" +
+        "<div class='row center'><img src='" +
         data.img +
         "' width=50 height=50/></div>" +
-        "<div class='chat-item-info flex column'>" +
+        "<div class='chat-item-info column'>" +
         "<b>" +
         game.i18n.localize("CRITICAL_INJURY.TYPE") +
         `: </b><span class="title-case">` +
@@ -224,10 +225,10 @@ export const buildChatCard = function (type, data) {
             <div class='chat-flavor'>` +
         data.name.toUpperCase() +
         "</div>" +
-        "<div class='flex row center'><img src='" +
+        "<div class='row center'><img src='" +
         data.img +
         "' width=50 height=50/></div>" +
-        "<div class='chat-item-info flex column'>" +
+        "<div class='chat-item-info column'>" +
         "<b>" +
         game.i18n.localize("GEAR.BONUS") +
         ": </b>" +
@@ -262,10 +263,10 @@ export const buildChatCard = function (type, data) {
             <div class='chat-flavor'>` +
         data.name.toUpperCase() +
         "</div>" +
-        "<div class='flex row center'><img src='" +
+        "<div class='row center'><img src='" +
         data.img +
         "' width=50 height=50/></div>" +
-        "<div class='chat-item-info flex column'>" +
+        "<div class='chat-item-info column'>" +
         "<b>" +
         game.i18n.localize("MAGIC.CATEGORY") +
         ": </b>" +
@@ -293,14 +294,14 @@ export const buildChatCard = function (type, data) {
             <div class='chat-flavor'>` +
         data.name.toUpperCase() +
         "</div>" +
-        "<div class='flex row center'><img src='" +
+        "<div class='row center'><img src='" +
         data.img +
         "' width=50 height=50/></div>" +
-        "<div class='chat-item-info flex column'>" +
+        "<div class='chat-item-info column'>" +
         "<b>" +
         game.i18n.localize("TALENT.DESCRIPTION") +
         ": </b>" +
-        data.system.description +
+        data.description +
         "</br>" +
         `</div></div>`;
       chatData = {
@@ -338,10 +339,10 @@ export const buildChatCard = function (type, data) {
             <div class='chat-flavor'>` +
         data.name.toUpperCase() +
         "</div>" +
-        "<div class='flex row center'><img src='" +
+        "<div class='row center'><img src='" +
         data.img +
         "' width=50 height=50/></div>" +
-        "<div class='chat-item-info flex column'>" +
+        "<div class='chat-item-info column'>" +
         "<b>" +
         game.i18n.localize("UPGRADE.COST") +
         ": </b>" +
@@ -385,10 +386,10 @@ export const buildChatCard = function (type, data) {
             <div class='chat-flavor'>` +
         data.name.toUpperCase() +
         "</div>" +
-        "<div class='flex row center'><img src='" +
+        "<div class='row center'><img src='" +
         data.img +
         "' width=50 height=50/></div>" +
-        "<div class='chat-item-info flex column'>" +
+        "<div class='chat-item-info column'>" +
         "<b>" +
         game.i18n.localize("WEAPON.DAMAGE") +
         ": </b>" +
@@ -431,10 +432,10 @@ export const buildChatCard = function (type, data) {
             <div class='chat-flavor'>` +
         data.name.toUpperCase() +
         "</div>" +
-        "<div class='flex row center'><img src='" +
+        "<div class='row center'><img src='" +
         data.img +
         "' width=50 height=50/></div>" +
-        "<div class='chat-item-info flex column'>" +
+        "<div class='chat-item-info column'>" +
         "<b>" +
         game.i18n.localize("BIO.RELATIONSHIP") +
         ": </b>" +

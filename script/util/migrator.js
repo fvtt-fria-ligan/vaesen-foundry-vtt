@@ -4,11 +4,19 @@ export function migrate(){
     return;
   
   const currentVersion = game.settings.get("vaesen", "systemMigrationVersion");
-  console.log("Vaesen Data CurrentVersion", currentVersion);
+  const foundryVersion = game.version;
+  if (foundryVersion > 11){
+    Object.keys(migrations).forEach(function(key) {
+      if (!currentVersion || foundry.utils.isNewerVersion(key, currentVersion))
+        migrations[key]();
+    });
+    
+  } else {
   Object.keys(migrations).forEach(function(key) {
     if (!currentVersion || isNewerVersion(key, currentVersion))
       migrations[key]();
   });
+}
 }
 
 export async function linkUnlinkActorData(link, type){
@@ -51,7 +59,7 @@ async function migrateTo4_0_0() {
     }
   }
 
-  await game.settings.set("vaesen", "systemMigrationVersion", game.system.data.version);
+  await game.settings.set("vaesen", "systemMigrationVersion", game.system.version);
   ui.notifications.info("Data migrated to version 4.0.0. If you have players' tokens, please, remove them from the scene and drag them to the scene back from the Actor's tab.", options);
 }
 
@@ -116,6 +124,6 @@ async function migrateTo4_1_0() {
     }
   }
 
-  await game.settings.set("vaesen", "systemMigrationVersion", game.system.data.version);
+  await game.settings.set("vaesen", "systemMigrationVersion", game.system.version);
   ui.notifications.info("Data migrated to version 4.1.0.", options);
 }

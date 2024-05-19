@@ -12,8 +12,10 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
   }
 
   async affirmConditions(actor) {
+    console.log("affirmConditions");
     let currentConditions = [];
     actor.effects.forEach(function (value, key) {
+      console.log("value: ", value);
       currentConditions.push(value.data.flags.core?.statusId);
     });
 
@@ -274,14 +276,15 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
   onFavTogle(event) {
     const div = $(event.currentTarget).parents(".item");
     const item = this.actor.items.get(div.data("itemId"));
+    console.log("onFavTogle", item);
 
     let fav = item.system.isFav;
     if (fav) {
       item.system.isFav = false;
-      item.update({ "data.isFav": false });
+      item.update({ "system.isFav": false });
     } else {
       item.system.isFav = true;
-      item.update({ "data.isFav": true });
+      item.update({ "system.isFav": true });
     }
 
     item.update();

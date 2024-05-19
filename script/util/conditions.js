@@ -124,8 +124,8 @@ export class conditions{
     static allConditions = conditions.vasenConditions;
       
     static onReady() {
-        console.log(game.i18n.lang );
-        console.log("Vaesen | Conditions: ", conditions.vasenConditions);
+       // console.log(game.i18n.lang );
+      //console.log("Vaesen | Conditions: ", conditions.vasenConditions);
         CONFIG.vaesen.allConditions = this.allConditions;
         CONFIG.statusEffects = conditions.vasenConditions;
     }

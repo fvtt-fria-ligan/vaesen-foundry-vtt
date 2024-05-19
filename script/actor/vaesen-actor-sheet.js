@@ -149,13 +149,7 @@ export class VaesenActorSheet extends ActorSheet {
       this.rollSkill(skillName);
     });
 
-    html.find(".armor .icon").click((ev) => {
-      this.onArmorRoll(ev);
-    });
-    html.find(".armor .protection").click((ev) => {
-      this.onArmorRoll(ev);
-    });
-    html.find(".armor .agility").click((ev) => {
+    html.find(".armor-roll").click((ev) => {
       this.onArmorRoll(ev);
     });
 
@@ -418,9 +412,9 @@ export class VaesenActorSheet extends ActorSheet {
   sendToChat(event) {
     const div = $(event.currentTarget).parents(".item");
     const item = this.actor.items.get(div.data("itemId"));
-    const data = item.data;
-    let type = data.type;
-    let chatData = buildChatCard(type, data);
+    const data = item.system;
+    let type = item.type;
+    let chatData = buildChatCard(type, item);
     ChatMessage.create(chatData, {});
   }
 

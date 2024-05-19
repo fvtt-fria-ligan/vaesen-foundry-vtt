@@ -29,6 +29,11 @@ This system provides character sheets and items for  your play, if you would lik
 
 
 ## Release Notes
+v5.0.0
+- Major Release! BACK UP YOUR WORLDS BEFORE UPGRADING! This release updates the system for foundry v12. It also DROPS support for foundry v10.  
+- 🐛 Fix: Fixed the warning for data references #81
+
+
 v4.6.4
 - 🐛 fix error happening on Forge: players getting a message of lacking of permission
 

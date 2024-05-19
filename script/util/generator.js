@@ -316,6 +316,7 @@ function getItemInfo(itemName, type){
 }
 
 function toStartingObject(item) {
+  console.log("Vaesen | Generator | Starting Item", item);
   let changedItem = item.toObject();
   foundry.utils.setProperty(changedItem, "system.starting", true);
   return changedItem;

@@ -226,16 +226,20 @@ async function rollDice(sheet, numberOfDice, breakdown) {
     },
     options
   );
-  console.log(r);
-  // let r = YearZeroRoll.createFromDiceQuantities(dice, {
-  //   title: sheet.lastTestName,
-  //   damage: sheet.lastDamage,
-  //   owner: actor.id,
-  // });
+  console.log("roll dice roll:", r);
 
-  //async toMessage(messageData = {}, { rollMode = null, create = true } = {})
+// Execute the roll
+await r.evaluate();
 
-  // r.evaluate();
+// The resulting equation after it was rolled
+console.log(r.result);   // 16 + 2 + 4
+
+// The total resulting from the roll
+console.log(r.total);    // 22
+
+// sucess count of the roll
+console.log(r.successes); // 3
+
   await r.toMessage({
     speaker: ChatMessage.getSpeaker({ actor: actor, token: actor.img }),
   });
@@ -307,7 +311,7 @@ function buildGearSelectHtmlDialog(options) {
 }
 
 function buildSelectMultipleHtmlDialog(options, name, id) {
-  console.log(options);
+
   if (options == null || options.length == 0) return "";
 
   let html = [];

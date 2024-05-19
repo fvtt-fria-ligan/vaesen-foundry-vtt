@@ -7,6 +7,7 @@
         {{#if this.flavor}}<span class="part-flavor">{{this.flavor}}</span>{{/if}}
         <span class="part-total">{{this.total}}</span>
       </header>
+      {{log this}}
       <ol class="dice-rolls">
         {{#if ../pushed}}
           {{#each this.rolls as | lineRolls |}}
