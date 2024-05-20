@@ -698,9 +698,9 @@ const YZUR = {
     diceSorting: ["base", "skill", "neg", "gear", "arto", "loc", "ammo"],
   },
   Roll: {
-    chatTemplate: "systems/twdu/templates/dice/roll.hbs",
-    tooltipTemplate: "systems/twdu/templates/dice/tooltip.hbs",
-    infosTemplate: "systems/twdu/templates/dice/infos.hbs",
+    chatTemplate: "systems/vaesen/templates/dice/roll.hbs",
+    tooltipTemplate: "systems/vaesen/templates/dice/tooltip.hbs",
+    infosTemplate: "systems/vaesen/templates/dice/infos.hbs",
   },
   Dice: {
     localizeDieTerms: true,
