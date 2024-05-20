@@ -37,14 +37,19 @@
  * @extends {Die} The Foundry Die class
  */
 class YearZeroDie extends Die {
-  constructor(termData) {
-    termData.faces=(termData.faces || 6);
-    
+  constructor(termData = {}) {
+    termData.faces = Number.isInteger(termData.faces) ? termData.faces : 6;
     super(termData);
+
     if (this.maxPush == undefined) {
       this.maxPush = termData.maxPush ?? 1;
     }
   }
+
+  get denomination() {
+    return this.constructor.DENOMINATION;
+  }
+
 
   /**
    * The type of the die.
@@ -98,6 +103,7 @@ class YearZeroDie extends Die {
     // return this instanceof YearZeroDie;
     return true;
   }
+
   /**
    * Number of successes rolled.
    * @type {number}
@@ -116,8 +122,17 @@ class YearZeroDie extends Die {
     return this.type === "neg" ? -s : s;
   }
 
-  get faces() {
-    return this.constructor.faces;
+  /**
+   * Number of banes rolled.
+   * @type {number}
+   * @readonly
+   */
+  get failure() {
+    if (!this._evaluated) return undefined;
+    return this.results.reduce((tot, r) => {
+      if (!r.active) return tot;
+      return tot + (r.result <= 1);
+    }, 0);
   }
 
   /* -------------------------------------------- */
@@ -131,12 +146,10 @@ class YearZeroDie extends Die {
    * @see (Foundry) {@link https://foundryvtt.com/api/DiceTerm.html#roll|DiceTerm.roll}
    * @override
    */
-  roll(options = {}) {
+  async roll(options = {}) {
     // Modifies the result.
-    console.log("YZUR YearZeroDie#roll: this ", this);
-    console.log("YZUR YearZeroDie#roll:faces ", this.faces);
-    const roll = super.roll(options);
-    
+    const roll = await super.roll(options);
+
     // Stores indexes
     roll.indexResult = options.indexResult;
     if (roll.indexResult == undefined) {
@@ -344,14 +357,6 @@ class YearZeroDie extends Die {
   }
 }
 
-
-
-
-
-
-
-
-
 /**
  * The type of the die.
  * @type {string}
@@ -389,35 +394,271 @@ YearZeroDie.MODIFIERS = foundry.utils.mergeObject(
 
 /* -------------------------------------------- */
 
-
+/**
+ * Base Die: 1 & 6 cannot be re-rolled.
+ * @extends {YearZeroDie}
+ * @category OTHER DICE
+ */
+class BaseDie extends YearZeroDie {}
+BaseDie.TYPE = "base";
+BaseDie.DENOMINATION = "b";
+BaseDie.LOCKED_VALUES = [1, 6];
 
 /**
  * Skill Die: 6 cannot be re-rolled.
  * @extends {YearZeroDie}
  * @category OTHER DICE
  */
-class SkillDie extends YearZeroDie {
-  constructor(termData) {
-    termData.faces=6;
-    
+class SkillDie extends YearZeroDie {}
+SkillDie.TYPE = "skill";
+SkillDie.DENOMINATION = "s";
+
+/**
+ * Gear Die: 1 & 6 cannot be re-rolled.
+ * @extends {YearZeroDie}
+ * @category OTHER DICE
+ */
+class GearDie extends YearZeroDie {}
+GearDie.TYPE = "gear";
+GearDie.DENOMINATION = "g";
+GearDie.LOCKED_VALUES = [1, 6];
+
+/**
+ * Negative Die: 6 cannot be re-rolled.
+ * @extends {SkillDie}
+ * @category OTHER DICE
+ */
+class NegativeDie extends SkillDie {}
+NegativeDie.TYPE = "neg";
+NegativeDie.DENOMINATION = "n";
+
+/* -------------------------------------------- */
+
+/**
+ * Stress Die: 1 & 6 cannot be re-rolled.
+ * @extends {YearZeroDie}
+ * @category OTHER DICE
+ */
+class StressDie extends YearZeroDie {}
+StressDie.TYPE = "stress";
+StressDie.DENOMINATION = "z";
+StressDie.LOCKED_VALUES = [1, 6];
+
+/* -------------------------------------------- */
+
+/**
+ * Artifact Die: 6+ cannot be re-rolled.
+ * @extends {SkillDie}
+ * @category OTHER DICE
+ */
+class ArtifactDie extends SkillDie {
+  /** @override */
+  getResultLabel(result) {
+    return CONFIG.YZUR.Icons.getLabel(
+      `d${this.constructor.DENOMINATION}`,
+      result.result
+    );
+  }
+}
+ArtifactDie.TYPE = "arto";
+ArtifactDie.SUCCESS_TABLE = [null, 0, 0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4];
+ArtifactDie.LOCKED_VALUES = [6, 7, 8, 9, 10, 11, 12];
+
+class D8ArtifactDie extends ArtifactDie {
+  constructor(termData = {}) {
+    termData.faces = 8;
     super(termData);
+  }
 }
-    /** @override */
-  static DENOMINATION = "s";
-  static TYPE = "skill"; 
-  static LOCKED_VALUES = [6];
+D8ArtifactDie.DENOMINATION = "8";
 
-  get denomination() { return SkillDie.DENOMINATION; }
-
-  get faces() { return SkillDie.faces; }
+class D10ArtifactDie extends ArtifactDie {
+  constructor(termData = {}) {
+    termData.faces = 10;
+    super(termData);
+  }
 }
+D10ArtifactDie.DENOMINATION = "10";
 
+class D12ArtifactDie extends ArtifactDie {
+  constructor(termData = {}) {
+    termData.faces = 12;
+    super(termData);
+  }
+}
+D12ArtifactDie.DENOMINATION = "12";
 
+/* -------------------------------------------- */
 
+/**
+ * Twilight Die: 1 & 6+ cannot be re-rolled.
+ * @extends {ArtifactDie} But LOCKED_VALUES are not the same
+ * @category OTHER DICE
+ */
+class TwilightDie extends ArtifactDie {
+  /** @override */
+  getResultLabel(result) {
+    return CONFIG.YZUR.Icons.getLabel("base", result.result);
+  }
+}
+TwilightDie.TYPE = "base";
+TwilightDie.SUCCESS_TABLE = [null, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2];
+TwilightDie.LOCKED_VALUES = [1, 6, 7, 8, 9, 10, 11, 12];
+
+class D6TwilightDie extends TwilightDie {
+  constructor(termData = {}) {
+    termData.faces = 6;
+    super(termData);
+  }
+}
+D6TwilightDie.DENOMINATION = "6";
+
+class D8TwilightDie extends TwilightDie {
+  constructor(termData = {}) {
+    termData.faces = 8;
+    super(termData);
+  }
+}
+D8TwilightDie.DENOMINATION = "8";
+
+class D10TwilightDie extends TwilightDie {
+  constructor(termData = {}) {
+    termData.faces = 10;
+    super(termData);
+  }
+}
+D10TwilightDie.DENOMINATION = "10";
+
+class D12TwilightDie extends TwilightDie {
+  constructor(termData = {}) {
+    termData.faces = 12;
+    super(termData);
+  }
+}
+D12TwilightDie.DENOMINATION = "12";
+
+/* -------------------------------------------- */
+
+/**
+ * Ammunition Die for Twilight 2000.
+ * @extends {YearZeroDie}
+ * @category OTHER DICE
+ */
+class AmmoDie extends YearZeroDie {
+  constructor(termData = {}) {
+    termData.faces = 6;
+    super(termData);
+  }
+}
+AmmoDie.TYPE = "ammo";
+AmmoDie.DENOMINATION = "m";
+AmmoDie.LOCKED_VALUES = [1, 6];
+
+/* -------------------------------------------- */
+
+/**
+ * Location/Hit Die for Twilight 2000.
+ * @extends {YearZeroDie}
+ * @category OTHER DICE
+ */
+class LocationDie extends YearZeroDie {
+  constructor(termData = {}) {
+    termData.faces = 6;
+    super(termData);
+  }
+  /** @override */
+  get pushable() {
+    return false;
+  }
+
+  /** @override */
+  roll(options) {
+    const roll = super.roll(options);
+    roll.count = 0;
+    this.results[this.results.length - 1] = roll;
+    return roll;
+  }
+}
+LocationDie.TYPE = "loc";
+LocationDie.DENOMINATION = "l";
+LocationDie.LOCKED_VALUES = [1, 2, 3, 4, 5, 6];
+
+/* -------------------------------------------- */
+
+/**
+ * BladeRunner Die: 1 cannot be re-rolled.
+ * @extends {ArtifactDie} But LOCKED_VALUES are not the same
+ * @category OTHER DICE
+ */
+class BladeRunnerDie extends ArtifactDie {
+  /** @override */
+  getResultLabel(result) {
+    return CONFIG.YZUR.Icons.getLabel("base", result.result);
+  }
+}
+BladeRunnerDie.TYPE = "base";
+BladeRunnerDie.SUCCESS_TABLE = [null, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2];
+BladeRunnerDie.LOCKED_VALUES = [1];
+
+class D6BladeRunnerDie extends BladeRunnerDie {
+  constructor(termData = {}) {
+    termData.faces = 6;
+    super(termData);
+  }
+}
+D6BladeRunnerDie.DENOMINATION = "6";
+D6BladeRunnerDie.LOCKED_VALUES = [1, 6];
+
+class D8BladeRunnerDie extends BladeRunnerDie {
+  constructor(termData = {}) {
+    termData.faces = 8;
+    super(termData);
+  }
+}
+D8BladeRunnerDie.DENOMINATION = "8";
+D8BladeRunnerDie.LOCKED_VALUES = [1, 6, 7, 8];
+
+class D10BladeRunnerDie extends BladeRunnerDie {
+  constructor(termData = {}) {
+    termData.faces = 10;
+    super(termData);
+  }
+}
+D10BladeRunnerDie.DENOMINATION = "10";
+D10BladeRunnerDie.LOCKED_VALUES = [1, 10];
+
+class D12BladeRunnerDie extends BladeRunnerDie {
+  constructor(termData = {}) {
+    termData.faces = 12;
+    super(termData);
+  }
+}
+D12BladeRunnerDie.DENOMINATION = "12";
+D12BladeRunnerDie.LOCKED_VALUES = [1, 10, 11, 12];
 
 var YearZeroDice = /*#__PURE__*/ Object.freeze({
   __proto__: null,
+  AmmoDie: AmmoDie,
+  ArtifactDie: ArtifactDie,
+  BaseDie: BaseDie,
+  BladeRunnerDie: BladeRunnerDie,
+  D10ArtifactDie: D10ArtifactDie,
+  D10BladeRunnerDie: D10BladeRunnerDie,
+  D10TwilightDie: D10TwilightDie,
+  D12ArtifactDie: D12ArtifactDie,
+  D12BladeRunnerDie: D12BladeRunnerDie,
+  D12TwilightDie: D12TwilightDie,
+  D6BladeRunnerDie: D6BladeRunnerDie,
+  D6TwilightDie: D6TwilightDie,
+  D8ArtifactDie: D8ArtifactDie,
+  D8BladeRunnerDie: D8BladeRunnerDie,
+  D8TwilightDie: D8TwilightDie,
+  GearDie: GearDie,
+  LocationDie: LocationDie,
+  NegativeDie: NegativeDie,
   SkillDie: SkillDie,
+  StressDie: StressDie,
+  TwilightDie: TwilightDie,
   YearZeroDie: YearZeroDie,
 });
 
@@ -454,23 +695,44 @@ const YZUR = {
   game: "",
   Chat: {
     showInfos: true,
-    diceSorting: ["skill"],
+    diceSorting: ["base", "skill", "neg", "gear", "arto", "loc", "ammo"],
   },
   Roll: {
-    baseTemplate: '/systems/vaesen/model/templates/dice/broll.hbs',
-    chatTemplate: "/systems/vaesen/model/templates/dice/roll.hbs",
-    tooltipTemplate: "/systems/vaesen/model/templates/dice/tooltip.hbs",
-    infosTemplate: "/systems/vaesen/model/templates/dice/infos.hbs",
+    chatTemplate: "systems/twdu/templates/dice/roll.hbs",
+    tooltipTemplate: "systems/twdu/templates/dice/tooltip.hbs",
+    infosTemplate: "systems/twdu/templates/dice/infos.hbs",
   },
   Dice: {
     localizeDieTerms: true,
     DIE_TYPES: [
-    
-      "skill"
+      "base",
+      "skill",
+      "neg",
+      "gear",
+      "stress",
+      "arto",
+      "ammo",
+      "loc",
     ],
     DIE_TERMS: {
-     
-      skill: SkillDie
+      base: BaseDie,
+      skill: SkillDie,
+      neg: NegativeDie,
+      gear: GearDie,
+      stress: StressDie,
+      artoD8: D8ArtifactDie,
+      artoD10: D10ArtifactDie,
+      artoD12: D12ArtifactDie,
+      a: D12TwilightDie,
+      b: D10TwilightDie,
+      c: D8TwilightDie,
+      d: D6TwilightDie,
+      ammo: AmmoDie,
+      loc: LocationDie,
+      brD12: D12BladeRunnerDie,
+      brD10: D10BladeRunnerDie,
+      brD8: D8BladeRunnerDie,
+      brD6: D6BladeRunnerDie,
     },
   },
   Icons: {
@@ -486,6 +748,144 @@ const YZUR = {
       if (arto.includes(type)) type = "arto";
       return String(CONFIG.YZUR.Icons[CONFIG.YZUR.game][type][result]);
     },
+    myz: {
+      base: {
+        1: "☣",
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: "☢",
+      },
+      skill: {
+        1: 1,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: "☢",
+      },
+      neg: {
+        1: 1,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: "➖",
+      },
+      gear: {
+        1: "💥",
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: "☢",
+      },
+    },
+    fbl: {
+      base: {
+        1: "☠",
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: "⚔️",
+      },
+      skill: {
+        1: 1,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: "⚔️",
+      },
+      neg: {
+        1: 1,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: "➖",
+      },
+      gear: {
+        1: "💥",
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: "⚔️",
+      },
+      arto: {
+        1: 1,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: 6,
+        7: 7,
+        8: 8,
+        9: 9,
+        10: 10,
+        11: 11,
+        12: 12,
+      },
+    },
+    alien: {
+      skill: {
+        1: 1,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: "💠", // '❇',
+      },
+      stress: {
+        1: "😱", // '⚠',
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: "",
+      },
+    },
+    twdu: {
+      skill: {
+        1: 1,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: "☣️", // '❇',
+      },
+      stress: {
+        1: "💀", // '⚠',
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: "☣️",
+      },
+    },
+    tales: {
+      skill: {
+        1: 1,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: "⚛️", // '👑',
+      },
+    },
+    cor: {
+      skill: {
+        1: 1,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: "🐞",
+      },
+    },
     vae: {
       skill: {
         1: 1,
@@ -495,7 +895,55 @@ const YZUR = {
         5: 5,
         6: "🦋",
       },
-    }
+    },
+    t2k: {
+      base: {
+        1: "💥",
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: 6,
+        7: 7,
+        8: 8,
+        9: 9,
+        10: 10,
+        11: 11,
+        12: 12,
+      },
+      ammo: {
+        1: "💥",
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: "🎯",
+      },
+      loc: {
+        1: "L",
+        2: "T",
+        3: "T",
+        4: "T",
+        5: "A",
+        6: "H",
+      },
+    },
+    br: {
+      base: {
+        1: "🦄",
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: 6,
+        7: 7,
+        8: 8,
+        9: 9,
+        10: 10,
+        11: 11,
+        12: 12,
+      },
+    },
   },
 };
 
@@ -508,6 +956,7 @@ const YZUR = {
  * - `myz`: Mutant Year Zero
  * - `fbl`: Forbidden Lands
  * - `alien`: Alien RPG
+ * - `twdu`: The walked Dead
  * - `cor`: Coriolis The Third Horizon
  * - `tales`: Tales From the Loop & Things From the Flood
  * - `vae`: Vaesen
@@ -645,15 +1094,18 @@ class YearZeroRoll extends Roll {
    * @param {string}         [options.name]    The name of the roll
    * @param {number}         [options.maxPush] The maximum number of times the roll can be pushed
    * @param {boolean}        [options.yzur]    Forces the roll of a YearZeroRoll in Foundry
-   * @param {string}         [data.token]      URL of the token of the actor that owns this roll
-   * @param {number}         [options.damage]  Optional damage to add to the roll
    */
   constructor(formula, data = {}, options = {}) {
-    //console.log("YearZeroRoll constructor: ", formula, data, options);
+    console.log(
+      "YearZeroRoll | constructor | formula, data, options",
+      formula,
+      data,
+      options
+    );
     if (options.name == undefined) options.name = data.name;
     if (options.game == undefined) options.game = data.game;
     if (options.maxPush == undefined) options.maxPush = data.maxPush;
-    if (options.token == undefined) options.token = data.token;
+
     super(formula, data, options);
 
     if (!this.game) this.game = CONFIG.YZUR.game ?? "myz";
@@ -685,38 +1137,6 @@ class YearZeroRoll extends Roll {
   set name(str) {
     this.options.name = str;
   }
-
-  /**
-   * The token image of the Actor from the Roll
-   * @type {string}
-   *
-   */
-  get token() {
-    if (this.options.token == undefined) return null;
-    return this.options.token;
-  }
-  set token(str) {
-    this.options.token = str;
-  }
-
-  /**
-  * The Damage From the Roll
-  * @type {number}
-  * 
-  */
- set damage(n){
-   this.data.damage = n;
-   for (const t of this.terms){
-     if (t instanceof YearZeroDie){
-       t.damage = n;
-     }
-   }
- }
-
- get damage(){
-   return this.data.damage;
- }
-
 
   /**
    * The maximum number of pushes.
@@ -786,11 +1206,112 @@ class YearZeroRoll extends Roll {
    * @readonly
    */
   get successCount() {
-    console.log("YearZeroRoll#successCount : ", this.terms);
     return this.terms.reduce((sc, t) => sc + (t.success ?? 0), 0);
   }
 
-  
+  /**
+   * The quantity of ones (banes).
+   * @type {number}
+   * @readonly
+   */
+  get baneCount() {
+    // return this.terms.reduce((bc, t) => bc + t.failure, 0);
+    const banableTypes = ["base", "gear", "stress", "ammo"];
+    let count = 0;
+    for (const bt of banableTypes) {
+      count += this.count(bt, 1);
+    }
+    return count;
+  }
+
+  /**
+   * The quantity of traumas ("1" on base dice).
+   * @type {number}
+   * @readonly
+   */
+  get attributeTrauma() {
+    return this.count("base", 1);
+  }
+
+  /**
+   * The quantity of gear damage ("1" on gear dice).
+   * @type {number}
+   * @readonly
+   */
+  get gearDamage() {
+    return this.count("gear", 1);
+  }
+
+  /**
+   * The quantity of stress dice.
+   * @type {number}
+   * @readonly
+   */
+  get stress() {
+    return this.count("stress");
+  }
+
+  /**
+   * The quantity of panic ("1" on stress dice).
+   * @type {number}
+   * @readonly
+   */
+  get panic() {
+    return this.count("stress", 1);
+  }
+
+  /**
+   * Tells if the roll is a mishap (double 1's).
+   * @type {boolean}
+   * @readonly
+   * @deprecated
+   */
+  get mishap() {
+    // if (this.game !== 't2k') return false;
+    // return this.baneCount >= 2 || this.baneCount >= this.size;
+    console.warn("YZUR | YearZeroRoll#mishap is deprecated.");
+    return false;
+  }
+
+  /**
+   * The sum of the ammo dice's values.
+   * @type {number}
+   * @readonly
+   */
+  get ammoSpent() {
+    const mt = this.getTerms("ammo");
+    if (!mt.length) return 0;
+    return mt.reduce((tot, t) => tot + t.values.reduce((a, b) => a + b, 0), 0);
+  }
+
+  /**
+   * The quantity of successes on ammo dice.
+   * @type {number}
+   * @readonly
+   */
+  get hitCount() {
+    return this.count("ammo", 6);
+  }
+
+  /**
+   * The quantity of ones (banes) on base dice and ammo dice.
+   * @type {number}
+   * @readonly
+   */
+  get jamCount() {
+    const n = this.count("ammo", 1);
+    return n > 0 ? n + this.attributeTrauma : 0;
+  }
+
+  /**
+   * Tells if the roll caused a weapon jam.
+   * @type {boolean}
+   * @readonly
+   */
+  get jammed() {
+    return this.pushed ? this.jamCount >= 2 : false;
+  }
+
   /**
    * The total successes produced by base dice.
    * @type {number}
@@ -800,6 +1321,26 @@ class YearZeroRoll extends Roll {
     return this.successCount - this.hitCount;
   }
 
+  /**
+   * The rolled hit locations.
+   * @type {number[]}
+   * @readonly
+   */
+  get hitLocations() {
+    const lt = this.getTerms("loc");
+    if (!lt.length) return [];
+    return lt.reduce((tot, t) => tot.concat(t.values), []);
+  }
+
+  /**
+   * The best rolled hit location.
+   * @type {number}
+   * @readonly
+   */
+  get bestHitLocation() {
+    if (!this.hitLocations.length) return undefined;
+    return Math.max(...this.hitLocations);
+  }
 
   /* -------------------------------------------- */
   /*  Static Class Methods                        */
@@ -815,36 +1356,10 @@ class YearZeroRoll extends Roll {
    * @override
    */
   static create(formula, data = {}, options = {}) {
-    console.log("YearZeroRoll create: ", String(formula), data, options);
-    return new YearZeroRoll(String(formula), data, options);
+    return new YearZeroRoll(formula, data, options);
   }
 
   /* -------------------------------------------- */
-
-  // /** @override */
-  // evaluate() {
-  //   const formula = this._formula;
-  //   console.log("YearZeroRoll evaluate: ", formula);
-
-  // //   let terms = this.constructor.parse(formula);
-  // //   console.log("YearZeroRoll evaluate terms: ", terms);
-  //    const regex = /s/g;
-  // //   // replace the die letter code with numerical values for the dice so 's' becomes 6
-  //   const convertedForumula = String(formula).replace(regex, "6");
-  // //   console.log("YearZeroRoll evaluate convertedFormula: ", convertedForumula);
-
-  //   this._formula = convertedForumula;
-  //   console.log("YearZeroRoll evaluate _formula: ", this._formula);
-  //   let tR = new Roll(convertedForumula);
-  //   console.log("YearZeroRoll evaluate tR: ", tR);
-
-   
-
-    
-  //   return tR.evaluate();
-  // }
-
-
 
   /**
    * Generates a roll based on the number of dice.
@@ -911,14 +1426,8 @@ class YearZeroRoll extends Roll {
     if (options.name == undefined) options.name = title;
     if (options.game == undefined) options.game = yzGame;
     if (options.maxPush == undefined) options.maxPush = maxPush;
-
-    // const regex = /s/g;
-    // // replace the die letter code with numerical values for the dice so 's' becomes 6
-    // const convertedForumula = String(formula).replace(regex, "6");
-
-    // const roll = YearZeroRoll.create(convertedForumula, {}, options);
     const roll = YearZeroRoll.create(formula, {}, options);
-    console.log("YZUR roll forge: ", roll);
+    if (CONFIG.debug.dice) console.log(roll);
     return roll;
   }
 
@@ -948,7 +1457,6 @@ class YearZeroRoll extends Roll {
    * @static
    */
   static _getTermFormulaFromBlok(termBlok) {
-    console.log("YearZeroRoll#_getTermFormulaFromBlok: ", termBlok);
     const { term, number, flavor, maxPush } = termBlok;
     return YearZeroRoll.generateTermFormula(number, term, flavor, maxPush);
   }
@@ -966,8 +1474,6 @@ class YearZeroRoll extends Roll {
     let f = `${number}d${term}`;
     if (typeof maxPush === "number") f += `p${maxPush}`;
     if (flavor) f += `[${flavor}]`;
-
-    console.log("YearZeroRoll#generateTermFormula: ", f);
     return f;
   }
 
@@ -1018,7 +1524,6 @@ class YearZeroRoll extends Roll {
           f = f && t.results.some((r) => r[key] === search.results[key]);
         }
       }
-      console.log("YearZeroRoll#getTerms: ", f);
       return f;
     });
   }
@@ -1091,7 +1596,7 @@ class YearZeroRoll extends Roll {
         term.number++;
         if (this._evaluated) {
           term.roll();
-
+          // TODO missing term._evaluateModifiers() for this new result only
           if (value != undefined) {
             term.results[term.results.length - 1].result = value;
           }
@@ -1217,7 +1722,112 @@ class YearZeroRoll extends Roll {
    */
   async modify(mod = 0) {
     if (!mod) return this;
-    
+    // TWILIGHT 2000 & BLADE RUNNER
+    // --------------------------------------------
+    else if (this.game === "t2k" || this.game === "br") {
+      const diceMap = [null, 6, 8, 10, 12, Infinity];
+      const typesMap = ["d", "d", "c", "b", "a", "a"];
+      const refactorRange = (range, n) => diceMap[diceMap.indexOf(range) + n];
+      const getTypeFromRange = (range) => typesMap[diceMap.indexOf(range)];
+
+      const _terms = this.getTerms("base");
+      const dice = _terms.flatMap((t) => new Array(t.number).fill(t.faces));
+
+      // BLADE RUNNER
+      if (this.game === "br") {
+        // Gets the lowest term.
+        const lowest = Math.min(...dice);
+
+        // A positive modifier means advantage.
+        // An advantage adds a third base die, same value as lowest.
+        if (mod > 0) {
+          dice.push(lowest);
+        }
+        // A negative modifier means disadvantage.
+        // A disadvantage removes the lowest die.
+        else if (mod < 0) {
+          const i = dice.indexOf(lowest);
+          dice.splice(i, 1);
+        }
+        mod = 0;
+      }
+
+      // TWILIGHT 2000
+      else {
+        // 1 — Modifies the dice ranges.
+        while (mod !== 0) {
+          let i;
+          // 1.1.1 — A positive modifier increases the lowest term.
+          if (mod > 0) {
+            // Adds an extra die if there is only 1 die.
+            if (dice.length < 2) {
+              i = 1;
+              dice.push(diceMap[1]);
+            } else {
+              i = dice.indexOf(Math.min(...dice));
+              dice[i] = refactorRange(dice[i], 1);
+            }
+            mod--;
+          }
+          // 1.1.2 — A negative modifier decreases the highest term.
+          else {
+            i = dice.indexOf(Math.max(...dice));
+            dice[i] = refactorRange(dice[i], -1);
+            mod++;
+          }
+          // 1.2 — Readjusts term faces.
+          if (dice[i] === Infinity) {
+            dice[i] = refactorRange(dice[i], -1);
+          } else if (dice[i] === null) {
+            if (dice.length > 1) {
+              dice.splice(i, 1);
+            } else {
+              dice[i] = refactorRange(dice[i], 1);
+            }
+          } else if (dice[i] === undefined) {
+            throw new Error(
+              `YZUR | YearZeroRoll#modify<T2K> | dice[${i}] is out of bounds (mod: ${mod})`
+            );
+          }
+        }
+      }
+      // 2 — Filters out all the base terms.
+      //       This way, it will also remove leading operator terms.
+      this.removeDice(100, "base");
+
+      // 3 — Reconstructs the base terms.
+      const skilled = _terms.length > 1 && dice.length > 1;
+      for (let index = 0; index < dice.length; index++) {
+        const ti = Math.min(index, skilled ? 1 : 0);
+        await this.addDice(1, getTypeFromRange(dice[index]), {
+          range: dice[index],
+          options: foundry.utils.deepClone(_terms[ti].options),
+        });
+      }
+      // Note: reconstructed terms are evaluated
+      // at the end of this method.
+    }
+    // MUTANT YEAR ZERO & FORBIDDEN LANDS
+    // --------------------------------------------
+    else if (["myz", "fbl", "alien", "twdu"].includes(this.game)) {
+      // Modifies skill & neg dice.
+      const skill = this.count("skill");
+      const neg = Math.min(skill + mod, 0);
+      await this.addDice(mod, "skill");
+      if (neg < 0) {
+        if (this.game === "alien" || this.game === "twdu") {
+          await this.addDice(neg, "stress");
+        } else {
+          await this.addDice(neg, "neg");
+        }
+      }
+
+      // Balances skill & neg dice.
+      while (this.count("skill") > 0 && this.count("neg") > 0) {
+        this.removeDice(1, "skill");
+        this.removeDice(1, "neg");
+      }
+    }
     // ALL OTHER GAMES (CORIOLIS, VAESEN, TFTL, etc.)
     // --------------------------------------------
     else {
@@ -1292,7 +1902,6 @@ class YearZeroRoll extends Roll {
         ? [...Array(this.pushCount + 1).keys()].sort((a, b) => b - a)
         : undefined,
       config: CONFIG.YZUR ?? {},
-      breakdown: this.options.breakdown,
     });
     // <== END MODIFIED PART
   }
@@ -1396,6 +2005,7 @@ class YearZeroRoll extends Roll {
    * @override
    */
   async toMessage(messageData = {}, { rollMode = null, create = true } = {}) {
+    console.log("YZUR | YearZeroRoll#toMessage", messageData, rollMode, create);
     messageData = foundry.utils.mergeObject(
       {
         user: game.user.id,
@@ -1425,11 +2035,6 @@ class YearZeroRoll extends Roll {
     return this.constructor.fromData(this.toJSON());
   }
 }
-
-
-
-
-
 
 /* -------------------------------------------- */
 /*  Custom Dice Registration                    */
@@ -1538,23 +2143,13 @@ class YearZeroRollManager {
    * @param {number} [i=0] Index of the registration
    * @static
    */
-
   static registerRoll(cls = YearZeroRoll, i = 0) {
     CONFIG.Dice.rolls[i] = cls;
-    CONFIG.Dice.rolls[i].CHAT_TEMPLATE = CONFIG.YZUR.ROLL.chatTemplate;
-    CONFIG.Dice.rolls[i].BASE_TEMPLATE = CONFIG.YZUR.ROLL.baseTemplate;
-    CONFIG.Dice.rolls[i].TOOLTIP_TEMPLATE = CONFIG.YZUR.ROLL.tooltipTemplate;
-    CONFIG.YZUR.ROLL.index = i;
+    CONFIG.Dice.rolls[i].CHAT_TEMPLATE = CONFIG.YZUR.Roll.chatTemplate;
+    CONFIG.Dice.rolls[i].TOOLTIP_TEMPLATE = CONFIG.YZUR.Roll.tooltipTemplate;
+    CONFIG.YZUR.Roll.index = i;
     if (i > 0) YearZeroRollManager._overrideRollCreate(i);
   }
-
-  // static registerRoll(cls = YearZeroRoll, i = 0) {
-  //   CONFIG.Dice.rolls[i] = cls;
-  //   CONFIG.Dice.rolls[i].CHAT_TEMPLATE = CONFIG.YZUR.Roll.chatTemplate;
-  //   CONFIG.Dice.rolls[i].TOOLTIP_TEMPLATE = CONFIG.YZUR.Roll.tooltipTemplate;
-  //   CONFIG.YZUR.Roll.index = i;
-  //   if (i > 0) YearZeroRollManager._overrideRollCreate(i);
-  // }
 
   /* -------------------------------------------- */
 
@@ -1574,8 +2169,6 @@ class YearZeroRollManager {
 
     // Registers the die in the Foundry CONFIG.
     const reg = CONFIG.Dice.terms[deno];
-    console.log(`YZUR | Die Registration: "${deno}" with ${cls.name}.`);
-    console.log(CONFIG.Dice.terms);
     if (reg) {
       console.warn(
         `YZUR | Die Registration: "${deno}" | Overwritting ${reg.name} with "${cls.name}".`
@@ -1603,7 +2196,6 @@ class YearZeroRollManager {
     }
 
     const cls = YearZeroRollManager.createDieClass(data);
-    console.log(`YZUR | Custom Die Registration: "${term}" with ${cls.name}.`);
 
     if (CONFIG.YZUR.Dice.DIE_TERMS[term]) {
       console.warn(
@@ -1623,7 +2215,6 @@ class YearZeroRollManager {
    * @static
    */
   static _initialize(yzGame) {
-    console.log(`YZUR | Initializing Year Zero for "${yzGame}".`);
     if (!CONFIG.YZUR)
       throw new ReferenceError("YZUR | CONFIG.YZUR does not exists!");
     if (CONFIG.YZUR.game) {
@@ -1660,11 +2251,7 @@ class YearZeroRollManager {
           "maxPush" in options ||
           formula.match(/\d*d(:?[bsngzml]|6|8|10|12)/i));
       const n = isYZURFormula ? index : 0;
-      console.log(`YZUR | Creating a Roll with CONFIG.Dice.rolls[${n}].`);
       const cls = CONFIG.Dice.rolls[n];
-      
-      console.log(`YZUR | Creating a Roll with ${cls.name}.`);
-      
       return new cls(formula, data, options);
     };
   }
@@ -1718,7 +2305,6 @@ class YearZeroRollManager {
     if (!deno || typeof deno !== "string") {
       throw new DieTermError(`YZUR | Invalid die class denomination "${deno}"`);
     }
-    console.log(`YZUR | Creating a custom die class "${name}" with denomination "${deno}".`);
     YearZeroCustomDie.DENOMINATION = deno;
 
     // Defines the type of the new die class, if any.
@@ -1766,10 +2352,24 @@ class YearZeroRollManager {
  * @constant
  */
 YearZeroRollManager.DIE_TERMS_MAP = {
-
+  // Mutant Year Zero
+  myz: ["base", "skill", "gear", "neg"],
+  // Forbidden Lands
+  fbl: ["base", "skill", "gear", "neg", "artoD8", "artoD10", "artoD12"],
+  // Alien RPG
+  alien: ["skill", "stress"],
+  // Tales From the Loop
+  tales: ["skill"],
+  // Coriolis
+  cor: ["skill"],
   // Vaesen
   vae: ["skill"],
-
+  // Twilight 2000
+  t2k: ["a", "b", "c", "d", "ammo", "loc"],
+  // Blade Runner
+  br: ["brD12", "brD10", "brD8", "brD6"],
+  // TWDU The Walking Dead
+  twdu: ["skill", "stress"],
 };
 
 /**

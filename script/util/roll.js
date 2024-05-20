@@ -238,7 +238,7 @@ console.log(r.result);   // 16 + 2 + 4
 console.log(r.total);    // 22
 
 // sucess count of the roll
-console.log(r.successes); // 3
+console.log(r.successCount); // 3
 
   await r.toMessage({
     speaker: ChatMessage.getSpeaker({ actor: actor, token: actor.img }),

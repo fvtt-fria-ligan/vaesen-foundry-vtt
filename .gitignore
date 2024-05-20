@@ -6,3 +6,4 @@ script/lib/yzur1.js
 *.kra
 *.png~
 
+.DS_Store
