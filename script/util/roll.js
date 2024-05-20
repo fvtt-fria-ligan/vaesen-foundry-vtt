@@ -231,14 +231,7 @@ async function rollDice(sheet, numberOfDice, breakdown) {
 // Execute the roll
 await r.evaluate();
 
-// The resulting equation after it was rolled
-console.log(r.result);   // 16 + 2 + 4
 
-// The total resulting from the roll
-console.log(r.total);    // 22
-
-// sucess count of the roll
-console.log(r.successCount); // 3
 
   await r.toMessage({
     speaker: ChatMessage.getSpeaker({ actor: actor, token: actor.img }),
