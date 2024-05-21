@@ -2007,6 +2007,7 @@ class YearZeroRoll extends Roll {
    */
   async toMessage(messageData = {}, { rollMode = null, create = true } = {}) {
     console.log("YZUR | YearZeroRoll#toMessage", messageData, rollMode, create);
+    console.log("YZUR | YearZeroRoll#toMessage", messageData.token);
     messageData = foundry.utils.mergeObject(
       {
         user: game.user.id,
@@ -2017,6 +2018,7 @@ class YearZeroRoll extends Roll {
         content: this.total,
         type: CONST.CHAT_MESSAGE_TYPES.ROLL,
         // sound: CONFIG.sounds.dice, // Already added in super.
+
       },
       messageData
     );

@@ -234,7 +234,7 @@ await r.evaluate();
 
 
   await r.toMessage({
-    speaker: ChatMessage.getSpeaker({ actor: actor, token: actor.img }),
+    speaker: ChatMessage.getSpeaker({ actor: actor, token: token }),
   });
   //await r.render({speaker: ChatMessage.getSpeaker({actor: actor, token: actor.img}),  type: CONST.CHAT_MESSAGE_TYPES.ROLL, owner: actor.id}); // define the messageData to give the info we need to pass for our sheet etc
   console.log(r.getTerms("skill"));
