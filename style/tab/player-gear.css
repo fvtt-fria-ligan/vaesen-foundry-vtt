@@ -1,6 +1,6 @@
 .vaesen .player .gears .scrollable {
     overflow-y: auto;
-    height: 501px;
+    min-height: 100px;
     max-height: 501px;
 }
 

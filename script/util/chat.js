@@ -286,6 +286,7 @@ export const buildChatCard = function (type, data) {
       };
       break;
     case "talent":
+      
       message =
         `<div class="card-holder" style="position: relative;">
             <img src="` +
@@ -301,16 +302,20 @@ export const buildChatCard = function (type, data) {
         "<b>" +
         game.i18n.localize("TALENT.DESCRIPTION") +
         ": </b>" +
-        data.description +
+        data.system.description +
         "</br>" +
         `</div></div>`;
+        //TODO add bonus and other data to the chat card          
+        
       chatData = {
         speaker: ChatMessage.getSpeaker(),
         user: game.user.id,
         rollMode: game.settings.get("core", "rollMode"),
         content: message,
       };
+
       break;
+    
     case "upgrade":
       let prereq = "";
       let asset = "";
@@ -367,6 +372,7 @@ export const buildChatCard = function (type, data) {
         rollMode: game.settings.get("core", "rollMode"),
         content: message,
       };
+      
       break;
     case "weapon":
     

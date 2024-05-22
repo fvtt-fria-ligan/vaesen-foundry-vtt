@@ -51,13 +51,13 @@
                     {{#if item.isWeapon}}
                         <div class="weapon item flex row center align-center" data-item-id="{{item._id}}">
 
-                            <div class="icon"><img class="icon" src="{{item.img}}" title="{{item.name}}" width="25px" height="auto"/></div>
+                            <div class="icon weapon-roll"><img class="icon" src="{{item.img}}" title="{{item.name}}" width="25px" height="auto"/></div>
 
-                            <div class="name">{{item.name}}</div>
-                            <div class="damage">{{item.system.damage}}</div>
-                            <div class="range">{{item.system.range}}</div>
-                            <div class="bonus">{{item.system.bonus}}</div>
-                            <div class="starting"><i class="fa {{item.cssClass}}"></i></div>
+                            <div class="name weapon-roll">{{item.name}}</div>
+                            <div class="damage weapon-details">{{item.system.damage}}</div>
+                            <div class="range weapon-details">{{item.system.range}}</div>
+                            <div class="bonus weapon-details">{{item.system.bonus}}</div>
+                            <div class="starting weapon-details"><i class="fa {{item.cssClass}}"></i></div>
                             <div class="button">
 								{{#unless item.system.isFav}}
 								<a class="item-control fav-togle" title='{{localize  "UI.FAVORITE"}}'><i class="far fa-star" data-field="isFav" data-isFav="true"></i></a>

@@ -130,23 +130,10 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       this.updateCondition(conditionName);
     });
 
-    html.find(".armor .name").click((ev) => {
-      this.onArmorRoll(ev);
-    });
-
-    html.find(".weapon .name").click((ev) => {
-      this.onWeaponRoll(ev);
-    });
-
-    html.find(".talent .icon").click((ev) => {
+    html.find(".talent-edit").click((ev) => {
       this.onItemUpdate(ev);
     });
-    html.find(".talent .name").click((ev) => {
-      this.onItemUpdate(ev);
-    });
-    html.find(".talent .description").click((ev) => {
-      this.onItemUpdate(ev);
-    });
+   
 
     html.find(".relationship .name").click((ev) => {
       this.onItemSummary(ev, "relationship");
@@ -155,7 +142,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       this.onItemSummary(ev, "relationship");
     });
 
-    html.find(".gear .name").click((ev) => {
+    html.find(".gear-edit").click((ev) => {
       this.onItemUpdate(ev);
     });
     html.find(".actor-edit").click(this._onShowActor.bind(this));

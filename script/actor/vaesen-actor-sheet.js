@@ -153,18 +153,10 @@ export class VaesenActorSheet extends ActorSheet {
       this.onArmorRoll(ev);
     });
 
-    html.find(".weapon .icon").click((ev) => {
+    html.find(".weapon-roll").click((ev) => {
       this.onWeaponRoll(ev);
     });
-    html.find(".weapon .damage").click((ev) => {
-      this.onWeaponRoll(ev);
-    });
-    html.find(".weapon .range").click((ev) => {
-      this.onWeaponRoll(ev);
-    });
-    html.find(".weapon .bonus").click((ev) => {
-      this.onWeaponRoll(ev);
-    });
+
 
     html.find(".critical-injury .icon").click((ev) => {
       this.onItemUpdate(ev);
@@ -369,13 +361,13 @@ export class VaesenActorSheet extends ActorSheet {
       case "weapon":
         chatData =
           "<p class='item-desc'><b>" +
-          game.i18n.localize("WEAPON.DAMAGE") +
+          game.i18n.localize("WEAPON.SKILL") +
           ":</b> " +
-          item.system.damage +
+          item.system.skill +
           " | <b>" +
-          game.i18n.localize("WEAPON.RANGE") +
+          game.i18n.localize("WEAPON.AVAILABILITY") +
           ":</b> " +
-          item.system.range +
+          item.system.availability +
           "</br></p>";
         break;
     }
