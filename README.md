@@ -32,7 +32,13 @@ This system provides character sheets and items for  your play, if you would lik
 v5.0.0
 - Major Release! BACK UP YOUR WORLDS BEFORE UPGRADING! This release updates the system for foundry v12. It also DROPS support for foundry v10.  
 - 🐛 Fix: Fixed the warning for data references #81
-
+- 🐛 Fix: Items not linking correctly from character generation 
+- 🐛 Fix: Dice rolls not working in v12
+- 🐛 Fix: CSS changes in v12 that made sheets look ugly
+- 🐛 Fix: Chargen throws error and dies when core module is not installed
+- 🐛 Fix: favorite items not working 
+- 🐛 Fix: Add item button for HQ upgrades not working
+- 🐛 Fix: condition check not updating on character sheet for Vaesen 
 
 v4.6.4
 - 🐛 fix error happening on Forge: players getting a message of lacking of permission

@@ -11,16 +11,16 @@ export class generator {
     const classKeys = Object.keys(generator_data.changeList);
     const classIndex = await this._getRoll(classKeys.length);
     const classSelected = classKeys[classIndex];
-    console.log("Vaesen | Generator | Class", classSelected);
+   // console.log("Vaesen | Generator | Class", classSelected);
 
     let resources = generator_data.startingResources[classSelected];
-    console.log("Vaesen | Generator | Innitial Resources", resources);
+   // console.log("Vaesen | Generator | Innitial Resources", resources);
 
     const upbringingKeys = Object.keys(generator_data.changeList[classSelected]);
     const upbrindingIndex = await this._getRoll(upbringingKeys.length);
     const upbringingSelected = upbringingKeys[upbrindingIndex];
-    console.log("Vaesen | Generator | Upbringing", upbringingSelected);
-    console.log("Vaesen | Generator | Changes Before mod", generator_data.changeList[classSelected][upbringingSelected]);
+   // console.log("Vaesen | Generator | Upbringing", upbringingSelected);
+   // console.log("Vaesen | Generator | Changes Before mod", generator_data.changeList[classSelected][upbringingSelected]);
 
     let changes = generator_data.changeList[classSelected][upbringingSelected];
 
@@ -29,16 +29,16 @@ export class generator {
     const professionName = generator_data.professionTable[classSelected][professionRoll];
     const professionSelected = generator_data.professionsList[professionName];
     const archetytpePageLink = game.journal.getName("Chapter 2 - Your Player Character")?.pages.getName(professionSelected.archetype)?.uuid;
-    console.log("Vaesen | Generator | Profession", professionRoll, professionSelected);
+   // console.log("Vaesen | Generator | Profession", professionRoll, professionSelected);
 
     resources += professionSelected.resources;
 
     const age = await this._getRoll(50) + 17;
     const ageInfo = generator_data.ageInfo.find(it => it.min <= age && it.max >= age);
-    console.log("Vaesen | Generator | Age Info", age, ageInfo);
+   // console.log("Vaesen | Generator | Age Info", age, ageInfo);
 
     const archetypeInfo = generator_data.archetypeInfo[professionSelected.archetype];
-    console.log("Vaesen | Generator | Archetype", archetypeInfo);
+   // console.log("Vaesen | Generator | Archetype", archetypeInfo);
 
     const motivationRoll = await this._getRoll(archetypeInfo.motivation.length);
     const motivation = archetypeInfo.motivation[motivationRoll];
@@ -57,12 +57,14 @@ export class generator {
     itemsToCreate.push(talentItem);
 
     const equipmentRoll = await this._getRoll(archetypeInfo.equipment.length);
-    const equipment = "Crowbar"; // archetypeInfo.equipment[equipmentRoll];
+   // console.log("Vaesen | Generator | Equipment Roll", equipmentRoll);
+    const equipment = archetypeInfo.equipment[equipmentRoll];
 
     let gearItem = getItemInfo(equipment, "gear");
     itemsToCreate.push(toStartingObject(gearItem));
 
-    let equipmentsHtml = `<li>@UUID[Item.${gearItem.id}]{${equipment}}</li>`;
+    let equipmentsHtml = `<li>@UUID[Item.${gearItem._id}]{${equipment}}</li>`;
+    //console.log("Vaesen | Generator | Adding Equipment", equipmentsHtml);
 
     let eventsHtml = "";
     let eventsIndex = [];
@@ -79,14 +81,14 @@ export class generator {
       gearItem = getItemInfo(currentEvent.item, "gear");
       itemsToCreate.push(toStartingObject(gearItem));
 
-      equipmentsHtml += `<li>@UUID[Item.${gearItem.id}]{${gearItem.name}}</li>`;
+      equipmentsHtml += `<li>@UUID[Item.${gearItem._id}]{${gearItem.name}}</li>`;
 
-      console.log("Vaesen | Generator | Adding Life Event", currentEvent);
+      //console.log("Vaesen | Generator | Adding Life Event", currentEvent);
 
       for (const key in currentEvent.skills) {
         const element = currentEvent.skills[key];
         changes[key] += element;
-        console.log("Vaesen | Generator | Upgrading skill", key);
+       // console.log("Vaesen | Generator | Upgrading skill", key);
       }
     }
     if (itemsToCreate.filter(it => it.name.toLowerCase() == "crowbar").length == 1) {
@@ -100,7 +102,7 @@ export class generator {
         attributeReducedRoll = await this._getRoll(4);
       } while (attributeReducedRoll == attributeReduced)
 
-      console.log("Vaesen | Generator | Reducing attribute", generator_data.attributeList[attributeReducedRoll]);
+     // console.log("Vaesen | Generator | Reducing attribute", generator_data.attributeList[attributeReducedRoll]);
 
       changes[`system.attribute.${generator_data.attributeList[attributeReducedRoll]}.value`] -= 1;
       attributeReduced = attributeReducedRoll;
@@ -125,7 +127,7 @@ export class generator {
         <li><b>${game.i18n.localize("BIO.MOTIVATION")}:</b> ${motivation}</li>
         <li><b>${game.i18n.localize("BIO.TRAUMA")}:</b> ${trauma}</li>
         <li><b>${game.i18n.localize("BIO.DARK_SECRET")}:</b> ${darkSecret}</li>
-        <li><b>${game.i18n.localize("HEADER.TALENTS").toLowerCase().replace(/\b(\w)/g, x => x.toUpperCase())}:</b> @UUID[Item.${talentItem.id}]{${talent}}</li>
+        <li><b>${game.i18n.localize("HEADER.TALENTS").toLowerCase().replace(/\b(\w)/g, x => x.toUpperCase())}:</b> @UUID[Item.${talentItem._id}]{${talent}}</li>
         <li><b>${game.i18n.localize("GENERATOR.LIFE_TIME_EVENTS")}:</b>
           <ul>${eventsHtml}
           </ul>
@@ -241,7 +243,7 @@ export class generator {
         `);
         chatHTML.push("</div>");
 
-    console.log("Vaesen | Generator | Changes After mod", changes);
+    //console.log("Vaesen | Generator | Changes After mod", changes);
 
     $(".char-gen").hide();
 
@@ -256,8 +258,8 @@ export class generator {
           label: game.i18n.localize("YES"),
           callback: async () => {
             accepted = true;
-            console.log("Vaesen | Generate", classSelected, upbringingSelected, changes);
-            await actor.deleteEmbeddedDocuments("Item", actor.items.map(function (item) { return item.id; }));
+            //console.log("Vaesen | Generate", classSelected, upbringingSelected, changes);
+            await actor.deleteEmbeddedDocuments("Item", actor.items.map(function (item) { return item._id; }));
             await actor.createEmbeddedDocuments("Item", itemsToCreate);
             await actor.update(changes);
 
@@ -307,18 +309,21 @@ export class generator {
 }
 
 function getItemInfo(itemName, type){
+
   let item = game.items.find(it => it.name.toLowerCase() === itemName.toLowerCase());
   if (item == undefined) {
     let itemType = generator_data.weaponList.includes(itemName.toLowerCase()) ? "weapon" : type;
     item = { type: itemType, name: itemName };
+
   }
   else
     item = item.toObject();
+
   return item;
 }
 
 function toStartingObject(item) {
-  console.log("Vaesen | Generator | Starting Item", item);
+
   foundry.utils.setProperty(item, "system.starting", true);
   return item;
 }

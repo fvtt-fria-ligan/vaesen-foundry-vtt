@@ -190,11 +190,14 @@ export class conditions{
     }
 
     static async onVaesenCondition(actor, conditionId) {
-      let condition = Array.from(actor.items?.values()).find(x => x.type == "condition" && x.id == conditionId);
+      let condition = Array.from(actor.items?.values()).find(x => x.type == "condition" && x._id == conditionId);
+   
 
       await actor.updateEmbeddedDocuments("Item", [
-        { _id: condition.id, "data.active": !condition.system.active },
+        { _id: condition._id, "system.active": !condition.system.active },
       ]);
+
+
   
       const statusEffect = {
         label: condition.name,

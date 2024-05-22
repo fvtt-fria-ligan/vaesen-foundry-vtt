@@ -99,11 +99,13 @@ export class HeadquarterCharacterSheet extends VaesenActorSheet {
   }
 
   onItemCreate(event) {
+    console.log("Item Create");
     event.preventDefault();
     let header = event.currentTarget;
     let data = duplicate(header.dataset);
     data["name"] = `New ${data.type.capitalize()}`;
-    data["data.category"] = data["category"];
+    data["system.category"] = data["category"];
+    console.log(data);
     this.actor.createEmbeddedDocuments("Item", [data]);
   }
 
@@ -114,6 +116,7 @@ export class HeadquarterCharacterSheet extends VaesenActorSheet {
   }
 
   onItemDelete(event) {
+    console.log("Item Delete");
     const div = $(event.currentTarget).parents(".item");
     this.actor.deleteEmbeddedDocuments("Item", [div.data("itemId")]);
     div.slideUp(200, () => this.render(false));
