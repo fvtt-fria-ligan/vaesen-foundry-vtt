@@ -84,8 +84,8 @@
       "flags": {}
     }
   ],
-  "gridDistance": 1,
-  "gridUnits": "m",
+  "grid.distance": 1,
+  "grid.units": "m",
   "url": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt",
   "socket": true,
   "manifest": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/releases/latest/download/system.json",
