@@ -84,6 +84,11 @@
       "flags": {}
     }
   ],
+  "grid": {
+    "distace": 1,
+    "units": "m"
+  },
+
   "gridDistance": 1,
   "gridUnits": "m",
   "url": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt",
