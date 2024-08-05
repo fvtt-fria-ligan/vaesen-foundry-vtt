@@ -29,6 +29,11 @@ This system provides character sheets and items for  your play, if you would lik
 
 
 ## Release Notes
+v6.0.0 
+- Feature: Updated to latest version of Year Zero Universal Roller (YZUR)
+- Removed: This version of the Vaesen system requires Foundry VTT v12 or higher, this gives us a clean slate and allows us to fix all the deprecation warnings!
+
+
 v5.0.0
 - Major Release! BACK UP YOUR WORLDS BEFORE UPGRADING! This release updates the system for foundry v12. It also DROPS support for foundry v10.  
 - 🐛 Fix: Fixed the warning for data references #81
