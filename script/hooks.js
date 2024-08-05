@@ -3,7 +3,12 @@ import { PlayerCharacterSheet } from "./sheet/player.js";
 import { NpcCharacterSheet } from "./sheet/npc.js";
 import { VaesenCharacterSheet } from "./sheet/vaesen.js";
 import { HeadquarterCharacterSheet } from "./sheet/headquarter.js";
-import { prepareRollNewDialog, push, registerGearSelectTooltip, totalRoll as totalRoll } from "./util/roll.js";
+import {
+  prepareRollNewDialog,
+  push,
+  registerGearSelectTooltip,
+  totalRoll as totalRoll,
+} from "./util/roll.js";
 import { registerSystemSettings } from "./util/settings.js";
 import { vaesen } from "./config.js";
 import { conditions } from "./util/conditions.js";
@@ -30,9 +35,9 @@ Hooks.once("init", () => {
   CONFIG.push = push;
   CONFIG.Cards.presets = {
     initiative: {
-      label: 'Initiative Deck',
-      src: 'systems/vaesen/asset/cards/initiative-deck.json',
-      type: 'deck',
+      label: "Initiative Deck",
+      src: "systems/vaesen/asset/cards/initiative-deck.json",
+      type: "deck",
     },
   };
 
@@ -80,7 +85,7 @@ Hooks.once("init", () => {
     return TextEditor.enrichHTML(rawText, { async: false });
   });
 
-  Handlebars.registerHelper('ifIn', function (elem, list, options) {
+  Handlebars.registerHelper("ifIn", function (elem, list, options) {
     if (list && list.indexOf(elem) > -1) {
       return options.fn(this);
     }
@@ -98,39 +103,50 @@ Hooks.once("init", () => {
 });
 
 Hooks.once("ready", async function () {
-
   setupCards();
   conditions.onReady();
   Hooks.on("hotbarDrop", (bar, data, slot) => createRollMacro(data, slot));
-  Hooks.on("chatMessage", (_, messageText, chatData) => totalRoll(messageText, chatData));
+  Hooks.on("chatMessage", (_, messageText, chatData) =>
+    totalRoll(messageText, chatData)
+  );
   migrate();
   registerGearSelectTooltip();
+
+  let allVaesen = game.actors.filter((it) => it.type == "vaesen");
+
+  allVaesen.forEach((vaesen) => {
+    let conditions = vaesen.items.filter((c) => c.type == "condition");
+    let count = 0;
+    conditions.forEach((condition) => {
+      count++;
+      const img = "systems/vaesen/asset/counter_tokens/" + count + ".png";
+      condition.update({ img: img });
+    });
+  });
 });
 
-Hooks.on('canvasReady', () => {
+Hooks.on("canvasReady", () => {
   canvas.hud.token = new VaesenTokenHUD();
 });
 
 Hooks.on("updateActor", (actor, changes, diff, userId) => {
   // if we don't have an active scene, don't do anything
-  if (!game.scenes.current || !actor.isOwner || changes.name == undefined) return;
+  if (!game.scenes.current || !actor.isOwner || changes.name == undefined)
+    return;
   console.log("updateActor", actor, changes, diff, userId);
-  game.scenes.current.tokens.forEach(x => {
-    if (x.actorId !== actor._id)
-      return;
+  game.scenes.current.tokens.forEach((x) => {
+    if (x.actorId !== actor._id) return;
 
     actor.update({ "token.name": actor.name });
-    x.update({ "name": actor.name });
+    x.update({ name: actor.name });
   });
 });
 
-Hooks.on('dropActorSheetData', async (actor, sheet, data) => {
-  if (actor.type !== 'player' || data.type !== "Actor")
-    return;
+Hooks.on("dropActorSheetData", async (actor, sheet, data) => {
+  if (actor.type !== "player" || data.type !== "Actor") return;
 
   let headquarter = await fromUuid(data.uuid);
-  if (headquarter.type === "headquarter")
-    sheet._dropHeadquarter(headquarter);
+  if (headquarter.type === "headquarter") sheet._dropHeadquarter(headquarter);
 });
 
 Hooks.on("yze-combat.fast-action-button-clicked", async function (data) {
@@ -141,22 +157,22 @@ Hooks.on("yze-combat.slow-action-button-clicked", async function (data) {
   await conditions.onActionCondition(data);
 });
 
-Hooks.on('updateCombat', async function (e) {
+Hooks.on("updateCombat", async function (e) {
   if (!game.user.isGM) return;
   await conditions.onActionUpdate(e.current.tokenId, e.combatant, e.turn);
 });
 
-Hooks.on('deleteCombat', async function (e) {
+Hooks.on("deleteCombat", async function (e) {
   if (!game.user.isGM) return;
   await conditions.onCombatStartEnd(e);
 });
 
-Hooks.on('combatStart', async function (e) {
+Hooks.on("combatStart", async function (e) {
   if (!game.user.isGM) return;
   await conditions.onCombatStartEnd(e);
 });
 
-Hooks.on('combatRound', async function (e) {
+Hooks.on("combatRound", async function (e) {
   if (!game.user.isGM) return;
   await conditions.onCombatStartEnd(e);
 });
@@ -224,7 +240,7 @@ async function _onPush(event) {
   event.preventDefault();
 
   // Get the message.
-  let chatCard = event.currentTarget.closest('.chat-message');
+  let chatCard = event.currentTarget.closest(".chat-message");
   let messageId = chatCard.dataset.messageId;
   let message = game.messages.get(messageId);
 
@@ -240,17 +256,16 @@ async function _onPush(event) {
 }
 
 async function setupCards() {
-  const initiativeDeckId = game.settings.get('vaesen', 'initiativeDeck');
+  const initiativeDeckId = game.settings.get("vaesen", "initiativeDeck");
   const initiativeDeck = game.cards?.get(initiativeDeckId);
   //return early if both the deck and the ID exist in the world
-  if (initiativeDeckId && initiativeDeck)
-    return;
-  ui.notifications.info('UI.NoInitiativeDeckFound', { localize: true });
+  if (initiativeDeckId && initiativeDeck) return;
+  ui.notifications.info("UI.NoInitiativeDeckFound", { localize: true });
   const preset = CONFIG.Cards.presets.initiative;
   const data = await foundry.utils.fetchJsonWithTimeout(preset.src);
-  const cardsCls = getDocumentClass('Cards');
+  const cardsCls = getDocumentClass("Cards");
   const newDeck = await cardsCls.create(data);
-  await game.settings.set('vaesen', 'initiativeDeck', newDeck?.id);
+  await game.settings.set("vaesen", "initiativeDeck", newDeck?.id);
   await newDeck?.shuffle({ chatNotification: false });
 }
 
@@ -295,7 +310,6 @@ function preloadHandlebarsTemplates() {
  * @returns {Promise}
  */
 async function createRollMacro(data, slot) {
-
   let command = "";
   if (data.type === "skill") {
     command = `
@@ -303,22 +317,19 @@ if (actor == null || actor.type !== "player")
   return;
    
 actor.sheet.rollSkill("${data.skillKey}");`;
-  }
-  else if (data.type === "attribute") {
+  } else if (data.type === "attribute") {
     command = `
 if (actor == null || actor.type !== "player")
   return;
    
 actor.sheet.rollAttribute("${data.attributeKey}");`;
-  }
-  else if (data.type === "fear") {
+  } else if (data.type === "fear") {
     command = `
 if (actor == null || actor.type !== "player")
   return;
    
 actor.sheet.rollFear("${data.attributeKey}");`;
-  }
-  else if (data.type === "weapon") {
+  } else if (data.type === "weapon") {
     command = `
 if (actor == null || actor.id != "${data.actorId}")
   return;
@@ -326,10 +337,9 @@ if (actor == null || actor.id != "${data.actorId}")
 actor.sheet.rollWeapon("${data.itemId}");`;
   }
 
-  if (command === "")
-    return;
+  if (command === "") return;
 
-  let macro = game.macros.find(m => (m.name === data.text));
+  let macro = game.macros.find((m) => m.name === data.text);
   console.log(macro);
   if (!macro) {
     macro = await Macro.create({
@@ -337,7 +347,7 @@ actor.sheet.rollWeapon("${data.itemId}");`;
       type: "script",
       img: data.img,
       command: command,
-      flags: { "vaesen.skillRoll": true }
+      flags: { "vaesen.skillRoll": true },
     });
   }
 
