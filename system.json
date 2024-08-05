@@ -1,7 +1,7 @@
 {
   "title": "Vaesen",
   "description": "Nordic horror role-playing",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "esmodules": [
     "script/hooks.js"
   ],
@@ -116,9 +116,9 @@
     }
   ],
   "compatibility": {
-    "minimum": "10",
-    "verified": "12.324"
+    "minimum": "12",
+    "verified": "12.330"
   },
-  "minimumCoreVersion": 10,
+  "minimumCoreVersion": 12,
   "compatibleCoreVersion": 12
 }
