@@ -1,3 +1,5 @@
+import { conditions } from "../util/conditions.js";
+
 export class VaesenActor extends Actor {
   prepareData() {
     super.prepareData();
@@ -89,6 +91,13 @@ export class VaesenActor extends Actor {
     } else {
       await this.addStatusEffectById(id, options);
     }
+  }
+
+  async toggleStatusEffect(statusId, options) {
+    if (this.type != "vaesen")
+      return await super.toggleStatusEffect(statusId, options);
+
+    await conditions.onVaesenCondition(this, statusId);
   }
 
   async _preCreate(data, options, user) {
@@ -198,7 +207,7 @@ export class VaesenActor extends Actor {
     let changelogArray = this.system.changelog;
     let documentType = document.type;
     if (document.statuses)
-        documentType = "condition";
+      documentType = "condition";
 
     const log = {
       name: document.name,
