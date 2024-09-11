@@ -29,6 +29,11 @@ This system provides character sheets and items for  your play, if you would lik
 
 
 ## Release Notes
+
+v6.0.2
+- 🐛 Fix: Favorite weapons were not rolling fixes issue [#128](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/128)
+- 🐛 Fix: Favorite armor was not rolling
+
 v6.0.1 
 - 🐛 Fix: NPC sheets were not rolling weapons
 - 🐛 Fix: NPC sheets were not rolling armor
