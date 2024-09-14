@@ -1,7 +1,7 @@
 {
   "title": "Vaesen",
   "description": "Nordic horror role-playing",
-  "version": "6.0.2",
+  "version": "6.0.3",
   "esmodules": [
     "script/hooks.js"
   ],
@@ -85,15 +85,12 @@
     }
   ],
   "grid": {
-    "distace": 1,
     "units": "m"
   },
-
- 
   "url": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt",
   "socket": true,
   "manifest": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/releases/latest/download/system.json",
-  "download": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/releases/download/4.6.3/system.zip",
+  "download": "https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/releases/download/6.0.2/system.zip",
   "license": "LICENSE.txt",
   "id": "vaesen",
   "authors": [
@@ -121,8 +118,6 @@
   ],
   "compatibility": {
     "minimum": "12",
-    "verified": "12.330"
-  },
-  "minimumCoreVersion": 12,
-  "compatibleCoreVersion": 12
+    "verified": "12.331"
+  }
 }

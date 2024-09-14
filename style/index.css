@@ -38,10 +38,6 @@
   src: url(../fonts/IMFellDoublePica-Regular.ttf);
 }
 /* media query mixin */
-.tox {
-  height: 100%;
-}
-
 .editor-content h1, .journal-entry-content h1 {
   font-family: Albertus;
   font-size: 3em;
