@@ -30,6 +30,9 @@ This system provides character sheets and items for  your play, if you would lik
 
 ## Release Notes
 
+v6.0.3 
+- 🐛 Fix: Chat Bar Disappears When Editing Notes [#129](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/129)
+
 v6.0.2
 - 🐛 Fix: Favorite weapons were not rolling fixes issue [#128](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/128)
 - 🐛 Fix: Favorite armor was not rolling
