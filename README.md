@@ -29,6 +29,18 @@ This system provides character sheets and items for  your play, if you would lik
 
 
 ## Release Notes
+
+v6.0.3 
+- 🐛 Fix: Chat Bar Disappears When Editing Notes [#129](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/129)
+
+v6.0.2
+- 🐛 Fix: Favorite weapons were not rolling fixes issue [#128](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/128)
+- 🐛 Fix: Favorite armor was not rolling
+
+v6.0.1 
+- 🐛 Fix: NPC sheets were not rolling weapons
+- 🐛 Fix: NPC sheets were not rolling armor
+
 v6.0.0 
 - Feature: Updated to latest version of Year Zero Universal Roller (YZUR)
 - Removed: This version of the Vaesen system requires Foundry VTT v12 or higher, this gives us a clean slate and allows us to fix all the deprecation warnings!
