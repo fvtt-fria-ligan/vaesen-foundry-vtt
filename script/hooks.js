@@ -21,9 +21,11 @@ import { VaesenTokenHUD } from "./util/token.js";
 Hooks.on("renderChatMessage", (app, html, data) => {
   Chat.hideChatActionButtons(app, html, data);
 });
-Hooks.on("renderChatLog", (app, html, data) => {
-  html.on("click", ".dice-button.push", _onPush);
-});
+
+
+// Hooks.on("renderChatLog", (app, html, data) => {
+//   html.on("click", ".dice-button.push", _onPush);
+// });
 
 Hooks.once("init", () => {
   console.log("Vaesen | Initializing Vaesen System");
