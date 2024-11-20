@@ -111,6 +111,7 @@ Hooks.once("ready", async function () {
   Hooks.on("chatMessage", (_, messageText, chatData) =>
     totalRoll(messageText, chatData)
   );
+  activateListeners($(document));
   migrate();
   registerGearSelectTooltip();
 
@@ -237,6 +238,11 @@ Hooks.once("diceSoNiceReady", (dice3d) => {
     "d6"
   );
 });
+
+
+async function activateListeners(html) {
+  html.on("click", ".dice-button.push", _onPush);
+}
 
 async function _onPush(event) {
   event.preventDefault();
