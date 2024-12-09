@@ -29,6 +29,8 @@ This system provides character sheets and items for  your play, if you would lik
 
 
 ## Release Notes
+v6.0.4 
+- 🐛 Fix: Editor not visible on headquarter notes sheet.
 
 v6.0.3 
 - 🐛 Fix: Chat Bar Disappears When Editing Notes [#129](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/129)

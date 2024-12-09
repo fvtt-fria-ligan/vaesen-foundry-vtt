@@ -377,6 +377,7 @@ input.dark {
 
 .content {
   max-width: 65ch;
+  display: flex;
 }
 
 .gap {
@@ -546,6 +547,11 @@ a.content-link i {
 
 .roll-fear {
   cursor: pointer;
+}
+
+.editor {
+  min-height: 200px;
+  flex-basis: 100%;
 }
 
 ol.dice-rolls li {
