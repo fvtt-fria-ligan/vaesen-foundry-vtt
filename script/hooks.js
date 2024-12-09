@@ -21,9 +21,11 @@ import { VaesenTokenHUD } from "./util/token.js";
 Hooks.on("renderChatMessage", (app, html, data) => {
   Chat.hideChatActionButtons(app, html, data);
 });
-Hooks.on("renderChatLog", (app, html, data) => {
-  html.on("click", ".dice-button.push", _onPush);
-});
+
+
+// Hooks.on("renderChatLog", (app, html, data) => {
+//   html.on("click", ".dice-button.push", _onPush);
+// });
 
 Hooks.once("init", () => {
   console.log("Vaesen | Initializing Vaesen System");
@@ -109,6 +111,7 @@ Hooks.once("ready", async function () {
   Hooks.on("chatMessage", (_, messageText, chatData) =>
     totalRoll(messageText, chatData)
   );
+  activateListeners($(document));
   migrate();
   registerGearSelectTooltip();
 
@@ -235,6 +238,11 @@ Hooks.once("diceSoNiceReady", (dice3d) => {
     "d6"
   );
 });
+
+
+async function activateListeners(html) {
+  html.on("click", ".dice-button.push", _onPush);
+}
 
 async function _onPush(event) {
   event.preventDefault();
