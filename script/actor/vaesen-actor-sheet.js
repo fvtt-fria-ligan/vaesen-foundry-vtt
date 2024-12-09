@@ -91,20 +91,26 @@ export class VaesenActorSheet extends ActorSheet {
       context.informationHTML = await TextEditor.enrichHTML(
         context.system.information,
         {
-          secrets: this.actor.owner,
+          secrets: this.actor.isOwner,
+          rollData: context.rollData,
           async: true,
+          relativeTo: this.actor
         }
       );
       context.noteHTML = await TextEditor.enrichHTML(context.system.note, {
-        secrets: this.actor.owner,
-        async: true,
+        secrets: this.actor.isOwner,
+          rollData: context.rollData,
+          async: true,
+          relativeTo: this.actor
       });
     }
 
     if (context.isCharacter || context.isVaesen || context.isHeadquarter) {
       context.noteHTML = await TextEditor.enrichHTML(context.system.note, {
-        secrets: this.actor.owner,
-        async: true,
+        secrets: this.actor.isOwner,
+          rollData: context.rollData,
+          async: true,
+          relativeTo: this.actor
       });
     }
 

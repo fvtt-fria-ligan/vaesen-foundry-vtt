@@ -548,6 +548,10 @@ a.content-link i {
   cursor: pointer;
 }
 
+.editor {
+  min-height: 200px;
+}
+
 ol.dice-rolls li {
   list-style-type: unset !important;
 }/*# sourceMappingURL=index.css.map */
