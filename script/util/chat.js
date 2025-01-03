@@ -1,4 +1,5 @@
 export const hideChatActionButtons = function (message, html, data) {
+  console.log("Hiding chat action buttons", message, html, data);
   const card = html.find(".vaesen.chat-card");
 
   if (card.length > 0) {

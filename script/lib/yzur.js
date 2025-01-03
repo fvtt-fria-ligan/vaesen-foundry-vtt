@@ -36,7 +36,7 @@
  * Custom Die class for Year Zero games.
  * @extends {Die} The Foundry Die class
  */
-class YearZeroDie extends Die {
+class YearZeroDie extends foundry.dice.terms.Die {
   constructor(termData = {}) {
     termData.faces = Number.isInteger(termData.faces) ? termData.faces : 6;
     super(termData);
@@ -396,7 +396,7 @@ YearZeroDie.MODIFIERS = foundry.utils.mergeObject(
     'p' : 'setpush',
     'np': 'nopush',
   },
-  Die.MODIFIERS,
+  foundry.dice.terms.Die.MODIFIERS,
 );
 
 /* -------------------------------------------- */
@@ -2161,7 +2161,7 @@ class YearZeroRollManager {
    * @see DiceTerm.fromData
   */
   static _overrideDiceTermFromData() {
-    DiceTerm.prototype.constructor.fromData = function (data) {
+    foundry.dice.terms.DiceTerm.prototype.constructor.fromData = function (data) {
       let cls = CONFIG.Dice.termTypes[data.class];
       if (!cls) {
         const termkeys = Object.keys(CONFIG.Dice.terms);

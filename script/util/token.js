@@ -1,6 +1,6 @@
 import { conditions } from "../util/conditions.js";
 
-export class VaesenTokenHUD extends TokenHUD {
+export class VaesenTokenHUD extends foundry.applications.hud.TokenHUD {
   constructor(...args) {
     super(...args);
   }
