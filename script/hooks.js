@@ -18,11 +18,15 @@ import { vaesenItemSheet } from "./sheet/itemSheet.js";
 import { migrate } from "./util/migrator.js";
 import { VaesenTokenHUD } from "./util/token.js";
 
-Hooks.on("renderChatMessage", (app, html, data) => {
+Hooks.on("renderChatMessageHTML", (app, html, data) => {
+  console.log("renderChatMessageHTML", app, html, data);
   Chat.hideChatActionButtons(app, html, data);
 });
+
+//TODO renderChatLog is not a valid hook, in order to add the listener to the push button we need to find the correct hook
 Hooks.on("renderChatLog", (app, html, data) => {
-  html.on("click", ".dice-button.push", _onPush);
+  console.log("renderChatLog", app, html, data);
+  // html.on("click", ".dice-button.push", _onPush);
 });
 
 Hooks.once("init", () => {

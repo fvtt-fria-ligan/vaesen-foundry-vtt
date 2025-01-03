@@ -1,17 +1,32 @@
 export const hideChatActionButtons = function (message, html, data) {
   console.log("Hiding chat action buttons", message, html, data);
-  const card = html.find(".vaesen.chat-card");
-
-  if (card.length > 0) {
-    let user = game.actors.get(card.attr("data-owner-id"));
-
-    if (user && !user.isOwner) {
-      const buttons = card.find(".push");
-      buttons.each((_i, btn) => {
-        btn.style.display = "none";
-      });
+  // get the div in the html that has the class vaesen.chat-card the html is a raw html string that is passed to the chat
+  for (let i = 0; i < html.length; i++) {
+   
+    if (html[i].classList.contains("vaesen.chat-card")) {
+      let card = html[i];
+      let user = game.actors.get(card.getAttribute("data-owner-id"));
+      // hide the buttons in the chat card unless the user is the owner of the actor
+      const buttons = html[i].querySelectorAll(".push");
+      if (user && !user.isOwner) {
+        buttons.forEach((btn) => {
+          btn.style.display = "none";
+        });
+      }
+      
     }
   }
+
+  // if (card.length > 0) {
+  //   let user = game.actors.get(card.attr("data-owner-id"));
+
+  //   if (user && !user.isOwner) {
+  //     const buttons = card.find(".push");
+  //     buttons.each((_i, btn) => {
+  //       btn.style.display = "none";
+  //     });
+  //   }
+  // }
 };
 
 export const buildChatCard = function (type, data) {
