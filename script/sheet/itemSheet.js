@@ -1,4 +1,4 @@
-import { buildChatCard } from "../util/chat.js";
+import ChatMessageVaesen from "../util/chat.js";
 
 export class vaesenItemSheet extends ItemSheet {
   constructor(...args) {
@@ -52,7 +52,7 @@ export class vaesenItemSheet extends ItemSheet {
 
   sendToChat(data) {
     let type = data.type;
-    let chatData = buildChatCard(type, data);
-    ChatMessage.create(chatData, {});
+    let chatData = ChatMessageVaesen.buildChatCard(type, data);
+    ChatMessageVaesen.create(chatData, {});
   }
 }

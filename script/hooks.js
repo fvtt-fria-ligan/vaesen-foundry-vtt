@@ -13,27 +13,32 @@ import { registerSystemSettings } from "./util/settings.js";
 import { vaesen } from "./config.js";
 import { conditions } from "./util/conditions.js";
 import { YearZeroRollManager } from "./lib/yzur.js";
-import * as Chat from "./util/chat.js";
+// import * as Chat from "./util/chat.js";
 import { vaesenItemSheet } from "./sheet/itemSheet.js";
 import { migrate } from "./util/migrator.js";
 import { VaesenTokenHUD } from "./util/token.js";
+import ChatMessageVaesen from "./util/chat.js";
 
-Hooks.on("renderChatMessageHTML", (app, html, data) => {
-  console.log("renderChatMessageHTML", app, html, data);
-  Chat.hideChatActionButtons(app, html, data);
+Hooks.on("renderChatMessage", (app, html, data) => {
+  console.log("renderChatMessage", app, html, data);
+  console.log("ChatMessageVaesen", ChatMessageVaesen);
+  ChatMessageVaesen.activateListeners(html);
+  // ChatMessageVaesen.hideChatActionButtons(app, html, data);
 });
 
 //TODO renderChatLog is not a valid hook, in order to add the listener to the push button we need to find the correct hook
-Hooks.on("renderChatLog", (app, html, data) => {
-  console.log("renderChatLog", app, html, data);
-  // html.on("click", ".dice-button.push", _onPush);
-});
+// Hooks.on("renderChatLog", (app, html, data) => {
+//   console.log("renderChatLog", app, html, data);
+//   ChatMessageVaesen.activateListeners(html);
+//   // html.on("click", ".dice-button.push", _onPush);
+// });
 
 Hooks.once("init", () => {
   console.log("Vaesen | Initializing Vaesen System");
   CONFIG.vaesen = vaesen;
   CONFIG.Combat.initiative = { formula: "1d10", decimals: 0 };
   CONFIG.Actor.documentClass = VaesenActor;
+  CONFIG.ChatMessage.documentClass = ChatMessageVaesen;
   CONFIG.anonymousSheet = {};
   CONFIG.roll = prepareRollNewDialog;
   CONFIG.push = push;
@@ -109,6 +114,7 @@ Hooks.once("init", () => {
 Hooks.once("ready", async function () {
   setupCards();
   conditions.onReady();
+  // ChatMessageVaesen.activateListeners();
   Hooks.on("hotbarDrop", (bar, data, slot) => createRollMacro(data, slot));
   Hooks.on("chatMessage", (_, messageText, chatData) =>
     totalRoll(messageText, chatData)

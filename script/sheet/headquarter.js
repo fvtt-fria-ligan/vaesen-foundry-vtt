@@ -1,4 +1,4 @@
-import { buildChatCard } from "../util/chat.js";
+import ChatMessageVaesen from "../util/chat.js";
 import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
 
 export class HeadquarterCharacterSheet extends VaesenActorSheet {
@@ -94,8 +94,8 @@ export class HeadquarterCharacterSheet extends VaesenActorSheet {
     console.log(item);
     
     let type = item.type;
-    let chatData = buildChatCard(type, item);
-    ChatMessage.create(chatData, {});
+    let chatData = ChatMessageVaesen.buildChatCard(type, item);
+    ChatMessageVaesen.create(chatData, {});
   }
 
   onItemCreate(event) {

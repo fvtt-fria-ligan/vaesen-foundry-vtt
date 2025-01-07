@@ -1,6 +1,6 @@
 import { adjustBonusText, prepareRollNewDialog, push } from "../util/roll.js";
 import { YearZeroRoll } from "../lib/yzur.js";
-import { buildChatCard } from "../util/chat.js";
+import ChatMessageVaesen from "../util/chat.js";
 
 /**
  * Extend the default actor sheet to allow for text enrichment etc.
@@ -406,8 +406,8 @@ export class VaesenActorSheet extends ActorSheet {
     const item = this.actor.items.get(div.data("itemId"));
     const data = item.system;
     let type = item.type;
-    let chatData = buildChatCard(type, item);
-    ChatMessage.create(chatData, {});
+    let chatData = ChatMessageVaesen.buildChatCard(type, item);
+    ChatMessageVaesen.create(chatData, {});
   }
 
   computeBonusFromArmor(skillName) {
