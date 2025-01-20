@@ -64,11 +64,13 @@ export class VaesenActor extends Actor {
       "ActiveEffect",
       [
         {
+          name: effect.label,
           "flags.core.statusId": effect.id,
           "flags.core.overlay": options.overlay,
           label: effect.label,
           icon: effect.icon,
           origin: this.uuid,
+         
         },
       ],
       options

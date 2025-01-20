@@ -194,12 +194,13 @@ export class conditions{
    
 
       await actor.updateEmbeddedDocuments("Item", [
-        { _id: condition._id, "system.active": !condition.system.active },
+        { _id: condition._id, "system.active": !condition.system.active, name: condition.name },
       ]);
 
 
   
       const statusEffect = {
+        name: condition.name,
         label: condition.name,
         icon: condition.img,
         id: condition.name,

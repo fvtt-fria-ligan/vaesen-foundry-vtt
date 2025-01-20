@@ -9,7 +9,7 @@
   <div class="vaesen chat-card" data-owner-id="{{roll.owner}}">
     
     <div class="card-content borderimg">
-      <div class="dice-roll flexcol">
+      <div class="dice-roll">
        
 
         {{#if flavor}}
@@ -38,7 +38,7 @@
       {{/if}}
       {{!-- Push button --}}
       {{#if pushable}}
-      <div class="dice-buttons flexrow" data-owner-id="{{roll.owner}}">
+      <div class="dice-buttons" data-owner-id="{{roll.owner}}">
         <button class="dice-button push" data-action="push" data-owner-id="{{roll.owner}}">{{localize
           "YZUR.CHAT.ROLL.Push"}}</button>
       </div>
