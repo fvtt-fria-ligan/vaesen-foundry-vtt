@@ -1,9 +1,4 @@
-import {
-  prepareRollNewDialog,
-  push,
-  registerGearSelectTooltip,
-  totalRoll as totalRoll,
-} from "./roll.js";
+
 
 export default class ChatMessageVaesen extends ChatMessage {
   prepareData() {
