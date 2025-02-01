@@ -162,6 +162,10 @@ export class conditions {
 
   static async onActionUpdate(tokenId, combatant, turn, preparation) {
     if (!preparation && this.combatPreparation) return;
+    if(CONFIG.hasYZECombatActive){
+      console.log("YZE Combat is active - skipping conditions");
+      return;
+    }
 
     const token = await Array.from(game.scenes.current.tokens).find(
       (it) => it._id == tokenId

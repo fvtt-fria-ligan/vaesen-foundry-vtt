@@ -29,6 +29,9 @@ This system provides character sheets and items for  your play, if you would lik
 
 
 ## Release Notes
+v6.0.5
+= 🐛 Fix: Fast and slow actions setting and unetting incorrectly when YZE Combat module is active [#131](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/131)
+
 v6.0.4 
 - 🐛 Fix: Editor not visible on headquarter notes sheet.
 

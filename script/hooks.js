@@ -42,6 +42,8 @@ Hooks.once("init", () => {
       type: "deck",
     },
   };
+  CONFIG.hasYZECombatActive = game.modules.get("yze-combat")?.active;
+  console.log("Vaesen | CONFIG.hasYZECombatActive: ", CONFIG.hasYZECombatActive);
 
   console.log("Vaesen | CONFIG.vaesen: ", CONFIG.vaesen);
 
