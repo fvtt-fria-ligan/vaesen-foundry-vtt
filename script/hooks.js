@@ -51,6 +51,10 @@ Hooks.once("init", () => {
   };
 
   console.log("Vaesen | CONFIG.vaesen: ", CONFIG.vaesen);
+  console.log("Vaesen | modules: ", game.modules);
+
+  CONFIG.hasYZECombatActive = game.modules.get("yze-combat")?.active;
+  console.log("Vaesen | YZE Combat Active: ", CONFIG.hasYZECombatActive);
 
   CONFIG.TextEditor.enrichers = CONFIG.TextEditor.enrichers.concat([
     {
