@@ -71,26 +71,26 @@ Hooks.once("init", () => {
     },
   ]);
 
-  Actors.unregisterSheet("core", ActorSheet);
+  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
 
-  Actors.registerSheet("vaesen", PlayerCharacterSheet, {
+  foundry.documents.collections.Actors.registerSheet("vaesen", PlayerCharacterSheet, {
     types: ["player"],
     makeDefault: true,
   });
-  Actors.registerSheet("vaesen", NpcCharacterSheet, {
+  foundry.documents.collections.Actors.registerSheet("vaesen", NpcCharacterSheet, {
     types: ["npc"],
     makeDefault: true,
   });
-  Actors.registerSheet("vaesen", VaesenCharacterSheet, {
+  foundry.documents.collections.Actors.registerSheet("vaesen", VaesenCharacterSheet, {
     types: ["vaesen"],
     makeDefault: true,
   });
-  Actors.registerSheet("vaesen", HeadquarterCharacterSheet, {
+  foundry.documents.collections.Actors.registerSheet("vaesen", HeadquarterCharacterSheet, {
     types: ["headquarter"],
     makeDefault: true,
   });
-  Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("vaesen", vaesenItemSheet, { makeDefault: true });
+  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet);
+  foundry.documents.collections.Items.registerSheet("vaesen", vaesenItemSheet, { makeDefault: true });
   registerSystemSettings();
   preloadHandlebarsTemplates();
 
@@ -313,7 +313,7 @@ function preloadHandlebarsTemplates() {
     "systems/vaesen/model/items/relationship.hbs",
     "systems/vaesen/model/tab/changelog.hbs",
   ];
-  return loadTemplates(templatePaths);
+  return foundry.applications.handlebars.loadTemplates(templatePaths);
 }
 
 /**

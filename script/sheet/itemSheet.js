@@ -1,6 +1,6 @@
 import ChatMessageVaesen from "../util/chat.js";
 
-export class vaesenItemSheet extends ItemSheet {
+export class vaesenItemSheet extends foundry.appv1.sheets.ItemSheet {
   constructor(...args) {
     super(...args);
   }

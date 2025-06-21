@@ -8,7 +8,7 @@ import ChatMessageVaesen from "../util/chat.js";
  * @type {ActorSheet}
  *
  */
-export class VaesenActorSheet extends ActorSheet {
+export class VaesenActorSheet extends foundry.appv1.sheets.ActorSheet {
   //TODO convert dices[] to a YZUR roll object to pass rolls and allow pushes
   dices = new YearZeroRoll();
   lastTestName = "";
