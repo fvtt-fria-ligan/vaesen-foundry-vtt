@@ -22,9 +22,12 @@ export default class ChatMessageVaesen extends ChatMessage {
 
    static activateListeners(html) {
     console.log("Activating listeners", html);
-    html.find(".dice-button.push").click((ev) => {console.log("Button clicked", ev); 
-      _onPush(ev);
-      });
+
+
+        const button = html.querySelectorAll(".dice-button.push");
+    for (let i = 0; i<button.length; i++){
+      button[i].addEventListener('click', _onPush);
+    }
   }
 
   hideChatActionButtons(message, html, data) {

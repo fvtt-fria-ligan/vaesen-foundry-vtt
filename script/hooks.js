@@ -19,7 +19,7 @@ import { migrate } from "./util/migrator.js";
 import { VaesenTokenHUD } from "./util/token.js";
 import ChatMessageVaesen from "./util/chat.js";
 
-Hooks.on("renderChatMessage", (app, html, data) => {
+Hooks.on("renderChatMessageHTML", (app, html, data) => {
   console.log("renderChatMessage", app, html, data);
   console.log("ChatMessageVaesen", ChatMessageVaesen);
   ChatMessageVaesen.activateListeners(html);
