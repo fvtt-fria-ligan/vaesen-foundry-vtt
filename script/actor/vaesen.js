@@ -149,7 +149,7 @@ export class VaesenActor extends Actor {
       return true;
     }
 
-    const flattenChanges = flattenObject(changed);
+    const flattenChanges = foundry.utils.flattenObject(changed);
     const changedText = game.i18n.localize("CHANGELOG.CHANGED");
     const toText = game.i18n.localize("CHANGELOG.TO");
     const byText = game.i18n.localize("CHANGELOG.BY");

@@ -1,6 +1,6 @@
 import { adjustBonusText, prepareRollNewDialog, push } from "../util/roll.js";
 import { YearZeroRoll } from "../lib/yzur.js";
-import ChatMessageVaesen from "../util/chat.js";
+import ChatMessageVaesen, { buildChatCard }  from "../util/chat.js";
 
 /**
  * Extend the default actor sheet to allow for text enrichment etc.
@@ -401,12 +401,12 @@ export class VaesenActorSheet extends foundry.appv1.sheets.ActorSheet {
     this.rollWeapon(itemId);
   }
 
-  sendToChat(event) {
+  async sendToChat(event) {
     const div = $(event.currentTarget).parents(".item");
     const item = this.actor.items.get(div.data("itemId"));
     const data = item.system;
     let type = item.type;
-    let chatData = ChatMessageVaesen.buildChatCard(type, item);
+    let chatData = await buildChatCard(type, item);
     ChatMessageVaesen.create(chatData, {});
   }
 
