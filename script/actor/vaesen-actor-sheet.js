@@ -15,7 +15,7 @@ export class VaesenActorSheet extends foundry.appv1.sheets.ActorSheet {
   lastDamage = 0;
 
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["vaesen", "sheet", "actor"],
       width: 750,
       height: "auto", // 'auto

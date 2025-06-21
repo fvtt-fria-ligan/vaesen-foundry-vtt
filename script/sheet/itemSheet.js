@@ -6,7 +6,7 @@ export class vaesenItemSheet extends foundry.appv1.sheets.ItemSheet {
   }
 
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       width: 650,
       height: 'auto',
       classes: ["vaesen", "sheet", "item"],

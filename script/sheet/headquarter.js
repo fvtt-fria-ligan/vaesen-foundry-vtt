@@ -3,7 +3,7 @@ import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
 
 export class HeadquarterCharacterSheet extends VaesenActorSheet {
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["vaesen", "sheet", "actor"],
       width: 900,
       height: 750,

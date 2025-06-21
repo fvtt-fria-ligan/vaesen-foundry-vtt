@@ -5,7 +5,7 @@ import { conditions } from "../util/conditions.js";
 export class VaesenCharacterSheet extends VaesenActorSheet {
 
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["vaesen", "sheet", "actor"],
       width: 950,
       height: 800,
