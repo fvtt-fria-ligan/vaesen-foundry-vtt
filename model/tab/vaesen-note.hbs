@@ -12,8 +12,8 @@
             </div>
         </div>
     </div>
-    <div class="flex column heavy-border wrapper grow">
+    <div class="flex column heavy-border wrapper grow notes-container">
         <b class="title">{{localize "HEADER.NOTES"}}</b>
-        {{editor noteHTML target="system.note" button=true owner=owner editable=true}}
+        {{editor noteHTML target="system.note" button=true owner=owner editable=editable engine="prosemirror" collaborate=false}}
     </div>
 </div>

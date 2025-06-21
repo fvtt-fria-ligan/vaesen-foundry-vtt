@@ -95,7 +95,7 @@ Hooks.once("init", () => {
   preloadHandlebarsTemplates();
 
   Handlebars.registerHelper("enrichHtmlHelper", function (rawText) {
-    return TextEditor.enrichHTML(rawText, { async: false });
+    return foundry.applications.ux.TextEditor.implementation.enrichHTML(rawText, { async: false });
   });
 
   Handlebars.registerHelper("ifIn", function (elem, list, options) {

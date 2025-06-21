@@ -88,21 +88,21 @@ export class VaesenActorSheet extends foundry.appv1.sheets.ActorSheet {
 
     if (context.isNpc) {
       // enchich html for notes and description
-      context.informationHTML = await TextEditor.enrichHTML(
+      context.informationHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
         context.system.information,
         {
           secrets: this.actor.owner,
           async: true,
         }
       );
-      context.noteHTML = await TextEditor.enrichHTML(context.system.note, {
+      context.noteHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(context.system.note, {
         secrets: this.actor.owner,
         async: true,
       });
     }
 
     if (context.isCharacter || context.isVaesen || context.isHeadquarter) {
-      context.noteHTML = await TextEditor.enrichHTML(context.system.note, {
+      context.noteHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(context.system.note, {
         secrets: this.actor.owner,
         async: true,
       });

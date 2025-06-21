@@ -191,7 +191,7 @@ export class generator {
         </div>
         `);
     dialogHtml.push("</div>");
-    const dialogHtmlRender = await TextEditor.enrichHTML(dialogHtml.join(""));
+    const dialogHtmlRender = await foundry.applications.ux.TextEditor.implementation.enrichHTML(dialogHtml.join(""));
 
     let chatHTML = [];
     chatHTML.push(changes["system.note"]);
