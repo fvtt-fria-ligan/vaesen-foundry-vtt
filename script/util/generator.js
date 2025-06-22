@@ -457,20 +457,18 @@ export class generator {
         },
         close: async () => {
           if (!accepted) {
-            ChatMessage.create({
-              content: `<h3>${game.i18n.localize(
+            let message = `<h3>${game.i18n.localize(
                 "GENERATOR.GENERATION"
               )} ${game.i18n.localize(
                 "GENERATOR.DISCARDED"
-              )}:</h3><div class="vaesen">${chatHTML[0]} ${chatHTML[1]}</div>`,
-              blind: true,
-
-              whisper: $(game.users.find((it) => it.role === 4)).map(
-                function () {
-                  return this._id;
-                }
-              ),
-            });
+              )}:</h3><div class="vaesen">${chatHTML[0]} ${chatHTML[1]}</div>`;
+              let chatData = {
+                speaker: ChatMessage.getSpeaker(),
+                user: game.user.id,
+                rollMode: game.settings.get("core", "rollMode"),
+                content: message,
+              };
+              ChatMessageVaesen.create(chatData, {});
           }
           if (reroll) {
             generatorDialog.render(true);
