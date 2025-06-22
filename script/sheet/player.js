@@ -15,11 +15,11 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     console.log("affirmConditions");
     let currentConditions = [];
     actor.effects.forEach(function (value, key) {
-      console.log("value: ", value);
+      // console.log("value: ", value);
       currentConditions.push(value.data.flags.core?.statusId);
     });
 
-    console.log("current conditions: ", currentConditions);
+    // console.log("current conditions: ", currentConditions);
 
     // set state of sheet checks for set conditions
     if (currentConditions.indexOf("physical") === -1) {
@@ -127,6 +127,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     html.find(".condition").click((ev) => {
       ev.preventDefault();
       const conditionName = $(ev.currentTarget).data("key");
+      // console.log("Vaesen  | Condition name", conditionName);
       this.updateCondition(conditionName);
     });
 
@@ -225,6 +226,41 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     });
   }
 
+    updateCondition(conditionName) {
+
+    let actor = this.actor;
+    const statusEffect = CONFIG.statusEffects.find(it => it.id === conditionName);
+    let fullName = conditionName;
+    if (conditionName === "physical"){
+      fullName = "PHYSICALLYBROKEN";
+    } 
+    if (conditionName === "mental"){
+      fullName = "MENTALLYBROKEN";
+    }
+    let localizedName = game.i18n.localize("CONDITION." + fullName.toUpperCase());
+    localizedName = localizedName.replace( /\w\S*/g, text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase());
+  
+    const currentEffect = Array.from(actor.effects?.values()).find(it => it.img === statusEffect.icon);
+    if (currentEffect) {
+      actor.deleteEmbeddedDocuments('ActiveEffect', [currentEffect.id]);
+    }
+    else {
+      actor.createEmbeddedDocuments("ActiveEffect", [{
+        name: localizedName,
+        label: game.i18n.localize(statusEffect.label),
+        icon: statusEffect.icon,
+        changes: statusEffect.changes,
+        id: this.uuid,
+        statuses: statusEffect.statuses,
+        flags: {
+          core: {
+            statusId: statusEffect.id
+          }
+        },
+      }]);
+    }
+  }
+
   onItemCreate(event) {
     event.preventDefault();
     let header = event.currentTarget;
@@ -244,7 +280,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       data["system.starting"] = data.starting ? true : false;
       delete data.starting;
     }
-    console.log("CUSSA", data);
+    // console.log("CUSSA", data);
     this.actor.createEmbeddedDocuments("Item", [data]);
   }
 
@@ -263,7 +299,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
   onFavTogle(event) {
     const div = $(event.currentTarget).parents(".item");
     const item = this.actor.items.get(div.data("itemId"));
-    console.log("onFavTogle", item);
+    // console.log("onFavTogle", item);
 
     let fav = item.system.isFav;
     if (fav) {
@@ -349,33 +385,10 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     return upgradeArray;
   }
 
-  updateCondition(conditionName) {
-    let actor = this.actor;
 
-    const statusEffect = CONFIG.statusEffects.find(it => it.id === conditionName);
-
-    const currentEffect = Array.from(actor.effects?.values()).find(it => it.icon === statusEffect.icon);
-    if (currentEffect) {
-      actor.deleteEmbeddedDocuments('ActiveEffect', [currentEffect.id]);
-    }
-    else {
-      actor.createEmbeddedDocuments("ActiveEffect", [{
-        label: game.i18n.localize(statusEffect.label),
-        icon: statusEffect.icon,
-        changes: statusEffect.changes,
-        id: this.uuid,
-        statuses: statusEffect.statuses,
-        flags: {
-          core: {
-            statusId: statusEffect.id
-          }
-        },
-      }]);
-    }
-  }
 
   _dropHeadquarter(headquarter) {
-    console.log("_dropHeadquarter", headquarter);
+    // console.log("_dropHeadquarter", headquarter);
     if (!headquarter) return;
     this.actor.update({ "system.headquarter": headquarter.id });
     return this.actor;
@@ -397,3 +410,5 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     super._onDropItemCreate(item);
   }
 }
+
+

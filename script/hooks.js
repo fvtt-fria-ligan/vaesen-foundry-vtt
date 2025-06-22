@@ -13,18 +13,24 @@ import { registerSystemSettings } from "./util/settings.js";
 import { vaesen } from "./config.js";
 import { conditions } from "./util/conditions.js";
 import { YearZeroRollManager } from "./lib/yzur.js";
-import * as Chat from "./util/chat.js";
+// import * as Chat from "./util/chat.js";
 import { vaesenItemSheet } from "./sheet/itemSheet.js";
 import { migrate } from "./util/migrator.js";
 import { VaesenTokenHUD } from "./util/token.js";
+import ChatMessageVaesen from "./util/chat.js";
 
-Hooks.on("renderChatMessage", (app, html, data) => {
-  Chat.hideChatActionButtons(app, html, data);
+Hooks.on("renderChatMessageHTML", (app, html, data) => {
+  // console.log("renderChatMessage", app, html, data);
+  // console.log("ChatMessageVaesen", ChatMessageVaesen);
+  ChatMessageVaesen.activateListeners(html);
+  // ChatMessageVaesen.hideChatActionButtons(app, html, data);
 });
 
-
+//TODO renderChatLog is not a valid hook, in order to add the listener to the push button we need to find the correct hook
 // Hooks.on("renderChatLog", (app, html, data) => {
-//   html.on("click", ".dice-button.push", _onPush);
+//   console.log("renderChatLog", app, html, data);
+//   ChatMessageVaesen.activateListeners(html);
+//   // html.on("click", ".dice-button.push", _onPush);
 // });
 
 Hooks.once("init", () => {
@@ -32,6 +38,7 @@ Hooks.once("init", () => {
   CONFIG.vaesen = vaesen;
   CONFIG.Combat.initiative = { formula: "1d10", decimals: 0 };
   CONFIG.Actor.documentClass = VaesenActor;
+  CONFIG.ChatMessage.documentClass = ChatMessageVaesen;
   CONFIG.anonymousSheet = {};
   CONFIG.roll = prepareRollNewDialog;
   CONFIG.push = push;
@@ -45,7 +52,11 @@ Hooks.once("init", () => {
   CONFIG.hasYZECombatActive = game.modules.get("yze-combat")?.active;
   console.log("Vaesen | CONFIG.hasYZECombatActive: ", CONFIG.hasYZECombatActive);
 
-  console.log("Vaesen | CONFIG.vaesen: ", CONFIG.vaesen);
+  // console.log("Vaesen | CONFIG.vaesen: ", CONFIG.vaesen);
+  // console.log("Vaesen | modules: ", game.modules);
+
+  CONFIG.hasYZECombatActive = game.modules.get("yze-combat")?.active;
+  console.log("Vaesen | YZE Combat Active: ", CONFIG.hasYZECombatActive);
 
   CONFIG.TextEditor.enrichers = CONFIG.TextEditor.enrichers.concat([
     {
@@ -62,31 +73,31 @@ Hooks.once("init", () => {
     },
   ]);
 
-  Actors.unregisterSheet("core", ActorSheet);
+  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
 
-  Actors.registerSheet("vaesen", PlayerCharacterSheet, {
+  foundry.documents.collections.Actors.registerSheet("vaesen", PlayerCharacterSheet, {
     types: ["player"],
     makeDefault: true,
   });
-  Actors.registerSheet("vaesen", NpcCharacterSheet, {
+  foundry.documents.collections.Actors.registerSheet("vaesen", NpcCharacterSheet, {
     types: ["npc"],
     makeDefault: true,
   });
-  Actors.registerSheet("vaesen", VaesenCharacterSheet, {
+  foundry.documents.collections.Actors.registerSheet("vaesen", VaesenCharacterSheet, {
     types: ["vaesen"],
     makeDefault: true,
   });
-  Actors.registerSheet("vaesen", HeadquarterCharacterSheet, {
+  foundry.documents.collections.Actors.registerSheet("vaesen", HeadquarterCharacterSheet, {
     types: ["headquarter"],
     makeDefault: true,
   });
-  Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("vaesen", vaesenItemSheet, { makeDefault: true });
+  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet);
+  foundry.documents.collections.Items.registerSheet("vaesen", vaesenItemSheet, { makeDefault: true });
   registerSystemSettings();
   preloadHandlebarsTemplates();
 
   Handlebars.registerHelper("enrichHtmlHelper", function (rawText) {
-    return TextEditor.enrichHTML(rawText, { async: false });
+    return foundry.applications.ux.TextEditor.implementation.enrichHTML(rawText, { async: false });
   });
 
   Handlebars.registerHelper("ifIn", function (elem, list, options) {
@@ -109,6 +120,7 @@ Hooks.once("init", () => {
 Hooks.once("ready", async function () {
   setupCards();
   conditions.onReady();
+  // ChatMessageVaesen.activateListeners();
   Hooks.on("hotbarDrop", (bar, data, slot) => createRollMacro(data, slot));
   Hooks.on("chatMessage", (_, messageText, chatData) =>
     totalRoll(messageText, chatData)
@@ -138,7 +150,7 @@ Hooks.on("updateActor", (actor, changes, diff, userId) => {
   // if we don't have an active scene, don't do anything
   if (!game.scenes.current || !actor.isOwner || changes.name == undefined)
     return;
-  console.log("updateActor", actor, changes, diff, userId);
+  // console.log("updateActor", actor, changes, diff, userId);
   game.scenes.current.tokens.forEach((x) => {
     if (x.actorId !== actor._id) return;
 
@@ -309,7 +321,7 @@ function preloadHandlebarsTemplates() {
     "systems/vaesen/model/items/relationship.hbs",
     "systems/vaesen/model/tab/changelog.hbs",
   ];
-  return loadTemplates(templatePaths);
+  return foundry.applications.handlebars.loadTemplates(templatePaths);
 }
 
 /**

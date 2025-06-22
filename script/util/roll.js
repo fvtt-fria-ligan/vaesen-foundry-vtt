@@ -187,7 +187,7 @@ export function roll(
 }
 
 export async function push(sheet) {
-  console.log("push", sheet);
+  // console.log("push", sheet);
   await sheet.dices.push({ async: true });
   await sheet.dices.toMessage();
   // sendRollToChat(sheet, true);
@@ -196,9 +196,9 @@ export async function push(sheet) {
 async function rollDice(sheet, numberOfDice, breakdown) {
   let actor = game.actors.get(sheet.object._id);
   let token = actor.prototypeToken.texture.src;
-  console.log("actor", actor);
-  console.log("token", token);
-  console.log("sheet", sheet);
+  // console.log("actor", actor);
+  // console.log("token", token);
+  // console.log("sheet", sheet);
 
   if (numberOfDice <= 0) {
     numberOfDice = 1;
@@ -226,7 +226,7 @@ async function rollDice(sheet, numberOfDice, breakdown) {
     },
     options
   );
-  console.log("roll dice roll:", r);
+  // console.log("roll dice roll:", r);
 
 // Execute the roll
 await r.evaluate();
@@ -237,7 +237,7 @@ await r.evaluate();
     speaker: ChatMessage.getSpeaker({ actor: actor, token: token }),
   });
   //await r.render({speaker: ChatMessage.getSpeaker({actor: actor, token: actor.img}),  type: CONST.CHAT_MESSAGE_TYPES.ROLL, owner: actor.id}); // define the messageData to give the info we need to pass for our sheet etc
-  console.log(r.getTerms("skill"));
+  // console.log(r.getTerms("skill"));
   sheet.dices = r.duplicate();
 }
 

@@ -160,16 +160,15 @@ export class conditions {
     await token.toggleActiveEffect(condition);
   }
 
-  static async onActionUpdate(tokenId, combatant, turn, preparation) {
-    if (!preparation && this.combatPreparation) return;
-    if(CONFIG.hasYZECombatActive){
-      console.log("YZE Combat is active - skipping conditions");
-      return;
-    }
+    static async onActionUpdate(tokenId, combatant, turn, preparation) {
+      console.log("Vasen | YZE Combat | onActionUpdate", CONFIG.hasYZECombatActive);
+      if(CONFIG.hasYZECombatActive){
+        console.log("YZE Combat is active - skipping conditions");
+        return;
+      }
+      if (!preparation && this.combatPreparation) return;
 
-    const token = await Array.from(game.scenes.current.tokens).find(
-      (it) => it._id == tokenId
-    );
+      const token = await Array.from(game.scenes.current.tokens).find(it => it._id == tokenId);
 
     const fastCondition = await CONFIG.statusEffects.find(
       (it) => it.id == "fastAction"
@@ -185,7 +184,7 @@ export class conditions {
       (it) => it.icon == fastCondition.icon
     );
 
-    console.log("CUSSA _ UPDATE", token, slowAction, fastAction);
+      // console.log("CUSSA _ UPDATE", token, slowAction, fastAction);
 
     if (turn == 0) {
       if (slowAction) await token.toggleActiveEffect(slowCondition);
@@ -208,60 +207,65 @@ export class conditions {
     }
   }
 
-  static combatPreparation = false;
-  static async onCombatStartEnd(data) {
-    this.combatPreparation = true;
-    for (const turn of data.turns) {
-      console.log("CUSSA _ COMBAT", turn);
-      await this.onActionUpdate(turn.tokenId, null, 0, true);
+    static combatPreparation = false;
+    static async onCombatStartEnd(data) {
+      this.combatPreparation = true;
+      for (const turn of data.turns) {
+        // console.log("CUSSA _ COMBAT", turn);
+        await this.onActionUpdate(turn.tokenId, null, 0, true);
+      }
+      this.combatPreparation = false;
     }
-    this.combatPreparation = false;
-  }
 
   static async onVaesenCondition(actor, conditionId) {
     let condition = Array.from(actor.items?.values()).find(
       (x) => x.type == "condition" && x._id == conditionId
     );
 
-    await actor.updateEmbeddedDocuments("Item", [
-      { _id: condition._id, "system.active": !condition.system.active },
-    ]);
+      await actor.updateEmbeddedDocuments("Item", [
+        { _id: condition._id, "system.active": !condition.system.active, name: condition.name },
+      ]);
 
-    const statusEffect = {
-      label: condition.name,
-      icon: condition.img,
-      id: condition.name,
-      statuses: [condition.name],
-      flags: {
-        core: {
-          statusId: condition.name,
-        },
-      },
-    };
 
-    const currentEffect = Array.from(actor.effects?.values()).find(
-      (it) => it.icon === statusEffect.icon
-    );
-    if (currentEffect) {
-      await actor.deleteEmbeddedDocuments("ActiveEffect", [currentEffect.id]);
-    } else {
-      await actor.createEmbeddedDocuments("ActiveEffect", [statusEffect]);
-    }
+  
+      const statusEffect = {
+        name: condition.name,
+        label: condition.name,
+        icon: condition.img,
+        id: condition.name,
+        statuses: [condition.name],
+        flags: {
+          core: {
+            statusId: condition.name
+          }
+        }
+      };
+  
+      const currentEffect = Array.from(actor.effects?.values()).find(it => it.icon === statusEffect.icon);
+      if (currentEffect) {
+        await actor.deleteEmbeddedDocuments('ActiveEffect', [currentEffect.id]);
+      }
+      else {
+        await actor.createEmbeddedDocuments("ActiveEffect", [statusEffect]);
+      }
 
     return condition.system.active;
   }
 }
 
 conditions.eventsProcessing = {
-  onToggleEffect: async function (event) {
-    event.preventDefault();
-    //let element = event.currentTarget;
-    let actor = this.actor;
-    let conditionName = $(event.currentTarget).data("key");
-    //let effectId = element.dataset.effectId;
-    console.log(conditionName);
-    console.log(actor);
-
-    await actor.toggleStatusEffectById(conditionName);
-  },
-};
+    "onToggleEffect": async function (event) {
+		
+		
+        event.preventDefault();
+        //let element = event.currentTarget;
+        let actor = this.actor;
+        let conditionName = $(event.currentTarget).data("key");
+        //let effectId = element.dataset.effectId;
+        // console.log(conditionName);
+        // console.log(actor);
+        
+        await actor.toggleStatusEffectById(conditionName)
+       
+    }
+}

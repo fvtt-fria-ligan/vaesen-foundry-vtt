@@ -9,7 +9,7 @@ export class VaesenActor extends Actor {
 
   /* -------------------------------------------- */
   findStatusEffectById(id) {
-    console.log("find by id: " + id);
+    // console.log("find by id: " + id);
     return Array.from(this.effects?.values()).find(
       (it) => it.data.flags.core?.statusId === id
     );
@@ -17,7 +17,7 @@ export class VaesenActor extends Actor {
 
   /* -------------------------------------------- */
   async deleteStatusEffectById(id, options = { renderSheet: true }) {
-    console.log("delete by id: " + id);
+    // console.log("delete by id: " + id);
     const effects = Array.from(this.effects?.values()).filter(
       (it) => it.data.flags.core?.statusId === id
     );
@@ -26,9 +26,9 @@ export class VaesenActor extends Actor {
 
   /* -------------------------------------------- */
   async _deleteStatusEffects(effects, options) {
-    console.log(effects);
-    console.log(effects.map((it) => it.id));
-    console.log(options);
+    // console.log(effects);
+    // console.log(effects.map((it) => it.id));
+    // console.log(options);
     const ids = Array.from(effects.map((it) => it.id));
     await this.deleteEmbeddedDocuments("ActiveEffect", ids, options);
     //await this._deleteStatusEffectsByIds(effects.map(it => it.id), options);
@@ -58,17 +58,19 @@ export class VaesenActor extends Actor {
   ) {
     //await this.deleteStatusEffectById(statusEffect.id, options);
     const effect = duplicate(statusEffect);
-    console.log(effect.label);
-    console.log(effect.id);
+    // console.log(effect.label);
+    // console.log(effect.id);
     await this.createEmbeddedDocuments(
       "ActiveEffect",
       [
         {
+          name: effect.label,
           "flags.core.statusId": effect.id,
           "flags.core.overlay": options.overlay,
           label: effect.label,
           icon: effect.icon,
           origin: this.uuid,
+         
         },
       ],
       options
@@ -82,7 +84,7 @@ export class VaesenActor extends Actor {
   }
 
   async toggleStatusEffectById(id, options = { renderSheet: true }) {
-    console.log("over to the character for toggeling");
+    // console.log("over to the character for toggeling");
 
     const effect = this.findStatusEffectById(id);
 
@@ -147,7 +149,7 @@ export class VaesenActor extends Actor {
       return true;
     }
 
-    const flattenChanges = flattenObject(changed);
+    const flattenChanges = foundry.utils.flattenObject(changed);
     const changedText = game.i18n.localize("CHANGELOG.CHANGED");
     const toText = game.i18n.localize("CHANGELOG.TO");
     const byText = game.i18n.localize("CHANGELOG.BY");

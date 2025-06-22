@@ -1,12 +1,12 @@
-import { buildChatCard } from "../util/chat.js";
+import ChatMessageVaesen from "../util/chat.js";
 
-export class vaesenItemSheet extends ItemSheet {
+export class vaesenItemSheet extends foundry.appv1.sheets.ItemSheet {
   constructor(...args) {
     super(...args);
   }
 
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       width: 650,
       height: 'auto',
       classes: ["vaesen", "sheet", "item"],
@@ -23,7 +23,7 @@ export class vaesenItemSheet extends ItemSheet {
     const source = this.item.toObject();
     data.config = CONFIG.vaesen;
     data.source = source;
-    console.log("Vaesen | data: ", data);
+    // console.log("Vaesen | data: ", data);
 
     return data;
   }
@@ -52,7 +52,7 @@ export class vaesenItemSheet extends ItemSheet {
 
   sendToChat(data) {
     let type = data.type;
-    let chatData = buildChatCard(type, data);
-    ChatMessage.create(chatData, {});
+    let chatData = ChatMessageVaesen.buildChatCard(type, data);
+    ChatMessageVaesen.create(chatData, {});
   }
 }

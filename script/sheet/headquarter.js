@@ -1,9 +1,9 @@
-import { buildChatCard } from "../util/chat.js";
+import ChatMessageVaesen from "../util/chat.js";
 import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
 
 export class HeadquarterCharacterSheet extends VaesenActorSheet {
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["vaesen", "sheet", "actor"],
       width: 900,
       height: 750,
@@ -91,21 +91,21 @@ export class HeadquarterCharacterSheet extends VaesenActorSheet {
   sendToChat(event) {
     const div = $(event.currentTarget).parents(".item");
     const item = this.actor.items.get(div.data("itemId"));
-    console.log(item);
+    // console.log(item);
     
     let type = item.type;
-    let chatData = buildChatCard(type, item);
-    ChatMessage.create(chatData, {});
+    let chatData = ChatMessageVaesen.buildChatCard(type, item);
+    ChatMessageVaesen.create(chatData, {});
   }
 
   onItemCreate(event) {
-    console.log("Item Create");
+    // console.log("Item Create");
     event.preventDefault();
     let header = event.currentTarget;
     let data = duplicate(header.dataset);
     data["name"] = `New ${data.type.capitalize()}`;
     data["system.category"] = data["category"];
-    console.log(data);
+    // console.log(data);
     this.actor.createEmbeddedDocuments("Item", [data]);
   }
 
@@ -116,7 +116,7 @@ export class HeadquarterCharacterSheet extends VaesenActorSheet {
   }
 
   onItemDelete(event) {
-    console.log("Item Delete");
+    // console.log("Item Delete");
     const div = $(event.currentTarget).parents(".item");
     this.actor.deleteEmbeddedDocuments("Item", [div.data("itemId")]);
     div.slideUp(200, () => this.render(false));

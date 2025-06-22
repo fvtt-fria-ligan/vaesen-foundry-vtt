@@ -1,6 +1,6 @@
 import { adjustBonusText, prepareRollNewDialog, push } from "../util/roll.js";
 import { YearZeroRoll } from "../lib/yzur.js";
-import { buildChatCard } from "../util/chat.js";
+import ChatMessageVaesen, { buildChatCard }  from "../util/chat.js";
 
 /**
  * Extend the default actor sheet to allow for text enrichment etc.
@@ -8,14 +8,14 @@ import { buildChatCard } from "../util/chat.js";
  * @type {ActorSheet}
  *
  */
-export class VaesenActorSheet extends ActorSheet {
+export class VaesenActorSheet extends foundry.appv1.sheets.ActorSheet {
   //TODO convert dices[] to a YZUR roll object to pass rolls and allow pushes
   dices = new YearZeroRoll();
   lastTestName = "";
   lastDamage = 0;
 
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["vaesen", "sheet", "actor"],
       width: 750,
       height: "auto", // 'auto
@@ -88,7 +88,7 @@ export class VaesenActorSheet extends ActorSheet {
 
     if (context.isNpc) {
       // enchich html for notes and description
-      context.informationHTML = await TextEditor.enrichHTML(
+      context.informationHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
         context.system.information,
         {
           secrets: this.actor.isOwner,
@@ -97,20 +97,16 @@ export class VaesenActorSheet extends ActorSheet {
           relativeTo: this.actor
         }
       );
-      context.noteHTML = await TextEditor.enrichHTML(context.system.note, {
-        secrets: this.actor.isOwner,
-          rollData: context.rollData,
-          async: true,
-          relativeTo: this.actor
+      context.noteHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(context.system.note, {
+        secrets: this.actor.owner,
+        async: true,
       });
     }
 
     if (context.isCharacter || context.isVaesen || context.isHeadquarter) {
-      context.noteHTML = await TextEditor.enrichHTML(context.system.note, {
-        secrets: this.actor.isOwner,
-          rollData: context.rollData,
-          async: true,
-          relativeTo: this.actor
+      context.noteHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(context.system.note, {
+        secrets: this.actor.owner,
+        async: true,
       });
     }
 
@@ -407,13 +403,13 @@ export class VaesenActorSheet extends ActorSheet {
     this.rollWeapon(itemId);
   }
 
-  sendToChat(event) {
+  async sendToChat(event) {
     const div = $(event.currentTarget).parents(".item");
     const item = this.actor.items.get(div.data("itemId"));
     const data = item.system;
     let type = item.type;
-    let chatData = buildChatCard(type, item);
-    ChatMessage.create(chatData, {});
+    let chatData = await buildChatCard(type, item);
+    ChatMessageVaesen.create(chatData, {});
   }
 
   computeBonusFromArmor(skillName) {

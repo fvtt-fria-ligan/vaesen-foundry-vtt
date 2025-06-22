@@ -1,3 +1,7 @@
+a.button:hover, button:hover {
+  color: hsl(13, 47%, 17%);
+}
+
 /******************************
 /        Fonts
 ******************************/
@@ -550,8 +554,16 @@ a.content-link i {
 }
 
 .editor {
-  min-height: 200px;
-  flex-basis: 100%;
+  min-height: 250px;
+}
+
+.notes-container {
+  min-height: 300px;
+}
+
+.button {
+  background: transparent;
+  border: none;
 }
 
 ol.dice-rolls li {

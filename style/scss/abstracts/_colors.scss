@@ -13,3 +13,6 @@ $orange-200: hsl(27, 32%, 73%);
 $white: hsl(13, 48%, 95%);
 $off-white: hsl(40, 20%, 80%);
 
+a.button:hover, button:hover {
+    color: $brown-700;
+}
