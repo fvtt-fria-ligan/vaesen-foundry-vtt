@@ -49,6 +49,8 @@ Hooks.once("init", () => {
       type: "deck",
     },
   };
+  CONFIG.hasYZECombatActive = game.modules.get("yze-combat")?.active;
+  console.log("Vaesen | CONFIG.hasYZECombatActive: ", CONFIG.hasYZECombatActive);
 
   // console.log("Vaesen | CONFIG.vaesen: ", CONFIG.vaesen);
   // console.log("Vaesen | modules: ", game.modules);
@@ -123,6 +125,7 @@ Hooks.once("ready", async function () {
   Hooks.on("chatMessage", (_, messageText, chatData) =>
     totalRoll(messageText, chatData)
   );
+  activateListeners($(document));
   migrate();
   registerGearSelectTooltip();
 
@@ -249,6 +252,11 @@ Hooks.once("diceSoNiceReady", (dice3d) => {
     "d6"
   );
 });
+
+
+async function activateListeners(html) {
+  html.on("click", ".dice-button.push", _onPush);
+}
 
 async function _onPush(event) {
   event.preventDefault();

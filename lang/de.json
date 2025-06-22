@@ -123,6 +123,7 @@
   "HEADER.CRITICAL_INJURIES": "KRITISCHE VERLETZUNGEN",
   "HEADER.WEAPONS": "WAFFEN",
   "HEADER.TALENTS": "TALENTE",
+  "HEADER.STARTING_GEAR": "STARTAUSRÜSTUNG",
   "HEADER.GEAR": "AUSRÜSTUNG",
   "HEADER.INFORMATION": "INFORMATIONEN",
   "HEADER.MAGIC": "MAGIE",
@@ -164,6 +165,7 @@
   "TAB.GEAR": "AUSRÜSTUNG",
   "TAB.NOTE": "NOTIZ",
   "TAB.NOTES": "NOTIZEN",
+  "TAB.LOG" : "PROTOKOLL",
   "TAB.HISTORY": "GESCHICHTE",
   "TAB.FACILITY": "AUSBAUTEN",
   "TAB.CONTACT": "KONTAKT",
@@ -197,6 +199,8 @@
   "WEAPON.BONUS": "Bonus",
   "WEAPON.AVAILABILITY": "Verfügbarkeit",
   "WEAPON.SKILL": "Fertigkeit",
+  "WEAPON.STARTING": "SE",
+  "WEAPON.STARTING_TOOLTIP": "Start-Equipment",
 
   "UI.FAVORITE" : "Toggle Favorite",
   "UI.EDIT" : "Bearbeiten",
@@ -270,5 +274,17 @@
   "GENERATOR.LIFE": "Steckbrief",
 
   "HEADQUARTER.MEMBER_RANKING": "MITGLIEDER RANGLISTE",
-  "HEADQUARTER.MEMBER_RANKING_EXPLANATION": "Bei der Bestimmung, wer für ein bestimmtes Attribut- oder Fertigkeitswurf am besten geeignet ist, kannst du auf diese Weise einen nicht-metaspielerischen Ansatz wählen. Anstatt sich auf bestimmte Zahlen zu verlassen, überlegt man sich, wer in diesem Bereich am fähigsten ist. Bei Fertigkeiten wird dies durch den kombinierten Wert des jeweiligen Attributs und der Fertigkeit selbst bestimmt. Wenn mehrere Charaktere in der Liste aufgeführt sind, bedeutet dies, dass sie die gleiche Anzahl von Würfeln für diese Aufgabe verwenden."
+  "HEADQUARTER.MEMBER_RANKING_EXPLANATION": "Bei der Bestimmung, wer für ein bestimmtes Attribut- oder Fertigkeitswurf am besten geeignet ist, kannst du auf diese Weise einen nicht-metaspielerischen Ansatz wählen. Anstatt sich auf bestimmte Zahlen zu verlassen, überlegt man sich, wer in diesem Bereich am fähigsten ist. Bei Fertigkeiten wird dies durch den kombinierten Wert des jeweiligen Attributs und der Fertigkeit selbst bestimmt. Wenn mehrere Charaktere in der Liste aufgeführt sind, bedeutet dies, dass sie die gleiche Anzahl von Würfeln für diese Aufgabe verwenden.",
+
+  "CHANGELOG.HEADER": "PROTOKOLL",
+  "CHANGELOG.WHAT": "Was",
+  "CHANGELOG.TYPE": "Typ",
+  "CHANGELOG.CHANGE": "Änderung",
+  "CHANGELOG.BY": "von",
+  "CHANGELOG.WHEN": "Wann",
+  "CHANGELOG.ADDED": "hinzugefügt",
+  "CHANGELOG.REMOVED": "entfernt",
+
+  "STARTING_EQUIP.TITLE": "Start-Equipment löschen?",
+  "STARTING_EQUIP.CONTENT": "Dies ist eine Ausrüstung, die als Teil der Startausrüstung für diesen Charakter markiert ist. Bist du sicher, dass du sie löschen möchten?"
 }

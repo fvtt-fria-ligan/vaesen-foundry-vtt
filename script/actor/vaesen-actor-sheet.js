@@ -91,8 +91,10 @@ export class VaesenActorSheet extends foundry.appv1.sheets.ActorSheet {
       context.informationHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
         context.system.information,
         {
-          secrets: this.actor.owner,
+          secrets: this.actor.isOwner,
+          rollData: context.rollData,
           async: true,
+          relativeTo: this.actor
         }
       );
       context.noteHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(context.system.note, {
