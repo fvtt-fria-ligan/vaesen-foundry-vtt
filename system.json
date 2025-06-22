@@ -117,9 +117,7 @@
     }
   ],
   "compatibility": {
-    "minimum": "12",
+    "minimum": "13",
     "verified": "13.334"
-  },
-  "minimumCoreVersion": 13,
-  "compatibleCoreVersion": 13
+  }
 }
