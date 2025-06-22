@@ -35,12 +35,7 @@
           <div class="grid-align-end" style="margin-bottom: 5px;">
             <b>{{localize "BONUS_TYPE.HEADER"}}</b>
             <select name="system.bonusType" style="margin-top:3px; width: 100%;">
-              {{#select data.system.bonusType}}
-              {{#each config.bonusType as |bonusType key|}}
-              <option value="{{key}}" {{#if (eq key ../data.system.bonusType)}}selected{{/if}}>{{localize bonusType}}
-              </option>
-              {{/each}}
-              {{/select}}
+               {{selectOptions config.bonusType selected=data.system.bonusType localize=true}}
             </select>
           </div>
           {{#ifIn data.system.bonusType config.bonusTypeRequiresBonus}}
@@ -58,21 +53,13 @@
           <div class="grid-align-end">
             <b>{{localize "TALENT.SKILL"}}</b>
             <select name="system.skill" multiple style="height:125px;width: 100%;">
-              {{#select data.system.skill}}
+              
               {{#if (eq data.system.bonusType "damage")}}
-                {{#each config.skills as |skill key|}}
-                {{#ifIn key ../config.bonusTypeDamageSkills}}
-                <option value="{{key}}" {{#ifIn key ../data.system.skill}}selected{{/ifIn}}>{{localize skill}}
-                </option>
-                {{/ifIn}}
-                {{/each}}
+                 {{selectOptions config.bonusTypeDamageSkillsOptions selected=data.system.skill localize=true}}
               {{else}}
-                {{#each config.skills as |skill key|}}
-                <option value="{{key}}" {{#ifIn key ../data.system.skill}}selected{{/ifIn}}>{{localize skill}}
-                </option>
-                {{/each}}
+               {{selectOptions config.skills selected=data.system.skill localize=true}}
               {{/if}}
-              {{/select}}
+              
             </select>
           </div>
           {{/ifIn}}

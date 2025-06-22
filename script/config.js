@@ -35,3 +35,40 @@ vaesen.upgradeBonusType = {
 vaesen.bonusTypeRequiresSkill = ["skill", "ignoreConditionSkill", "damage"];
 vaesen.bonusTypeRequiresBonus = ["skill", "damage", "fear", "bonusMentalRecovery", "bonusPhysicalRecovery"];
 vaesen.bonusTypeDamageSkills = ["closeCombat", "force", "rangedCombat"];
+
+vaesen.bonusTypeDamageSkillsOptions = {
+    closeCombat: "SKILL.CLOSE_COMBAT",
+    rangedCombat: "SKILL.RANGED_COMBAT", 
+    force: "SKILL.FORCE"
+}
+
+// select option set up
+vaesen.attackAttributeOptions = {
+        might: "ATTRIBUTE.MIGHT_ROLL",
+        bodyControl:"ATTRIBUTE.BODY_CONTROL_ROLL", 
+        magic: "ATTRIBUTE.MAGIC_ROLL",
+        manipulation:"ATTRIBUTE.MANIPULATION_ROLL"
+}
+
+vaesen.injuryTypeOptions = {
+    physical: "CONDITION.PHYSICAL",
+    mental: "CONDITION.MENTAL"
+}
+
+vaesen.yesNoOptions = {
+    Yes: "YES",
+    No: "NO"
+}
+
+vaesen.magicCategoryOptions = {
+    power: "MAGIC.POWER",
+    enchantment: "MAGIC.ENCHANTMENT",
+    curse: "MAGIC.CURSE",
+    trollcraft: "MAGIC.TROLLCRAFT"
+}
+
+vaesen.upgradeCategory = {
+         facility: "UPGRADE.FACILITY",
+        contact: "UPGRADE.CONTACT",
+        personnel: "UPGRADE.PERSONNEL"
+}

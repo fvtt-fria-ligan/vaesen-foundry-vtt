@@ -48,12 +48,7 @@
         <div class="grid-align-start">
           <h3>{{localize "GEAR.SKILL"}}</h3>
           <select name="system.skill" multiple style="height:142px;">
-            {{#select data.system.skill}}
-            {{#each config.skills as |skill key|}}
-            <option value="{{key}}" {{#ifIn key ../data.system.skill}}selected{{/ifIn}}>{{localize skill}}
-            </option>
-            {{/each}}
-            {{/select}}
+             {{selectOptions config.skills selected=data.system.skill localize=true}}
           </select>
         </div>
         <div class="grid-span-2 grid-align-end" >

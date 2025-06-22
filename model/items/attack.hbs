@@ -26,17 +26,8 @@
 
         <div class="flex-col grid-span-2">
           <b>{{localize "ATTACK.ATTRIBUTE"}}</b>
-          <select name="system.attribute">
-            {{#select data.system.attribute}}
-              <option value="might">{{localize "ATTRIBUTE.MIGHT_ROLL"}}</option>
-              <option value="bodyControl">{{localize
-                  "ATTRIBUTE.BODY_CONTROL_ROLL"
-                }}</option>
-              <option value="magic">{{localize "ATTRIBUTE.MAGIC_ROLL"}}</option>
-              <option value="manipulation">{{localize
-                  "ATTRIBUTE.MANIPULATION_ROLL"
-                }}</option>
-            {{/select}}
+          <select name="system.attribute" id="attribute">
+            {{selectOptions config.attackAttributeOptions selected=data.system.attribute localize=true}}
           </select>
         </div>
 

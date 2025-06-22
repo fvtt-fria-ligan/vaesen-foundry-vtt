@@ -32,15 +32,7 @@
           />
           <h3>{{localize "WEAPON.SKILL"}}: &nbsp;</h3>
           <select name="system.skill">
-            {{#select data.system.skill}}
-              <option value="force">{{localize "SKILL.FORCE"}}</option>
-              <option value="closeCombat">{{localize
-                  "SKILL.CLOSE_COMBAT"
-                }}</option>
-              <option value="rangedCombat">{{localize
-                  "SKILL.RANGED_COMBAT"
-                }}</option>
-            {{/select}}
+             {{selectOptions config.bonusTypeDamageSkillsOptions selected=data.system.skill localize=true}}
           </select>
        
 

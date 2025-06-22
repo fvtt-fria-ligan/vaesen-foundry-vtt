@@ -27,12 +27,7 @@
           <b style="margin-right: 5px;">{{localize "CRITICAL_INJURY.TYPE"}}:
           </b>
           <select name="system.type">
-            {{#select data.system.type}}
-              <option value="physical">{{localize
-                  "CONDITION.PHYSICAL"
-                }}</option>
-              <option value="mental">{{localize "CONDITION.MENTAL"}}</option>
-            {{/select}}
+             {{selectOptions config.injuryTypeOptions selected=data.system.type localize=true}}
           </select>
         </div>
         <div class="flex-col center">
@@ -41,10 +36,7 @@
             }}:
           </b>
           <select name="system.permanent">
-            {{#select data.system.permanent}}
-              <option value="No">{{localize "NO"}}</option>
-              <option value="Yes">{{localize "YES"}}</option>
-            {{/select}}
+            {{selectOptions config.yesNoOptions selected=data.system.permanent localize=true}}
           </select>
         </div>
 
@@ -78,10 +70,7 @@
             }}:
           </b>
           <select name="system.healed">
-            {{#select data.system.healed}}
-              <option value="No">{{localize "NO"}}</option>
-              <option value="Yes">{{localize "YES"}}</option>
-            {{/select}}
+            {{selectOptions config.yesNoOptions selected=data.system.healed localize=true}}
           </select>
         </div>
         <div class="grid-span-1 grid-align-end">
@@ -96,12 +85,7 @@
         <div class="grid-span-2 grid-align-end">
           <h3>{{localize "CRITICAL_INJURY.SKILL"}}:</h3>
           <select name="system.skill">
-            {{#select data.system.skill}}
-            {{#each config.skills as |skill key|}}
-            <option value="{{key}}" {{#if (eq key ../data.system.skill)}}selected{{/if}}>{{localize skill}}
-            </option>
-            {{/each}}
-            {{/select}}
+            {{selectOptions config.skills selected=data.system.skill localize=true}}
           </select>
         </div>
       </div>
