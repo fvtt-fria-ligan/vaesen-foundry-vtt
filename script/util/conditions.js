@@ -164,7 +164,7 @@ export class conditions{
       const slowAction = await token.actor.effects.find(it => it.icon == slowCondition.icon);
       const fastAction = await token.actor.effects.find(it => it.icon == fastCondition.icon);
 
-      console.log("CUSSA _ UPDATE", token, slowAction, fastAction);
+      // console.log("CUSSA _ UPDATE", token, slowAction, fastAction);
 
       if (turn == 0) {
         if (slowAction) await token.toggleActiveEffect(slowCondition);
@@ -188,7 +188,7 @@ export class conditions{
     static async onCombatStartEnd(data) {
       this.combatPreparation = true;
       for (const turn of data.turns) {
-        console.log("CUSSA _ COMBAT", turn);
+        // console.log("CUSSA _ COMBAT", turn);
         await this.onActionUpdate(turn.tokenId, null, 0, true);
       }
       this.combatPreparation = false;
@@ -239,8 +239,8 @@ conditions.eventsProcessing = {
         let actor = this.actor;
         let conditionName = $(event.currentTarget).data("key");
         //let effectId = element.dataset.effectId;
-        console.log(conditionName);
-        console.log(actor);
+        // console.log(conditionName);
+        // console.log(actor);
         
         await actor.toggleStatusEffectById(conditionName)
        

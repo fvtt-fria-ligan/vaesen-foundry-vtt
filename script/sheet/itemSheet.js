@@ -23,7 +23,7 @@ export class vaesenItemSheet extends foundry.appv1.sheets.ItemSheet {
     const source = this.item.toObject();
     data.config = CONFIG.vaesen;
     data.source = source;
-    console.log("Vaesen | data: ", data);
+    // console.log("Vaesen | data: ", data);
 
     return data;
   }

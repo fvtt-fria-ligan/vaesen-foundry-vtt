@@ -20,8 +20,8 @@ import { VaesenTokenHUD } from "./util/token.js";
 import ChatMessageVaesen from "./util/chat.js";
 
 Hooks.on("renderChatMessageHTML", (app, html, data) => {
-  console.log("renderChatMessage", app, html, data);
-  console.log("ChatMessageVaesen", ChatMessageVaesen);
+  // console.log("renderChatMessage", app, html, data);
+  // console.log("ChatMessageVaesen", ChatMessageVaesen);
   ChatMessageVaesen.activateListeners(html);
   // ChatMessageVaesen.hideChatActionButtons(app, html, data);
 });
@@ -50,8 +50,8 @@ Hooks.once("init", () => {
     },
   };
 
-  console.log("Vaesen | CONFIG.vaesen: ", CONFIG.vaesen);
-  console.log("Vaesen | modules: ", game.modules);
+  // console.log("Vaesen | CONFIG.vaesen: ", CONFIG.vaesen);
+  // console.log("Vaesen | modules: ", game.modules);
 
   CONFIG.hasYZECombatActive = game.modules.get("yze-combat")?.active;
   console.log("Vaesen | YZE Combat Active: ", CONFIG.hasYZECombatActive);
@@ -147,7 +147,7 @@ Hooks.on("updateActor", (actor, changes, diff, userId) => {
   // if we don't have an active scene, don't do anything
   if (!game.scenes.current || !actor.isOwner || changes.name == undefined)
     return;
-  console.log("updateActor", actor, changes, diff, userId);
+  // console.log("updateActor", actor, changes, diff, userId);
   game.scenes.current.tokens.forEach((x) => {
     if (x.actorId !== actor._id) return;
 

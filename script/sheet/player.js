@@ -15,11 +15,11 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     console.log("affirmConditions");
     let currentConditions = [];
     actor.effects.forEach(function (value, key) {
-      console.log("value: ", value);
+      // console.log("value: ", value);
       currentConditions.push(value.data.flags.core?.statusId);
     });
 
-    console.log("current conditions: ", currentConditions);
+    // console.log("current conditions: ", currentConditions);
 
     // set state of sheet checks for set conditions
     if (currentConditions.indexOf("physical") === -1) {
@@ -127,7 +127,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     html.find(".condition").click((ev) => {
       ev.preventDefault();
       const conditionName = $(ev.currentTarget).data("key");
-      console.log("Vaesen  | Condition name", conditionName);
+      // console.log("Vaesen  | Condition name", conditionName);
       this.updateCondition(conditionName);
     });
 
@@ -280,7 +280,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
       data["system.starting"] = data.starting ? true : false;
       delete data.starting;
     }
-    console.log("CUSSA", data);
+    // console.log("CUSSA", data);
     this.actor.createEmbeddedDocuments("Item", [data]);
   }
 
@@ -299,7 +299,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
   onFavTogle(event) {
     const div = $(event.currentTarget).parents(".item");
     const item = this.actor.items.get(div.data("itemId"));
-    console.log("onFavTogle", item);
+    // console.log("onFavTogle", item);
 
     let fav = item.system.isFav;
     if (fav) {
@@ -388,7 +388,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
 
 
   _dropHeadquarter(headquarter) {
-    console.log("_dropHeadquarter", headquarter);
+    // console.log("_dropHeadquarter", headquarter);
     if (!headquarter) return;
     this.actor.update({ "system.headquarter": headquarter.id });
     return this.actor;

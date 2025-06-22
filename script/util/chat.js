@@ -17,11 +17,11 @@ export default class ChatMessageVaesen extends ChatMessage {
   }
 
   _displayChatActionButtons(html, data) {
-    console.log("Displaying chat action buttons", html, data);
+    // console.log("Displaying chat action buttons", html, data);
   }
 
    static activateListeners(html) {
-    console.log("Activating listeners", html);
+    // console.log("Activating listeners", html);
 
 
         const button = html.querySelectorAll(".dice-button.push");
@@ -31,7 +31,7 @@ export default class ChatMessageVaesen extends ChatMessage {
   }
 
   hideChatActionButtons(message, html, data) {
-    console.log("Hiding chat action buttons", message, html, data);
+    // console.log("Hiding chat action buttons", message, html, data);
     // get the div in the html that has the class vaesen.chat-card the html is a raw html string that is passed to the chat
     for (let i = 0; i < html.length; i++) {
       if (html[i].classList.contains("vaesen.chat-card")) {
@@ -507,7 +507,7 @@ export default class ChatMessageVaesen extends ChatMessage {
 }
 
 export async function  buildChatCard(type, data) {
-    console.log("Building chat card", type, data);
+    // console.log("Building chat card", type, data);
     let message = "";
     let chatData = {};
     let token = "";
