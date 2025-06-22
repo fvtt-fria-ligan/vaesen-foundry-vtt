@@ -55,19 +55,19 @@ h1, h2, h3, h4 {
 }
 
 h1{
-    font-size: var(--fs-500);
-}
-
-h2{
     font-size: var(--fs-400);
 }
 
-h3{
+h2{
     font-size: var(--fs-300);
 }
 
-h4{
+h3{
     font-size: var(--fs-200);
+}
+
+h4{
+    font-size: var(--fs-100);
 }
 
 .color-brown-700{

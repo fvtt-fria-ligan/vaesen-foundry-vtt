@@ -21,10 +21,26 @@
     }
 }
 
+.centered {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.journal-header{
+    background-color: $brown-100;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+
 .journal-entry-page{
     max-width: 55ch;
     margin: 0 auto;
+    color: #412017;
 
+    & .window-content{
+        background-color: $brown-200;
+    }
     
 & table tr:nth-child(odd) {
     background: #e6ded6;

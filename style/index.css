@@ -93,19 +93,19 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-  font-size: var(--fs-500);
-}
-
-h2 {
   font-size: var(--fs-400);
 }
 
-h3 {
+h2 {
   font-size: var(--fs-300);
 }
 
-h4 {
+h3 {
   font-size: var(--fs-200);
+}
+
+h4 {
+  font-size: var(--fs-100);
 }
 
 .color-brown-700 {
@@ -472,9 +472,24 @@ input.dark {
   border-bottom: 1px solid hsl(21, 20%, 60%);
 }
 
+.centered {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.journal-header {
+  background-color: hsl(0, 0%, 91%);
+  padding: 3px;
+  border-radius: 5px;
+}
+
 .journal-entry-page {
   max-width: 55ch;
   margin: 0 auto;
+  color: #412017;
+}
+.journal-entry-page .window-content {
+  background-color: hsl(21, 20%, 60%);
 }
 .journal-entry-page table tr:nth-child(odd) {
   background: #e6ded6;
