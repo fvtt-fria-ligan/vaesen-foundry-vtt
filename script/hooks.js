@@ -134,6 +134,7 @@ Hooks.once("ready", async function () {
   allVaesen.forEach((vaesen) => {
     let conditions = vaesen.items.filter((c) => c.type == "condition");
     let count = 0;
+    console.log("conditions list: ", conditions);
     conditions.forEach((condition) => {
       count++;
       const img = "systems/vaesen/asset/counter_tokens/" + count + ".png";

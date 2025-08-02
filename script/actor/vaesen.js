@@ -96,6 +96,7 @@ export class VaesenActor extends Actor {
   }
 
   async toggleStatusEffect(statusId, options) {
+    // console.log("statusID: ", statusId);
     if (this.type != "vaesen")
       return await super.toggleStatusEffect(statusId, options);
 

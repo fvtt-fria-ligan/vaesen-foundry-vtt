@@ -249,6 +249,7 @@ export class VaesenActorSheet extends foundry.appv1.sheets.ActorSheet {
       data["img"] = `systems/vaesen/asset/counter_tokens/${count+1}.png`;
     }
     this.actor.createEmbeddedDocuments("Item", [data]);
+    console.log("actor data after creating vaesen conditions: ", this.actor);
   }
 
   onItemUpdate(event) {

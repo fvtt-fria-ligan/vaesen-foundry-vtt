@@ -13,8 +13,8 @@ export class conditions {
   static vasenConditions = [
     {
       id: "exhausted",
-      label: "CONDITION.EXHAUSTED",
-      icon: `${this.conditionPath}oppression.svg`,
+      name: "CONDITION.EXHAUSTED",
+      img: `${this.conditionPath}oppression.svg`,
       changes: [
         {
           key: "system.condition.physical.states.exhausted.isChecked",
@@ -26,8 +26,8 @@ export class conditions {
     },
     {
       id: "battered",
-      label: "CONDITION.BATTERED",
-      icon: `${this.conditionPath}pummeled.svg`,
+      name: "CONDITION.BATTERED",
+      img: `${this.conditionPath}pummeled.svg`,
       changes: [
         {
           key: "system.condition.physical.states.battered.isChecked",
@@ -39,8 +39,8 @@ export class conditions {
     },
     {
       id: "wounded",
-      label: "CONDITION.WOUNDED",
-      icon: `${this.conditionPath}arm-sling.svg`,
+      name: "CONDITION.WOUNDED",
+      img: `${this.conditionPath}arm-sling.svg`,
       changes: [
         {
           key: "system.condition.physical.states.wounded.isChecked",
@@ -52,8 +52,8 @@ export class conditions {
     },
     {
       id: "physical",
-      label: "CONDITION.PHYSICALLYBROKEN",
-      icon: `${this.conditionPath}broken-bone.svg`,
+      name: "CONDITION.PHYSICALLYBROKEN",
+      img: `${this.conditionPath}broken-bone.svg`,
       changes: [
         {
           key: "system.condition.physical.isBroken",
@@ -65,8 +65,8 @@ export class conditions {
     },
     {
       id: "angry",
-      label: "CONDITION.ANGRY",
-      icon: `${this.conditionPath}revolt.svg`,
+      name: "CONDITION.ANGRY",
+      img: `${this.conditionPath}revolt.svg`,
       changes: [
         {
           key: "system.condition.mental.states.angry.isChecked",
@@ -78,8 +78,8 @@ export class conditions {
     },
     {
       id: "frightened",
-      label: "CONDITION.FRIGHTENED",
-      icon: `${this.conditionPath}terror.svg`,
+      name: "CONDITION.FRIGHTENED",
+      img: `${this.conditionPath}terror.svg`,
       changes: [
         {
           key: "system.condition.mental.states.frightened.isChecked",
@@ -91,8 +91,8 @@ export class conditions {
     },
     {
       id: "hopeless",
-      label: "CONDITION.HOPELESS",
-      icon: `${this.conditionPath}despair.svg`,
+      name: "CONDITION.HOPELESS",
+      img: `${this.conditionPath}despair.svg`,
       changes: [
         {
           key: "system.condition.mental.states.hopeless.isChecked",
@@ -104,8 +104,8 @@ export class conditions {
     },
     {
       id: "mental",
-      label: "CONDITION.MENTALLYBROKEN",
-      icon: `${this.conditionPath}shattered-heart.svg`,
+      name: "CONDITION.MENTALLYBROKEN",
+      img: `${this.conditionPath}shattered-heart.svg`,
       changes: [
         {
           key: "system.condition.mental.isBroken",
@@ -114,14 +114,14 @@ export class conditions {
         },
       ],
       statuses: ["mental"],
-    },
+    }
   ];
 
   static allConditions = conditions.vasenConditions;
 
   static onReady() {
     // console.log(game.i18n.lang );
-    //console.log("Vaesen | Conditions: ", conditions.vasenConditions);
+    // console.log("Vaesen | Conditions: ", conditions.vasenConditions);
     CONFIG.vaesen.allConditions = this.allConditions;
     CONFIG.statusEffects = conditions.vasenConditions;
     let allVaesen = game.actors.filter((it) => it.type == "vaesen");
@@ -132,9 +132,20 @@ export class conditions {
       conditions.forEach((condition) => {
         count++;
         const img = "systems/vaesen/asset/counter_tokens/" + count + ".png";
-        condition.update({ img: img });
+        const statusObject =     
+        {
+      id: img,
+      name: condition.name,
+      img: img,
+      statuses: [img],
+      }
+        condition.update(statusObject);
+        // console.log("condition data: ", condition);
       });
+
     });
+
+    // console.log("Vaesen | Conditions: ", conditions.vasenConditions);
   }
 
   static getStatusEffectBy(id) {
@@ -218,12 +229,13 @@ export class conditions {
     }
 
   static async onVaesenCondition(actor, conditionId) {
+    // console.log("condition id: ", conditionId);
     let condition = Array.from(actor.items?.values()).find(
       (x) => x.type == "condition" && x._id == conditionId
     );
 
       await actor.updateEmbeddedDocuments("Item", [
-        { _id: condition._id, "system.active": !condition.system.active, name: condition.name },
+        { _id: condition._id, "system.active": !condition.system.active, name: condition.name},
       ]);
 
 
@@ -242,6 +254,7 @@ export class conditions {
       };
   
       const currentEffect = Array.from(actor.effects?.values()).find(it => it.icon === statusEffect.icon);
+      // console.log("current Effect", currentEffect);
       if (currentEffect) {
         await actor.deleteEmbeddedDocuments('ActiveEffect', [currentEffect.id]);
       }
@@ -255,6 +268,7 @@ export class conditions {
 
 conditions.eventsProcessing = {
     "onToggleEffect": async function (event) {
+      // console.log("toggleEffect event: ", event);
 		
 		
         event.preventDefault();
