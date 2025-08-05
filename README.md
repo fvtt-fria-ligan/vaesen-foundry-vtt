@@ -29,6 +29,14 @@ This system provides character sheets and items for  your play, if you would lik
 
 
 ## Release Notes
+v7.0.1
+= 🐛 Fix: Vaesen conditions on token hud showing broken images
+= 🐛 Fix: Vaesen conditions cannot be applied from token hud
+= 🐛 Fix: CSS for conditions menu on token hud to narrow for vaesen conditions
+
+v7.0.0
+- Foundry V13 compatability update
+
 v6.0.5
 = 🐛 Fix: Fast and slow actions setting and unetting incorrectly when YZE Combat module is active [#131](https://github.com/fvtt-fria-ligan/vaesen-foundry-vtt/issues/131)
 
