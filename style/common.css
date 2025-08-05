@@ -53,8 +53,7 @@
 }
 
 #token-hud .status-effects { 
-	top: 37%; 
-	width: 160px; 
+	top: 37%;  
 	grid-template-columns: 40px 40px 40px 40px;
 }
 
