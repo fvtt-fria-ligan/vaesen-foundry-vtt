@@ -70,7 +70,7 @@ export class VaesenActor extends Actor {
           label: effect.label,
           icon: effect.icon,
           origin: this.uuid,
-         
+
         },
       ],
       options
@@ -116,6 +116,7 @@ export class VaesenActor extends Actor {
     const displayName = link
       ? CONST.TOKEN_DISPLAY_MODES.HOVER
       : CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER;
+    const visionRange = link ? 0 : 30;
     const isNpc = data.type == "npc";
     const displayBars = isNpc
       ? CONST.TOKEN_DISPLAY_MODES.OWNER
@@ -129,7 +130,7 @@ export class VaesenActor extends Actor {
       "prototypeToken.name": `${data.name}`,
       "prototypeToken.actorLink": link,
       "prototypeToken.sight.enabled": "true",
-      "prototypeToken.sight.range": "30",
+      "prototypeToken.sight.range": visionRange,
       "prototypeToken.bar1.attribute": bar1,
       "prototypeToken.bar2.attribute": bar2,
       "system.starting": true,
