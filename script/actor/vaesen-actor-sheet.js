@@ -1,6 +1,6 @@
 import { adjustBonusText, prepareRollNewDialog, push } from "../util/roll.js";
 import { YearZeroRoll } from "../lib/yzur.js";
-import ChatMessageVaesen, { buildChatCard }  from "../util/chat.js";
+import ChatMessageVaesen, { buildChatCard } from "../util/chat.js";
 
 /**
  * Extend the default actor sheet to allow for text enrichment etc.
@@ -61,7 +61,7 @@ export class VaesenActorSheet extends foundry.appv1.sheets.ActorSheet {
   async getData() {
     const source = this.actor.toObject();
     const actorData = this.actor.toObject(false);
-    
+
 
     //"player", "npc", "vaesen", "headquarter"
     const context = {
@@ -84,7 +84,7 @@ export class VaesenActorSheet extends foundry.appv1.sheets.ActorSheet {
     };
     context.effects = this.actor.getEmbeddedCollection("ActiveEffect").contents;
 
-    
+
 
     if (context.isNpc) {
       // enchich html for notes and description
@@ -110,7 +110,7 @@ export class VaesenActorSheet extends foundry.appv1.sheets.ActorSheet {
       });
     }
 
-    
+
     if (!context.isVaesen && !context.isHeadquarter) {
       this.computeSkills(context);
     }
@@ -243,10 +243,9 @@ export class VaesenActorSheet extends foundry.appv1.sheets.ActorSheet {
     let data = duplicate(header.dataset);
 
     data["name"] = `New ${data.type.capitalize()}`;
-    if (data.type == "condition")
-    {
+    if (data.type == "condition") {
       var count = this.actor.items.filter(x => x.type == "condition").length;
-      data["img"] = `systems/vaesen/asset/counter_tokens/${count+1}.png`;
+      data["img"] = `systems/vaesen/asset/counter_tokens/${count + 1}.png`;
     }
     this.actor.createEmbeddedDocuments("Item", [data]);
     console.log("actor data after creating vaesen conditions: ", this.actor);
@@ -275,7 +274,7 @@ export class VaesenActorSheet extends foundry.appv1.sheets.ActorSheet {
     });
   }
 
-  onItemDeleteAction(div, item){
+  onItemDeleteAction(div, item) {
     this.actor.deleteEmbeddedDocuments("Item", [item]);
     div.slideUp(200, () => this.render(false));
   }
@@ -492,6 +491,27 @@ export class VaesenActorSheet extends foundry.appv1.sheets.ActorSheet {
     return talentArray;
   }
 
+  computePossibleBonusFromCriticalInjuries(skillName) {
+    let criticalInjuryArray = [];
+
+    for (let item of Object.values(this.actor.items.contents)) {
+      if (
+        item.type === "criticalInjury" &&
+        item.system.skill === skillName
+      ) {
+        let criticalInjury = {
+          name: item.name,
+          bonus: item.system.bonus,
+          bonusType: skillName === "fear" ? "fear" : "skill",
+          description: item.system.effect,
+        };
+        criticalInjuryArray.push(criticalInjury);
+      }
+    }
+
+    return criticalInjuryArray;
+  }
+
   computeInfoFromCriticalInjuries(skillName) {
     let bonus = 0;
     let tooltip = [];
@@ -543,12 +563,13 @@ export class VaesenActorSheet extends foundry.appv1.sheets.ActorSheet {
       " " +
       game.i18n.localize("FEAR_ROLL");
     let bonusTalent = this.computePossibleBonusFromTalent("fear", key);
+    let bonusCriticalInjuries = this.computePossibleBonusFromCriticalInjuries("fear");
 
     let info = [
       { name: testName, value: attribute.value },
       this.computeInfoFromConditions(attribute),
     ];
-    prepareRollNewDialog(this, testName, info, null, null, bonusTalent);
+    prepareRollNewDialog(this, testName, info, null, null, bonusTalent, null, bonusCriticalInjuries);
   }
 
   rollSkill(skillName) {
@@ -560,6 +581,7 @@ export class VaesenActorSheet extends foundry.appv1.sheets.ActorSheet {
       skillName,
       skill.attribute
     );
+    let bonusCriticalInjuries = this.computePossibleBonusFromCriticalInjuries(skillName);
 
     const testName = game.i18n.localize(skill.label);
 
@@ -570,13 +592,12 @@ export class VaesenActorSheet extends foundry.appv1.sheets.ActorSheet {
       },
       { name: testName, value: skill.value },
       this.computeInfoFromConditions(skill.attribute),
-      this.computeInfoFromCriticalInjuries(skillName),
       this.computeInfoFromArmor(skillName),
     ];
 
     var damage = skillName == "force" ? 1 : null;
 
-    prepareRollNewDialog(this, testName, info, damage, bonusGear, bonusTalent);
+    prepareRollNewDialog(this, testName, info, damage, bonusGear, bonusTalent, null, bonusCriticalInjuries);
   }
 
   rollWeapon(itemId) {

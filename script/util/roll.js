@@ -7,7 +7,8 @@ export function prepareRollNewDialog(
   damageDefault = null,
   gearBonus = null,
   talentBonus = null,
-  recoveryBonus = null
+  recoveryBonus = null,
+  criticalInjuryBonus = null,
 ) {
   let baseLines = [];
   let baseLinesDice = 0;
@@ -22,13 +23,13 @@ export function prepareRollNewDialog(
       `
 <div class="flex row" style="flex-basis: 35%; justify-content: space-between; width: 100%;">
 <p style="text-transform: capitalize; white-space:nowrap;">` +
-        element.name +
-        `: </p>
+      element.name +
+      `: </p>
 <input style="text-align: center" type="text" value="` +
-        element.value +
-        `" readonly data-tooltip="` +
-        tooltip +
-        `" data-tooltip-direction="RIGHT" data-tooltip-class="vaesen-tooltip"/></div>`
+      element.value +
+      `" readonly data-tooltip="` +
+      tooltip +
+      `" data-tooltip-direction="RIGHT" data-tooltip-class="vaesen-tooltip"/></div>`
     );
 
     baseLinesDice += parseInt(element.value, 10);
@@ -51,10 +52,10 @@ export function prepareRollNewDialog(
     damageDefault === null
       ? ""
       : buildInputHtmlDialog(
-          game.i18n.localize("ROLL.DAMAGE"),
-          damageDefault,
-          "damage"
-        );
+        game.i18n.localize("ROLL.DAMAGE"),
+        damageDefault,
+        "damage"
+      );
 
   let gearHtml = buildGearSelectHtmlDialog(gearBonus);
   let talentHtml = buildSelectMultipleHtmlDialog(
@@ -67,10 +68,16 @@ export function prepareRollNewDialog(
     "UPGRADE.NAME",
     "upgrade"
   );
+  let criticalInjuriesHtml = buildSelectMultipleHtmlDialog(
+    criticalInjuryBonus,
+    "CRITICAL_INJURY.NAME",
+    "criticalInjury"
+  );
 
   let extraLines = [];
   extraLines.push(gearHtml);
   extraLines.push(talentHtml);
+  extraLines.push(criticalInjuriesHtml);
   extraLines.push(upgradeHtml);
   extraLines.push(bonusHtml);
   extraLines.push(damageHtml);
@@ -94,10 +101,12 @@ export function prepareRollNewDialog(
             let bonus = parseInt(html.find("#bonus")[0].value, 10);
             let gear = 0;
             var talent = 0;
+            var criticalInjury = 0;
             var upgrades = 0;
             var damage = 0;
             let gearSelect = html.find("#gear")[0];
             let talentSelect = html.find("#talent")[0];
+            let criticalInjurySelect = html.find("#criticalInjury")[0];
             let upgradeSelect = html.find("#upgrade")[0];
             let damageInput = html.find("#damage")[0];
             if (gearSelect) {
@@ -128,6 +137,14 @@ export function prepareRollNewDialog(
                 }
               });
             }
+            if (criticalInjurySelect) {
+              let options = criticalInjurySelect.selectedOptions;
+              Array.from(options).map(({ text, value }) => {
+                let selectedCriticalInjury = criticalInjuryBonus.find((x) => x.name == value);
+                breakdown.push(text);
+                criticalInjury += parseInt(selectedCriticalInjury.bonus, 10);
+              });
+            }
             if (upgradeSelect) {
               let options = upgradeSelect.selectedOptions;
               Array.from(options).map(({ text, value }) => {
@@ -148,7 +165,7 @@ export function prepareRollNewDialog(
               testName,
               baseLinesDice,
               0,
-              bonus + gear + talent + upgrades,
+              bonus + gear + talent + upgrades + criticalInjury,
               damage,
               breakdown
             );
@@ -157,11 +174,11 @@ export function prepareRollNewDialog(
         cancel: {
           icon: '<i class="fas fa-times"></i>',
           label: game.i18n.localize("ROLL.CANCEL"),
-          callback: () => {},
+          callback: () => { },
         },
       },
       default: "roll",
-      close: () => {},
+      close: () => { },
     },
     { width: "330" }
   );
@@ -228,8 +245,8 @@ async function rollDice(sheet, numberOfDice, breakdown) {
   );
   // console.log("roll dice roll:", r);
 
-// Execute the roll
-await r.evaluate();
+  // Execute the roll
+  await r.evaluate();
 
 
 
@@ -277,8 +294,8 @@ function buildGearSelectHtmlDialog(options) {
   );
   html.push(
     `<p style="text-transform: capitalize; white-space:nowrap; margin-top: 4px;">` +
-      game.i18n.localize("GEAR.NAME") +
-      `: </p></div>`
+    game.i18n.localize("GEAR.NAME") +
+    `: </p></div>`
   );
   html.push(`<div class="flex row" style="width: 100%;">`);
   html.push(`<select id="gear" style="width: 100%;" data-tooltip-direction="RIGHT" data-tooltip-class="vaesen-tooltip">`);
@@ -288,15 +305,15 @@ function buildGearSelectHtmlDialog(options) {
     var descriptionWithoutTags = $("<p>").html(element.description).text();
     html.push(
       `<option value="` +
-        element.bonus +
-        `" data-tooltip="` +
-        descriptionWithoutTags +
-        `">` +
-        element.name +
-        ` (` +
-        bonusValue +
-        `)` +
-        `</option>`
+      element.bonus +
+      `" data-tooltip="` +
+      descriptionWithoutTags +
+      `">` +
+      element.name +
+      ` (` +
+      bonusValue +
+      `)` +
+      `</option>`
     );
   });
   html.push(`</select></div>`);
@@ -367,25 +384,25 @@ function buildDivHtmlNewDialog(
   dialogHtmlContent.push(`<div class="roll-fields">`);
   dialogHtmlContent.push(
     `<h2 class="title" style="width: 97%; margin: auto;"> ` +
-      game.i18n.localize("ROLL.TEST") +
-      `: ` +
-      testName +
-      `</h2>`
+    game.i18n.localize("ROLL.TEST") +
+    `: ` +
+    testName +
+    `</h2>`
   );
   dialogHtmlContent.push(
     `<div class="flex column grow align-center heavy-border" style="width:300px;">` +
-      baseDiceHtml +
-      ` 
+    baseDiceHtml +
+    ` 
 <div align-center style="flex-basis:33%;"> <strong>` +
-      game.i18n.localize("ROLL.BASE.POOL") +
-      `:</strong> ` +
-      baseDiceValue +
-      `</div></div>`
+    game.i18n.localize("ROLL.BASE.POOL") +
+    `:</strong> ` +
+    baseDiceValue +
+    `</div></div>`
   );
   dialogHtmlContent.push(
     `<div class="flex column grow align-center light-border" style="width:300px; margin:auto; padding:5px; margin-bottom: 3px;">` +
-      extraLinesHtml +
-      `</div></div>`
+    extraLinesHtml +
+    `</div></div>`
   );
   dialogHtmlContent.push("</div></div>");
   return dialogHtmlContent.join("");
@@ -400,13 +417,13 @@ export function totalRoll(messageText, chatData) {
   const pattern = /^\/r ((\d*)d(\d+).*$)/g;
   const matches = [...messageText.toLowerCase().matchAll(pattern)];
   const customRolls = {
-    "66" : "1d6*10+1d6", 
+    "66": "1d6*10+1d6",
     "666": "1d6*100+1d6*10+1d6",
     "6666": "1d6*1000+1d6*100+1d6*10+1d6"
   };
   if (matches.length == 0)
     return true;
-    
+
   let actor = undefined;
   if (chatData.speaker.actor)
     actor = game.actors.get(chatData.speaker.actor);
@@ -415,8 +432,7 @@ export function totalRoll(messageText, chatData) {
   const formula = matches[0][1];
   const numberDice = parseInt(matches[0][2] ? matches[0][2] : "1");
 
-  if (Object.keys(customRolls).indexOf(diceSide) == -1)
-  {
+  if (Object.keys(customRolls).indexOf(diceSide) == -1) {
     createCustomRoll(actor, formula, formula);
     return false;
   }
@@ -428,27 +444,27 @@ export function totalRoll(messageText, chatData) {
 }
 
 async function createCustomRoll(actor, formula, name) {
-  let options = { 
+  let options = {
     token: actor?.img
   };
-  
-  let templateData = { 
+
+  let templateData = {
     flavor: `${name} ${game.i18n.localize("ROLL.ROLL")}`,
     type: "total"
   };
-  
+
   const roll = Roll.create(formula, options);
-  
+
   let messageData = {
     content: await roll.render(templateData),
   };
   let rollMode = game.settings.get("core", "rollMode");
-  
+
   await roll.toMessage(messageData, { rollMode });
 }
 
 export function registerGearSelectTooltip() {
-  $("body").on("change", "#gear", function(e) {
+  $("body").on("change", "#gear", function (e) {
     var optionSelected = $("option:selected", this);
     var tooltip = optionSelected.attr("data-tooltip") ?? "";
     $(this).attr("data-tooltip", tooltip);
