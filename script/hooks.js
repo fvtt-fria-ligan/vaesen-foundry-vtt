@@ -120,12 +120,10 @@ Hooks.once("init", () => {
 Hooks.once("ready", async function () {
   setupCards();
   conditions.onReady();
-  // ChatMessageVaesen.activateListeners();
   Hooks.on("hotbarDrop", (bar, data, slot) => createRollMacro(data, slot));
   Hooks.on("chatMessage", (_, messageText, chatData) =>
     totalRoll(messageText, chatData)
   );
-  activateListeners($(document));
   migrate();
   registerGearSelectTooltip();
 
@@ -253,30 +251,6 @@ Hooks.once("diceSoNiceReady", (dice3d) => {
     "d6"
   );
 });
-
-
-async function activateListeners(html) {
-  html.on("click", ".dice-button.push", _onPush);
-}
-
-async function _onPush(event) {
-  event.preventDefault();
-
-  // Get the message.
-  let chatCard = event.currentTarget.closest(".chat-message");
-  let messageId = chatCard.dataset.messageId;
-  let message = game.messages.get(messageId);
-
-  // Copy the roll.
-  let roll = message.rolls[0].duplicate();
-
-  // Delete the previous message.
-  await message.delete();
-
-  // Push the roll and send it.
-  await roll.push({ async: true });
-  await roll.toMessage();
-}
 
 async function setupCards() {
   const initiativeDeckId = game.settings.get("vaesen", "initiativeDeck");
