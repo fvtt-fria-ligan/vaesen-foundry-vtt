@@ -589,4 +589,8 @@ ol.dice-rolls li {
   flex-direction: column;
   margin: 0;
   padding: 0;
+}
+
+.chat-message {
+  position: relative;
 }/*# sourceMappingURL=index.css.map */
