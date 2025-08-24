@@ -226,7 +226,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     });
   }
 
-    updateCondition(conditionName) {
+  updateCondition(conditionName) {
 
     let actor = this.actor;
     const statusEffect = CONFIG.statusEffects.find(it => it.id === conditionName);
@@ -240,15 +240,15 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
     let localizedName = game.i18n.localize("CONDITION." + fullName.toUpperCase());
     localizedName = localizedName.replace( /\w\S*/g, text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase());
   
-    const currentEffect = Array.from(actor.effects?.values()).find(it => it.img === statusEffect.icon);
+    const currentEffect = Array.from(actor.effects?.values()).find(it => it.img === statusEffect.img);
     if (currentEffect) {
       actor.deleteEmbeddedDocuments('ActiveEffect', [currentEffect.id]);
     }
     else {
       actor.createEmbeddedDocuments("ActiveEffect", [{
         name: localizedName,
-        label: game.i18n.localize(statusEffect.label),
-        icon: statusEffect.icon,
+        name: game.i18n.localize(statusEffect.name),
+        img: statusEffect.img,
         changes: statusEffect.changes,
         id: this.uuid,
         statuses: statusEffect.statuses,
