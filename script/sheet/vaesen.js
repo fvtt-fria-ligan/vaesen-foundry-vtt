@@ -20,11 +20,6 @@ export class VaesenCharacterSheet extends VaesenActorSheet {
     });
   }
 
-  async getData() {
-    this.actor.setFlag("vaesen", "blockCondition", !this.actor.prototypeToken.actorLink && !this.actor.isToken);
-    return super.getData();
-  }
-
   activateListeners(html) {
     super.activateListeners(html);
 

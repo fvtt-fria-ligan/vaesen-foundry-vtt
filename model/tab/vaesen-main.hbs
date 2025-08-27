@@ -22,7 +22,7 @@
                                     {{#if item.system.active}}
                                         checked 
                                     {{/if}}
-                                    {{#if ../actor.flags.vaesen.blockCondition}}
+                                    {{#if ../blockCondition}}
                                         onclick="ui.notifications.warn(`Vaesen's conditions should be applied in tokens only.`); return false;" 
                                     {{/if}}
                                     />

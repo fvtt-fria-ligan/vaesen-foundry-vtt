@@ -81,6 +81,7 @@ export class VaesenActorSheet extends foundry.appv1.sheets.ActorSheet {
       isVaesen: this.actor.type === "vaesen",
       isHeadquarter: this.actor.type === "headquarter",
       // rollData: this.actor.getRollData().bind(this.actor),
+      blockCondition: !this.actor.prototypeToken.actorLink && !this.actor.isToken
     };
     context.effects = this.actor.getEmbeddedCollection("ActiveEffect").contents;
 
