@@ -2,7 +2,7 @@
     <div class="flex-col heavy-border margin-b-sm padding-sm min-h-500">
         <b class="title dark" style="width: 100%; margin-left: 0px;">{{localize "HEADER.HISTORY"}}</b>
         <div class="content min-h-500">
-            <div class="flex column heavy-border notepad">
+            <div class="flex column heavy-border notepad" style="width: 100%">
                 {{editor noteHTML target="system.note" button=true owner=owner editable=editable engine="prosemirror"
                 collaborate=false}}
             </div>
