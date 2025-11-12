@@ -17,6 +17,8 @@ export function prepareRollNewDialog(
 
   baseDiceLines.forEach((element) => {
     if (element == null) return;
+    if (element.type === "conditions" && game.settings.get("vaesen", "conditionAlternativeRule"))
+      return;
 
     let tooltip = element.tooltip ?? "";
     baseLines.push(

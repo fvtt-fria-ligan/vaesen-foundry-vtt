@@ -64,4 +64,14 @@ export const registerSystemSettings = function () {
         type: Boolean,
         onChange: value => linkUnlinkActorData(value, "Vaesen")
     });
+
+    game.settings.register("vaesen", "conditionAlternativeRule", {
+        name: "SETTINGS.CONDITION_ALTERNATIVE_RULE_NAME",
+        hint: "SETTINGS.CONDITION_ALTERNATIVE_RULE",
+        scope: "world",
+        config: true,
+        restricted: true,
+        default: false,
+        type: Boolean,
+    });
 }

@@ -203,6 +203,8 @@
   "SETTINGS.NPC_LINK": "As NPCs can be reused in several mysteries, the token will not be linked to the actor data. If you select to link the data, please, remember to \"reset\" the actor conditions / statuses.",
   "SETTINGS.VAESEN_LINK_NAME": "Link Vaesen's token to actor sheet",
   "SETTINGS.VAESEN_LINK": "As Vaesen can be reused in several mysteries, the token will not be linked to the actor data. If you select to link the data, please, remember to \"reset\" the actor conditions / statuses.",
+  "SETTINGS.CONDITION_ALTERNATIVE_RULE_NAME": "Condition Alternative Rule",
+  "SETTINGS.CONDITION_ALTERNATIVE_RULE": "Enable the Condition Alternative Rule. If checked, conditions will not apply penalties to the rolls. Check page 40 of the Core Rules for more information.",
   "CHAT.SUCCESS": "Successes",
   "ROLL.BASE.POOL": "Base Dice Pool",
   "ROLL.TEST": "Test",
