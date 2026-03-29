@@ -13,7 +13,6 @@
   "TYPES.Item.attack": "Angriff",
   "TYPES.Item.upgrade": "Verbesserung",
   "TYPES.Item.relationship": "Beziehung",
-
   "ATTRIBUTE.PHYSIQUE": "PHYSIS",
   "ATTRIBUTE.PRECISION": "PRÄZISION",
   "ATTRIBUTE.LOGIC": "LOGIK",
@@ -30,21 +29,17 @@
   "ATTRIBUTE.BODY_CONTROL_ROLL": "Körperbeherrschung",
   "ATTRIBUTE.MAGIC_ROLL": "Magie",
   "ATTRIBUTE.MANIPULATION_ROLL": "Manipulation",
-
   "ARMOR.ICON": "Bild",
   "ARMOR.NAME": "Rüstung",
   "ARMOR.PROTECTION": "Schutz",
   "ARMOR.AGILITY": "Beweglichkeit",
   "ARMOR.AVAILABILITY": "Verfügbarkeit",
-  
-
   "ATTACK.ICON": "Bild",
   "ATTACK.NAME": "Waffe",
   "ATTACK.DAMAGE": "Schaden",
   "ATTACK.ATTRIBUTE": "Fertigkeit",
   "ATTACK.RANGE": "Reichweite",
   "ATTACK.DESCRIPTION": "Beschreibung",
-
   "BIO.NAME": "Name",
   "BIO.AGE": "Alter",
   "BIO.ARCHETYPE": "Archetyp",
@@ -55,7 +50,6 @@
   "BIO.BUILDING": "Gebäude",
   "BIO.LOCATION": "Standort",
   "BIO.RELATIONSHIP": "Beziehungen",
-
   "CONDITION.PHYSICAL": "PHYSIS",
   "CONDITION.MENTAL": "GEISTIG",
   "CONDITION.BROKEN": "GEBROCHEN",
@@ -71,7 +65,6 @@
   "CONDITION.DESCRIPTION": "Beschreibung",
   "CONDITION.PHYSICALLYBROKEN": "Physikalisch Gebrochen",
   "CONDITION.MENTALLYBROKEN": "Geistig Gebrochen",
-
   "CRITICAL_INJURY.ICON": "Bild",
   "CRITICAL_INJURY.TYPE": "Typ",
   "CRITICAL_INJURY.NAME": "Verletzung",
@@ -83,10 +76,8 @@
   "CRITICAL_INJURY.EFFECT": "Effekt",
   "CRITICAL_INJURY.SKILL": "Fertigkeit",
   "CRITICAL_INJURY.BONUS": "Bonus",
-
   "FEAR.INITIAL": "Furcht",
   "FEAR.SUBSEQUENT": "Angsterfüllt",
-
   "ADVANTAGE": "Vorteil",
   "MEMENTO": "Memento",
   "EXPERIENCE": "Erfahrung",
@@ -102,8 +93,6 @@
   "NAME" : "Name",
   "BONUS_PENALTY" : "Bonus/Abzug",
   "FEAR_ROLL" : "Furchtwurf",
-  
-
   "GEAR.ICON": "Bild",
   "GEAR.NAME": "Ausrüstung",
   "GEAR.BONUS": "Bonus",
@@ -112,7 +101,6 @@
   "GEAR.DESCRIPTION": "Beschreibung",
   "GEAR.RISK": "Risiko",
   "GEAR.SKILL": "Fertigkeit",
-
   "HEADER.ATTRIBUTES": "ATTRIBUTE",
   "HEADER.ARMORS": "RÜSTUNG",
   "HEADER.BIO": "BIO",
@@ -136,7 +124,6 @@
   "HEADER.FAVORITES": "VORZUG",
   "HEADER.RELATIONSHIPS": "BEZIEHUNGEN",
   "HEADER.HEADQUARTER": "HAUPTQUARTIER",
-
   "MAGIC.ICON": "Bild",
   "MAGIC.NAME": "Magie",
   "MAGIC.DESCRIPTION": "Beschreibung",
@@ -145,7 +132,6 @@
   "MAGIC.CURSE": "Fluch",
   "MAGIC.TROLLCRAFT": "Trollzauber",
   "MAGIC.POWER": "Spezielle Kräfte",
-
   "SKILL.AGILITY": "Beweglichkeit",
   "SKILL.CLOSE_COMBAT": "Nahkampf",
   "SKILL.FORCE": "Kraft",
@@ -158,7 +144,6 @@
   "SKILL.INSPIRATION": "Inspiration",
   "SKILL.MANIPULATION": "Manipulation",
   "SKILL.OBSERVATION": "Beobachtung",
-
   "TAB.MAIN": "HAUPTSEITE",
   "TAB.COMBAT": "KAMPF",
   "TAB.TALENT": "TALENTE",
@@ -172,13 +157,11 @@
   "TAB.PERSONNEL": "PERSONAL",
   "TAB.UPGRADES" : "VERBESSERUNGEN",
   "TAB.MEMBERS" : "MITGLIEDER STATISTIK",
-
   "TALENT.ICON": "Bild",
   "TALENT.NAME": "Talente",
   "TALENT.DESCRIPTION": "Beschreibung",
   "TALENT.SKILL": "Fertigkeit",
   "TALENT.BONUS": "Bonus",
-
   "UPGRADE.ICON": "Bild",
   "UPGRADE.NAME": "Verbesserung",
   "UPGRADE.CATEGORY": "Kategorie",
@@ -191,7 +174,6 @@
   "UPGRADE.CONTACT": "Kontakt",
   "UPGRADE.PERSONNEL": "Personal",
   "UPGRADE.BONUS": "Bonus",
-
   "WEAPON.ICON": "Bild",
   "WEAPON.NAME": "Waffe",
   "WEAPON.DAMAGE": "Schaden",
@@ -201,7 +183,6 @@
   "WEAPON.SKILL": "Fertigkeit",
   "WEAPON.STARTING": "SE",
   "WEAPON.STARTING_TOOLTIP": "Start-Equipment",
-
   "UI.FAVORITE" : "Toggle Favorite",
   "UI.EDIT" : "Bearbeiten",
   "UI.DELETE": "Löschen",
@@ -209,7 +190,6 @@
   "UI.ROLL.PREC": "Würfel Physische Erholung",
   "UI.ROLL.MREC": "Würfel Geistige Erholung",
   "UI.NoInitiativeDeckFound": "Kein Initiative-Deck gefunden, erstelle ein Neues",
-
   "SETTINGS.SWAG": "Zeige das offizielle VAESEN Logo am Beginn des Charakterbogens",
   "SETTINGS.SWAG_NAME" : "Charakterbogen Aussehen",
   "SETTINGS.PORTRAIT_HINT": "Wähle den Stil des Charakterbildes im Charakterbogen. Als Standard wird es abgerundet dargestellt, aber es gibt auch Unterstützung für die Größen Portrait oder Querformat mit einem Verhältnis von 2:3 (175 Pixel x 117 Pixel sind ideal)",
@@ -223,7 +203,8 @@
   "SETTINGS.NPC_LINK": "Da NSCs in mehreren Mysterien wiederverwendet werden können, wird der Token nicht mit dem Charakterbogen verknüpft. Wenn du dich dafür entscheidest, die Daten zu verbinden, denke bitte daran, die Zustände / Status des Akteurs \"zurückzusetzen\".",
   "SETTINGS.VAESEN_LINK_NAME": "Verbinde Vaesen Token mit Charakterbögen",
   "SETTINGS.VAESEN_LINK": "Da Vaesen in mehreren Mysterien wiederverwendet werden können, wird der Token nicht mit dem Charakterbogen verknüpft. Wenn du dich dafür entscheidest, die Daten zu verbinden, denke bitte daran, die Zustände / Status des Akteurs \"zurückzusetzen\".",
-
+  "SETTINGS.CONDITION_ALTERNATIVE_RULE_NAME": "Alternative Regel für Zustände",
+  "SETTINGS.CONDITION_ALTERNATIVE_RULE": "Aktiviere die alternative Regel für Zustände. Wenn aktiviert gibt es keine Abzüge von Würfel, die sich aus Zuständen ergeben. Siehe Seite 40 im Regelwerk für mehr Informationen.",
   "CHAT.SUCCESS": "Erfolge",
   "ROLL.BASE.POOL": "Basis Würfelpool",
   "ROLL.TEST" : "Probe",
@@ -235,16 +216,13 @@
   "ROLL.MREC": "Geistige Erholung",
   "ROLL.BONUS": "Bonus Würfel",
   "ROLL.DAMAGE": "Schaden",
-
   "YZUR.CHAT.ROLL.Push" : "Strapazieren",
   "YZUR.DIETYPES.SkillDie" : "Erfolg zählt",
   "YZUR.DIETERMS.SkillDie" : "Erfolg zählt",
-
   "RELATIONSHIP.WITH": "Beziehung zu",
   "RELATIONSHIP.NATURE": "Art der Beziehung",
   "RELATIONSHIP.WT": "zu",
   "RELATIONSHIP.NT": "Art",
-
   "BONUS_TYPE.HEADER": "Bonus Typ",
   "BONUS_TYPE.NONE": "Kein",
   "BONUS_TYPE.SKILL": "Fertigkeit",
@@ -255,11 +233,9 @@
   "BONUS_TYPE.FEAR": "Furcht",
   "BONUS_TYPE.MENTAL_RECOVERY": "Mentale Heilung",
   "BONUS_TYPE.PHYSICAL_RECOVERY": "Physische Heilung",
-
   "MIGRATOR.LINK_ACTOR": "Du hast die Konfiguration geändert, um die folgenden Arten von Akteuren zu verbinden: ",
   "MIGRATOR.UNLINK_ACTOR": "Du hast die Konfiguration geändert, um die Verbindung zu den folgenden Arten von Akteuren aufzuheben: ",
   "MIGRATOR.LINK_ACTOR_CONFIRMATION": "Möchtest du die Konfiguration für die bestehenden Akteure dieses Typs ändern? Vorhandene Token werden nicht geändert, nur die Akteure.",
-
   "GENERATOR.CLASS": "Archetyp",
   "GENERATOR.UPBRINGING": "Persönlichkeit",
   "GENERATOR.PROFESSION": "Beruf",
@@ -272,10 +248,8 @@
   "GENERATOR.DISCARDED": "ABGELEHNT",
   "GENERATOR.REROLL": "Reroll",
   "GENERATOR.LIFE": "Steckbrief",
-
   "HEADQUARTER.MEMBER_RANKING": "MITGLIEDER RANGLISTE",
   "HEADQUARTER.MEMBER_RANKING_EXPLANATION": "Bei der Bestimmung, wer für ein bestimmtes Attribut- oder Fertigkeitswurf am besten geeignet ist, kannst du auf diese Weise einen nicht-metaspielerischen Ansatz wählen. Anstatt sich auf bestimmte Zahlen zu verlassen, überlegt man sich, wer in diesem Bereich am fähigsten ist. Bei Fertigkeiten wird dies durch den kombinierten Wert des jeweiligen Attributs und der Fertigkeit selbst bestimmt. Wenn mehrere Charaktere in der Liste aufgeführt sind, bedeutet dies, dass sie die gleiche Anzahl von Würfeln für diese Aufgabe verwenden.",
-
   "CHANGELOG.HEADER": "PROTOKOLL",
   "CHANGELOG.WHAT": "Was",
   "CHANGELOG.TYPE": "Typ",
@@ -284,7 +258,6 @@
   "CHANGELOG.WHEN": "Wann",
   "CHANGELOG.ADDED": "hinzugefügt",
   "CHANGELOG.REMOVED": "entfernt",
-
   "STARTING_EQUIP.TITLE": "Start-Equipment löschen?",
   "STARTING_EQUIP.CONTENT": "Dies ist eine Ausrüstung, die als Teil der Startausrüstung für diesen Charakter markiert ist. Bist du sicher, dass du sie löschen möchten?"
 }
