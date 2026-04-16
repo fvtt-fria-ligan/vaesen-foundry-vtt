@@ -7,3 +7,4 @@ script/lib/yzur1.js
 *.png~
 
 .DS_Store
+.linkedToFoundry
