@@ -6,10 +6,6 @@ a.button:hover, button:hover {
 /        Fonts
 ******************************/
 @font-face {
-  font-family: Eccentric;
-  src: url(../fonts/EccentricStd.otf);
-}
-@font-face {
   font-family: Berolina;
   src: url(../fonts/Berolina.ttf);
 }
@@ -18,8 +14,8 @@ a.button:hover, button:hover {
   src: url(../fonts/BethEllen-Regular.ttf);
 }
 @font-face {
-  font-family: Albertus;
-  src: url(../fonts/AlbertusMediumRegular.ttf);
+  font-family: Acme;
+  src: url(../fonts/Acme-Regular.ttf);
 }
 @font-face {
   font-family: Baskerville;
@@ -47,7 +43,7 @@ a.button:hover, button:hover {
 }
 /* media query mixin */
 .editor-content h1, .journal-entry-content h1 {
-  font-family: Albertus;
+  font-family: Acme;
   font-size: 3em;
   text-align: center;
   color: #412017;
@@ -91,7 +87,7 @@ a.button:hover, button:hover {
 }
 
 h1, h2, h3, h4 {
-  font-family: Albertus, serif;
+  font-family: Acme, serif;
   border-bottom: none;
   margin: 0 0 3px;
 }
