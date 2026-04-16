@@ -10,6 +10,10 @@ a.button:hover, button:hover {
   src: url(../fonts/EccentricStd.otf);
 }
 @font-face {
+  font-family: Berolina;
+  src: url(../fonts/Berolina.ttf);
+}
+@font-face {
   font-family: BethEllen;
   src: url(../fonts/BethEllen-Regular.ttf);
 }
@@ -51,7 +55,7 @@ a.button:hover, button:hover {
 }
 
 .editor-content h2, .journal-entry-content h2 {
-  font-family: Eccentric;
+  font-family: Berolina;
   font-size: 2.5em;
   text-align: center;
   color: #412017;
@@ -132,10 +136,6 @@ h4 {
   --fs-600: 1.9rem;
   --fs-700: 3rem;
   --fs-800: 4rem;
-  --bp-small: 40em;
-  --bp-medium: 55em;
-  --bp-large: 100em;
-  scrollbar-color: hsl(21, 20%, 43%) hsl(40, 20%, 80%);
 }
 @media only screen and (min-width: 40em) {
   :root {
@@ -147,6 +147,12 @@ h4 {
     --fs-700: 4rem;
     --fs-800: 5.5rem;
   }
+}
+:root {
+  --bp-small: 40em;
+  --bp-medium: 55em;
+  --bp-large: 100em;
+  scrollbar-color: hsl(21, 20%, 43%) hsl(40, 20%, 80%);
 }
 
 .window-app .window-content {
