@@ -26,12 +26,24 @@ a.button:hover, button:hover {
   src: url(../fonts/LinLibertine_R.ttf);
 }
 @font-face {
-  font-family: IntervogueBlack;
-  src: url(../fonts/Intervogue_Black.otf);
+  font-family: Poppins;
+  src: url(../fonts/Poppins-Regular.ttf);
 }
 @font-face {
-  font-family: IntervogueReg;
-  src: url(../fonts/Intervogue_Reg.otf);
+  font-family: Poppins;
+  src: url(../fonts/Poppins-Italic.ttf);
+  font-style: italic;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../fonts/Poppins-Bold.ttf);
+  font-weight: bold;
+}
+@font-face {
+  font-family: Poppins;
+  src: url(../fonts/Poppins-BoldItalic.ttf);
+  font-weight: bold;
+  font-style: italic;
 }
 @font-face {
   font-family: PicaItalic;
@@ -510,7 +522,7 @@ input.dark {
 .journal-entry-page table td {
   border-left: none;
   border-right: none;
-  font-family: IntervogueReg;
+  font-family: Poppins;
   font-style: normal;
   text-align: left;
   padding: 0.3em;
@@ -527,7 +539,7 @@ input.dark {
   border-bottom: none;
   border-left: none;
   border-right: none;
-  font-family: IntervogueBlack;
+  font-family: Poppins;
   font-weight: 700;
   font-style: normal;
   color: #412017;
