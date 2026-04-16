@@ -241,7 +241,7 @@ export class VaesenActorSheet extends foundry.appv1.sheets.ActorSheet {
   onItemCreate(event) {
     event.preventDefault();
     let header = event.currentTarget;
-    let data = duplicate(header.dataset);
+    let data = foundry.utils.duplicate(header.dataset);
 
     data["name"] = `New ${data.type.capitalize()}`;
     if (data.type == "condition") {

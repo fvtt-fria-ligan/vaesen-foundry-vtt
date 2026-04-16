@@ -102,7 +102,7 @@ export class HeadquarterCharacterSheet extends VaesenActorSheet {
     // console.log("Item Create");
     event.preventDefault();
     let header = event.currentTarget;
-    let data = duplicate(header.dataset);
+    let data = foundry.utils.duplicate(header.dataset);
     data["name"] = `New ${data.type.capitalize()}`;
     data["system.category"] = data["category"];
     // console.log(data);

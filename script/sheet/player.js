@@ -264,7 +264,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
   onItemCreate(event) {
     event.preventDefault();
     let header = event.currentTarget;
-    let data = duplicate(header.dataset);
+    let data = foundry.utils.duplicate(header.dataset);
 
     if (data.type != "gear" && data.type != "weapon")
     {

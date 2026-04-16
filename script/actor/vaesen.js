@@ -57,7 +57,7 @@ export class VaesenActor extends Actor {
     options = { renderSheet: false, overlay: false }
   ) {
     //await this.deleteStatusEffectById(statusEffect.id, options);
-    const effect = duplicate(statusEffect);
+    const effect = foundry.utils.duplicate(statusEffect);
     // console.log(effect.label);
     // console.log(effect.id);
     await this.createEmbeddedDocuments(

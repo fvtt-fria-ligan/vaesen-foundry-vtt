@@ -2,7 +2,7 @@ export class commonListeners {
   static onItemCreate(event, actor) {
     event.preventDefault();
     let header = event.currentTarget;
-    let data = duplicate(header.dataset);
+    let data = foundry.utils.duplicate(header.dataset);
 
     console.log("sheetListener | Item create:", header, actor);
     data["name"] = `New ${data.type.capitalize()}`;
