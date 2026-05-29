@@ -18,6 +18,7 @@ import { vaesenItemSheet } from "./sheet/itemSheet.js";
 import { migrate } from "./util/migrator.js";
 import { VaesenTokenHUD } from "./util/token.js";
 import ChatMessageVaesen from "./util/chat.js";
+import { registerDefaultFonts } from "./fonts.js";
 
 Hooks.on("renderChatMessageHTML", (app, html, data) => {
   // console.log("renderChatMessage", app, html, data);
@@ -35,6 +36,7 @@ Hooks.on("renderChatMessageHTML", (app, html, data) => {
 
 Hooks.once("init", () => {
   console.log("Vaesen | Initializing Vaesen System");
+  registerDefaultFonts();
   CONFIG.vaesen = vaesen;
   CONFIG.Combat.initiative = { formula: "1d10", decimals: 0 };
   CONFIG.Actor.documentClass = VaesenActor;
