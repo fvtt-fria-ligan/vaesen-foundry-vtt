@@ -63,7 +63,7 @@ export default class ChatMessageVaesen extends ChatMessage {
   //   switch (type) {
   //     case "armor":
   //       message =
-  //         `<div class="card-holder" style="position: relative;">
+  //         `<div class="card-holder">
   //               <img src="` +
   //         token +
   //         `" width="45" height="45" class="roll-token" />
@@ -117,7 +117,7 @@ export default class ChatMessageVaesen extends ChatMessage {
   //           "</br>";
   //       }
   //       message =
-  //         `<div class="card-holder" style="position: relative;">
+  //         `<div class="card-holder">
   //           <img src="` +
   //         token +
   //         `" width="45" height="45" class="roll-token" />
@@ -154,7 +154,7 @@ export default class ChatMessageVaesen extends ChatMessage {
   //       break;
   //     case "condition":
   //       message =
-  //         `<div class="card-holder" style="position: relative;">
+  //         `<div class="card-holder">
   //           <img src="` +
   //         token +
   //         `" width="45" height="45" class="roll-token" />
@@ -195,7 +195,7 @@ export default class ChatMessageVaesen extends ChatMessage {
   //       }
 
   //       message =
-  //         `<div class="card-holder" style="position: relative;">
+  //         `<div class="card-holder">
   //           <img src="` +
   //         token +
   //         `" width="45" height="45" class="roll-token" />
@@ -254,7 +254,7 @@ export default class ChatMessageVaesen extends ChatMessage {
   //       }
 
   //       message =
-  //         `<div class="card-holder" style="position: relative;">
+  //         `<div class="card-holder">
   //           <img src="` +
   //         token +
   //         `" width="45" height="45" class="roll-token" />
@@ -292,7 +292,7 @@ export default class ChatMessageVaesen extends ChatMessage {
   //       break;
   //     case "magic":
   //       message =
-  //         `<div class="card-holder" style="position: relative;">
+  //         `<div class="card-holder">
   //           <img src="` +
   //         token +
   //         `" width="45" height="45" class="roll-token" />
@@ -323,7 +323,7 @@ export default class ChatMessageVaesen extends ChatMessage {
   //       break;
   //     case "talent":
   //       message =
-  //         `<div class="card-holder" style="position: relative;">
+  //         `<div class="card-holder">
   //           <img src="` +
   //         token +
   //         `" width="45" height="45" class="roll-token" />
@@ -372,7 +372,7 @@ export default class ChatMessageVaesen extends ChatMessage {
   //       }
 
   //       message =
-  //         `<div class="card-holder" style="position: relative;">
+  //         `<div class="card-holder">
   //           <img src="` +
   //         token +
   //         `" width="45" height="45" class="roll-token" />
@@ -419,7 +419,7 @@ export default class ChatMessageVaesen extends ChatMessage {
   //         skill = game.i18n.localize("SKILL.FORCE");
   //       }
   //       message =
-  //         `<div class="card-holder" style="position: relative;">
+  //         `<div class="card-holder">
   //           <img src="` +
   //         token +
   //         `" width="45" height="45" class="roll-token" />
@@ -465,7 +465,7 @@ export default class ChatMessageVaesen extends ChatMessage {
   //       break;
   //     case "relationship":
   //       message =
-  //         `<div class="card-holder" style="position: relative;">
+  //         `<div class="card-holder">
   //           <img src="` +
   //         token +
   //         `" width="45" height="45" class="roll-token" />
@@ -520,7 +520,7 @@ export async function  buildChatCard(type, data) {
     switch (type) {
       case "armor":
         message =
-          `<div class="card-holder" style="position: relative;">
+          `<div class="card-holder">
                 <img src="` +
           token +
           `" width="45" height="45" class="roll-token" />
@@ -574,7 +574,7 @@ export async function  buildChatCard(type, data) {
             "</br>";
         }
         message =
-          `<div class="card-holder" style="position: relative;">
+          `<div class="card-holder">
             <img src="` +
           token +
           `" width="45" height="45" class="roll-token" />
@@ -611,7 +611,7 @@ export async function  buildChatCard(type, data) {
         break;
       case "condition":
         message =
-          `<div class="card-holder" style="position: relative;">
+          `<div class="card-holder">
             <img src="` +
           token +
           `" width="45" height="45" class="roll-token" />
@@ -652,7 +652,7 @@ export async function  buildChatCard(type, data) {
         }
 
         message =
-          `<div class="card-holder" style="position: relative;">
+          `<div class="card-holder">
             <img src="` +
           token +
           `" width="45" height="45" class="roll-token" />
@@ -711,7 +711,7 @@ export async function  buildChatCard(type, data) {
         }
 
         message =
-          `<div class="card-holder" style="position: relative;">
+          `<div class="card-holder">
             <img src="` +
           token +
           `" width="45" height="45" class="roll-token" />
@@ -749,7 +749,7 @@ export async function  buildChatCard(type, data) {
         break;
       case "magic":
         message =
-          `<div class="card-holder" style="position: relative;">
+          `<div class="card-holder">
             <img src="` +
           token +
           `" width="45" height="45" class="roll-token" />
@@ -780,7 +780,7 @@ export async function  buildChatCard(type, data) {
         break;
       case "talent":
         message =
-          `<div class="card-holder" style="position: relative;">
+          `<div class="card-holder">
             <img src="` +
           token +
           `" width="45" height="45" class="roll-token" />
@@ -829,7 +829,7 @@ export async function  buildChatCard(type, data) {
         }
 
         message =
-          `<div class="card-holder" style="position: relative;">
+          `<div class="card-holder">
             <img src="` +
           token +
           `" width="45" height="45" class="roll-token" />
@@ -876,7 +876,7 @@ export async function  buildChatCard(type, data) {
           skill = game.i18n.localize("SKILL.FORCE");
         }
         message =
-          `<div class="card-holder" style="position: relative;">
+          `<div class="card-holder">
             <img src="` +
           token +
           `" width="45" height="45" class="roll-token" />
@@ -922,7 +922,7 @@ export async function  buildChatCard(type, data) {
         break;
       case "relationship":
         message =
-          `<div class="card-holder" style="position: relative;">
+          `<div class="card-holder">
             <img src="` +
           token +
           `" width="45" height="45" class="roll-token" />
