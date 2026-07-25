@@ -1,4 +1,4 @@
-import ChatMessageVaesen from "../util/chat.js";
+import ChatMessageVaesen, { buildChatCard } from "../util/chat.js";
 
 export class vaesenItemSheet extends foundry.appv1.sheets.ItemSheet {
   constructor(...args) {
@@ -50,9 +50,9 @@ export class vaesenItemSheet extends foundry.appv1.sheets.ItemSheet {
     $(event.currentTarget).select();
   }
 
-  sendToChat(data) {
+  async sendToChat(data) {
     let type = data.type;
-    let chatData = ChatMessageVaesen.buildChatCard(type, data);
+    let chatData = await buildChatCard(type, data);
     ChatMessageVaesen.create(chatData, {});
   }
 }

@@ -1,4 +1,4 @@
-import ChatMessageVaesen from "../util/chat.js";
+import ChatMessageVaesen, { buildChatCard } from "../util/chat.js";
 import { VaesenActorSheet } from "../actor/vaesen-actor-sheet.js";
 
 export class HeadquarterCharacterSheet extends VaesenActorSheet {
@@ -88,13 +88,13 @@ export class HeadquarterCharacterSheet extends VaesenActorSheet {
   }
 
 
-  sendToChat(event) {
+  async sendToChat(event) {
     const div = $(event.currentTarget).parents(".item");
     const item = this.actor.items.get(div.data("itemId"));
     // console.log(item);
     
     let type = item.type;
-    let chatData = ChatMessageVaesen.buildChatCard(type, item);
+    let chatData = await buildChatCard(type, item);
     ChatMessageVaesen.create(chatData, {});
   }
 
