@@ -22,6 +22,7 @@ export class conditions {
           value: true,
         },
       ],
+      order: 1,
       statuses: ["exhausted"],
     },
     {
@@ -35,6 +36,7 @@ export class conditions {
           value: true,
         },
       ],
+      order: 2,
       statuses: ["battered"],
     },
     {
@@ -48,6 +50,7 @@ export class conditions {
           value: true,
         },
       ],
+      order: 3,
       statuses: ["wounded"],
     },
     {
@@ -61,6 +64,7 @@ export class conditions {
           value: true,
         },
       ],
+      order: 4,
       statuses: ["physical"],
     },
     {
@@ -74,6 +78,7 @@ export class conditions {
           value: true,
         },
       ],
+      order: 5,
       statuses: ["angry"],
     },
     {
@@ -87,6 +92,7 @@ export class conditions {
           value: true,
         },
       ],
+      order: 6,
       statuses: ["frightened"],
     },
     {
@@ -100,6 +106,7 @@ export class conditions {
           value: true,
         },
       ],
+      order: 7,
       statuses: ["hopeless"],
     },
     {
@@ -113,6 +120,7 @@ export class conditions {
           value: true,
         },
       ],
+      order: 8,
       statuses: ["mental"],
     }
   ];
