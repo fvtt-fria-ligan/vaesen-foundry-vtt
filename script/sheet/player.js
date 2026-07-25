@@ -252,6 +252,7 @@ export class PlayerCharacterSheet extends VaesenActorSheet {
         changes: statusEffect.changes,
         id: this.uuid,
         statuses: statusEffect.statuses,
+        showIcon: 2,
         flags: {
           core: {
             statusId: statusEffect.id
